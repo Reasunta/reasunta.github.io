@@ -1,0 +1,199 @@
+<html>
+<head>
+<!-- Подключаем Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+.tracker-left {margin-right: 5px; }
+.tracker-right {margin-left: 5px; }
+.display-inline {display: inline; }
+.input-dice-width {width: 50px;}
+.h-inline { display: inline;}
+.input-small-size {margin-left: 4px; height: 20px;}
+</style>
+</head>
+<body>
+<div class="row">
+<div class="col-sm-6 col-md-5 col-lg-4">
+<h3>Monster 1</h3>
+<table class="table table-bordered table-condensed text-center small">
+<thead><th>WS</th><th>BS</th><th>S</th><th>T</th><th>I</th><th>Ag</th><th>Dex</th><th>Int</th><th>WP</th><th>Fel</th></thead><tbody>
+  <tr><td>40</td><td>45</td><td>30</td><td>30</td><td>20</td><td>20</td><td>20</td><td>20</td><td>40</td><td>20</td></tr>
+</tbody></table>
+<p><strong>Traits:</strong> Weapon +9, Size(Large), Stupid, Trait 1, Trait 2, Trait 3, Champion</p>
+<div><strong>Size:</strong>
+<label class="radio-inline" title="Tiny">     <input type="radio" name="sizeradio">t</label>
+<label class="radio-inline" title="Little">   <input type="radio" name="sizeradio">l</label>
+<label class="radio-inline" title="Small">    <input type="radio" name="sizeradio">s</label>
+<label class="radio-inline" title="Average">  <input type="radio" name="sizeradio" checked>A</label>
+<label class="radio-inline" title="Large">    <input type="radio" name="sizeradio">L</label>
+<label class="radio-inline" title="Enormous"> <input type="radio" name="sizeradio">E</label>
+<label class="radio-inline" title="Monstrous"><input type="radio" name="sizeradio">M</label>
+</div>
+<div><strong>Reach:</strong>
+<label class="radio-inline" title="Personal">  <input type="radio" name="wrradio">P</label>
+<label class="radio-inline" title="Very Short"><input type="radio" name="wrradio">VS</label>
+<label class="radio-inline" title="Short">     <input type="radio" name="wrradio">S</label>
+<label class="radio-inline" title="Average">   <input type="radio" name="wrradio" checked>A</label>
+<label class="radio-inline" title="Long">      <input type="radio" name="wrradio">L</label>
+<label class="radio-inline" title="VL"> 	   <input type="radio" name="wrradio">VL</label>
+<label class="radio-inline" title="Massive">   <input type="radio" name="wrradio">M</label>
+</div>
+<!--<table class="table table-bordered small">
+<thead><th>Creature</th><th>1</th><th>2</th><th>3</th></thead><tbody>
+  <tr><td>Wounds</td><td>14</td><td>14</td><td>14</td></tr>
+</tbody></table>-->
+<p><strong>Wounds:</strong> <input type="text" class="form-control display-inline input-small-size input-dice-width" maxlength="3"> </p>
+<p><strong>Conditions:</strong></p>
+<table class="table table-condensed table-bordered text-center small">
+<tbody><tr>
+  <td><span title="Ablaze" class="glyphicon glyphicon-fire"></span></td>
+  <td><span title="Blinded" class="glyphicon glyphicon-eye-close"></span></td>
+  <td><span title="Entangled" class="glyphicon glyphicon-link"></span></td>
+  <td><span title="Bleeding" class="glyphicon glyphicon-tint"></span></td>
+  <td><span title="Deafed" class="fa fa-deaf"></span></td>
+  <td><span title="Fatigued" class="fa fa-universal-access"></span></td></tr>
+  <tr>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>1</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>2</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>3</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>4</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>5</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>6</span><span class="fa fa-plus-square-o tracker-right"></td>
+  </tr><tr>
+  <td><span title="Surprised" class="fa fa-gift"></td>
+  <td><span title="Broken" class="glyphicon glyphicon-warning-sign"></td>
+  <td><span title="Poisoned" class="fa fa-heartbeat"></td>
+  <td><span title="Prone" class="fa fa-chevron-down"></td>
+  <td><span title="Stunned" class="fa fa-hand-rock-o"></td>
+  <td><span title="Unconscious" class="fa fa-hotel"></td></tr>
+  <tr>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>1</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>2</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>3</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>4</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>5</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span>6</span><span class="fa fa-plus-square-o tracker-right"></td>
+  </tr></tbody></table>
+</div>
+<div class="col-sm-6 col-md-7 col-lg-8">
+<div class="row">
+<div class="col-xs-3 col-lg-2">
+<h4>Traits:</h4>
+<div class="checkbox"><label><input type="checkbox" value="">Stupid</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Trait_1</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Trait_2</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Trait_3</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Champion</label></div>
+</div>
+<div class="col-xs-3 col-lg-3">
+<h4>Shooting Modifiers:</h4>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting into a crowd</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting at PB Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting at a large group</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting at Short Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting at a small group</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting with aiming</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting at Long Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting with Move</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting to the location</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">fog, mist, shadow</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting at Extreme Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Shooting in Darkness</label></div>
+</div>
+<div class="col-xs-3 col-lg-3">
+<h4>Attacking Modifiers:</h4>
+<div class="checkbox"><label><input type="checkbox" value="">Attacking 3 to 1</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Attacking an Engaged</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Attacking 2 to 1</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Difficult terrain</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Enclosed space</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Extreme weather</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Darkness</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Weapon in off hand</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Arduous terrain</label></div>
+</div>
+<div class="col-xs-3 col-lg-4">
+<h4>Defensive Modifiers:</h4>
+<div class="checkbox"><label><input type="checkbox" value="">Soft cover</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Medium cover</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">Hard cover</label></div>
+<div class="checkbox"><label><input type="checkbox" value="">In the defensive</label></div>
+</div>
+</div>
+</div></div>
+<hr>
+<div class="row">
+<div class = "col-xs-6">
+<h3>Combat Table</h3>
+<table class="table table-striped table-hover">
+<thead><th>#</th><th>Name</th><th>I</th><th>W</th><th>Adv</th><th width="50px">Action</th></thead><tbody>
+<tr style="background-color: yellow">
+<td>1</td><td>Player 1</td><td>45</td><td>14</td>
+<td><span class="fa fa-minus-square-o tracker-left"></span><span>5</span><span class="fa fa-plus-square-o tracker-right"></td>
+<td><button class="btn"><span class="fa fa-arrow-circle-o-right"></span></button></td></tr>
+<tr>
+<td>2</td><td>Monster 1</td><td>47</td><td>11</td>
+<td><span class="fa fa-minus-square-o tracker-left"></span><span>0</span><span class="fa fa-plus-square-o tracker-right"></td>
+<td><button class="btn"><span class="fa fa-shield"></span></button></td></tr>
+<tr>
+<td>3</td><td>Monster 2</td><td>37</td><td>31</td>
+<td><span class="fa fa-minus-square-o tracker-left"></span><span>10</span><span class="fa fa-plus-square-o tracker-right"></td>
+<td><button class="btn"><span class="fa fa-shield"></span></button></td></tr>
+</tbody></table>
+</div>
+<div class = "col-xs-6">
+<div class = "row">
+<div class = "col-xs-6">
+    <h4 class="display-inline">Player 1</h4>
+	<input type="text" class="form-control display-inline input-dice-width" maxlength="3">
+    <button class="btn btn-info">Roll</button>
+	<div><strong>Action:</strong>
+	<label class="radio-inline"><input type="radio" name="attaction" checked>Melee</label>
+	<label class="radio-inline"><input type="radio" name="attaction">Ranged</label>
+	<label class="radio-inline"><input type="radio" name="attaction">Other</label>
+</div>
+	<table class = "table small table-condensed">	
+	<thead><th>Base</th><th>56</th></thead><tbody>
+	<tr><td>Short M.</td><td>+20</td></tr>
+	<tr><td>Medium Mod.</td><td>-10</td></tr>
+	<tr><td>Quite Long Modifier</td><td>+30</td></tr>
+	<tr><td>The longest Modifier</td><td>-100</td></tr>
+	</tbody></table>
+</div>
+<div class = "col-xs-6">
+<h4 class="display-inline">Monster 1</h4>
+<input type="text" class="form-control display-inline input-dice-width" maxlength="3">
+<button class="btn btn-info">Roll</button>
+<div><strong>Action:</strong>
+<label class="radio-inline"><input type="radio" name="defaction" checked>Melee</label>
+<label class="radio-inline"><input type="radio" name="defaction">Dodge</label>
+<label class="radio-inline"><input type="radio" name="defaction">Nothing</label>
+</div>	
+<table class = "table small table-condensed">	
+	<thead><th>Base</th><th>38</th></thead><tbody>
+	<tr><td>Advances</td><td>+50</td></tr>
+	<tr><td>Quite Long Modifier</td><td>+30</td></tr>
+	<tr><td>The longest Modifier</td><td>-100</td></tr>
+	<tr><td>Talent 1</td><td>+1 SL</td></tr>
+	<tr><td>Talent 2</td><td>+10 SL</td></tr>
+	</tbody></table>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12">
+<table class = "table small table-condensed">	
+	<thead><th>#</th><th>Test Status</th><th>Total SL</th></thead><tbody>
+	<tr><td>Player 1</td><td>Pass</td><td>2 SL</td></tr>
+	<tr><td>Monster 1</td><td>Fail</td><td>-4 SL</td></tr>
+	</tbody></table>
+</div>
+</div>
+</div>
+</div>
+</body>
+<script>
+</script>
+</html>
