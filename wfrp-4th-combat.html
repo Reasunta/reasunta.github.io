@@ -3,8 +3,13 @@
 <!-- Подключаем Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/dropdown-submenu.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="/js/variables.js"></script>
+<script src="/js/classes/combatTableRow.js"></script>
+<script src="/js/classes/combatTable.js"></script>
+<script src="/js/main.js"></script>
 <style>
 .tracker-left {margin-right: 5px; }
 .tracker-right {margin-left: 5px; }
@@ -131,32 +136,7 @@ table th {
 </div></div>
 <hr>
 <div class="row">
-<div class = "col-xs-6">
-<h3>Combat Table</h3>
-<table class="table table-striped table-hover">
-<thead><th>#</th><th>Name</th><th>I</th><th>W</th><th>Adv</th>
-<th width="100px"><button class="btn align-right"><span class="fa fa-plus-circle "></span></button></th></thead><tbody>
-<tr style="background-color: yellow">
-<td>1</td><td>Player 1</td><td>45</td><td>14</td>
-<td><span class="fa fa-minus-square-o tracker-left"></span><span>5</span><span class="fa fa-plus-square-o tracker-right"></td>
-<td>
-<button class="btn align-right tracker-right"><span class="fa fa-minus-circle"></span></button>
-<button class="btn align-right"><span class="fa fa-arrow-circle-o-right"></span></button>
-</td></tr>
-<tr>
-<td>2</td><td>Monster 1</td><td>47</td><td>11</td>
-<td><span class="fa fa-minus-square-o tracker-left"></span><span>0</span><span class="fa fa-plus-square-o tracker-right"></td>
-<td>
-<button class="btn align-right tracker-right"><span class="fa fa-minus-circle"></span></button>
-<button class="btn align-right"><span class="fa fa-shield"></span></button></td></tr>
-<tr>
-<td>3</td><td>Monster 2</td><td>37</td><td>31</td>
-<td><span class="fa fa-minus-square-o tracker-left"></span><span>10</span><span class="fa fa-plus-square-o tracker-right"></td>
-<td>
-<button class="btn align-right tracker-right"><span class="fa fa-minus-circle"></span></button>
-<button class="btn align-right"><span class="fa fa-shield"></span></button></td></tr>
-</tbody></table>
-</div>
+<div class = "col-xs-6" id="combatTable"></div>
 <div class = "col-xs-6">
 <div class = "row">
 <div class = "col-xs-6">
