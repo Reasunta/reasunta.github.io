@@ -1,7 +1,7 @@
 class CombatTableRow {
   constructor(index, name, initiative, wounds) {
     this.template = 
-	  '<tr><td name="index"></td><td name="name"></td><td name="I"></td><td name="W"></td>' +
+	  '<tr><td name="index"></td><td name="name" style="cursor:pointer"></td><td name="I"></td><td name="W"></td>' +
 	  '<td><span class="fa fa-minus-square-o tracker-left"></span><span name="ADV"></span>' + 
 	  '<span class="fa fa-plus-square-o tracker-right"></span></td>' + 
 	  '<td>' + 
@@ -19,8 +19,24 @@ class CombatTableRow {
 	this.setWounds(wounds);
 	this.setAdvances(0);
 	
-	this.dom.on('click', 'button[name="remove"]', this.sendMessage.bind(this, this, "removeRow"));
-	this.dom.on('click', 'button[name="nextTurn"]', this.sendMessage.bind(this, this, "selectNextPlayer"));
+	this.dom.on('click', 'button[name="remove"]', this.sendMessage.bind(this, this, "removeProfile"));
+	this.dom.on('click', 'button[name="nextTurn"]', this.sendMessage.bind(this, this, "nextProfile"));
+	this.dom.on('click', 'td[name="name"]', this.sendMessage.bind(this, this, "showProfile"));
+	this.dom.on('click', '.fa-minus-square-o', this.resetAdvances.bind(this, this));
+	this.dom.on('click', '.fa-plus-square-o', this.addAdvance.bind(this, this));
+  }
+  
+  resetAdvances = function(instance, event) {
+	instance.setAdvances(0);
+	COMBATANTS[instance.getName()].advances = 0;
+	this.sendMessage(this, 'profileChanged', null);
+  }
+  
+  addAdvance = function(instance, event) {
+	let newAdvance = instance.getAdvances() + 1;
+	instance.setAdvances(newAdvance);
+	COMBATANTS[instance.getName()].advances++;
+	this.sendMessage(this, 'profileChanged', null);
   }
   
   sendMessage = function(instance, message, event) {

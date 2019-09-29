@@ -9,6 +9,7 @@
 <script src="/js/variables.js"></script>
 <script src="/js/classes/combatTableRow.js"></script>
 <script src="/js/classes/combatTable.js"></script>
+<script src="/js/classes/creatureView.js"></script>
 <script src="/js/main.js"></script>
 <style>
 .tracker-left {margin-right: 5px; }
@@ -24,40 +25,40 @@ table th {
 </style>
 </head>
 <body>
-<div class="row">
+<h3 style="cursor:pointer;" data-toggle="collapse" href="#creatureView" aria-expanded="false" aria-controls="creatureView"></h3>
+<div class="row collapse" id="creatureView">
 <div class="col-sm-6 col-md-5 col-lg-4">
-<h3>Monster 1</h3>
-<table class="table table-bordered table-condensed text-center small">
-<thead><th>M</th><th>WS</th><th>BS</th><th>S</th><th>T</th><th>I</th><th>Ag</th><th>Dex</th><th>Int</th><th>WP</th><th>Fel</th></thead><tbody>
-  <tr><td>4</td><td>40</td><td>45</td><td>30</td><td>30</td><td>20</td><td>20</td><td>20</td><td>20</td><td>40</td><td>20</td></tr>
+<table class="table table-bordered table-condensed text-center small" id="characteristics">
+<thead>
+<th>M</th><th>WS</th><th>BS</th><th>S</th><th>T</th><th>I</th>
+<th>Ag</th><th>Dex</th><th>Int</th><th>WP</th><th>Fel</th>
+</thead><tbody><tr>
+  <td id="M"></td><td id="WS"></td><td id="BS"></td><td id="S"></td><td id="T"></td><td id="I"></td>
+  <td id="Ag"></td><td id="Dex"></td><td id="Int"></td><td id="WP"></td><td id="Fel"></td></tr>
 </tbody></table>
-<p><strong>Traits:</strong> Weapon +9, Size(Large), Stupid, Trait 1, Trait 2, Trait 3, Champion</p>
-<p><strong>Optional:</strong> Trait 1, Trait 2, Trait 3</p>
-<div><strong>Size:</strong>
-<label class="radio-inline" title="Tiny">     <input type="radio" name="sizeradio">t</label>
-<label class="radio-inline" title="Little">   <input type="radio" name="sizeradio">l</label>
-<label class="radio-inline" title="Small">    <input type="radio" name="sizeradio">s</label>
-<label class="radio-inline" title="Average">  <input type="radio" name="sizeradio" checked>A</label>
-<label class="radio-inline" title="Large">    <input type="radio" name="sizeradio">L</label>
-<label class="radio-inline" title="Enormous"> <input type="radio" name="sizeradio">E</label>
-<label class="radio-inline" title="Monstrous"><input type="radio" name="sizeradio">M</label>
+<p><strong>Traits: </strong><span id="traits"></span></p>
+<p><strong>Optional: </strong><span id="optional"></span></p>
+<div id='sizes'><strong>Size:</strong>
+<label class="radio-inline" title="Tiny">     <input type="radio" name="sizeradio" value="Tiny">t</label>
+<label class="radio-inline" title="Little">   <input type="radio" name="sizeradio" value="Little">l</label>
+<label class="radio-inline" title="Small">    <input type="radio" name="sizeradio" value="Small">s</label>
+<label class="radio-inline" title="Average">  <input type="radio" name="sizeradio" value="Average">A</label>
+<label class="radio-inline" title="Large">    <input type="radio" name="sizeradio" value="Large">L</label>
+<label class="radio-inline" title="Enormous"> <input type="radio" name="sizeradio" value="Enormous">E</label>
+<label class="radio-inline" title="Monstrous"><input type="radio" name="sizeradio" value="Monstrous">M</label>
 </div>
-<div><strong>Reach:</strong>
-<label class="radio-inline" title="Personal">  <input type="radio" name="wrradio">P</label>
-<label class="radio-inline" title="Very Short"><input type="radio" name="wrradio">VS</label>
-<label class="radio-inline" title="Short">     <input type="radio" name="wrradio">S</label>
-<label class="radio-inline" title="Average">   <input type="radio" name="wrradio" checked>A</label>
-<label class="radio-inline" title="Long">      <input type="radio" name="wrradio">L</label>
-<label class="radio-inline" title="VL"> 	   <input type="radio" name="wrradio">VL</label>
-<label class="radio-inline" title="Massive">   <input type="radio" name="wrradio">M</label>
+<div id='reaches'><strong>Reach:</strong>
+<label class="radio-inline" title="Personal">  <input type="radio" name="wrradio" value="Personal">P</label>
+<label class="radio-inline" title="Very Short"><input type="radio" name="wrradio" value="Very Short">VS</label>
+<label class="radio-inline" title="Short">     <input type="radio" name="wrradio" value="Short">S</label>
+<label class="radio-inline" title="Average">   <input type="radio" name="wrradio" value="Average">A</label>
+<label class="radio-inline" title="Long">      <input type="radio" name="wrradio" value="Long">L</label>
+<label class="radio-inline" title="Very Long"> <input type="radio" name="wrradio" value="Very Long">VL</label>
+<label class="radio-inline" title="Massive">   <input type="radio" name="wrradio" value="Massive">M</label>
 </div>
-<!--<table class="table table-bordered small">
-<thead><th>Creature</th><th>1</th><th>2</th><th>3</th></thead><tbody>
-  <tr><td>Wounds</td><td>14</td><td>14</td><td>14</td></tr>
-</tbody></table>-->
-<p><strong>Wounds:</strong> <input type="text" class="form-control display-inline input-small-size input-dice-width" maxlength="3"> </p>
+<p><strong>Wounds:</strong> <input id="wounds" type="text" class="form-control display-inline input-small-size input-dice-width" maxlength="3"> </p>
 <p><strong>Conditions:</strong></p>
-<table class="table table-condensed table-bordered text-center small">
+<table class="table table-condensed table-bordered text-center small" id="conditions">
 <tbody><tr>
   <td><span title="Ablaze" class="glyphicon glyphicon-fire"></span></td>
   <td><span title="Blinded" class="glyphicon glyphicon-eye-close"></span></td>
@@ -66,26 +67,27 @@ table th {
   <td><span title="Deafed" class="fa fa-deaf"></span></td>
   <td><span title="Fatigued" class="fa fa-universal-access"></span></td></tr>
   <tr>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>1</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>2</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>3</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>4</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>5</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>6</span><span class="fa fa-plus-square-o tracker-right"></td>
-  </tr><tr>
-  <td><span title="Surprised" class="fa fa-gift"></td>
-  <td><span title="Broken" class="glyphicon glyphicon-warning-sign"></td>
-  <td><span title="Poisoned" class="fa fa-heartbeat"></td>
-  <td><span title="Prone" class="fa fa-chevron-down"></td>
-  <td><span title="Stunned" class="fa fa-hand-rock-o"></td>
-  <td><span title="Unconscious" class="fa fa-hotel"></td></tr>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="ablaze"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="blinded"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="entangled"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="bleeding"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="deafed"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="fatigued"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  </tr>
   <tr>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>1</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>2</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>3</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>4</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>5</span><span class="fa fa-plus-square-o tracker-right"></td>
-  <td><span class="fa fa-minus-square-o tracker-left"></span><span>6</span><span class="fa fa-plus-square-o tracker-right"></td>
+  <td><span title="Surprised" class="fa fa-gift"></span></td>
+  <td><span title="Broken" class="glyphicon glyphicon-warning-sign"></span></td>
+  <td><span title="Poisoned" class="fa fa-heartbeat"></span></td>
+  <td><span title="Prone" class="fa fa-chevron-down"></span></td>
+  <td><span title="Stunned" class="fa fa-hand-rock-o"></span></td>
+  <td><span title="Unconscious" class="fa fa-hotel"></span></td></tr>
+  <tr>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="surprised"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="broken"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="poisoned"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="prone"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="stunned"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
+  <td><span class="fa fa-minus-square-o tracker-left"></span><span id="unconscious"></span><span class="fa fa-plus-square-o tracker-right"></span></td>
   </tr></tbody></table>
 </div>
 <div class="col-sm-6 col-md-7 col-lg-8">
@@ -133,7 +135,8 @@ table th {
 <div class="checkbox"><label><input type="checkbox" value="">In the defensive</label></div>
 </div>
 </div>
-</div></div>
+</div>
+</div>
 <hr>
 <div class="row">
 <div class = "col-xs-6" id="combatTable"></div>
