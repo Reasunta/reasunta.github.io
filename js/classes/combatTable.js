@@ -49,7 +49,7 @@ class CombatTable {
 	let group = senderDom.parents().find('a[name="groupName"]').text();
 	let name = senderDom.text();
 	 
-	let creature = CREATURE_DATA[group][name];
+	let creature = Object.assign({}, CREATURE_DATA[group][name]);
 	
 	let uniqueName = this.generateUniqieName(name);
 	  
