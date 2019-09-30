@@ -9,6 +9,13 @@ class CreatureView {
 	this.dom.on('change','#wounds',this.changeWounds.bind(this, this));
 	this.dom.on('click', '#conditions .fa-plus-square-o', this.addCondition.bind(this, this));
 	this.dom.on('click', '#conditions .fa-minus-square-o', this.removeCondition.bind(this, this));
+	this.dom.on('change','#modifiers input[type="checkbox"]',this.updateModifier.bind(this, this));
+	
+  }
+  
+  updateModifier = function(instance, event) {
+	  COMBATANTS[instance.getName()].modifiers[event.target.value] = event.target.checked;
+	  $(document).trigger('profileChanged', instance.getName());
   }
   
   addCondition = function(instance, event) {
@@ -37,6 +44,7 @@ class CreatureView {
   }
   changeWounds = function(instance, event) {
 	COMBATANTS[instance.getName()].wounds = event.target.value;
+	$(document).trigger('profileChanged', instance.getName());
   }
   
   showCreature = function(instance, event, name) {
@@ -45,17 +53,8 @@ class CreatureView {
 	
 	let data = COMBATANTS[name] = this.enrichCreature(COMBATANTS[name]);
 
-	this.dom.find("#M").text(data.characteristics.M);
-	this.dom.find("#WS").text(data.characteristics.WS);
-	this.dom.find("#BS").text(data.characteristics.BS);
-	this.dom.find("#S").text(data.characteristics.S);
-	this.dom.find("#T").text(data.characteristics.T);
-	this.dom.find("#I").text(data.characteristics.I);
-	this.dom.find("#Ag").text(data.characteristics.Ag);
-	this.dom.find("#Dex").text(data.characteristics.Dex);
-	this.dom.find("#Int").text(data.characteristics.Int);
-	this.dom.find("#WP").text(data.characteristics.WP);
-	this.dom.find("#Fel").text(data.characteristics.Fel);
+	for(let ch in data.characteristics) this.dom.find("#"+ch).text(data.characteristics[ch]);
+	for(let cnd in data.conditions) this.dom.find('#'+cnd).text(data.conditions[cnd]);
 	
 	this.dom.find('#traits').text(data.traits);
 	this.dom.find('#optional').text(data.optional_traits);
@@ -65,18 +64,8 @@ class CreatureView {
 
 	this.dom.find('#wounds').val(data.wounds);
 	
-	this.dom.find('#ablaze').text(data.conditions.ablaze);
-	this.dom.find('#blinded').text(data.conditions.blinded);
-	this.dom.find('#entangled').text(data.conditions.entangled);
-	this.dom.find('#bleeding').text(data.conditions.bleeding);
-	this.dom.find('#deafed').text(data.conditions.deafed);
-	this.dom.find('#fatigued').text(data.conditions.fatigued);
-	this.dom.find('#surprised').text(data.conditions.surprised);
-	this.dom.find('#broken').text(data.conditions.broken);
-	this.dom.find('#poisoned').text(data.conditions.poisoned);
-	this.dom.find('#prone').text(data.conditions.prone);
-	this.dom.find('#stunned').text(data.conditions.stunned);
-	this.dom.find('#unconscious').text(data.conditions.unconscious);
+	this.dom.find('#modifiers input[type="checkbox"]').prop('checked', false);
+	for(let modVal in data.modifiers) this.dom.find('#modifiers input[value="'+ modVal +'"]').prop('checked', data.modifiers[modVal]);
   }
   
   enrichCreature = function(creature) {

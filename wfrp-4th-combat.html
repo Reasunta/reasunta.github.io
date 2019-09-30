@@ -19,7 +19,7 @@
 .h-inline { display: inline;}
 .input-small-size {margin-left: 4px; height: 20px;}
 .align-right {float: right;}
-table th {
+thead.head-center th {
    text-align: center;   
 }
 </style>
@@ -29,7 +29,7 @@ table th {
 <div class="row collapse" id="creatureView">
 <div class="col-sm-6 col-md-5 col-lg-4">
 <table class="table table-bordered table-condensed text-center small" id="characteristics">
-<thead>
+<thead class="head-center">
 <th>M</th><th>WS</th><th>BS</th><th>S</th><th>T</th><th>I</th>
 <th>Ag</th><th>Dex</th><th>Int</th><th>WP</th><th>Fel</th>
 </thead><tbody><tr>
@@ -91,48 +91,48 @@ table th {
   </tr></tbody></table>
 </div>
 <div class="col-sm-6 col-md-7 col-lg-8">
-<div class="row">
+<div class="row" id="modifiers">
 <div class="col-xs-3 col-lg-2">
 <h4>Traits:</h4>
-<div class="checkbox"><label><input type="checkbox" value="">Stupid</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Trait_1</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Trait_2</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Trait_3</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Champion</label></div>
+<div class="checkbox"><label><input type="checkbox" value="t1">Stupid</label></div>
+<div class="checkbox"><label><input type="checkbox" value="t2">Trait_1</label></div>
+<div class="checkbox"><label><input type="checkbox" value="t3">Trait_2</label></div>
+<div class="checkbox"><label><input type="checkbox" value="t4">Trait_3</label></div>
+<div class="checkbox"><label><input type="checkbox" value="t5">Champion</label></div>
 </div>
 <div class="col-xs-3 col-lg-3">
 <h4>Shooting Modifiers:</h4>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting into a crowd</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting at PB Range</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting at a large group</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting at Short Range</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting at a small group</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting with aiming</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting at Long Range</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting with Move</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting to the location</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">fog, mist, shadow</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting at Extreme Range</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Shooting in Darkness</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_crowd">Shooting into a crowd</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_pbr">Shooting at PB Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_lg">Shooting at a large group</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_sr">Shooting at Short Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_sg">Shooting at a small group</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_aim">Shooting with aiming</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_lr">Shooting at Long Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_mv">Shooting with Move</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_sl">Shooting to the location</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_hw">fog, mist, shadow</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_er">Shooting at Extreme Range</label></div>
+<div class="checkbox"><label><input type="checkbox" value="S_drk">Shooting in Darkness</label></div>
 </div>
 <div class="col-xs-3 col-lg-3">
 <h4>Attacking Modifiers:</h4>
-<div class="checkbox"><label><input type="checkbox" value="">Attacking 3 to 1</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Attacking an Engaged</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Attacking 2 to 1</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Difficult terrain</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Enclosed space</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Extreme weather</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Darkness</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Weapon in off hand</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Arduous terrain</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_3t1">Attacking 3 to 1</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_eng">Attacking an Engaged</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_2t1">Attacking 2 to 1</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_dt">Difficult terrain</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_es">Enclosed space</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_ew">Extreme weather</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_drk">Darkness</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_offh">Weapon in off hand</label></div>
+<div class="checkbox"><label><input type="checkbox" value="A_at">Arduous terrain</label></div>
 </div>
 <div class="col-xs-3 col-lg-4">
 <h4>Defensive Modifiers:</h4>
-<div class="checkbox"><label><input type="checkbox" value="">Soft cover</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Medium cover</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">Hard cover</label></div>
-<div class="checkbox"><label><input type="checkbox" value="">In the defensive</label></div>
+<div class="checkbox"><label><input type="checkbox" value="D_sc">Soft cover</label></div>
+<div class="checkbox"><label><input type="checkbox" value="D_mc">Medium cover</label></div>
+<div class="checkbox"><label><input type="checkbox" value="D_hc">Hard cover</label></div>
+<div class="checkbox"><label><input type="checkbox" value="D_ds">In the defensive</label></div>
 </div>
 </div>
 </div>

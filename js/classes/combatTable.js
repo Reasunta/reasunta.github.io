@@ -3,7 +3,7 @@ class CombatTable {
     this.template = 
 	'<h3>Combat Table</h3>' +
 	'<table class="table table-striped table-hover text-center">' +
-	'<thead><th>#</th><th>Name</th><th>I</th><th>W</th><th>Adv</th>' +
+	'<thead class="head-center"><th>#</th><th>Name</th><th>I</th><th>W</th><th>Adv</th>' +
 	'<th width="100px">'+
 	'<div class="btn-group"><button data-toggle="dropdown" class="btn align-right dropdown-toggle"><span class="fa fa-plus-circle "></span></button>' +
 	'<ul name="creatureList" class="dropdown-menu"></ul></div>'+
@@ -24,6 +24,7 @@ class CombatTable {
 	this.dom.on("click", 'a[name="add"]', this.addCreature.bind(this, this));
 	$(document).on('removeProfile', '', this.removeCreature.bind(this, this));
 	$(document).on('nextProfile', '', this.selectNextPlayer.bind(this, this));
+	$(document).on('profileChanged', '', this.updateRows.bind(this, this));
   }
   
   initDropdownList = function(){
@@ -68,6 +69,11 @@ class CombatTable {
 	this.recountRowIndices();
 	
 	delete COMBATANTS[name];
+  }
+  
+  updateRows = function(instance, event, name) {
+	this.rows[name].setWounds(COMBATANTS[name].wounds);
+	this.rows[name].setInitiative(COMBATANTS[name].characteristics.I);
   }
   
   selectNextPlayer = function(instance, event, name) {
