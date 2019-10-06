@@ -13,14 +13,15 @@ class CombatTableRow {
 	
 	this.dom = $(this.template);
 	
-	this.setIndex(index);
 	this.setName(name);
+	this.setIndex(index);
 	this.setInitiative(initiative);
 	this.setWounds(wounds);
 	this.setAdvances(0);
 	
 	this.dom.on('click', 'button[name="remove"]', this.sendMessage.bind(this, this, "removeProfile"));
 	this.dom.on('click', 'button[name="nextTurn"]', this.sendMessage.bind(this, this, "nextProfile"));
+	this.dom.on('click', 'button[name="defend"]', this.sendMessage.bind(this, this, "defendProfile"));
 	this.dom.on('click', 'td[name="name"]', this.sendMessage.bind(this, this, "showProfile"));
 	this.dom.on('click', '.fa-minus-square-o', this.resetAdvances.bind(this, this));
 	this.dom.on('click', '.fa-plus-square-o', this.addAdvance.bind(this, this));
@@ -46,7 +47,9 @@ class CombatTableRow {
   setCurrentPlayer = function() {
 	this.dom.find('div[name="combatButton"]').empty();
 	this.dom.find('div[name="combatButton"]').append($(this.nextTurnTemplate));
-	this.dom.css("background-color", "yellow")
+	this.dom.css("background-color", "yellow");
+	
+	this.sendMessage(this, 'currentProfileChanged', null);
   }
   
   setOtherPlayer = function() {

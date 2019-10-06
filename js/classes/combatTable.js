@@ -51,16 +51,15 @@ class CombatTable {
 	let name = senderDom.text();
 	 
 	let creature = Object.assign({}, CREATURE_DATA[group][name]);
-	
 	let uniqueName = this.generateUniqieName(name);
-	  
 	let index = this.dom.find('tbody tr').length + 1;
-	let row = new CombatTableRow(index, uniqueName, creature.characteristics.I, creature.wounds);
-	this.rows[uniqueName] = row;
-	this.dom.find('tbody').append(row.getDOM());
 	
 	creature["advances"] = 0;
 	COMBATANTS[uniqueName] = creature;
+	
+	let row = new CombatTableRow(index, uniqueName, creature.characteristics.I, creature.wounds);
+	this.rows[uniqueName] = row;
+	this.dom.find('tbody').append(row.getDOM());
   }
   
   removeCreature = function(instance, event, name) {

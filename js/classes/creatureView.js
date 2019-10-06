@@ -2,6 +2,8 @@ class CreatureView {
 	constructor() {
 	this.dom = $("#creatureView");
 	this.titleDom = $('h3[aria-controls="creatureView"]');
+	this.modifierTemplate = '<div class="checkbox"><label><input type="checkbox"></label></div>';
+	this.initCheckboxModifiers();
 	
 	$(document).on('showProfile', '', this.showCreature.bind(this, this));
 	this.dom.on('change','[name="sizeradio"]',this.changeSize.bind(this, this));
@@ -79,6 +81,30 @@ class CreatureView {
 	if(typeof creature.modifiers == "undefined") creature.modifiers = {};
 	
 	return creature;
+  }
+  
+  initCheckboxModifiers = function() {
+	for(let key in MODIFIERS) {
+	  let group = this.returnCheckboxGroup(MODIFIERS[key].conditions);
+	  if (group == null) continue;
+	  let modCheckbox = $(this.modifierTemplate);
+	  modCheckbox.find('input').attr('value', key);
+	  modCheckbox.find('label').append(MODIFIERS[key].summary);
+	  modCheckbox.find('label').attr('title', MODIFIERS[key].description);
+	  
+	  this.dom.find('#modifiers').find('div[name="'+group+'"]').append(modCheckbox);
+	}
+  }
+  
+  returnCheckboxGroup = function(condition) {
+	  if (!['checkbox', 'any', 'all'].includes(condition.type)) return null;
+	  if(condition.type == 'checkbox') return condition.value; 
+	  
+	  for(let childCondition of condition.value) {
+		  let group = this.returnCheckboxGroup(childCondition)
+		  if (group != null) return group;
+	  } 
+	  return null;
   }
   
   getDOM = function() {return this.dom;}
