@@ -1,5 +1,5 @@
 class GameStatistics {
-	constructor() {
+	constructor(parent_dom) {
 		this.template = 
 		'<h3>Статистика</h3>' +
 		'<table class="table table-striped table-hover text-center" id="statistics_table">' +
@@ -11,18 +11,35 @@ class GameStatistics {
 		'<tr><td name="stat_name"></td><td name="player_1"></td><td name="player_2"></td></tr>';
 
       	this.dom = $(this.template);
+
+      	parent_dom.empty();
+      	parent_dom.append(this.dom);
 	}
 
+
+	renderStatistics = function(history) {
+		this.dom.find("tbody").empty();
+
+		this.countTotal(history);
+	}
+
+
 	countTotal = function(history) {
-		let player_1_total = 0;
-		let player_2_total = 0;
+		let p1_total = 0;
+		let p2_total = 0;
 
-		history.forEach(function(row) {
-			player_1_total += row[0] == row[1] ? 4 * row[0] : row[0] + row[1];
-			player_2_total += row[2] == row[3] ? 4 * row[2] : row[2] + row[3];
-		});
+		if(history.length % 2 == 1) history.pop();
 
-		this.dom.find('tbody').append(this.getStatRowDom("Total", player_1_total, player_2_total));
+		for(let i = 0; i < history.length; i += 4) {	
+			p1_total += this.countPlayerDices(history[i] || 0, history[i + 1] || 0);
+			p2_total += this.countPlayerDices(history[i + 2] || 0, history[i + 3] || 0);
+		}
+		
+		this.dom.find('tbody').append(this.getStatRowDom("Total", p1_total, p2_total));
+	}
+
+	countPlayerDices(dice1, dice2) {
+		return dice1 == dice2 ? 4 * dice1 : dice1 + dice2;
 	}
 
 	getStatRowDom = function(stat_name, player_1_state, player_2_state) {
