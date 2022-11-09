@@ -5,13 +5,13 @@ class GameTable {
 
 		this.template = 
 		'<h3>Игровая таблица</h3>' +
-		'<table class="table table-striped table-hover text-center" id="game_table">' +
+		'<div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">' +
 		'<thead class="head-center">' +
 		'<tr><th>#</th><th>Игрок 1</th><th>Игрок 2</th><th width="100px">#</th></tr></thead>' +
-		'<tbody></tbody></table>';
+		'<tbody></tbody></table></div>';
 
       	this.row_template = 
-		'<tr><td name="turn_id"></td><td name="player_1_turn"></td><td name="player_2_turn"></td><td name="actions"></td></tr>';
+		'<tr><td name="turn_id"><small class="text-muted"></small></td><td name="player_1_turn"></td><td name="player_2_turn"></td><td name="actions"></td></tr>';
 
       	this.dom = $(this.template);
 
@@ -30,6 +30,9 @@ class GameTable {
 		else if (row_index == this.rows.length - 2) this.removeRow();
 		
 		let row = this.rows[row_index];
+		this.dom.animate({
+        	scrollTop: row.offset().top
+    	}, 10);
 
 		let row_dices = this.game_history.slice(row_index * 4, Math.min((row_index + 1)) * 4, this.game_history.length);
 		row.find('[name="player_1_turn"]').text((row_dices[0] || "") + " " + (row_dices[1] || ""));
@@ -38,6 +41,8 @@ class GameTable {
 
 	addRow = function() {
 		let result = $(this.row_template);
+		result.find('[name="turn_id"] small').text(this.rows.length + 1);
+
 		this.dom.find('tbody').append(result);
 		this.rows.push(result);
 		return result;

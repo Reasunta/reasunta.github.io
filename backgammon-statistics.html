@@ -10,23 +10,18 @@
 <script src="/backgammon-statistics/game_table.js"></script>
 <script src="/backgammon-statistics/main.js"></script>
 <style>
-.tracker-left {margin-right: 5px; }
-.tracker-right {margin-left: 5px; }
-.display-inline {display: inline; }
-.input-dice-width {width: 50px;}
-.h-inline { display: inline;}
-.input-small-size {margin-left: 4px; height: 20px;}
-.align-right {float: right;}
-thead.head-center th {
-   text-align: center;   
-}
+  thead.head-center th {
+    text-align: center;   
+  }
+  .game-table-scroll          { overflow: auto; height: 70% }
+  .game-table-scroll thead th { position: sticky; top: 0; z-index: 1; }
 </style>
 </head>
 <body class="text-center">
   <h3>Калькулятор статистики партии в нарды</h3>
-  <div class="col-md-4 text-center" id="game_table"></div>
-  <div class="col-md-4 text-center" id="stat_table"></div>
-  <div class="col-md-4 text-center" id="legend">
+  <div class="col-sm-5 text-center" id="game_table"></div>
+  <div class="col-sm-5 text-center" id="stat_table"></div>
+  <div class="col-sm-2 text-center" id="legend">
     <h4>Управление</h4>
     <ul class="list-group">
       <li class="list-group-item">1-6 - ввести значения кубов</li>
