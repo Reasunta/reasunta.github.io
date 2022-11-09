@@ -56,6 +56,11 @@ class GameTable {
 
 	finishGame = function() {
 		this.current_turn_dices = this.current_turn_dices.slice(0, 2 * Math.trunc((this.current_turn_dices.length) / 2));
+		
+		for (let i = this.current_turn_dices.length; i < 4; i++) {
+			this.current_turn_dices.push(0);
+		}
+
 		this.game_history.push(this.current_turn_dices);
 			
 		return this.game_history;
