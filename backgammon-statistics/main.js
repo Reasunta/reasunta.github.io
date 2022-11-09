@@ -25,7 +25,7 @@ $(document).ready(function(){
 			is_game_ended = 1 - is_game_ended;
 
 			is_game_ended 
-				? gameStats.countTotal(gameTable.getHistory())
+				? gameStats.countTotal(gameTable.finishGame())
 				: init();
 
 		}
