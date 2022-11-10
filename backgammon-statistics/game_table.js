@@ -3,6 +3,9 @@ class GameTable {
 		this.game_history = [];
 		this.rows = [];
 
+		this.edited_cell_coords = undefined;
+		this.edited_cell = undefined;
+
 		this.template = 
 		'<h3>Игровая таблица</h3>' +
 		'<div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">' +
@@ -24,16 +27,21 @@ class GameTable {
 		this.updateTable();
 	}
 
+	scrollToRow = function(row_index) {
+		let scroll_position = Math.max(this.rows[0].height() * row_index + this.dom.find("th").offset().top - this.dom.last().height(), 0);
+		this.dom.animate({
+        	scrollTop: scroll_position
+    	}, 50);
+	}
+
 	updateTable = function() {
 		let row_index = Math.trunc((this.game_history.length - 1) / 4);
 		if (row_index == this.rows.length) this.addRow();
 		else if (row_index == this.rows.length - 2) this.removeRow();
 		
-		let row = this.rows[row_index];
-		this.dom.animate({
-        	scrollTop: row.offset().top
-    	}, 10);
+		this.scrollToRow(row_index);
 
+		let row = this.rows[row_index];
 		let row_dices = this.game_history.slice(row_index * 4, Math.min((row_index + 1)) * 4, this.game_history.length);
 		row.find('[name="player_1_turn"]').text((row_dices[0] || "") + " " + (row_dices[1] || ""));
 		row.find('[name="player_2_turn"]').text((row_dices[2] || "") + " " + (row_dices[3] || ""));
@@ -60,10 +68,42 @@ class GameTable {
 		this.updateTable();
 	}
 
-
-	getDOM = function() {return this.dom;}
-
 	getHistory = function() {	
 		return Object.assign([], this.game_history);
 	}
+
+	switchEditMode = function() {
+		if (this.edited_cell) {
+			this.edited_cell.removeClass("info");
+			this.edited_cell = undefined;
+			this.edited_cell_coords = undefined;
+		}
+		else { 
+			this.edited_cell_coords = [this.rows.length - 1, (this.game_history.length - 1) % 4 < 2 ? 2 : 3];
+			this.setEditedCell();
+			this.edited_cell.click();
+		}
+	}
+
+	setEditedCell = function() {
+		if(this.edited_cell) this.edited_cell.removeClass("info");
+		this.edited_cell = this.rows[this.edited_cell_coords[0]].find("td:nth-child("+ this.edited_cell_coords[1]+")");
+		this.edited_cell.addClass("info");
+		this.scrollToRow(this.edited_cell_coords[0]);
+	}
+
+	isEditing = function() {
+			return this.edited_cell != undefined;
+	}
+
+	moveEditedCell = function(way) {
+		if (!this.isEditing()) return;
+
+		if (way == "up") this.edited_cell_coords[0] = Math.max(this.edited_cell_coords[0] - 1, 0);
+		if (way == "down") this.edited_cell_coords[0] = Math.min(this.edited_cell_coords[0] + 1, this.rows.length - 1);
+		if (way == "left") this.edited_cell_coords[1] = 2;
+		if (way == "right") this.edited_cell_coords[1] = 3;
+		this.setEditedCell();
+	}
+
 }

@@ -23,30 +23,39 @@ class GameStatistics {
 		this.countTotal(history);
 	}
 
-
 	countTotal = function(history) {
-		let p1_total = 0;
-		let p2_total = 0;
+		let totals = [0, 0];
+		let doubles = [0, 0]
 
 		if(history.length % 2 == 1) history.pop();
+		if(history.length % 4 == 2) {
+			history.push(0); 
+			history.push(0);
+		}
 
 		for(let i = 0; i < history.length; i += 4) {	
-			p1_total += this.countPlayerDices(history[i] || 0, history[i + 1] || 0);
-			p2_total += this.countPlayerDices(history[i + 2] || 0, history[i + 3] || 0);
+			totals[0] += this.countPlayerDices(history[i], history[i + 1]);
+			totals[1] += this.countPlayerDices(history[i + 2], history[i + 3]);
+
+			doubles[0] += history[i] > 0 && history[i] == history[i + 1] ? 1 : 0;
+			doubles[1] += history[i + 2] > 0 && history[i + 2] == history[i + 3] ? 1 : 0;
 		}
 		
-		this.dom.find('tbody').append(this.getStatRowDom("Total", p1_total, p2_total));
+		let tbody = this.dom.find('tbody');
+		tbody.append(this.getStatRowDom("Всего очков", totals));
+		tbody.append(this.getStatRowDom("Дублей", doubles));
 	}
+
 
 	countPlayerDices(dice1, dice2) {
 		return dice1 == dice2 ? 4 * dice1 : dice1 + dice2;
 	}
 
-	getStatRowDom = function(stat_name, player_1_state, player_2_state) {
+	getStatRowDom = function(stat_name, player_states) {
 		let row_dom = $(this.row_template);
 		row_dom.find('[name="stat_name"]').text(stat_name);
-		row_dom.find('[name="player_1"]').text(player_1_state);
-		row_dom.find('[name="player_2"]').text(player_2_state);
+		row_dom.find('[name="player_1"]').text(player_states[0]);
+		row_dom.find('[name="player_2"]').text(player_states[1]);
 		return row_dom;
 	}
 
