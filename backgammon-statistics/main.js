@@ -18,8 +18,9 @@ $(document).ready(function(){
 		if (48 < e.keyCode && e.keyCode < 55) gameTable.insertValue(e.keyCode - 48);
 		if (96 < e.keyCode && e.keyCode < 103) gameTable.insertValue(e.keyCode - 96);	
 		if (e.code == "Enter") init();
-		if (e.code == "Backspace") gameTable.removeTurn();
-		if (e.code == "KeyI") gameTable.switchEditMode();
+		if (e.code == "Backspace") gameTable.removeValue();
+		if (e.code == "KeyI") gameTable.switchInsertMode();
+		if (e.code == "KeyE") gameTable.switchEditMode();
 		if (e.code in directionKeys) gameTable.moveEditedCell(directionKeys[e.code]);
 
 		gameTable.renderTable();

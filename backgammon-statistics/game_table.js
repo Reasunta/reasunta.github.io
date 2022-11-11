@@ -4,6 +4,7 @@ class GameTable {
 
 		this.edited_values = [];
 		this.edit_index = 0;
+		this.is_insert_mode = false;
 		this.is_edit_mode = false;
 
 
@@ -17,6 +18,9 @@ class GameTable {
       	this.row_template = 
 		'<tr><td name="turn_id"><small class="text-muted"></small></td><td name="player_1_turn"></td><td name="player_2_turn"></td></tr>';
 
+		this.edit_template = '<label class="label" '+
+		'style="position: absolute;right: 5px;top: 0px;padding-inline: 15px;padding-block: 5px;"></label>'
+
       	this.dom = $(this.template);
 
       	parent_dom.empty();
@@ -24,23 +28,35 @@ class GameTable {
 	}
 
 	insertValue = function(input) {
-		if(!this.isEditing()) this.history.push(input);
-		else {
+		if(this.isInsertMode()) {
 			this.edited_values.push(input);
 			if(this.edited_values.length == 2) 
 				this.history.splice(this.edit_index, 0, this.edited_values.pop(), this.edited_values.pop());
 		}
+		else if(this.isEditMode()) {
+			this.edited_values.push(input);
+			if(this.edited_values.length == 2) 
+				this.history.splice(this.edit_index, 2, this.edited_values.pop(), this.edited_values.pop());
+		}
+		else this.history.push(input);
+		
 	}
 
-	removeTurn = function() {
-		if(!this.isEditing()) {
-			this.history.pop();
-			if(this.history.length % 2 == 1) this.history.pop();
+	removeValue = function() {
+		if (this.isInsertMode() || this.isEditMode()) {
+			if(this.edited_values[0]) this.edited_values.pop();
+			else {
+				this.history.splice(this.edit_index, 2);
+				if (this.history.length == 0) {
+					this.is_insert_mode = false; 
+					this.is_edit_mode = false;
+				}
+				else if (this.edit_index >= this.history.length) this.moveEditedCell("left");
+			}
 		}
 		else {
-			this.history.splice(this.edit_index, 2);
-			if (this.history.length == 0) this.switchEditMode();
-			else if (this.edit_index >= this.history.length) this.moveEditedCell("left");
+			this.history.pop();
+			if(this.history.length % 2 == 1) this.history.pop();
 		}
 	}
 
@@ -63,15 +79,29 @@ class GameTable {
 			row.find('[name="player_1_turn"]').text((this.history[i] || "") + " " + (this.history[i + 1] || ""));
 			row.find('[name="player_2_turn"]').text((this.history[i + 2] || "") + " " + (this.history[i + 3] || ""));
 			
-			if (this.isEditing() && (this.edit_index == i || this.edit_index == i + 2)) {
-				let column = 2 + (this.edit_index - i) / 2;
-				row.find("td:nth-child(" + column + ")").addClass("info");
+			if ((this.isInsertMode() || this.isEditMode()) && (this.edit_index == i || this.edit_index == i + 2)) {
+				let col = row.find("td:nth-child(" + (2 + (this.edit_index - i) / 2) + ")");
+				
+				if (this.isInsertMode()) col.addClass("info");
+				if (this.isEditMode()) col.addClass("success");
+
+				if(this.edited_values.length == 1) {
+					let lbl = $(this.edit_template);
+					
+					if (this.isInsertMode()) lbl.addClass("label-info");
+					if (this.isEditMode()) lbl.addClass("label-success");
+					lbl.text(this.edited_values[0]);
+					col.append(lbl);
+				}
 			}
 			
 			tbody.append(row);
 		}
 
-		let row_to_scroll =  this.isEditing() ? this.getRowIndex(this.edit_index) : this.getRowIndex();
+		let row_to_scroll =  (this.isInsertMode() || this.isEditMode()) 
+			? this.getRowIndex(this.edit_index) 
+			: this.getRowIndex();
+
 		this.scrollToRow(row_to_scroll);	
 	}
 
@@ -79,12 +109,24 @@ class GameTable {
 		return Object.assign([], this.history);
 	}
 
+	switchInsertMode = function() {
+		if(this.history.length == 0) return;
+
+		this.is_insert_mode = !this.is_insert_mode;
+		if (this.is_insert_mode && !this.is_edit_mode) this.edit_index = this.getLastIndex();
+		this.is_edit_mode = false;
+	}
+	isInsertMode = function() { return this.is_insert_mode; }
+
 	switchEditMode = function() {
+		if(this.history.length == 0) return;
+
 		this.is_edit_mode = !this.is_edit_mode;
-		if (this.is_edit_mode) this.edit_index = this.getLastIndex();
+		if (this.is_edit_mode && !this.is_insert_mode) this.edit_index = this.getLastIndex();
+		this.is_insert_mode = false;
 	}
 
-	isEditing = function() { return this.is_edit_mode; }
+	isEditMode = function() { return this.is_edit_mode; }
 
 	getLastIndex = function() {return (this.history.length - 1) - (this.history.length - 1) % 2}
 	getRowIndex = function(history_index) { 
@@ -93,7 +135,7 @@ class GameTable {
 	}
 
 	moveEditedCell = function(way) {
-		if (!this.isEditing()) return;
+		if (!this.isInsertMode() && !this.isEditMode()) return;
 
 		if (way == "up") this.edit_index = Math.max(this.edit_index - 4, 0);
 		if (way == "down") this.edit_index = Math.min(this.edit_index + 4, this.getLastIndex());
