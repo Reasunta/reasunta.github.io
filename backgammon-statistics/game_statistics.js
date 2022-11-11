@@ -16,39 +16,55 @@ class GameStatistics {
       	parent_dom.append(this.dom);
 	}
 
-
 	renderStatistics = function(history) {
-		this.dom.find("tbody").empty();
-
-		this.countTotal(history);
-	}
-
-	countTotal = function(history) {
-		let totals = [0, 0];
-		let doubles = [0, 0]
+		let tbody = this.dom.find('tbody');
+		tbody.empty();
 
 		if(history.length % 2 == 1) history.pop();
-		if(history.length % 4 == 2) {
-			history.push(0); 
-			history.push(0);
-		}
+
+		let totals = [0, 0];
+		let doubles = [0, 0];
+		let frequencies = {1: [0, 0], 2: [0, 0], 3: [0, 0], 4: [0, 0], 5: [0, 0], 6: [0, 0]}
 
 		for(let i = 0; i < history.length; i += 4) {	
-			totals[0] += this.countPlayerDices(history[i], history[i + 1]);
-			totals[1] += this.countPlayerDices(history[i + 2], history[i + 3]);
-
-			doubles[0] += history[i] > 0 && history[i] == history[i + 1] ? 1 : 0;
-			doubles[1] += history[i + 2] > 0 && history[i + 2] == history[i + 3] ? 1 : 0;
+			let row = history.slice(i, i + 4);
+			this.countDices(totals, row);
+			this.countDoubles(doubles, row);
+			this.countFrequencies(frequencies, row);
 		}
 		
-		let tbody = this.dom.find('tbody');
 		tbody.append(this.getStatRowDom("Всего очков", totals));
 		tbody.append(this.getStatRowDom("Дублей", doubles));
+		
+		let turns = [
+			(Math.floor((history.length - 1) / 4) + 1), 
+			(Math.floor((history.length - 1) / 4) + Number((history.length) % 4 == 0))
+		]
+
+		let math_expect = (1 / 6).toFixed(4);
+		let deviation = 0.05;
+
+		for(let i = 1; i < 7; i++){
+			frequencies[i][0] = ((frequencies[i][0] / 2 / turns[0]) || 0).toFixed(4);
+			frequencies[i][1] = ((frequencies[i][1] / 2 / turns[1]) || 0).toFixed(4);
+
+			tbody.append(this.getStatRowDom("Частота " + i, frequencies[i]));
+		}
 	}
 
+	countDices(result, row) {
+		if(row[0]) result[0] += row[0] == row[1] ? 4 * row[0] : row[0] + row[1];
+		if(row[3]) result[1] += row[2] == row[3] ? 4 * row[2] : row[2] + row[3];
+	}
 
-	countPlayerDices(dice1, dice2) {
-		return dice1 == dice2 ? 4 * dice1 : dice1 + dice2;
+	countDoubles(result, row) {
+		if(row[0]) result[0] += Number(row[0] > 0 && row[0] == row[1]);
+		if(row[3]) result[1] += Number(row[2] > 0 && row[2] == row[3]);
+	}
+
+	countFrequencies(result, row) {
+		if(row[0]) { result[row[0]][0]++; result[row[1]][0]++; } 
+		if(row[3]) { result[row[2]][1]++; result[row[3]][1]++; }
 	}
 
 	getStatRowDom = function(stat_name, player_states) {
