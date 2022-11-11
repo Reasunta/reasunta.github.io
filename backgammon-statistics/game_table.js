@@ -1,10 +1,9 @@
 class GameTable {
 	constructor(parent_dom) {
-		this.game_history = [];
-		this.rows = [];
+		this.history = [];
 
-		this.edited_cell_coords = undefined;
-		this.edited_cell = undefined;
+		this.edit_coords = [0,0];
+		this.is_edit_mode = false;
 
 		this.template = 
 		'<h3>Игровая таблица</h3>' +
@@ -23,87 +22,76 @@ class GameTable {
 	}
 
 	addValue = function(input) {
-		this.game_history.push(input);
-		this.updateTable();
+		this.history.push(input);
+		this.renderTable();
+	}
+
+	removeTurn = function() {
+		this.history.pop();
+		if(this.history.length % 2 == 1) this.history.pop();
+		this.renderTable();
 	}
 
 	scrollToRow = function(row_index) {
-		let scroll_position = Math.max(this.rows[0].height() * row_index + this.dom.find("th").offset().top - this.dom.last().height(), 0);
+		let scroll_position = Math.max(
+			this.dom.find("tbody tr").height() * row_index + this.dom.find("th").offset().top - this.dom.last().height(), 0);
 		this.dom.animate({
         	scrollTop: scroll_position
     	}, 50);
 	}
 
-	updateTable = function() {
-		let row_index = Math.trunc((this.game_history.length - 1) / 4);
-		if (row_index == this.rows.length) this.addRow();
-		else if (row_index == this.rows.length - 2) this.removeRow();
-		
-		this.scrollToRow(row_index);
+	renderTable = function() {
+		let tbody = this.dom.find('tbody');
+		tbody.empty();
 
-		let row = this.rows[row_index];
-		let row_dices = this.game_history.slice(row_index * 4, Math.min((row_index + 1)) * 4, this.game_history.length);
-		row.find('[name="player_1_turn"]').text((row_dices[0] || "") + " " + (row_dices[1] || ""));
-		row.find('[name="player_2_turn"]').text((row_dices[2] || "") + " " + (row_dices[3] || ""));
-	}
+		for(let i = 0; i < this.history.length; i += 4) {	
+			let row = $(this.row_template);
+			let row_index = this.getRowIndex(i);
 
-	addRow = function() {
-		let result = $(this.row_template);
-		result.find('[name="turn_id"] small').text(this.rows.length + 1);
+			row.find('[name="turn_id"] small').text(row_index + 1);
+			row.find('[name="player_1_turn"]').text((this.history[i] || "") + " " + (this.history[i + 1] || ""));
+			row.find('[name="player_2_turn"]').text((this.history[i + 2] || "") + " " + (this.history[i + 3] || ""));
+			
+			if (this.isEditing() && this.edit_coords[0] == row_index) 
+				row.find("td:nth-child("+ this.edit_coords[1]+")").addClass("info");
 
-		this.dom.find('tbody').append(result);
-		this.rows.push(result);
-		return result;
-	}
+			tbody.append(row);
+		}
 
-	removeRow = function() {
-		let row = this.rows.pop();
-		row.remove();
-	}
-
-	removeTurn = function() {
-		this.game_history.pop();
-		if(this.game_history.length % 2 == 1) this.game_history.pop();
-
-		this.updateTable();
+		let row_to_scroll =  this.isEditing() ? this.edit_coords[0] : this.getRowIndex();
+		this.scrollToRow(row_to_scroll);	
 	}
 
 	getHistory = function() {	
-		return Object.assign([], this.game_history);
+		return Object.assign([], this.history);
 	}
 
 	switchEditMode = function() {
-		if (this.edited_cell) {
-			this.edited_cell.removeClass("info");
-			this.edited_cell = undefined;
-			this.edited_cell_coords = undefined;
+		this.is_edit_mode = !this.is_edit_mode;
+		
+		if (this.is_edit_mode) {
+			this.edit_coords[0] = this.getRowIndex();
+			this.edit_coords[1] = (this.history.length - 1) % 4 < 2 ? 2 : 3
 		}
-		else { 
-			this.edited_cell_coords = [this.rows.length - 1, (this.game_history.length - 1) % 4 < 2 ? 2 : 3];
-			this.setEditedCell();
-			this.edited_cell.click();
-		}
+
+		this.renderTable();
 	}
 
-	setEditedCell = function() {
-		if(this.edited_cell) this.edited_cell.removeClass("info");
-		this.edited_cell = this.rows[this.edited_cell_coords[0]].find("td:nth-child("+ this.edited_cell_coords[1]+")");
-		this.edited_cell.addClass("info");
-		this.scrollToRow(this.edited_cell_coords[0]);
-	}
+	isEditing = function() { return this.is_edit_mode; }
 
-	isEditing = function() {
-			return this.edited_cell != undefined;
+	getRowIndex = function(history_index) { 
+		let index = history_index == undefined ? this.history.length - 1 : history_index;
+		return Math.floor(index / 4); 
 	}
 
 	moveEditedCell = function(way) {
 		if (!this.isEditing()) return;
 
-		if (way == "up") this.edited_cell_coords[0] = Math.max(this.edited_cell_coords[0] - 1, 0);
-		if (way == "down") this.edited_cell_coords[0] = Math.min(this.edited_cell_coords[0] + 1, this.rows.length - 1);
-		if (way == "left") this.edited_cell_coords[1] = 2;
-		if (way == "right") this.edited_cell_coords[1] = 3;
-		this.setEditedCell();
+		if (way == "up") this.edit_coords[0] = Math.max(this.edit_coords[0] - 1, 0);
+		if (way == "down") this.edit_coords[0] = Math.min(this.edit_coords[0] + 1, this.getRowIndex());
+		if (way == "left") this.edit_coords[1] = 2;
+		if (way == "right") this.edit_coords[1] = 3;
+		
+		this.renderTable();
 	}
-
 }
