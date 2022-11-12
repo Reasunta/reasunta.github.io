@@ -1,42 +1,61 @@
 class GameStatistics {
 	constructor(parent_dom) {
+		this.stats = [
+			"\u2211 <small>бросок</small>", "M<sub>бросок</sub>", "\u039D<sub>дубль</sub>", "N<sub>max дубль</sub>"
+		]
+
 		this.template = 
-		'<h3>Статистика</h3>' +
+		'<h3>Статистика партий</h3>' +
 		'<table class="table table-striped table-hover text-center" id="statistics_table">' +
-		'<thead class="head-center">' +
-		'<tr><th>#</th><th>Игрок 1</th><th>Игрок 2</th></tr></thead>' +
+		'<thead class="head-center"></thead>' +
 		'<tbody></tbody></table>';
 
-      	this.row_template = 
-		'<tr><td name="stat_name"></td><td name="player_1"></td><td name="player_2"></td></tr>';
+      	this.row_template = '<tr><td name="player"></td></tr>';
 
       	this.dom = $(this.template);
+      	
+      	let head = $('<tr><th>#</th></tr>');
+      	this.stats.forEach(stat => head.append($(`<th>${stat}</th>`)))
+      	this.dom.find("thead").append(head);
 
       	parent_dom.empty();
       	parent_dom.append(this.dom);
+	}
+
+	renderGameStatistics = function(tbody, history) {
+		if(history.length % 2 == 1) history.pop();
+		let p1_stats = [0, 0, 0, 0];
+		let p2_stats = [0, 0, 0, 0];
+
+		let totals = [0, 0];
+		let doubles = [0, 0];
+
+		for(let i = 0; i < history.length; i += 4) {	
+			let row = history.slice(i, i + 4);
+			p1_stats[0] += this.countPlayerDices(row[0], row[1]);
+			p2_stats[0] += this.countPlayerDices(row[2], row[3]);
+			
+			p1_stats[2] += this.countPlayerDoubles(row[0], row[1]);
+			p2_stats[2] += this.countPlayerDoubles(row[2], row[3]);
+		}
+
+		p1_stats[1] = Number(history.length > 0) && (p1_stats[0] / (Math.floor((history.length - 1) / 4) + 1)).toFixed(2);
+		p2_stats[1] = Number(history.length > 2) && (p2_stats[0] / (Math.floor((history.length - 1) / 4) + 1 - (history.length % 4) / 2)).toFixed(2);
+		
+		tbody.append(
+			this.getStatRowDom("Игрок 1", p1_stats),
+			this.getStatRowDom("Игрок 2", p2_stats).addClass("hr")
+		);
 	}
 
 	renderStatistics = function(history) {
 		let tbody = this.dom.find('tbody');
 		tbody.empty();
 
-		if(history.length % 2 == 1) history.pop();
-
-		let totals = [0, 0];
-		let doubles = [0, 0];
-		let frequencies = {1: [0, 0], 2: [0, 0], 3: [0, 0], 4: [0, 0], 5: [0, 0], 6: [0, 0]}
-
-		for(let i = 0; i < history.length; i += 4) {	
-			let row = history.slice(i, i + 4);
-			this.countDices(totals, row);
-			this.countDoubles(doubles, row);
-			this.countFrequencies(frequencies, row);
-		}
+		this.renderGameStatistics(tbody, history);
 		
-		tbody.append(this.getStatRowDom("Всего очков", totals));
-		tbody.append(this.getStatRowDom("Дублей", doubles));
-		
-		let turns = [
+		//this.countFrequencies(frequencies, row);
+		/*let turns = [
 			(Math.floor((history.length - 1) / 4) + 1), 
 			(Math.floor((history.length - 1) / 4) + Number((history.length) % 4 == 0))
 		]
@@ -49,17 +68,15 @@ class GameStatistics {
 			frequencies[i][1] = ((frequencies[i][1] / 2 / turns[1]) || 0).toFixed(4);
 
 			tbody.append(this.getStatRowDom("Частота " + i, frequencies[i]));
-		}
+		}*/
 	}
 
-	countDices(result, row) {
-		if(row[0]) result[0] += row[0] == row[1] ? 4 * row[0] : row[0] + row[1];
-		if(row[3]) result[1] += row[2] == row[3] ? 4 * row[2] : row[2] + row[3];
+	countPlayerDices(dice1, dice2) {
+		return (dice1 && (dice1 == dice2 ? 4 * dice1 : dice1 + dice2)) || 0;
 	}
 
-	countDoubles(result, row) {
-		if(row[0]) result[0] += Number(row[0] > 0 && row[0] == row[1]);
-		if(row[3]) result[1] += Number(row[2] > 0 && row[2] == row[3]);
+	countPlayerDoubles(dice1, dice2) {
+		return (dice1 && Number(dice1 > 0 && dice1 == dice2)) || 0;
 	}
 
 	countFrequencies(result, row) {
@@ -67,11 +84,10 @@ class GameStatistics {
 		if(row[3]) { result[row[2]][1]++; result[row[3]][1]++; }
 	}
 
-	getStatRowDom = function(stat_name, player_states) {
+	getStatRowDom = function(player, stats) {
 		let row_dom = $(this.row_template);
-		row_dom.find('[name="stat_name"]').text(stat_name);
-		row_dom.find('[name="player_1"]').text(player_states[0]);
-		row_dom.find('[name="player_2"]').text(player_states[1]);
+		row_dom.find('[name="player"]').text(player);
+		stats.forEach(stat => row_dom.append($(`<td>${stat}</td>`)))
 		return row_dom;
 	}
 

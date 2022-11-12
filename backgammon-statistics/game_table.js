@@ -69,7 +69,6 @@ class GameTable {
 				this.history.splice(this.edit_index, 2, this.edited_values.pop(), this.edited_values.pop());
 		}
 		else this.history.push(input);
-		
 	}
 
 	removeValue = function() {
