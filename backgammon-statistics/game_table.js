@@ -1,193 +1,256 @@
 class GameTable {
-	constructor(parent_dom) {
-		this.archive = [];
-		this.history = [];
+    constructor(parent_dom) {
+        this.archive = [];
+        this.history = [];
 
-		this.template = 
-		'<h3>Игровая таблица</h3>' +
-		'<div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">' +
-		'<thead class="head-center">' +
-		'<tr><th>#</th><th>Игрок 1</th><th>Игрок 2</th></tr></thead>' +
-		'<tbody></tbody></table></div>';
+        this.template =
+        '<h3>Игровая таблица</h3>' +
+        '<div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">' +
+        '<thead class="head-center">' +
+        '<tr><th>#</th><th></th><th></th></tr></thead>' +
+        '<tbody></tbody></table></div>';
 
-      	this.row_template = 
-		'<tr><td name="turn_id"><small class="text-muted"></small></td><td name="player_1_turn"></td><td name="player_2_turn"></td></tr>';
+        this.row_template =
+        '<tr><td name="turn_id"><small class="text-muted"></small></td><td name="player_1_turn"></td><td name="player_2_turn"></td></tr>';
 
-		this.edit_template = '<label class="label" '+
-		'style="position: absolute;right: 5px;top: 0px;padding-inline: 15px;padding-block: 5px;"></label>'
+        this.edit_template = '<label class="label" '+
+        'style="position: absolute;right: 5px;top: 0px;padding-inline: 15px;padding-block: 5px;"></label>'
 
-      	this.import = this.initImport();
+        this.th_template = `<th data-toggle="popover" title="Помощь" data-content="
+        <p><b>Esc, Enter, Ctrl+Shift+E</b> - выход</p>
+        <p><b>Backspace</b> - удалить символ</p>
+        <p><b>Shift+Backspace</b> - очистить поле</p>
+        <p><b>Стрелки</b> - переместить редактируемую ячейку</p>
+        <p><b>Ctrl+U</b> - поменять игроков местами (работает в дефолтном режиме)</p>
+        " data-html="true" data-animation="false" data-trigger="manual"></th>`
 
-      	this.parent_dom = parent_dom;
-      	this.startNewGame();
-	}
+        this.import = this.initImport();
 
-	startNewGame = function() {
-		if(this.history.length % 2 == 1) this.history.pop();
-		if (this.history.length > 0) this.archive.push(this.history);
+        this.parent_dom = parent_dom;
+        this.players = ["Игрок 1", "Игрок 2"];
 
-		this.history = [];
-		this.edited_values = [];
-		this.edit_index = 0;
-		this.is_insert_mode = false;
-		this.is_edit_mode = false;
+        this.startNewGame();
+    }
 
-		this.dom = $(this.template);
+    startNewGame = function() {
+        if(this.history.length % 2 == 1) this.history.pop();
+        if (this.history.length > 0) this.archive.push(this.history);
 
-      	this.parent_dom.empty();
-      	this.parent_dom.append(this.dom);
-	}
+        this.history = [];
+        this.edited_values = [];
+        this.edit_index = 0;
+        this.is_insert_mode = false;
+        this.is_edit_mode = false;
 
-	initImport = function() {
-		let _import = document.createElement('input');
-		_import.type = 'file';
+        this.dom = $(this.template);
+        this.edited_player = 0;
 
-		_import.onchange = e => { 
-		   let file = e.target.files[0]; 
-		   let reader = new FileReader();
-		   reader.readAsText(file,'UTF-8');
+        this.parent_dom.empty();
+        this.parent_dom.append(this.dom);
+    }
 
-		   reader.onload = readerEvent => {
-		      let content = readerEvent.target.result;
-		      this.history = JSON.parse("[" + content + "]");
-		      document.dispatchEvent(new Event("keydown"));
-		   }
-		}
+    initImport = function() {
+        let _import = document.createElement('input');
+        _import.type = 'file';
 
-		return _import;
-	}
+        _import.onchange = e => {
+           let file = e.target.files[0];
+           let reader = new FileReader();
+           reader.readAsText(file,'UTF-8');
 
-	insertValue = function(input) {
-		if(this.isInsertMode()) {
-			this.edited_values.push(input);
-			if(this.edited_values.length == 2) 
-				this.history.splice(this.edit_index, 0, this.edited_values.pop(), this.edited_values.pop());
-		}
-		else if(this.isEditMode()) {
-			this.edited_values.push(input);
-			if(this.edited_values.length == 2) 
-				this.history.splice(this.edit_index, 2, this.edited_values.pop(), this.edited_values.pop());
-		}
-		else this.history.push(input);
-	}
+           reader.onload = readerEvent => {
+              let content = readerEvent.target.result;
+              this.history = JSON.parse("[" + content + "]");
+              document.dispatchEvent(new Event("keydown"));
+           }
+        }
 
-	removeValue = function() {
-		if (this.isInsertMode() || this.isEditMode()) {
-			if(this.edited_values[0]) this.edited_values.pop();
-			else {
-				this.history.splice(this.edit_index, 2);
-				if (this.history.length == 0) this.exitModes() 
-				else if (this.edit_index >= this.history.length) this.moveEditedCell("left");
-			}
-		}
-		else {
-			this.history.pop();
-			if(this.history.length % 2 == 1) this.history.pop();
-		}
-	}
+        return _import;
+    }
 
-	scrollToRow = function(row_index) {
-		let scroll_position = Math.max(
-			this.dom.find("tbody tr").height() * row_index + this.dom.find("th").offset().top - this.dom.last().height(), 0);
-		this.dom.animate({
-        	scrollTop: scroll_position
-    	}, 50);
-	}
+    insertValue = function(input) {
+        if(this.isInsertMode()) {
+            this.edited_values.push(input);
+            if(this.edited_values.length == 2)
+                this.history.splice(this.edit_index, 0, this.edited_values.pop(), this.edited_values.pop());
+        }
+        else if(this.isEditMode()) {
+            this.edited_values.push(input);
+            if(this.edited_values.length == 2)
+                this.history.splice(this.edit_index, 2, this.edited_values.pop(), this.edited_values.pop());
+        }
+        else this.history.push(input);
+    }
 
-	renderTable = function() {
-		let tbody = this.dom.find('tbody');
-		tbody.empty();
+    removeValue = function() {
+        if (this.isInsertMode() || this.isEditMode()) {
+            if(this.edited_values[0]) this.edited_values.pop();
+            else {
+                this.history.splice(this.edit_index, 2);
+                if (this.history.length == 0) this.exitModes()
+                else if (this.edit_index >= this.history.length) this.moveEditedCell("left");
+            }
+        }
+        else {
+            this.history.pop();
+            if(this.history.length % 2 == 1) this.history.pop();
+        }
+    }
 
-		for(let i = 0; i < this.history.length; i += 4) {	
-			let row = $(this.row_template);
+    scrollToRow = function(row_index) {
+        let scroll_position = Math.max(
+            this.dom.find("tbody tr").height() * row_index + this.dom.find("th").offset().top - this.dom.last().height(), 0);
+        this.dom.animate({
+            scrollTop: scroll_position
+        }, 50);
+    }
 
-			row.find('[name="turn_id"] small').text(this.getRowIndex(i) + 1);
-			row.find('[name="player_1_turn"]').text((this.history[i] || "") + " " + (this.history[i + 1] || ""));
-			row.find('[name="player_2_turn"]').text((this.history[i + 2] || "") + " " + (this.history[i + 3] || ""));
-			
-			if ((this.isInsertMode() || this.isEditMode()) && (this.edit_index == i || this.edit_index == i + 2)) {
-				let col = row.find("td:nth-child(" + (2 + (this.edit_index - i) / 2) + ")");
-				
-				if (this.isInsertMode()) col.addClass("info");
-				if (this.isEditMode()) col.addClass("success");
+    editPlayerName = function(eventKey) {
+        if (47 < eventKey.keyCode && eventKey.keyCode < 91 || 180 < eventKey.keyCode && eventKey.keyCode < 221)
+            this.players[this.edited_player - 1] += eventKey.key;
+        if (eventKey.code == "Backspace" && !eventKey.shiftKey) {
+            let lentgh = this.players[this.edited_player - 1].length;
+            this.players[this.edited_player - 1] = this.players[this.edited_player - 1].slice(0, length - 1);
+        }
+        if (eventKey.code == "Backspace" && eventKey.shiftKey) this.players[this.edited_player - 1] = "";
+    }
 
-				if(this.edited_values.length == 1) {
-					let lbl = $(this.edit_template);
-					
-					if (this.isInsertMode()) lbl.addClass("label-info");
-					if (this.isEditMode()) lbl.addClass("label-success");
-					lbl.text(this.edited_values[0]);
-					col.append(lbl);
-				}
-			}
-			
-			tbody.append(row);
-		}
+    renderHead = function() {
+        let tr = this.dom.find("thead tr");
+        tr.empty();
 
-		let row_to_scroll =  (this.isInsertMode() || this.isEditMode()) 
-			? this.getRowIndex(this.edit_index) 
-			: this.getRowIndex();
+        tr.append("<th><span data-toggle='popover' class='btn btn-default glyphicon glyphicon-refresh' style='padding-block:0px;'></span></th>")
+            .on("click", "span", function(e) {
+                this.swapPlayers();
+                document.dispatchEvent(new Event("keydown"));
+                e.stopPropagation();
+            }.bind(this, this))
 
-		this.scrollToRow(row_to_scroll);	
-	}
+        this.players.forEach(player => tr.append($(this.th_template).text(player)));
+        tr.find('[data-toggle ="popover"]').popover({placement: "bottom"});
 
-	getHistory = function() {	
-		return Object.assign([], this.history);
-	}
+        if(this.edited_player) tr.find(`th:nth-child(${this.edited_player + 1})`).addClass("success").popover("show");
+    }
 
-	switchInsertMode = function() {
-		if(this.history.length == 0) return;
+    renderTable = function() {
+        let tbody = this.dom.find('tbody');
+        tbody.empty();
 
-		this.is_insert_mode = !this.is_insert_mode;
-		if (this.is_insert_mode && !this.is_edit_mode) this.edit_index = this.getLastIndex();
-		this.is_edit_mode = false;
-	}
-	isInsertMode = function() { return this.is_insert_mode; }
+        for(let i = 0; i < this.history.length; i += 4) {
+            let row = $(this.row_template);
 
-	switchEditMode = function() {
-		if(this.history.length == 0) return;
+            row.find('[name="turn_id"] small').text(this.getRowIndex(i) + 1);
+            row.find('[name="player_1_turn"]').text((this.history[i] || "") + " " + (this.history[i + 1] || ""));
+            row.find('[name="player_2_turn"]').text((this.history[i + 2] || "") + " " + (this.history[i + 3] || ""));
 
-		this.is_edit_mode = !this.is_edit_mode;
-		if (this.is_edit_mode && !this.is_insert_mode) this.edit_index = this.getLastIndex();
-		this.is_insert_mode = false;
-	}
+            if ((this.isInsertMode() || this.isEditMode()) && (this.edit_index == i || this.edit_index == i + 2)) {
+                let col = row.find(`td:nth-child(${2 + (this.edit_index - i) / 2})`);
 
-	isEditMode = function() { return this.is_edit_mode; }
+                if (this.isInsertMode()) col.addClass("info");
+                if (this.isEditMode()) col.addClass("success");
 
-	getLastIndex = function() {return (this.history.length - 1) - (this.history.length - 1) % 2}
-	getRowIndex = function(history_index) { 
-		let index = history_index == undefined ? this.getLastIndex() : history_index;
-		return Math.floor(index / 4); 
-	}
+                if(this.edited_values.length == 1) {
+                    if (this.isInsertMode()) col.append(this.renderEditField("label-info", this.edited_values[0]));
+                    if (this.isEditMode()) col.append(this.renderEditField("label-success", this.edited_values[0]))
+                }
+            }
 
-	moveEditedCell = function(way) {
-		if (!this.isInsertMode() && !this.isEditMode()) return;
+            tbody.append(row);
+        }
 
-		if (way == "up") this.edit_index = Math.max(this.edit_index - 4, 0);
-		if (way == "down") this.edit_index = Math.min(this.edit_index + 4, this.getLastIndex());
-		if (way == "left") this.edit_index = Math.max(this.edit_index - 2, 0);;
-		if (way == "right") this.edit_index = Math.min(this.edit_index + 2, this.getLastIndex());
-	}
+        let row_to_scroll =  (this.isInsertMode() || this.isEditMode())
+            ? this.getRowIndex(this.edit_index)
+            : this.getRowIndex();
 
-	exitModes = function(){
-	 	this.is_insert_mode = false; 
-		this.is_edit_mode = false;
-	}
+        this.scrollToRow(row_to_scroll);
+    }
 
-	exportHistory = function() {
-		let csvContent = "data:text/csv;charset=utf-8,";
-		csvContent += this.history.join(",") + "\r\n";
-		
-		let encodedUri = encodeURI(csvContent);
-		let link = document.createElement("a");
-		link.setAttribute("href", encodedUri);
-		link.setAttribute("download", "my_data.csv");
-		document.body.appendChild(link); // Required for FF
+    renderEditField = function(_class, text) {
+        let result = $(this.edit_template);
+        result.addClass(_class);
+        result.text(text);
+        return result;
+    }
 
-		link.click()
-	}
+    getHistory = function() {
+        return Object.assign([], this.history);
+    }
 
-	importHistory = function() {
-		this.import.click();
-	}
+    switchInsertMode = function() {
+        if (this.history.length == 0) return;
+        let current = this.is_insert_mode;
+        if (!this.is_edit_mode) this.edit_index = this.getLastIndex();
+
+        this.exitModes();
+        this.is_insert_mode = !current;
+    }
+    isInsertMode = function() { return this.is_insert_mode; }
+
+    switchEditMode = function() {
+        if (this.history.length == 0) return;
+        let current = this.is_edit_mode;
+        if (!this.is_insert_mode) this.edit_index = this.getLastIndex();
+
+        this.exitModes();
+        this.is_edit_mode = !current;
+
+    }
+    isEditMode = function() { return this.is_edit_mode; }
+
+    switchEditPlayerMode = function() {
+        let current = Math.sign(this.edited_player);
+        this.exitModes();
+        this.edited_player = 1 - current;
+    }
+
+    isEditPlayerMode = function() { return this.edited_player > 0; }
+    swapPlayers = function() {
+        let temp = this.players[0];
+        this.players[0] = this.players[1];
+        this.players[1] = temp;
+    }
+    getPlayers = function() {return this.players;}
+
+    getLastIndex = function() { return (this.history.length - 1) - (this.history.length - 1) % 2; }
+    getRowIndex = function(history_index) {
+        let index = history_index == undefined ? this.getLastIndex() : history_index;
+        return Math.floor(index / 4);
+    }
+
+    moveEditedCell = function(way) {
+        if(this.edited_player) {
+            if (way == "left") this.edited_player = 1;
+            if (way == "right") this.edited_player = 2;
+        }
+
+        if (!this.isInsertMode() && !this.isEditMode()) return;
+
+        if (way == "up") this.edit_index = Math.max(this.edit_index - 4, 0);
+        if (way == "down") this.edit_index = Math.min(this.edit_index + 4, this.getLastIndex());
+        if (way == "left") this.edit_index = Math.max(this.edit_index - 2, 0);;
+        if (way == "right") this.edit_index = Math.min(this.edit_index + 2, this.getLastIndex());
+    }
+
+    exitModes = function(){
+        this.is_insert_mode = false;
+        this.is_edit_mode = false;
+        this.edited_player = 0;
+    }
+
+    exportHistory = function() {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += this.history.join(",") + "\r\n";
+
+        let encodedUri = encodeURI(csvContent);
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "my_data.csv");
+        document.body.appendChild(link); // Required for FF
+
+        link.click()
+    }
+
+    importHistory = function() {
+        this.import.click();
+    }
 }

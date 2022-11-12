@@ -3,12 +3,11 @@
 <!-- Подключаем Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/dropdown-submenu.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="/backgammon-statistics/game_statistics.js"></script>
-<script src="/backgammon-statistics/game_table.js"></script>
-<script src="/backgammon-statistics/main.js"></script>
+<script src="./backgammon-statistics/game_statistics.js"></script>
+<script src="./backgammon-statistics/game_table.js"></script>
+<script src="./backgammon-statistics/main.js"></script>
 <style>
   thead.head-center th                        { text-align: center;}
   .game-table-scroll                          { overflow: auto; height: 70%;}
@@ -18,22 +17,9 @@
 </style>
 </head>
 <body class="text-center">
-  <h3>Калькулятор статистики партии в нарды</h3>
+  <h3>Калькулятор статистики партии в нарды <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover"></span></h3>
   <div class="col-sm-4 text-center" id="game_table"></div>
   <div class="col-sm-8 text-center" id="stat_table"></div>
-  <div class="col-sm-12 text-center" id="legend">
-    <h4>Управление</h4>
-    <ul class="list-group">
-      <li class="list-group-item">1-6, NumPad - ввести значения кубов</li>
-      <li class="list-group-item">Enter - очистить поле</li>
-      <li class="list-group-item">Backspace - удалить значение</li>
-      <li class="list-group-item">I - режим вставки</li>
-      <li class="list-group-item">E - режим редактирования</li>
-      <li class="list-group-item">Esc - выйти в дефолтный режим</li>
-      <li class="list-group-item">O - сохранить игру</li>
-      <li class="list-group-item">L - загрузить игру</li>
-    </ul>
-  </div>
 </body>
 <script>
 </script>
