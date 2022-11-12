@@ -1,14 +1,15 @@
+
 class GameTable {
     constructor(parent_dom) {
         this.archive = [];
         this.history = [];
 
         this.template =
-        '<h3>Игровая таблица</h3>' +
-        '<div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">' +
-        '<thead class="head-center">' +
-        '<tr><th>#</th><th></th><th></th></tr></thead>' +
-        '<tbody></tbody></table></div>';
+        `<h3>Игровая таблица</h3>
+        <div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">
+        <thead class="head-center">
+        <tr></tr></thead>
+        <tbody></tbody></table></div>`;
 
         this.row_template =
         '<tr><td name="turn_id"><small class="text-muted"></small></td><td name="player_1_turn"></td><td name="player_2_turn"></td></tr>';
@@ -117,16 +118,18 @@ class GameTable {
 
     renderHead = function() {
         let tr = this.dom.find("thead tr");
+        tr.off("click", "span.glyphicon-refresh");
         tr.empty();
 
-        tr.append("<th><span data-toggle='popover' class='btn btn-default glyphicon glyphicon-refresh' style='padding-block:0px;'></span></th>")
-            .on("click", "span", function(e) {
-                this.swapPlayers();
-                document.dispatchEvent(new Event("keydown"));
-                e.stopPropagation();
-            }.bind(this, this))
+        let swap_th = $("<th><span data-toggle='popover' class='btn btn-default glyphicon glyphicon-refresh' style='padding-block:0px;'></span></th>");
 
-        this.players.forEach(player => tr.append($(this.th_template).text(player)));
+        let handler = function(e) {
+            this.swapPlayers();
+            document.dispatchEvent(new Event("keydown"));
+        }
+        tr.append(swap_th).on("click", "span.glyphicon-refresh", handler.bind(this));
+
+        this.players.forEach(player => tr.append($(this.th_template).text(player));
         tr.find('[data-toggle ="popover"]').popover({placement: "bottom"});
 
         if(this.edited_player) tr.find(`th:nth-child(${this.edited_player + 1})`).addClass("success").popover("show");
