@@ -129,7 +129,7 @@ class GameTable {
         }
         tr.append(swap_th).on("click", "span.glyphicon-refresh", handler.bind(this));
 
-        this.players.forEach(player => tr.append($(this.th_template).text(player));
+        this.players.forEach(player => tr.append($(this.th_template).text(player)));
         tr.find('[data-toggle ="popover"]').popover({placement: "bottom"});
 
         if(this.edited_player) tr.find(`th:nth-child(${this.edited_player + 1})`).addClass("success").popover("show");
