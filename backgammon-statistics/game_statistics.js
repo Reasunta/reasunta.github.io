@@ -22,8 +22,7 @@ class GameStatistics {
         parent_dom.append(this.dom);
     }
 
-
-    renderGameStatistics = function(tbody, history) {
+    renderGameStatistics = function(tbody, players, history) {
         if(history.length % 2 == 1) history.pop();
         let p1_stats = [0, 0, 0, 0];
         let p2_stats = [0, 0, 0, 0];
@@ -44,16 +43,16 @@ class GameStatistics {
         p2_stats[1] = Number(history.length > 2) && (p2_stats[0] / (Math.floor((history.length - 1) / 4) + 1 - (history.length % 4) / 2)).toFixed(2);
 
         tbody.append(
-            this.getStatRowDom("Игрок 1", p1_stats),
-            this.getStatRowDom("Игрок 2", p2_stats).addClass("hr")
+            this.getStatRowDom(players[0], p1_stats),
+            this.getStatRowDom(players[1], p2_stats).addClass("hr")
         );
     }
 
-    renderStatistics = function(history) {
+    renderStatistics = function(players, history) {
         let tbody = this.dom.find('tbody');
         tbody.empty();
 
-        this.renderGameStatistics(tbody, history);
+        this.renderGameStatistics(tbody, players, history);
 
         //this.countFrequencies(frequencies, row);
         /*let turns = [

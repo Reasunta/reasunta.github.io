@@ -4,35 +4,75 @@ var gameStats = undefined;
 init = function() {
     gameTable = new GameTable($('#game_table'));
     gameStats = new GameStatistics($('#stat_table'));
+
+    render();
+
+    initHelp();
 }
 
-$(document).ready(function() {
+$(document).ready(function(){
     let is_game_ended = 0;
     let directionKeys = {
-        "ArrowUp": "up", "ArrowLeft": "left", "ArrowRight": "right", "ArrowDown": "down",
-        "KeyW": "up", "KeyS": "down", "KeyA":"left", "KeyD":"right"
+        "ArrowUp": "up", "ArrowLeft": "left", "ArrowRight": "right", "ArrowDown": "down"
     };
-
     init();
 
     document.addEventListener("keydown", function(e) {
-        if (48 < e.keyCode && e.keyCode < 55) gameTable.insertValue(e.keyCode - 48);
-        if (96 < e.keyCode && e.keyCode < 103) gameTable.insertValue(e.keyCode - 96);
-        if (e.code == "Enter") gameTable.startNewGame();
-        if (e.code == "Escape") gameTable.exitModes();
-        if (e.code == "Backspace") gameTable.removeValue();
-        if (e.code == "KeyI") gameTable.switchInsertMode();
-        if (e.code == "KeyE") gameTable.switchEditMode();
-        if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { console.log("A"); gameTable.saveHistoryToNewFile(); e.preventDefault(); }
-        if (e.code == "KeyO" || (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && !e.shiftKey)) { gameTable.saveHistoryToCurrentFile(); e.preventDefault(); }
-        if (e.code == "KeyL") {gameTable.importHistory(); return; }
-        if (e.code in directionKeys) gameTable.moveEditedCell(directionKeys[e.code]);
+        console.log(e);
 
-        gameTable.renderTable();
-        gameStats.renderStatistics(gameTable.getHistory());
+        if (e.code == "KeyH" && (e.ctrlKey || e.metaKey)) $(".glyphicon.glyphicon-info-sign").popover("toggle");
+        if (e.code == "KeyU" && (e.ctrlKey || e.metaKey)) gameTable.swapPlayers();
+
+        if (e.code == "KeyE" && (e.ctrlKey || e.metaKey) && e.shiftKey) gameTable.switchEditPlayerMode();
+        if (e.code == "KeyI" && (e.ctrlKey || e.metaKey)) gameTable.switchInsertMode();
+        if (e.code == "KeyE" && (e.ctrlKey || e.metaKey) && !e.shiftKey) gameTable.switchEditMode();
+
+        if (e.code in directionKeys) gameTable.moveEditedCell(directionKeys[e.code]);
+        if (e.code == "Escape" || e.code == "Enter") gameTable.exitModes();
+
+        if (e.code == "KeyN" && (e.ctrlKey || e.metaKey)) gameTable.startNewGame();
+        if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.saveHistoryToNewFile(); e.preventDefault(); }
+        if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && !e.shiftKey) { gameTable.saveHistoryToCurrentFile(); e.preventDefault(); }
+        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.importHistory(); return; }
+
+
+        if(!gameTable.isEditPlayerMode()) {
+            if (48 < e.keyCode && e.keyCode < 55) gameTable.insertValue(e.keyCode - 48);
+            if (96 < e.keyCode && e.keyCode < 103) gameTable.insertValue(e.keyCode - 96);
+
+            if (e.code == "Backspace") gameTable.removeValue();
+        }
+        else if (!e.ctrlKey && !e.metaKey){
+            gameTable.editPlayerName(e);
+        }
+
+        render();
 
     }, false);
-
-    // QoL: show statistics immediately
-    gameStats.renderStatistics(gameTable.getHistory());
 });
+
+render = function() {
+    gameTable.renderHead();
+    gameTable.renderTable();
+    gameStats.renderStatistics(gameTable.getPlayers(), gameTable.getHistory());
+}
+
+initHelp = function() {
+    $(".glyphicon.glyphicon-info-sign").popover({
+        trigger: "hover",
+        title: "Помощь (<b>Сtrl+H</b>)",
+        html: true,
+        content: `<h5 class="text-center">Игра</h5>
+        <p><b>Ctrl+L</b> - загрузить файл с партиями</p>
+        <p><b>Ctrl+S</b> - сохранить новый файл с партиями</p>
+        <p><b>Ctrl+Shift+S</b> - сохранить текущий файл с партиями</p>
+        <p><b>Ctrl+N</b> - начать новую партию, сохранив текущую (в разработке)</p>
+        <h5 class="text-center">Режимы</h5>
+        <p><b>Ctrl+I</b> - вставка в любое место таблицы игры</p>
+        <p><b>Ctrl+E</b> - редактирование таблицы игры</p>
+        <p><b>Ctrl+Shift+E</b> - редактирование имен игроков</p>
+        <p><b>Esc, Enter</b> - вставка и удаление из конца таблицы</p>
+        `,
+        placement: "bottom"
+    });
+}
