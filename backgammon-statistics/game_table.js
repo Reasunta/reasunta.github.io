@@ -26,7 +26,7 @@ class GameTable {
         <p><b>Backspace</b> - удалить символ</p>
         <p><b>Shift+Backspace</b> - очистить поле</p>
         <p><b>Стрелки</b> - переместить редактируемую ячейку</p>
-        <p><b>Ctrl+U</b> - поменять игроков местами (работает в дефолтном режиме)</p>
+        <p><b>Ctrl+U</b> - поменять игроков местами</p>
         " data-html="true" data-animation="false" data-trigger="manual"></th>`
 
         this.import = this.initImport();
