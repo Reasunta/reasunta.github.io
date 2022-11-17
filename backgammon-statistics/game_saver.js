@@ -21,15 +21,12 @@ class GameSaver {
     }
 
     saveToCurrentFile = function(content) {
-        if (this.fileHandle == undefined) {
-            return this.saveToNewFile(content);
-        } else {
-            this.writeContentToFileHandle(this.fileHandle, content);
+        if (this.fileHandle == undefined) return this.saveToNewFile(content);
 
-            // @todo(v.radko): change popup to good-looking and without buttons
-            // possible implementation: https://getbootstrap.com/docs/4.0/components/alerts/
-            window.alert(`Saved '${this.fileHandle.name}'!`);
-        }
+        this.writeContentToFileHandle(this.fileHandle, content);
+        // @todo(v.radko): change popup to good-looking and without buttons
+        // possible implementation: https://getbootstrap.com/docs/4.0/components/alerts/
+        window.alert(`Saved '${this.fileHandle.name}'!`);
     }
 
     saveToNewFile = async function(content) {
