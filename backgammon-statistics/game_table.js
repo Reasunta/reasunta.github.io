@@ -1,15 +1,18 @@
-
 class GameTable {
     constructor(parent_dom) {
         this.archive = [];
         this.history = [];
 
+        this.defaultFilename = 'backgamut_game.csv';
+        this.fileHandleSupported = ('showSaveFilePicker' in window);
+        this.fileHandle = undefined;
+
         this.template =
-        `<h3>Игровая таблица</h3>
-        <div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">
-        <thead class="head-center">
-        <tr></tr></thead>
-        <tbody></tbody></table></div>`;
+        '<h3>Игровая таблица</h3>' +
+        '<div class="game-table-scroll"><table class="table table-striped table-hover text-center" id="game_table">' +
+        '<thead class="head-center">' +
+        '<tr><th>#</th><th>Игрок 1</th><th>Игрок 2</th></tr></thead>' +
+        '<tbody></tbody></table></div>';
 
         this.row_template =
         '<tr><td name="turn_id"><small class="text-muted"></small></td><td name="player_1_turn"></td><td name="player_2_turn"></td></tr>';
@@ -17,19 +20,9 @@ class GameTable {
         this.edit_template = '<label class="label" '+
         'style="position: absolute;right: 5px;top: 0px;padding-inline: 15px;padding-block: 5px;"></label>'
 
-        this.th_template = `<th data-toggle="popover" title="Помощь" data-content="
-        <p><b>Esc, Enter, Ctrl+Shift+E</b> - выход</p>
-        <p><b>Backspace</b> - удалить символ</p>
-        <p><b>Shift+Backspace</b> - очистить поле</p>
-        <p><b>Стрелки</b> - переместить редактируемую ячейку</p>
-        <p><b>Ctrl+U</b> - поменять игроков местами (работает в дефолтном режиме)</p>
-        " data-html="true" data-animation="false" data-trigger="manual"></th>`
-
         this.import = this.initImport();
 
         this.parent_dom = parent_dom;
-        this.players = ["Игрок 1", "Игрок 2"];
-
         this.startNewGame();
     }
 
@@ -44,7 +37,6 @@ class GameTable {
         this.is_edit_mode = false;
 
         this.dom = $(this.template);
-        this.edited_player = 0;
 
         this.parent_dom.empty();
         this.parent_dom.append(this.dom);
@@ -106,35 +98,6 @@ class GameTable {
         }, 50);
     }
 
-    editPlayerName = function(eventKey) {
-        if (47 < eventKey.keyCode && eventKey.keyCode < 91 || 180 < eventKey.keyCode && eventKey.keyCode < 221)
-            this.players[this.edited_player - 1] += eventKey.key;
-        if (eventKey.code == "Backspace" && !eventKey.shiftKey) {
-            let lentgh = this.players[this.edited_player - 1].length;
-            this.players[this.edited_player - 1] = this.players[this.edited_player - 1].slice(0, length - 1);
-        }
-        if (eventKey.code == "Backspace" && eventKey.shiftKey) this.players[this.edited_player - 1] = "";
-    }
-
-    renderHead = function() {
-        let tr = this.dom.find("thead tr");
-        tr.off("click", "span.glyphicon-refresh");
-        tr.empty();
-
-        let swap_th = $("<th><span data-toggle='popover' class='btn btn-default glyphicon glyphicon-refresh' style='padding-block:0px;'></span></th>");
-
-        let handler = function(e) {
-            this.swapPlayers();
-            document.dispatchEvent(new Event("keydown"));
-        }
-        tr.append(swap_th).on("click", "span.glyphicon-refresh", handler.bind(this));
-
-        this.players.forEach(player => tr.append($(this.th_template).text(player)));
-        tr.find('[data-toggle ="popover"]').popover({placement: "bottom"});
-
-        if(this.edited_player) tr.find(`th:nth-child(${this.edited_player + 1})`).addClass("success").popover("show");
-    }
-
     renderTable = function() {
         let tbody = this.dom.find('tbody');
         tbody.empty();
@@ -147,14 +110,18 @@ class GameTable {
             row.find('[name="player_2_turn"]').text((this.history[i + 2] || "") + " " + (this.history[i + 3] || ""));
 
             if ((this.isInsertMode() || this.isEditMode()) && (this.edit_index == i || this.edit_index == i + 2)) {
-                let col = row.find(`td:nth-child(${2 + (this.edit_index - i) / 2})`);
+                let col = row.find("td:nth-child(" + (2 + (this.edit_index - i) / 2) + ")");
 
                 if (this.isInsertMode()) col.addClass("info");
                 if (this.isEditMode()) col.addClass("success");
 
                 if(this.edited_values.length == 1) {
-                    if (this.isInsertMode()) col.append(this.renderEditField("label-info", this.edited_values[0]));
-                    if (this.isEditMode()) col.append(this.renderEditField("label-success", this.edited_values[0]))
+                    let lbl = $(this.edit_template);
+
+                    if (this.isInsertMode()) lbl.addClass("label-info");
+                    if (this.isEditMode()) lbl.addClass("label-success");
+                    lbl.text(this.edited_values[0]);
+                    col.append(lbl);
                 }
             }
 
@@ -168,64 +135,36 @@ class GameTable {
         this.scrollToRow(row_to_scroll);
     }
 
-    renderEditField = function(_class, text) {
-        let result = $(this.edit_template);
-        result.addClass(_class);
-        result.text(text);
-        return result;
-    }
-
     getHistory = function() {
         return Object.assign([], this.history);
     }
 
     switchInsertMode = function() {
-        if (this.history.length == 0) return;
-        let current = this.is_insert_mode;
-        if (!this.is_edit_mode) this.edit_index = this.getLastIndex();
+        if(this.history.length == 0) return;
 
-        this.exitModes();
-        this.is_insert_mode = !current;
+        this.is_insert_mode = !this.is_insert_mode;
+        if (this.is_insert_mode && !this.is_edit_mode) this.edit_index = this.getLastIndex();
+        this.is_edit_mode = false;
     }
     isInsertMode = function() { return this.is_insert_mode; }
 
     switchEditMode = function() {
-        if (this.history.length == 0) return;
-        let current = this.is_edit_mode;
-        if (!this.is_insert_mode) this.edit_index = this.getLastIndex();
+        if(this.history.length == 0) return;
 
-        this.exitModes();
-        this.is_edit_mode = !current;
-
+        this.is_edit_mode = !this.is_edit_mode;
+        if (this.is_edit_mode && !this.is_insert_mode) this.edit_index = this.getLastIndex();
+        this.is_insert_mode = false;
     }
+
     isEditMode = function() { return this.is_edit_mode; }
 
-    switchEditPlayerMode = function() {
-        let current = Math.sign(this.edited_player);
-        this.exitModes();
-        this.edited_player = 1 - current;
-    }
-
-    isEditPlayerMode = function() { return this.edited_player > 0; }
-    swapPlayers = function() {
-        let temp = this.players[0];
-        this.players[0] = this.players[1];
-        this.players[1] = temp;
-    }
-    getPlayers = function() {return this.players;}
-
-    getLastIndex = function() { return (this.history.length - 1) - (this.history.length - 1) % 2; }
+    getLastIndex = function() {return (this.history.length - 1) - (this.history.length - 1) % 2}
     getRowIndex = function(history_index) {
         let index = history_index == undefined ? this.getLastIndex() : history_index;
         return Math.floor(index / 4);
     }
 
     moveEditedCell = function(way) {
-        if(this.edited_player) {
-            if (way == "left") this.edited_player = 1;
-            if (way == "right") this.edited_player = 2;
-        }
-
         if (!this.isInsertMode() && !this.isEditMode()) return;
 
         if (way == "up") this.edit_index = Math.max(this.edit_index - 4, 0);
@@ -234,23 +173,67 @@ class GameTable {
         if (way == "right") this.edit_index = Math.min(this.edit_index + 2, this.getLastIndex());
     }
 
-    exitModes = function(){
+    exitModes = function() {
         this.is_insert_mode = false;
         this.is_edit_mode = false;
-        this.edited_player = 0;
     }
 
-    exportHistory = function() {
-        let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += this.history.join(",") + "\r\n";
+    getContentCsv = function() {
+        let content = "data:text/csv;charset=utf-8,";
+        content += this.history.join(",") + "\r\n";
+        return content;
+    }
 
-        let encodedUri = encodeURI(csvContent);
+    saveHistoryToCurrentFile = function() {
+        if (this.fileHandle == undefined) {
+            return this.saveHistoryToNewFile();
+        } else {
+            let content = this.getContentCsv();
+            this.writeContentToFileHandle(this.fileHandle, content);
+
+            // @todo(v.radko): change popup to good-looking and without buttons
+            // possible implementation: https://getbootstrap.com/docs/4.0/components/alerts/
+            window.alert(`Saved '${this.fileHandle.name}'!`);
+        }
+    }
+
+    saveHistoryToNewFile = async function() {
+        let content = this.getContentCsv();
+
+        if (this.fileHandleSupported) {
+            let options = {
+                suggestedName : this.defaultFilename,
+                types: [ { description: 'CSV File', accept: { 'text/csv': ['.csv'] } }]
+            }
+
+            this.fileHandle = await window.showSaveFilePicker(options);
+
+            if (this.fileHandle) {
+                await this.writeContentToFileHandle(this.fileHandle, content);
+            } else {
+                // Could not open FileHandle, fallback to downloading file with default name.
+                this.downloadFile();
+            }
+        } else {
+            this.downloadFile();
+        }
+    }
+
+    writeContentToFileHandle = async function(fileHandle, content) {
+        const writer = await fileHandle.createWritable();
+        await writer.write(content);
+        await writer.close();
+    }
+
+    downloadFile = function() {
+        let encodedUri = encodeURI(content);
         let link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "my_data.csv");
+        link.setAttribute("download", this.defaultFilename);
         document.body.appendChild(link); // Required for FF
+        link.click();
 
-        link.click()
+        setTimeout(() => document.body.removeChild(link), 0);
     }
 
     importHistory = function() {
