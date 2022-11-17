@@ -1,12 +1,9 @@
-
 class GameTable {
     constructor(parent_dom) {
         this.archive = [];
         this.history = [];
 
-        this.defaultFilename = 'backgamut_game.csv';
-        this.fileHandleSupported = ('showSaveFilePicker' in window);
-        this.fileHandle = undefined;
+        this.saver = new GameSaver();
 
         this.template =
         `<h3>Игровая таблица</h3>
@@ -29,7 +26,7 @@ class GameTable {
         <p><b>Ctrl+U</b> - поменять игроков местами</p>
         " data-html="true" data-animation="false" data-trigger="manual"></th>`
 
-        this.import = this.initImport();
+        this.load_field = this.saver.getLoadInput(this.deserializeSave.bind(this));
 
         this.parent_dom = parent_dom;
         this.players = ["Игрок 1", "Игрок 2"];
@@ -52,25 +49,6 @@ class GameTable {
 
         this.parent_dom.empty();
         this.parent_dom.append(this.dom);
-    }
-
-    initImport = function() {
-        let _import = document.createElement('input');
-        _import.type = 'file';
-
-        _import.onchange = e => {
-           let file = e.target.files[0];
-           let reader = new FileReader();
-           reader.readAsText(file,'UTF-8');
-
-           reader.onload = readerEvent => {
-              let content = readerEvent.target.result;
-              this.history = JSON.parse("[" + content + "]");
-              document.dispatchEvent(new Event("keydown"));
-           }
-        }
-
-        return _import;
     }
 
     insertValue = function(input) {
@@ -244,65 +222,24 @@ class GameTable {
         this.edited_player = 0;
     }
 
-    getContentCsv = function() {
-        let content = "data:text/csv;charset=utf-8,";
-        content += this.history.join(",") + "\r\n";
+    serializeSave = function() {
+        //let content = "data:text/csv;charset=utf-8,";
+        let content = this.history.join(",") + "\r\n";
         return content;
     }
 
-    saveHistoryToCurrentFile = function() {
-        if (this.fileHandle == undefined) {
-            return this.saveHistoryToNewFile();
-        } else {
-            let content = this.getContentCsv();
-            this.writeContentToFileHandle(this.fileHandle, content);
-
-            // @todo(v.radko): change popup to good-looking and without buttons
-            // possible implementation: https://getbootstrap.com/docs/4.0/components/alerts/
-            window.alert(`Saved '${this.fileHandle.name}'!`);
-        }
+    deserializeSave = function(content) {
+      this.history = JSON.parse("[" + content + "]");
+      document.dispatchEvent(new Event("keydown"));
     }
 
-    saveHistoryToNewFile = async function() {
-        let content = this.getContentCsv();
-
-        if (this.fileHandleSupported) {
-            let options = {
-                suggestedName : this.defaultFilename,
-                types: [ { description: 'CSV File', accept: { 'text/csv': ['.csv'] } }]
-            }
-
-            this.fileHandle = await window.showSaveFilePicker(options);
-
-            if (this.fileHandle) {
-                await this.writeContentToFileHandle(this.fileHandle, content);
-            } else {
-                // Could not open FileHandle, fallback to downloading file with default name.
-                this.downloadFile();
-            }
-        } else {
-            this.downloadFile();
-        }
+    save = function(isForceNewFile) {
+        isForceNewFile
+            ? this.saver.saveToNewFile(this.serializeSave())
+            : this.saver.saveToCurrentFile(this.serializeSave());
     }
 
-    writeContentToFileHandle = async function(fileHandle, content) {
-        const writer = await fileHandle.createWritable();
-        await writer.write(content);
-        await writer.close();
-    }
-
-    downloadFile = function() {
-        let encodedUri = encodeURI(content);
-        let link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", this.defaultFilename);
-        document.body.appendChild(link); // Required for FF
-        link.click();
-
-        setTimeout(() => document.body.removeChild(link), 0);
-    }
-
-    importHistory = function() {
-        this.import.click();
+    load = function() {
+        this.load_field.click();
     }
 }

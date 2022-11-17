@@ -31,9 +31,9 @@ $(document).ready(function(){
         if (e.code == "Escape" || e.code == "Enter") gameTable.exitModes();
 
         if (e.code == "KeyN" && (e.ctrlKey || e.metaKey) && e.shiftKey) gameTable.startNewGame();
-        if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.saveHistoryToNewFile(); e.preventDefault(); }
-        if (e.code == "KeyS" && !(e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.saveHistoryToCurrentFile(); e.preventDefault(); }
-        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.importHistory(); return; }
+        if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(true); e.preventDefault(); }
+        if (e.code == "KeyS" && !(e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(false); e.preventDefault(); }
+        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.load(); return; }
 
 
         if(!gameTable.isEditPlayerMode()) {
