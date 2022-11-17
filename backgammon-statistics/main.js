@@ -30,9 +30,9 @@ $(document).ready(function(){
         if (e.code in directionKeys) gameTable.moveEditedCell(directionKeys[e.code]);
         if (e.code == "Escape" || e.code == "Enter") gameTable.exitModes();
 
-        if (e.code == "KeyN" && (e.ctrlKey || e.metaKey)) gameTable.startNewGame();
+        if (e.code == "KeyN" && (e.ctrlKey || e.metaKey) && e.shiftKey) gameTable.startNewGame();
         if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.saveHistoryToNewFile(); e.preventDefault(); }
-        if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && !e.shiftKey) { gameTable.saveHistoryToCurrentFile(); e.preventDefault(); }
+        if (e.code == "KeyS" && !(e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.saveHistoryToCurrentFile(); e.preventDefault(); }
         if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.importHistory(); return; }
 
 
@@ -64,9 +64,9 @@ initHelp = function() {
         html: true,
         content: `<h5 class="text-center">Игра</h5>
         <p><b>Ctrl+L</b> - загрузить файл с партиями</p>
-        <p><b>Ctrl+S</b> - сохранить новый файл с партиями</p>
-        <p><b>Ctrl+Shift+S</b> - сохранить текущий файл с партиями</p>
-        <p><b>Ctrl+N</b> - начать новую партию, сохранив текущую (в разработке)</p>
+        <p><b>Ctrl+Shift+S</b> - сохранить новый файл с партиями</p>
+        <p><b>Shift+S</b> - сохранить текущий файл с партиями</p>
+        <p><b>Ctrl+Shift+N</b> - начать новую партию, сохранив текущую (в разработке)</p>
         <h5 class="text-center">Режимы</h5>
         <p><b>Ctrl+I</b> - вставка в любое место таблицы игры</p>
         <p><b>Ctrl+E</b> - редактирование таблицы игры</p>
