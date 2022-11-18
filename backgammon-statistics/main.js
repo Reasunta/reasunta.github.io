@@ -32,7 +32,7 @@ $(document).ready(function(){
 
         if (e.code == "KeyN" && (e.ctrlKey || e.metaKey) && e.shiftKey) gameTable.startNewGame();
         if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(true); e.preventDefault(); }
-        if (e.code == "KeyS" && !(e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(false); e.preventDefault(); }
+        if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && !e.shiftKey) { gameTable.save(false); e.preventDefault(); }
         if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.load(); e.preventDefault(); }
 
 
@@ -65,7 +65,7 @@ initHelp = function() {
         content: `<h5 class="text-center">Игра</h5>
         <p><b>Ctrl+L</b> - загрузить файл с партиями</p>
         <p><b>Ctrl+Shift+S</b> - сохранить новый файл с партиями</p>
-        <p><b>Shift+S</b> - сохранить текущий файл с партиями</p>
+        <p><b>Ctrl+S</b> - сохранить текущий файл с партиями</p>
         <p><b>Ctrl+Shift+N</b> - начать новую партию, сохранив текущую (в разработке)</p>
         <h5 class="text-center">Режимы</h5>
         <p><b>Ctrl+I</b> - вставка в любое место таблицы игры</p>
