@@ -1,8 +1,9 @@
-
 class GameTable {
     constructor(parent_dom) {
         this.archive = [];
         this.history = [];
+
+        this.saver = new GameSaver();
 
         this.template =
         `<h3>Игровая таблица</h3>
@@ -22,10 +23,8 @@ class GameTable {
         <p><b>Backspace</b> - удалить символ</p>
         <p><b>Shift+Backspace</b> - очистить поле</p>
         <p><b>Стрелки</b> - переместить редактируемую ячейку</p>
-        <p><b>Ctrl+U</b> - поменять игроков местами (работает в дефолтном режиме)</p>
+        <p><b>Ctrl+U</b> - поменять игроков местами</p>
         " data-html="true" data-animation="false" data-trigger="manual"></th>`
-
-        this.import = this.initImport();
 
         this.parent_dom = parent_dom;
         this.players = ["Игрок 1", "Игрок 2"];
@@ -48,25 +47,6 @@ class GameTable {
 
         this.parent_dom.empty();
         this.parent_dom.append(this.dom);
-    }
-
-    initImport = function() {
-        let _import = document.createElement('input');
-        _import.type = 'file';
-
-        _import.onchange = e => {
-           let file = e.target.files[0];
-           let reader = new FileReader();
-           reader.readAsText(file,'UTF-8');
-
-           reader.onload = readerEvent => {
-              let content = readerEvent.target.result;
-              this.history = JSON.parse("[" + content + "]");
-              document.dispatchEvent(new Event("keydown"));
-           }
-        }
-
-        return _import;
     }
 
     insertValue = function(input) {
@@ -215,6 +195,7 @@ class GameTable {
     getPlayers = function() {return this.players;}
 
     getLastIndex = function() { return (this.history.length - 1) - (this.history.length - 1) % 2; }
+
     getRowIndex = function(history_index) {
         let index = history_index == undefined ? this.getLastIndex() : history_index;
         return Math.floor(index / 4);
@@ -225,7 +206,6 @@ class GameTable {
             if (way == "left") this.edited_player = 1;
             if (way == "right") this.edited_player = 2;
         }
-
         if (!this.isInsertMode() && !this.isEditMode()) return;
 
         if (way == "up") this.edit_index = Math.max(this.edit_index - 4, 0);
@@ -240,20 +220,23 @@ class GameTable {
         this.edited_player = 0;
     }
 
-    exportHistory = function() {
-        let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += this.history.join(",") + "\r\n";
-
-        let encodedUri = encodeURI(csvContent);
-        let link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "my_data.csv");
-        document.body.appendChild(link); // Required for FF
-
-        link.click()
+    serializeSave = function() {
+        let content = this.history.join(",") + "\r\n";
+        return content;
     }
 
-    importHistory = function() {
-        this.import.click();
+    deserializeSave = function(content) {
+      this.history = JSON.parse("[" + content + "]");
+      document.dispatchEvent(new Event("keydown"));
+    }
+
+    save = function(isForceNewFile) {
+        isForceNewFile
+            ? this.saver.saveToNewFile(this.serializeSave())
+            : this.saver.saveToCurrentFile(this.serializeSave());
+    }
+
+    load = function() {
+        this.saver.loadFromFile(this.deserializeSave.bind(this));
     }
 }
