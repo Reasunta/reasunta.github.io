@@ -5,23 +5,25 @@ class GameSaver {
         this.fileHandle = undefined;
     }
 
-    getLoadInput = function(deserializer) {
-        let result = document.createElement('input');
-        result.type = 'file';
+    loadFromFile = async function(deserializer) {
+        if(!this.fileHandleSupported) return this.uploadFile(deserializer);
 
-        result.onchange = e => {
-           let file = e.target.files[0];
-           let reader = new FileReader();
-           reader.readAsText(file,'UTF-8');
-
-           reader.onload = readerEvent => deserializer(readerEvent.target.result);
+        let options = {
+            suggestedName : this.fileHandle ? this.fileHandle.name : this.defaultFilename,
+            types: [ { description: 'CSV File', accept: { 'text/csv': ['.csv'] } }]
         }
 
-        return result;
+        this.fileHandle = await window.showOpenFilePicker(options);
+        if (!this.fileHandle || this.fileHandle.length == 0) this.uploadFile(deserializer);
+
+        this.fileHandle = this.fileHandle.pop();
+        this.defaultFilename = this.fileHandle.name;
+        deserializer(await (await this.fileHandle.getFile()).text())
     }
 
     saveToCurrentFile = function(content) {
-        if (this.fileHandle == undefined) return this.saveToNewFile(content);
+        if(!this.fileHandleSupported) return this.downloadFile(content);
+        if(this.fileHandle == undefined) return this.saveToNewFile(content);
 
         this.writeContentToFileHandle(this.fileHandle, content);
         // @todo(v.radko): change popup to good-looking and without buttons
@@ -30,23 +32,17 @@ class GameSaver {
     }
 
     saveToNewFile = async function(content) {
-        if (this.fileHandleSupported) {
-            let options = {
-                suggestedName : this.fileHandle ? this.fileHandle.name : this.defaultFilename,
-                types: [ { description: 'CSV File', accept: { 'text/csv': ['.csv'] } }]
-            }
+        if (!this.fileHandleSupported) return downloadFile(content);
 
-            this.fileHandle = await window.showSaveFilePicker(options);
-
-            if (this.fileHandle) {
-                await this.writeContentToFileHandle(this.fileHandle, content);
-            } else {
-                // Could not open FileHandle, fallback to downloading file with default name.
-                this.downloadFile();
-            }
-        } else {
-            this.downloadFile();
+        let options = {
+            suggestedName : this.fileHandle ? this.fileHandle.name : this.defaultFilename,
+            types: [ { description: 'CSV File', accept: { 'text/csv': ['.csv'] } }]
         }
+        this.fileHandle = await window.showSaveFilePicker(options);
+
+        this.fileHandle
+            ? await this.writeContentToFileHandle(this.fileHandle, content)
+            : this.downloadFile(content);
     }
 
     writeContentToFileHandle = async function(fileHandle, content) {
@@ -55,8 +51,8 @@ class GameSaver {
         await writer.close();
     }
 
-    downloadFile = function() {
-        let encodedUri = encodeURI(content);
+    downloadFile = function(content) {
+        let encodedUri = encodeURI(`data:text/csv;charset=utf-8,${content}`);
         let link = document.createElement("a");
         link.setAttribute("href", encodedUri);
         link.setAttribute("download", this.defaultFilename);
@@ -64,5 +60,25 @@ class GameSaver {
         link.click();
 
         setTimeout(() => document.body.removeChild(link), 0);
+    }
+
+    uploadFile = function(deserializer) {
+        let result = document.createElement('input');
+        result.type = 'file';
+        result.style.visibility = "hidden";
+
+        result.onchange = function(e) {
+           let file = e.target.files[0];
+           this.defaultFilename = file.name;
+
+           let reader = new FileReader();
+           reader.readAsText(file,'UTF-8');
+
+           reader.onload = readerEvent => deserializer(readerEvent.target.result);
+        }.bind(this);
+
+        document.body.appendChild(result);
+        result.click();
+        setTimeout(() => document.body.removeChild(result), 0);
     }
 }

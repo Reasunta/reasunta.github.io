@@ -33,7 +33,7 @@ $(document).ready(function(){
         if (e.code == "KeyN" && (e.ctrlKey || e.metaKey) && e.shiftKey) gameTable.startNewGame();
         if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(true); e.preventDefault(); }
         if (e.code == "KeyS" && !(e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(false); e.preventDefault(); }
-        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.load(); return; }
+        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.load(); e.preventDefault(); }
 
 
         if(!gameTable.isEditPlayerMode()) {

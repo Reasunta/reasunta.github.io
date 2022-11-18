@@ -26,8 +26,6 @@ class GameTable {
         <p><b>Ctrl+U</b> - поменять игроков местами</p>
         " data-html="true" data-animation="false" data-trigger="manual"></th>`
 
-        this.load_field = this.saver.getLoadInput(this.deserializeSave.bind(this));
-
         this.parent_dom = parent_dom;
         this.players = ["Игрок 1", "Игрок 2"];
 
@@ -223,7 +221,6 @@ class GameTable {
     }
 
     serializeSave = function() {
-        //let content = "data:text/csv;charset=utf-8,";
         let content = this.history.join(",") + "\r\n";
         return content;
     }
@@ -240,6 +237,6 @@ class GameTable {
     }
 
     load = function() {
-        this.load_field.click();
+        this.saver.loadFromFile(this.deserializeSave.bind(this));
     }
 }
