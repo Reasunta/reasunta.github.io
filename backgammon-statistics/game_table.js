@@ -18,13 +18,7 @@ class GameTable {
         this.edit_template = '<label class="label" '+
         'style="position: absolute;right: 5px;top: 0px;padding-inline: 15px;padding-block: 5px;"></label>'
 
-        this.th_template = `<th data-toggle="popover" title="Помощь" data-content="
-        <p><b>Esc, Enter, Ctrl+Shift+E</b> - выход</p>
-        <p><b>Backspace</b> - удалить символ</p>
-        <p><b>Shift+Backspace</b> - очистить поле</p>
-        <p><b>Стрелки</b> - переместить редактируемую ячейку</p>
-        <p><b>Ctrl+U</b> - поменять игроков местами</p>
-        " data-html="true" data-animation="false" data-trigger="manual"></th>`
+        this.th_template = `<th class="col-sm-2"></th>`
 
         this.parent_dom = parent_dom;
         this.players = ["Игрок 1", "Игрок 2"];
@@ -39,6 +33,20 @@ class GameTable {
         this.is_edit_mode = false;
 
         this.dom = $(this.template);
+        $(this.dom[0]).popover({
+            title: "Помощь",
+            content: `
+                <p><b>Esc, Enter, Ctrl+Shift+E</b> - выход</p>
+                <p><b>Backspace</b> - удалить символ</p>
+                <p><b>Shift+Backspace</b> - очистить поле</p>
+                <p><b>Стрелки</b> - переместить редактируемую ячейку</p>
+                <p><b>Ctrl+U</b> - поменять игроков местами</p>
+                `,
+            html: true,
+            animation: false,
+            trigger: "hover, manual",
+            placement: "right"
+        });
         this.edited_player = 0;
 
         this.parent_dom.empty();
@@ -104,7 +112,7 @@ class GameTable {
         tr.off("click", "span.glyphicon-refresh");
         tr.empty();
 
-        let swap_th = $("<th><span data-toggle='popover' class='btn btn-default glyphicon glyphicon-refresh' style='padding-block:0px;'></span></th>");
+        let swap_th = $("<th class='col-sm-1'><span class='btn btn-default glyphicon glyphicon-refresh' style='padding-block:0px;'></span></th>");
 
         let handler = function(e) {
             this.swapPlayers();
@@ -113,9 +121,9 @@ class GameTable {
         tr.append(swap_th).on("click", "span.glyphicon-refresh", handler.bind(this));
 
         this.players.forEach(player => tr.append($(this.th_template).text(player)));
-        tr.find('[data-toggle ="popover"]').popover({placement: "bottom"});
 
         if(this.edited_player) tr.find(`th:nth-child(${this.edited_player + 1})`).addClass("success").popover("show");
+        $(this.dom[0]).popover(this.edited_player ? "show" : "hide");
     }
 
     renderTable = function() {

@@ -10,7 +10,7 @@ class GameStatistics {
         '<thead class="head-center"></thead>' +
         '<tbody></tbody></table>';
 
-        this.row_template = '<tr><td name="player"></td></tr>';
+        this.row_template = '<tr><td name="player" class="col-sm-2"></td></tr>';
 
         this.dom = $(this.template);
 
@@ -87,10 +87,10 @@ class GameStatistics {
         if(row[3]) { result[row[2]][1]++; result[row[3]][1]++; }
     }
 
-    getStatRowDom = function(player, stats, isActivePlayer) {
+    getStatRowDom = function(player, stats, isLastPlayer) {
         let row_dom = $(this.row_template);
         let player_td = row_dom.find('[name="player"]').text(player);
-        if(isActivePlayer) player_td.addClass("bold");
+        if(isLastPlayer) player_td.addClass("bold");
 
         stats.forEach(stat => row_dom.append($(`<td>${stat}</td>`)))
         return row_dom;
