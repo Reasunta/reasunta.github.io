@@ -13,7 +13,7 @@ init = function() {
 $(document).ready(function(){
     let is_game_ended = 0;
     let directionKeys = {
-        "ArrowUp": "up", "ArrowLeft": "left", "ArrowRight": "right", "ArrowDown": "down"
+        "ArrowUp": "up", "ArrowLeft": "left", "ArrowRight": "right", "ArrowDown": "down", "Tab": "right"
     };
     init();
 
@@ -27,7 +27,7 @@ $(document).ready(function(){
         if (e.code == "KeyI" && (e.ctrlKey || e.metaKey)) gameTable.switchInsertMode();
         if (e.code == "KeyE" && (e.ctrlKey || e.metaKey) && !e.shiftKey) gameTable.switchEditMode();
 
-        if (e.code in directionKeys) gameTable.moveEditedCell(directionKeys[e.code]);
+        if (e.code in directionKeys) {gameTable.moveEditedCell(directionKeys[e.code]); e.preventDefault();}
         if (e.code == "Escape" || e.code == "Enter") gameTable.exitModes();
 
         if (e.code == "KeyN" && !(e.ctrlKey || e.metaKey) && e.shiftKey) {gameTable.startNewGame(); e.preventDefault();}
