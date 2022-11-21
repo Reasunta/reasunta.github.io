@@ -31,11 +31,7 @@ class GameTable {
 
         this.startNewGame();
     }
-
-    startNewGame = function() {
-        if(this.history.length % 2 == 1) this.history.pop();
-        if (this.history.length > 0) this.archive.push(this.history);
-
+    initGame = function() {
         this.history = [];
         this.edited_values = [];
         this.edit_index = 0;
@@ -47,6 +43,13 @@ class GameTable {
 
         this.parent_dom.empty();
         this.parent_dom.append(this.dom);
+    }
+
+    startNewGame = function() {
+        if(this.history.length % 2 == 1) this.history.pop();
+        if (this.history.length > 0) this.archive.push({players: this.getPlayers(), history: this.getHistory()});
+
+        this.initGame();
     }
 
     insertValue = function(input) {
@@ -159,6 +162,14 @@ class GameTable {
         return Object.assign([], this.history);
     }
 
+    getPlayers = function() {
+        return Object.assign([], this.players);
+    }
+
+    getArchive = function() {
+        return Object.assign([], this.archive);
+    }
+
     switchInsertMode = function() {
         if (this.history.length == 0) return;
         let current = this.is_insert_mode;
@@ -221,13 +232,29 @@ class GameTable {
     }
 
     serializeSave = function() {
-        let content = this.history.join(",") + "\r\n";
+        let content = "";
+
+        for (let game of this.archive)
+            content += `${game.players.join(",")},${game.history.join(",")};\r\n`;
+
+        content += `${this.players.join(",")},${this.history.join(",")}`;
         return content;
     }
 
     deserializeSave = function(content) {
-      this.history = JSON.parse("[" + content + "]");
-      document.dispatchEvent(new Event("keydown"));
+        let games = content.split(";\r\n");
+        let last_game = games.pop();
+
+        for (let game of games) {
+        let parsed_game = game.split(",");
+        this.archive.push({players: [parsed_game[0], parsed_game[1]], history: parsed_game.slice(2).map(i => parseInt(i, 10))});
+        }
+
+        let parsed_game = last_game.split(",");
+        this.players = [parsed_game[0], parsed_game[1]];
+        this.history = parsed_game.slice(2).map(i => parseInt(i, 10));
+
+        document.dispatchEvent(new Event("keydown"));
     }
 
     save = function(isForceNewFile) {
@@ -236,7 +263,13 @@ class GameTable {
             : this.saver.saveToCurrentFile(this.serializeSave());
     }
 
-    load = function() {
+    load = function(isJoinLoad) {
+        if (isJoinLoad) {
+            this.startNewGame();
+        } else {
+            this.archive = [];
+            this.initGame();
+        }
         this.saver.loadFromFile(this.deserializeSave.bind(this));
     }
 }

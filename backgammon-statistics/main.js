@@ -30,10 +30,11 @@ $(document).ready(function(){
         if (e.code in directionKeys) gameTable.moveEditedCell(directionKeys[e.code]);
         if (e.code == "Escape" || e.code == "Enter") gameTable.exitModes();
 
-        if (e.code == "KeyN" && (e.ctrlKey || e.metaKey) && e.shiftKey) gameTable.startNewGame();
+        if (e.code == "KeyN" && !(e.ctrlKey || e.metaKey) && e.shiftKey) {gameTable.startNewGame(); e.preventDefault();}
         if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(true); e.preventDefault(); }
         if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && !e.shiftKey) { gameTable.save(false); e.preventDefault(); }
-        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey)) {gameTable.load(); e.preventDefault(); }
+        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey) && e.shiftKey) {gameTable.load(true); e.preventDefault(); }
+        if (e.code == "KeyL" && (e.ctrlKey || e.metaKey) && !e.shiftKey) {gameTable.load(false); e.preventDefault(); }
 
 
         if(!gameTable.isEditPlayerMode()) {
@@ -54,7 +55,7 @@ $(document).ready(function(){
 render = function() {
     gameTable.renderHead();
     gameTable.renderTable();
-    gameStats.renderStatistics(gameTable.getPlayers(), gameTable.getHistory());
+    gameStats.renderStatistics(gameTable.getPlayers(), gameTable.getHistory(), gameTable.getArchive());
 }
 
 initHelp = function() {
@@ -63,10 +64,11 @@ initHelp = function() {
         title: "Помощь (<b>Сtrl+H</b>)",
         html: true,
         content: `<h5 class="text-center">Игра</h5>
-        <p><b>Ctrl+L</b> - загрузить файл с партиями</p>
+        <p><b>Ctrl+L</b> - загрузить файл с партиями, заменив текущую историю</p>
+        <p><b>Ctrl+Shift+L</b> - загрузить файл с партиями в конец текущей истории</p>
         <p><b>Ctrl+Shift+S</b> - сохранить новый файл с партиями</p>
         <p><b>Ctrl+S</b> - сохранить текущий файл с партиями</p>
-        <p><b>Ctrl+Shift+N</b> - начать новую партию, сохранив текущую (в разработке)</p>
+        <p><b>Shift+N</b> - начать новую партию</p>
         <h5 class="text-center">Режимы</h5>
         <p><b>Ctrl+I</b> - вставка в любое место таблицы игры</p>
         <p><b>Ctrl+E</b> - редактирование таблицы игры</p>

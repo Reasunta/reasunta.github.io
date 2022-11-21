@@ -43,15 +43,18 @@ class GameStatistics {
         p2_stats[1] = Number(history.length > 2) && (p2_stats[0] / (Math.floor((history.length - 1) / 4) + 1 - (history.length % 4) / 2)).toFixed(2);
 
         tbody.append(
-            this.getStatRowDom(players[0], p1_stats),
-            this.getStatRowDom(players[1], p2_stats).addClass("hr")
+            this.getStatRowDom(players[0], p1_stats, (history.length - 1) % 4 < 2),
+            this.getStatRowDom(players[1], p2_stats, (history.length - 1) % 4 > 1).addClass("hr")
         );
     }
 
-    renderStatistics = function(players, history) {
+    renderStatistics = function(players, history, archive) {
         let tbody = this.dom.find('tbody');
         tbody.empty();
 
+        for(let game of archive) this.renderGameStatistics(tbody, game.players, game.history);
+
+        this.dom.find("tbody tr:last-child()").addClass("hr-medium");
         this.renderGameStatistics(tbody, players, history);
 
         //this.countFrequencies(frequencies, row);
@@ -84,9 +87,11 @@ class GameStatistics {
         if(row[3]) { result[row[2]][1]++; result[row[3]][1]++; }
     }
 
-    getStatRowDom = function(player, stats) {
+    getStatRowDom = function(player, stats, isActivePlayer) {
         let row_dom = $(this.row_template);
-        row_dom.find('[name="player"]').text(player);
+        let player_td = row_dom.find('[name="player"]').text(player);
+        if(isActivePlayer) player_td.addClass("bold");
+
         stats.forEach(stat => row_dom.append($(`<td>${stat}</td>`)))
         return row_dom;
     }
