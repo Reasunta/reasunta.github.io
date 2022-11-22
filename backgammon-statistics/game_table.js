@@ -213,7 +213,6 @@ class GameTable {
         this.players[0] = this.players[1];
         this.players[1] = temp;
     }
-    getPlayers = function() {return this.players;}
 
     getLastIndex = function() { return (this.history.length - 1) - (this.history.length - 1) % 2; }
 

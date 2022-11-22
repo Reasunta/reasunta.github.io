@@ -35,7 +35,6 @@ $(document).ready(function(){
         if (e.code in directionKeys) {gameTable.moveEditedCell(directionKeys[e.code]); e.preventDefault();}
         if (e.code == "Escape" || e.code == "Enter") gameTable.exitModes();
 
-        if (e.code == "KeyN" && !(e.ctrlKey || e.metaKey) && e.shiftKey) {gameTable.startNewGame(); e.preventDefault();}
         if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && e.shiftKey) { gameTable.save(true); e.preventDefault(); }
         if (e.code == "KeyS" && (e.ctrlKey || e.metaKey) && !e.shiftKey) { gameTable.save(false); e.preventDefault(); }
         if (e.code == "KeyL" && (e.ctrlKey || e.metaKey) && e.shiftKey) {gameTable.load(true); e.preventDefault(); }
@@ -43,6 +42,7 @@ $(document).ready(function(){
 
 
         if(!gameTable.isEditPlayerMode()) {
+            if (e.code == "KeyN" && !(e.ctrlKey || e.metaKey) && e.shiftKey) {gameTable.startNewGame(); e.preventDefault();}
             if (48 < e.keyCode && e.keyCode < 55) gameTable.insertValue(e.keyCode - 48);
             if (96 < e.keyCode && e.keyCode < 103) gameTable.insertValue(e.keyCode - 96);
 
