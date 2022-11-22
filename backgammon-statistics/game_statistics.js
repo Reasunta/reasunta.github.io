@@ -1,7 +1,7 @@
 class GameStatistics {
     constructor(parent_dom) {
         this.stats = [
-            "\u2211 <small>бросок</small>", "M<sub>бросок</sub>", "\u039D<sub>дубль</sub>", "N<sub>max дубль</sub>"
+            "\u2211<small>roll</small>", "M<sub>roll</sub>", "\u039D<sub>dbl</sub>", "N<sub>max dbl</sub>"
         ]
 
         this.template =
@@ -48,14 +48,14 @@ class GameStatistics {
         );
     }
 
-    renderStatistics = function(players, history, archive) {
+    renderStatistics = function(data) {
         let tbody = this.dom.find('tbody');
         tbody.empty();
+        let last_game = data.pop();
+        for(let game of data) this.renderGameStatistics(tbody, game.players, game.history);
 
-        for(let game of archive) this.renderGameStatistics(tbody, game.players, game.history);
-
-        this.dom.find("tbody tr:last-child()").addClass("hr-medium");
-        this.renderGameStatistics(tbody, players, history);
+        if(last_game.is_active_game) this.dom.find("tbody tr:last-child()").addClass("hr-medium");
+        this.renderGameStatistics(tbody, last_game.players, last_game.history);
 
         //this.countFrequencies(frequencies, row);
         /*let turns = [

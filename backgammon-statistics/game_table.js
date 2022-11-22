@@ -174,8 +174,10 @@ class GameTable {
         return Object.assign([], this.players);
     }
 
-    getArchive = function() {
-        return Object.assign([], this.archive);
+    getData = function() {
+        let result = Object.assign([], this.archive);
+        result.push({players: this.getPlayers(), history: this.getHistory(), is_active_game: true})
+        return result;
     }
 
     switchInsertMode = function() {

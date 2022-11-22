@@ -1,9 +1,11 @@
 var gameTable = undefined;
 var gameStats = undefined;
+var pivotStats = undefined;
 
 init = function() {
     gameTable = new GameTable($('#game_table'));
     gameStats = new GameStatistics($('#stat_table'));
+    pivotStats = new PivotStatistics($('#pivot_table'));
 
     render();
 
@@ -15,7 +17,10 @@ $(document).ready(function(){
     let directionKeys = {
         "ArrowUp": "up", "ArrowLeft": "left", "ArrowRight": "right", "ArrowDown": "down", "Tab": "right"
     };
-    init();
+
+    window.addEventListener("resize", function(e){
+        pivotStats.resize(e);
+    })
 
     document.addEventListener("keydown", function(e) {
         console.log(e);
@@ -50,12 +55,15 @@ $(document).ready(function(){
         render();
 
     }, false);
+
+    init();
 });
 
 render = function() {
     gameTable.renderHead();
     gameTable.renderTable();
-    gameStats.renderStatistics(gameTable.getPlayers(), gameTable.getHistory(), gameTable.getArchive());
+    gameStats.renderStatistics(gameTable.getData());
+    pivotStats.render(gameTable.getData());
 }
 
 initHelp = function() {
