@@ -52,71 +52,52 @@ class PivotStatistics {
     }
 
     getLabels = function() {
-        let labels = [];
-
-        if (this.isStackedMode) {
-            return [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 20, 24];
-        }
-        else {
-            for (let i = 1; i < 7; i++)
-                for(let j = i; j < 7; j++)
-                    labels.push(`${i} ${j}`)
-        }
-
-        return labels;
+        return this.isStackedMode
+            ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 20, 24]
+            : ["1 1", "1 2", "1 3", "1 4", "1 5", "1 6", "2 2", "2 3", "2 4", "2 5", "2 6", "3 3", "3 4", "3 5", "3 6", "4 4", "4 5", "4 6", "5 5",  "5 6", " 6 6"];
     }
 
-    countRollFrequencies = function() {
-        let result = new Array(21).fill(0);
-        let expected = new Array(21).fill(0);
-        let doubles_indices = [0,6,11,15,18,20];
-        let total_roll_count = 0;
+    countRollFrequencies = function(expected, game_handler) {
+        let result = new Array(expected.length).fill(0)
 
-        this.data.forEach(function(game) {
-            for(let i = 0; i < game.history.length; i += 2) {
-                let a = game.history[i];
-                let b = game.history[i + 1] || 0;
-                let m = Math.min(a, b);
-                let M = Math.max(a, b);
+        this.data.forEach(game => game_handler(game, result))
+        let total_roll_count = result.reduce((a, b) => a + b, 0);
 
-                result[M + (12 - m)*(m - 1) / 2 - 1]++;
-                total_roll_count++;
-            }
-        })
-
-        for(let i = 0; i < 21; i++)
-            expected[i] = doubles_indices.includes(i) ? total_roll_count / 36 : total_roll_count / 18;
-
-        return [result, expected];
-    }
-
-    countStackedRollFrequencies = function() {
-        let result = new Array(13).fill(0);
-        let expected = [2, 3, 4, 4, 6, 5, 4, 2, 2, 1, 1, 1, 1];
-        let doubles_indices = [0,6,11,15,18,20];
-        let total_roll_count = 0;
-
-        this.data.forEach(function(game) {
-            for(let i = 0; i < game.history.length; i += 2) {
-                let s = game.history[i] + (game.history[i + 1] || 0);
-                if(game.history[i] == game.history[i + 1]) s = 2 * s;
-
-                result[s - 3 * Math.max(s / 4 - 2, 1)]++;
-                total_roll_count++;
-            }
-        })
-
-        for(let i = 0; i < 13; i++)
+        for(let i = 0; i < expected.length; i++)
             expected[i] = total_roll_count * expected[i] / 36;
 
         return [result, expected];
     }
 
+    countGameByRoll = function(game, result) {
+        for(let i = 0; i < game.history.length; i += 2) {
+            let m = Math.min(game.history[i], game.history[i + 1]);
+            let M = Math.max(game.history[i], game.history[i + 1]);
+
+            result[M + (12 - m)*(m - 1) / 2 - 1]++;
+        }
+    }
+
+    countGameByRollSum = function(game, result) {
+        for(let i = 0; i < game.history.length; i += 2) {
+            let s = game.history[i] + game.history[i + 1];
+            if(game.history[i] == game.history[i + 1]) s = 2 * s;
+
+            result[s - 3 * Math.max(s / 4 - 2, 1)]++;
+        }
+    }
+
     render = function(data) {
         if(data) this.data = data;
         let [result, expected] = this.isStackedMode
-            ? this.countStackedRollFrequencies()
-            : this.countRollFrequencies();
+            ? this.countRollFrequencies(
+                [2, 3, 4, 4, 6, 5, 4, 2, 2, 1, 1, 1, 1],
+                this.countGameByRollSum
+            )
+            : this.countRollFrequencies(
+                [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1],
+                this.countGameByRoll
+            );
 
         this.chart.data.labels = this.getLabels();
         this.chart.data.datasets[1].data = result;
