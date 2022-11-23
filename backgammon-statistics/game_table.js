@@ -191,7 +191,8 @@ class GameTable {
                 [game.players[0]]: game.history.filter((item, i) => i % 4 < 2),
                 [game.players[1]]: game.history.filter((item, i) => i % 4 > 1),
             },
-            winner: (game.history.length - 1) % 4 < 2 ? game.players[0] : game.players[1]
+            winner: (game.history.length - 1) % 4 < 2 ? game.players[0] : game.players[1],
+            is_active_game: game.is_active_game
         }));
     }
 

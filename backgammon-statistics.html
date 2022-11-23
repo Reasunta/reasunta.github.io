@@ -14,11 +14,12 @@
 <script src="./backgammon-statistics/main.js"></script>
 <style>
   thead.head-center th                        { text-align: center;}
-  .game-table-scroll                          { overflow: auto; height: calc(100% - 120px);}
-  .game-table-scroll thead th                 { position: sticky; top: 0; z-index: 1; background-color: rgba(255,255,255,1);}
+  .game-table-scroll, .stat-table-scroll      { overflow: auto; height: calc(100% - 120px);}
+  .game-table-scroll thead th,
+  .stat-table-scroll thead th                 { position: sticky; top: 0; z-index: 1; background-color: rgba(255,255,255,1)}
   #game_table td.info, #game_table td.success { position: relative;}
   table tr.hr                                 { border-bottom: solid; }
-  table tr.hr-medium                          { border-bottom: solid; border-width: medium;}
+  table tr.hr-medium                          { border-top: solid; border-top-width: medium;}
   table td.bold                               { font-weight: bold; }
 </style>
 </head>
