@@ -17,13 +17,13 @@ class PivotStatistics {
         parent_dom.empty();
         parent_dom.append(this.dom);
 
-        this.isStackedMode = false;
+        this.current_mode = 0;
         this.chart = this.initRollFreqChart('rollFrequencyChart');
     }
 
     initRollFreqChart = function(canvas_id) {
         this.dom.find("div[name='rollFrequency'] span.glyphicon").on("click", function(e){
-            this.isStackedMode = !this.isStackedMode;
+            this.current_mode = (this.current_mode + 1) % 3;
             this.render();
         }.bind(this))
 
@@ -52,9 +52,30 @@ class PivotStatistics {
     }
 
     getLabels = function() {
-        return this.isStackedMode
+        return this.current_mode == 0
             ? [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 20, 24]
-            : ["1 1", "1 2", "1 3", "1 4", "1 5", "1 6", "2 2", "2 3", "2 4", "2 5", "2 6", "3 3", "3 4", "3 5", "3 6", "4 4", "4 5", "4 6", "5 5",  "5 6", " 6 6"];
+            : this.current_mode == 1
+                ? ["1 1", "1 2", "1 3", "1 4", "1 5", "1 6", "2 2", "2 3", "2 4", "2 5", "2 6", "3 3", "3 4", "3 5", "3 6", "4 4", "4 5", "4 6", "5 5",  "5 6", " 6 6"]
+                : [1, 2, 3, 4, 5, 6];
+    }
+    getTitle = function() {
+        return this.current_mode == 0
+            ? "по сумме броска"
+            : this.current_mode == 1
+                ? "по цифрам броска"
+                : "по числам 1-6";
+    }
+    getExpected = function() {
+        return this.current_mode == 0
+            ? [2, 3, 4, 4, 6, 5, 4, 2, 2, 1, 1, 1, 1]
+            : this.current_mode == 1
+                ? [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1]
+                : [7, 7, 7, 7, 7, 7];
+    }
+    getGameHandler = function() {
+        return this.current_mode == 0  ? this.countGameByRollSum
+             : this.current_mode == 1  ? this.countGameByRoll
+             : this.countGameByDice
     }
 
     countRollFrequencies = function(expected, game_handler) {
@@ -87,24 +108,20 @@ class PivotStatistics {
         }
     }
 
+    countGameByDice = function(game, result) {
+        game.history.forEach(i => result[i - 1]++)
+    }
+
     render = function(data) {
         if(data) this.data = data;
-        let [result, expected] = this.isStackedMode
-            ? this.countRollFrequencies(
-                [2, 3, 4, 4, 6, 5, 4, 2, 2, 1, 1, 1, 1],
-                this.countGameByRollSum
-            )
-            : this.countRollFrequencies(
-                [1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1],
-                this.countGameByRoll
-            );
+        let [result, expected] = this.countRollFrequencies(this.getExpected(), this.getGameHandler());
 
         this.chart.data.labels = this.getLabels();
         this.chart.data.datasets[1].data = result;
         this.chart.data.datasets[0].data = expected;
         this.chart.update();
 
-        this.dom.find("span.mode_title").text(this.isStackedMode ? "по сумме броска" : "по цифрам броска")
+        this.dom.find("span.mode_title").text(this.getTitle())
     }
 
     resize = function(e) {
