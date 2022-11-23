@@ -107,6 +107,11 @@ class GameTable {
         if (eventKey.code == "Backspace" && eventKey.shiftKey) this.players[this.edited_player - 1] = "";
     }
 
+    render = function() {
+        this.renderHead();
+        this.renderTable();
+    }
+
     renderHead = function() {
         let tr = this.dom.find("thead tr");
         tr.off("click", "span.glyphicon-refresh");
@@ -174,10 +179,20 @@ class GameTable {
         return Object.assign([], this.players);
     }
 
-    getData = function() {
+    getData = function(isPlayers) {
         let result = Object.assign([], this.archive);
         result.push({players: this.getPlayers(), history: this.getHistory(), is_active_game: true})
-        return result;
+        return isPlayers ? this.parseDataForPlayers(result) : result;
+    }
+
+    parseDataForPlayers = function(data) {
+        return data.map((game) => ({
+            game: {
+                [game.players[0]]: game.history.filter((item, i) => i % 4 < 2),
+                [game.players[1]]: game.history.filter((item, i) => i % 4 > 1),
+            },
+            winner: (game.history.length - 1) % 4 < 2 ? game.players[0] : game.players[1]
+        }));
     }
 
     switchInsertMode = function() {

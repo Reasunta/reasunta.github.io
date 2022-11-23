@@ -60,9 +60,8 @@ $(document).ready(function(){
 });
 
 render = function() {
-    gameTable.renderHead();
-    gameTable.renderTable();
-    gameStats.renderStatistics(gameTable.getData());
+    gameTable.render();
+    gameStats.render(gameTable.getData(true));
     pivotStats.render(gameTable.getData());
 }
 
