@@ -57,6 +57,8 @@ handleOpenConnection = function(peerId) {
 
 closeConnection = function(conn) {
     console.log("The connection is closed!");
+    addOtherMessage("The connection is closed!");
+    connection = undefined;
 }
 
 handleData = function(data) {
