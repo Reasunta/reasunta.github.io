@@ -86,3 +86,8 @@ handleData = function(data) {
 generateConnectionLink = function(peerID) {
     return window.location.origin + window.location.pathname + "#" + peerID;
 }
+
+$(window).unload(function() {
+    if(connection) connection.close();
+
+})
