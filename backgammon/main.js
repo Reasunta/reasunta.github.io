@@ -73,6 +73,8 @@ handleOpenConnection = function(peerId) {
 
 closeConnection = function(conn) {
     console.log("The connection is closed!");
+    window.location.hash = '';
+    $("#recipient-peer-id").val('');
     connection = undefined;
 }
 
