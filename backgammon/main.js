@@ -9,11 +9,19 @@ $(document).ready(function(){
 
     peer.on("open", function(peerID){
         console.log("PeerJS id is received: " + peerID);
-        $("#current-peer-id").val(peerID);
-        $("#my-chat-id").text(peerID);
+        $("#current-peer-id").val(generateConnectionLink(peerID));
+
+        let partnerPeerId = window.location.hash.replace('#', '');
+        if(partnerPeerId) tryToConnect(partnerPeerId);
     })
 
     peer.on('connection', function(conn) {
+      if(connection) {
+        console.log("Connection attempt will be declined. PeerJS id: " + conn.peer);
+        conn.close();
+        return;
+      }
+
       connection = conn;
       handleOpenConnection(conn.peer);
 
@@ -24,25 +32,43 @@ $(document).ready(function(){
     // Client side
     $("#connect-btn").click(function() {
         let recipientPeerID = $("#recipient-peer-id").val();
-
-        console.log("Try to connect with peerJS ID: " + recipientPeerID);
-        let conn = peer.connect(recipientPeerID);
-
-        conn.on('open', function() {
-            connection = conn;
-            handleOpenConnection(recipientPeerID);
-        });
-
-        conn.on('data', handleData);
-        conn.on("close", closeConnection);
+        tryToConnect(recipientPeerID);
     })
 
-    // Common
 
+    // Common
+    $("#copy-link-btn").on("click", async function(){
+        let link = $("#current-peer-id").val();
+        await navigator.clipboard.writeText(link);
+    })
 });
+
+tryToConnect = function(peerId) {
+    if(connection) {
+      console.log("Connection is established already. PeerJS id: " + connection.peer);
+      return;
+    }
+
+    console.log("Try to connect with peerJS ID: " + peerId);
+    let conn = peer.connect(peerId);
+
+    conn.on('open', function() {
+        connection = conn;
+        handleOpenConnection(peerId);
+    });
+
+    conn.on('data', handleData);
+    conn.on("close", closeConnection);
+    conn.on("error", function(err){
+        console.log("Connection error:");
+        console.log(err);
+    })
+}
 
 handleOpenConnection = function(peerId) {
     console.log("Connection is established with peerJS ID: " + peerId);
+    window.location.hash = peerId;
+    $("#recipient-peer-id").val(generateConnectionLink(peerId));
 }
 
 closeConnection = function(conn) {
@@ -53,4 +79,8 @@ closeConnection = function(conn) {
 handleData = function(data) {
     console.log("Data are received!");
     console.log(data);
+}
+
+generateConnectionLink = function(peerID) {
+    return window.location.origin + window.location.pathname + "#" + peerID;
 }
