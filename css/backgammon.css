@@ -1,0 +1,73 @@
+.board {
+    display: flex;
+}
+
+.semi-board {
+    background-color:burlywood;
+    border:brown 10px solid;
+    width:49%;
+    height:75vh;
+}
+
+.semi-board .quarter {
+    height:40%;
+    width: 100%;
+    display: flex;
+}
+
+.semi-board .quarter-space {
+    height:20%;
+    width: 100%;
+    display: flex;
+}
+
+.semi-board .quarter .position {
+    width: 16%;
+    height: 100%;
+    display: inherit;
+}
+
+.semi-board.left .position {
+    margin-right: 1%;
+}
+
+.semi-board.right .position {
+    margin-left: 1%;
+}
+
+.semi-board .position .left, .semi-board .position .right {
+    width: 50%;
+    height: 100%;
+}
+
+.quarter.top .position:nth-child(even) .left {
+    background: linear-gradient(to top right, burlywood 0%, burlywood 50%, chocolate 50%, chocolate 100%);
+}
+
+.quarter.top .position:nth-child(even) .right {
+    background: linear-gradient(to top left, burlywood 0%, burlywood 50%, chocolate 50%, chocolate 100%);
+}
+
+.quarter.top .position:nth-child(odd) .left {
+    background: linear-gradient(to top right, burlywood 0%, burlywood 50%, red 50%, red 100%);
+}
+
+.quarter.top .position:nth-child(odd) .right {
+    background: linear-gradient(to top left, burlywood 0%, burlywood 50%, red 50%, red 100%);
+}
+
+.quarter.bottom .position:nth-child(odd) .left {
+    background: linear-gradient(to bottom right, burlywood 0%, burlywood 50%, chocolate 50%, chocolate 100%);
+}
+
+.quarter.bottom .position:nth-child(odd) .right {
+    background: linear-gradient(to bottom left, burlywood 0%, burlywood 50%, chocolate 50%, chocolate 100%);
+}
+
+.quarter.bottom .position:nth-child(even) .left {
+    background: linear-gradient(to bottom right, burlywood 0%, burlywood 50%, red 50%, red 100%);
+}
+
+.quarter.bottom .position:nth-child(even) .right {
+    background: linear-gradient(to bottom left, burlywood 0%, burlywood 50%, red 50%, red 100%);
+}
