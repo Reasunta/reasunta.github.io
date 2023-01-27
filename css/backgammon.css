@@ -5,8 +5,8 @@
 .semi-board {
     background-color:burlywood;
     border:brown 10px solid;
-    width:49%;
-    height:75vh;
+    width:50%;
+    height:70vh
 }
 
 .semi-board .quarter {
