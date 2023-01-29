@@ -17,4 +17,20 @@ class ConnectRenderer {
     static renderOpenPeer = function(link) {
         $("#current-peer-id").val(link);
     }
+
+    static initHandlers = function(connector) {
+        $("#copy-link-btn").on("click", async function() {
+            let link = $("#current-peer-id").val();
+            await navigator.clipboard.writeText(link);
+        })
+
+        $("#close-conn-btn").on("click", function() {
+            connector.closeConnection();
+        })
+
+        $("#open-conn-btn").on("click", function() {
+            let recipientPeerID = $("#recipient-peer-id").val().split("#")[1];
+            if(recipientPeerID) connector.makeConnection(recipientPeerID);
+        })
+    }
 }
