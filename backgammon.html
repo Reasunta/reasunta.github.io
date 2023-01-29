@@ -8,6 +8,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<script src="./backgammon/peerJSConnector.js"></script>
+<script src="./backgammon/connectRenderer.js"></script>
 <script src="./backgammon/main.js"></script>
 
 </head>
@@ -17,16 +19,20 @@
 
     <div class="row">
       <div class="input-group">
-        <span class="input-group-addon" id="current-peer">Мой peerJS id:</span>
+        <span class="input-group-addon" id="current-peer">My invite link:</span>
         <input type="text" class="form-control" placeholder="My peerJS" aria-describedby="current-peer" disabled ="true" id="current-peer-id">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" id="copy-link-btn" style="padding: 9px 12px;"><span class="fa fa-copy"></span></button>
+          <button class="btn btn-default i-btn" type="button" id="copy-link-btn"><span class="fa fa-copy"></span></button>
         </span>
       </div>
       <br>
       <div class="input-group">
-        <span class="input-group-addon" id="recipient-peer">PeerJS id партнера:</span>
-        <input type="text" class="form-control" placeholder="Recipient's peerJS" aria-describedby="recipient-peer" disabled="true" id="recipient-peer-id">
+        <span class="input-group-addon" id="recipient-peer">Partner's invite link:</span>
+        <input type="text" class="form-control" placeholder="Recipient's peerJS" aria-describedby="recipient-peer" id="recipient-peer-id">
+        <span class="input-group-btn">
+          <button class="btn btn-default i-btn" type="button" id="open-conn-btn"><span class="fa fa-link"></span></button>
+          <button class="btn btn-default i-btn" type="button" id="close-conn-btn"><span class="fa fa-window-close-o"></span></button>
+        </span>
       </div>
     </div>
   </div>

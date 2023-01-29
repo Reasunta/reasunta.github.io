@@ -1,3 +1,7 @@
+.btn.i-btn {
+    padding: 9px 12px;
+}
+
 .board {
     display: flex;
 }
