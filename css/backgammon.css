@@ -4,13 +4,14 @@
 
 .board {
     display: flex;
+    justify-content: center;
 }
 
 .semi-board {
     background-color:burlywood;
     border:brown 10px solid;
-    width:50%;
-    height:70vh
+    width: calc(min(50%, 100vh - 200px));
+    aspect-ratio: 1 / 1;
 }
 
 .semi-board .quarter {
@@ -29,6 +30,12 @@
     width: 16%;
     height: 100%;
     display: inherit;
+    position: relative;
+    justify-content: center;
+}
+
+.semi-board .quarter.bottom .position {
+    align-items: flex-end;
 }
 
 .semi-board.left .position {
@@ -74,4 +81,22 @@
 
 .quarter.bottom .position:nth-child(even) .right {
     background: linear-gradient(to bottom left, burlywood 0%, burlywood 50%, red 50%, red 100%);
+}
+
+.piece {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid;
+}
+
+.piece.black-piece {
+    background-color: rgb(50,50,50);
+    border-color: grey;
+}
+
+.piece.white-piece {
+    background-color: rgb(230,230,230);
+    border-color: grey;
 }
