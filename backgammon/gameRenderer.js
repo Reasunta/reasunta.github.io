@@ -27,9 +27,9 @@ class GameRenderer {
     renderState = function(state) {
         for(let i = 0; i < 24; i++) {
             this.positions[i].empty().append($(this.markerTmpl));
-            if(state[i] != 0) {
+            if(state[i]) {
                 for (let j = 0; j < Math.abs(state[i]); j++)
-                    this.positions[i].append(this.renderPiece())
+                    this.positions[i].append(this.renderPiece(Math.sign(state[i])))
             };
         }
 
@@ -42,9 +42,9 @@ class GameRenderer {
 
     }
 
-    renderPiece = function() {
-        return $(this.blackPieceTmpl)
-            .on("click", this.pieceClickHandler);
+    renderPiece = function(color) {
+        let result = (color > 0) ? $(this.whitePieceTmpl) : $(this.blackPieceTmpl);
+        return result.on("click", this.pieceClickHandler);
     }
 
     getCurrentIndex = function(pieceEl) {
@@ -60,9 +60,16 @@ class GameRenderer {
         let offsetX = toP.offset().left - fromP.offset().left;
 
         let offsetY = Math.sign(toP.offset().top - fromP.offset().top);
-        if(offsetY) offsetY *= Math.abs(toP.offset().top - fromP.offset().top) + toP.height() - $(el).height() - 0.5 * boardBorderW;
+        if(offsetY) offsetY *= (Math.abs(toP.offset().top - fromP.offset().top) + toP.height() - $(el).height() - 0.5 * boardBorderW);
 
         //add stack offset
+        let sign = Math.sign(fromP.offset().top - this.boardDOM.height() / 2)
+
+        let stackOffset = fromP.height() * (this.stackSpace / 100) * ($(el).index() - 2);
+        console.log(stackOffset)
+        console.log(sign)
+
+        offsetY += stackOffset * sign;
 
         let keyFrames = new KeyframeEffect(
             el,
@@ -70,7 +77,7 @@ class GameRenderer {
               { transform: 'translate(0, 0)' },
               { transform: `translate(${offsetX}px, ${offsetY}px)` }
             ],
-            { duration: 300, fill: 'forwards', easing: 'linear' }
+            { duration: 200, fill: 'forwards', easing: 'linear' }
           );
 
         let animation = new Animation(keyFrames, document.timeline);
