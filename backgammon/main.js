@@ -23,8 +23,7 @@ pieceClickHandler = function(e) {
     let range = Math.floor(Math.random() * 6, 1) + 1;
 
     let currentIndex = gameRenderer.getCurrentIndex(e.target);
-    let newIndex = (24 + currentIndex - range) % 24;
 
-    isMoved = gameState.movePiece(currentIndex, newIndex);
-    if(isMoved) gameRenderer.movePiece(e.target, currentIndex, newIndex, gameState.getState());
+    newIndex = gameState.movePiece(currentIndex, range);
+    if(newIndex > 0) gameRenderer.movePiece(e.target, currentIndex, newIndex, gameState.getState());
 }
