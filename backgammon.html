@@ -1,6 +1,7 @@
 <html>
 <head>
-<link rel="shortcut icon" href="./resources/free-icon-backgammon-683899.png" type="image/png">
+<link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAbwAAAG8B8aLcQwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKNSURBVDiNbZPba9tmGIcfyZIl2bJkW+6cJltpeoSSdOSwAywMxigrg9CLXYT9C/uzetG7Dga9KJSym9Fmg9JtSShZsiXEOTSJZcuWZZ2lXaQ4Lc539+Ple3h4f7zCTz/8eDJRVcpc8PxBmAJoulK4aL5z6HjS1Y8b+ueLn2hukCPnCX0/plpRCVOB4KQNQF4pY6gypl4kTTMOuz5WRcV//jcSQK1uoSYFxMhBVGKqpkkmFGm9A5R0nZIq8uXMBI4b4Gx20HUZ4Ayw23pLyw74dvE6pbrGv1vbtOyAppIQ+R7Nxjxy7PLL6h6NiozRmCKLXQBEgNmrdQxFIAh87O5glC1TwihleJ1jpqrQ6fnk6XkeGUxPmhjlIiVV5vW2zfRkE6Nc5Nff14l8ke++qGAZGlcaGgu3mwzDGMvQzg0ALFNj458jvG6POMmwTA05KVKWa1iGRpxkpIMhb7aOR59HBgCrf+7x6OdXFBSJjj1g5cH8B5U9fPwHf22doOQ5APMzUx8C+r0hwzRFiAQ8LxzrPAkTBmGKn2f0XH/c4JuvbuE4HgMv4vt7M2OA5ft3KYjr1M0SS59dGwe4w4jl+5/yYv2QiUsVuv2AWIqIfI+uGzD5kcGduevM3bAY+BG1inoOaJ16bLQ8dClmr+2PsmVKeELGk5e7LM1eJpENNg891raOWJq9fN7CgZNTrjcRCiJ1Uxtlu5fQH4r0w5y1nQ5WTUdVtVEeGdxsFlHUnJZdo9ZQsE9P6DkOhBJF0WTh7i2EsMfRwT6mJrLy9TRJlrL628YZ4L/9NmmW4wYpYSog5wm+HyO820/7+AhFSHG8kDSQSeOEgng2lXb324Onz9x8bO28f86nF57zW3vo/Q+4lS5oj+nAcwAAAABJRU5ErkJggg==
+" type="image/png">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/backgammon.css">
@@ -8,17 +9,20 @@
 <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js">
+</script>
 
 <script src="./backgammon/peerJSConnector.js"></script>
 <script src="./backgammon/connectRenderer.js"></script>
 <script src="./backgammon/gameRenderer.js"></script>
 <script src="./backgammon/gameState.js"></script>
+<script src="./backgammon/game.js"></script>
 <script src="./backgammon/main.js"></script>
 
 </head>
 <body>
   <div class="container">
-    <h3>Тест peerJS <span class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="popover"></span></h3>
+    <h3>P2P длинные нарды</h3>
 
     <div class="row">
       <div class="input-group">

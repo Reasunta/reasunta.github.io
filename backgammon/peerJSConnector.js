@@ -4,9 +4,11 @@ class PeerJSConnector {
         this.connection = undefined;
     }
 
-    openPeer = function(openPeerRenderer, openConnRenderer, closeConnRenderer) {
-        this.openConnRenderer = openConnRenderer.bind(this);
-        this.closeConnRenderer = closeConnRenderer.bind(this);
+    openPeer = function(openConnCallback) {
+        this.openPeerRenderer = ConnectRenderer.renderOpenPeer.bind(this);
+        this.openConnRenderer = ConnectRenderer.renderOpenConnection.bind(this);
+        this.closeConnRenderer = ConnectRenderer.renderCloseConnection.bind(this);
+        this.openConnCallback = openConnCallback;
 
         this.peer = new Peer();
 
@@ -30,7 +32,7 @@ class PeerJSConnector {
             let partnerPeerId = window.location.hash.replace('#', '');
             if(partnerPeerId) this.makeConnection(partnerPeerId);
 
-            openPeerRenderer(this.generateLink(myPeerId));
+            this.openPeerRenderer(this.generateLink(myPeerId));
         }.bind(this));
     }
 
@@ -57,6 +59,8 @@ class PeerJSConnector {
         window.location.hash = conn.peer;
 
         this.openConnRenderer(this.generateLink(conn.peer));
+
+        this.openConnCallback();
     }
 
     handleCloseConnection = function() {
