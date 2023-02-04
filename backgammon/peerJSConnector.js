@@ -21,7 +21,7 @@ class PeerJSConnector {
                 return;
             }
 
-            this.receive(conn);
+            this.receive(conn, "host");
 
             conn.on('data', this.handleData.bind(this));
             conn.on("close", this.afterClose.bind(this));
@@ -48,14 +48,14 @@ class PeerJSConnector {
         console.log("Try to connect with peerJS ID: " + partnerPeerId);
         let conn = this.peer.connect(partnerPeerId);
 
-        conn.on('open', function() {this.receive(conn);}.bind(this));
+        conn.on('open', function() {this.receive(conn, "connector");}.bind(this));
 
         conn.on('data', this.handleData.bind(this));
         conn.on("close", this.afterClose.bind(this));
         conn.on("error", this.error.bind(this));
     }
 
-    receive = function(conn) {
+    receive = function(conn, peerType) {
         console.log("Connection is established with peerJS ID: " + conn.peer);
 
         this.connection = conn;
@@ -64,7 +64,7 @@ class PeerJSConnector {
         this.state["partnerLink"] = this.generateLink(conn.peer);
         ConnectRenderer.render(this.state);
 
-        this.openConnCallback();
+        this.openConnCallback({"player": {"type": peerType, "id": this.peer.id}});
     }
 
     afterClose = function() {

@@ -3,6 +3,7 @@ class GameState {
         this.positions = undefined;
         this.endPositions = {"white": null, "black": null};
         this.ways = {"white": null, "black": null};
+        this.player = {"id": null, "color": null};
     }
 
     init = function() {
@@ -24,6 +25,10 @@ class GameState {
             this.ways[i] = ways[i];
     }
 
+    setPlayer = function(id, color) {
+        this.player = {"id": id, "color": color};
+    }
+
     getPositions = function() {
         return this.positions;
     }
@@ -40,6 +45,7 @@ class GameState {
         if(fromV == 0) return false;
 
         let color = Math.sign(fromV) > 0 ? "white" : "black";
+        if(color != this.player.color) return false;
 
         //Check the edge of the board
         let rangeToEnd = this.endPositions[color] - from;

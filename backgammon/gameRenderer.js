@@ -39,11 +39,18 @@ class GameRenderer {
 
         state.getPositions().forEach(val => this.positions.push(this.createPosition(val)));
 
-        this.boardDOM.find(".semi-board.left .quarter.top").empty().append(this.positions.slice(0, 6));
-        this.boardDOM.find(".semi-board.right .quarter.top").empty().append(this.positions.slice(6, 12));
-        this.boardDOM.find(".semi-board.right .quarter.bottom").empty().append(this.positions.slice(12, 18).reverse());
-        this.boardDOM.find(".semi-board.left .quarter.bottom").empty().append(this.positions.slice(18, 24).reverse());
-
+        if (state.player.color == "white") {
+            this.boardDOM.find(".semi-board.left .quarter.top").empty().append(this.positions.slice(0, 6));
+            this.boardDOM.find(".semi-board.right .quarter.top").empty().append(this.positions.slice(6, 12));
+            this.boardDOM.find(".semi-board.right .quarter.bottom").empty().append(this.positions.slice(12, 18).reverse());
+            this.boardDOM.find(".semi-board.left .quarter.bottom").empty().append(this.positions.slice(18, 24).reverse());
+        }
+        if (state.player.color == "black") {
+            this.boardDOM.find(".semi-board.left .quarter.top").empty().append(this.positions.slice(12, 18));
+            this.boardDOM.find(".semi-board.right .quarter.top").empty().append(this.positions.slice(18, 24));
+            this.boardDOM.find(".semi-board.right .quarter.bottom").empty().append(this.positions.slice(0, 6).reverse());
+            this.boardDOM.find(".semi-board.left .quarter.bottom").empty().append(this.positions.slice(6, 12).reverse());
+        }
 
         this.boardDOM.find(".quarter.top .piece").each(
             (n, el) => $(el).css("top", `${this.stackSpace * ($(el).index() - 2)}%`)
@@ -89,7 +96,7 @@ class GameRenderer {
 
         //add stack offset
         let sign = fromP.parent().hasClass("top") ? -1 : 1;
-        
+
         let stackOffset = fromP.height() * (this.stackSpace / 100) * ($(el).index() - 2);
 
         offsetY += stackOffset * sign;

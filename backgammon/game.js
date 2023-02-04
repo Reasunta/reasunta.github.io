@@ -18,11 +18,16 @@ class Game {
         this.view.render(this.state, animations);
     }
 
-    start = function() {
+    start = function(playerInfo) {
+        let player = playerInfo.player;
+        let color = player.type == "host" ? "white" : "black";
+
         this.state.init();
         this.state.setPositions({11: 15, 23: -15});
         this.state.setEndPositions({"white": 12, "black": 0});
         this.state.setWays({"white": -1, "black": -1});
+
+        this.state.setPlayer(player.id, color);
 
         this.render();
     }
@@ -44,15 +49,15 @@ class Game {
         let to = this.state.getTo(from, range);
         let animations = [{"name": "movePiece", "from": from, "to": to}];
 
-        this.state.move(from, to);
         let data = {
             "positions": this.state.getPositions(),
             "animations": animations
         };
 
+        this.state.move(from, to);
+        this.render(animations);
+
         console.log(data);
         this.send(data);
-
-        this.render(animations);
     }
 }
