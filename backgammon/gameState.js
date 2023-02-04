@@ -1,11 +1,13 @@
 class GameState {
     constructor() {
-        this.positions = new Array(24).fill(0);
+        this.positions = undefined;
         this.endPositions = {"white": null, "black": null};
         this.ways = {"white": null, "black": null};
     }
 
-    init = function() {}
+    init = function() {
+        this.positions = new Array(24).fill(0);
+    }
 
     setPositions = function(position_dict) {
         for(let i in position_dict)

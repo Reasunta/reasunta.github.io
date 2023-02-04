@@ -22,7 +22,7 @@ class GameRenderer {
 
         while(animations.length) {
             let animation = this.getAnimation(animations.pop());
-            animation.onfinish = nextAnimation ?? this.renderState.bind(this, state);
+            animation.onfinish = nextAnimation ? nextAnimation.play : this.renderState.bind(this, state);
             nextAnimation = animation;
         }
 
@@ -30,7 +30,7 @@ class GameRenderer {
     }
 
     getAnimation = function(ctx) {
-        if (ctx["name"] == "movePiece") return this.movePieceAnimation(ctx["el"], ctx["from"], ctx["to"]);
+        if (ctx["name"] == "movePiece") return this.movePieceAnimation(ctx["from"], ctx["to"]);
     }
 
     renderState = function(state) {
@@ -75,8 +75,9 @@ class GameRenderer {
         return this.positions.findIndex(p => p.find(pieceEl).length);
     }
 
-    movePieceAnimation = function(el, from, to) {
+    movePieceAnimation = function(from, to) {
         let boardBorderW = parseInt($(".semi-board").css("border-width"), 10);
+        let el = this.positions[from].find(".piece:last-child()")[0];
 
         let fromP = this.positions[from];
         let toP = this.positions[to];
@@ -87,8 +88,8 @@ class GameRenderer {
         if(offsetY) offsetY *= (Math.abs(toP.offset().top - fromP.offset().top) + toP.height() - $(el).height() - 0.5 * boardBorderW);
 
         //add stack offset
-        let sign = Math.sign(fromP.offset().top - this.boardDOM.height() / 2)
-
+        let sign = fromP.parent().hasClass("top") ? -1 : 1;
+        
         let stackOffset = fromP.height() * (this.stackSpace / 100) * ($(el).index() - 2);
 
         offsetY += stackOffset * sign;

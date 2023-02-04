@@ -1,10 +1,13 @@
 class Game {
-    constructor() {
+    constructor(connector) {
         this.state = new GameState();
         this.view = new GameRenderer();
+        this.connector = connector;
     }
 
-    init = function(boardDOM) {
+    init = function(boardDOM, dataSender) {
+        this.send = dataSender;
+
         this.state.init();
         this.view.init(boardDOM, this.pieceClickCallback.bind(this));
 
@@ -16,11 +19,19 @@ class Game {
     }
 
     start = function() {
+        this.state.init();
         this.state.setPositions({11: 15, 23: -15});
         this.state.setEndPositions({"white": 12, "black": 0});
         this.state.setWays({"white": -1, "black": -1});
 
         this.render();
+    }
+
+    update = function(data) {
+        this.state.positions = data.positions;
+        this.render(data.animations);
+
+        console.log("here is game update");
     }
 
     pieceClickCallback = function(event) {
@@ -31,8 +42,17 @@ class Game {
         if(!this.state.isMovable(from, range)) return;
 
         let to = this.state.getTo(from, range);
-        this.state.move(from, to);
+        let animations = [{"name": "movePiece", "from": from, "to": to}];
 
-        this.render([{"name": "movePiece", "from": from, "to": to, "el": piece}]);
+        this.state.move(from, to);
+        let data = {
+            "positions": this.state.getPositions(),
+            "animations": animations
+        };
+
+        console.log(data);
+        this.send(data);
+
+        this.render(animations);
     }
 }
