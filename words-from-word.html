@@ -63,7 +63,7 @@
 
     for(chunk of chunks) {
         let column = $('<div class="col-sm-1 text-center"></div>');
-        column.append(chunk.map(w => $("<p>" + w + "</p>")));
+        column.append(chunk.map(w => {return $(`<p><a href='https://www.google.com/search?q=${w} wiki'>${w}</a></p>`)}));
         $("#result-container").append(column);
     }
   }
