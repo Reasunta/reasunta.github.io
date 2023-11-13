@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Калькулятор комбинаций Маджонга</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/mahjong.css">
+</head>
+<body class="text-center" ontouchstart="" onmouseover="">
+<div class="container adding-screen">
+    <div class="container screen">
+    </div>
+    <div class="container control-panel">
+        <div class="row">
+            <div class="col-xs-3"><button class="btn btn-default restart" type="button"><span
+                    class="glyphicon glyphicon-refresh"></span></button></div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-3"></div>
+        </div>
+    </div>
+    <div id="bamboo-keyboard" class="container keyboard">
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-1" type="button" value="bamboo-1"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-2" type="button" value="bamboo-2"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-3" type="button" value="bamboo-3"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-left" type="button"><span
+                        class="glyphicon glyphicon-chevron-left"></span></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-4" type="button" value="bamboo-4"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-5" type="button" value="bamboo-5"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-6" type="button" value="bamboo-6"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default save imaged" type="button"></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-7" type="button" value="bamboo-7"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-8" type="button" value="bamboo-8"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged bamboo-9" type="button" value="bamboo-9"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-right to-dot" type="button"></button>
+            </div>
+        </div>
+    </div>
+    <div id="dot-keyboard" style="display:none" class="container keyboard">
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-1" type="button" value="dot-1"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-2" type="button" value="dot-2"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-3" type="button" value="dot-3"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-left to-bamboo" type="button">></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-4" type="button" value="dot-4"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-5" type="button" value="dot-5"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-6" type="button" value="dot-6"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default save imaged" type="button"></span></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-7" type="button" value="dot-7"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-8" type="button" value="dot-8"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dot-9" type="button" value="dot-9"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-right to-symbols" type="button"></button>
+            </div>
+        </div>
+    </div>
+    <div id="symbol-keyboard" style="display:none" class="container keyboard">
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-1" type="button" value="symbol-1"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-2" type="button" value="symbol-2"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-3" type="button" value="symbol-3"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-left to-dot" type="button"></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-4" type="button" value="symbol-4"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-5" type="button" value="symbol-5"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-6" type="button" value="symbol-6"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default save imaged" type="button"></span></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-7" type="button" value="symbol-7"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-8" type="button" value="symbol-8"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged symbol-9" type="button" value="symbol-9"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-right" type="button"><span
+                        class="glyphicon glyphicon-chevron-right"></span></button>
+            </div>
+        </div>
+    </div>
+    <div id="wd-keyboard" style="display:none" class="container keyboard">
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dragon-red" type="button" value="dragon-red"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dragon-green" type="button" value="dragon-green"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged dragon-white" type="button" value="dragon-white"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-left to-symbols" type="button"></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged wind-ost" type="button" value="wind-ost"></button>
+            </div>
+            <div class="col-xs-3 key"></div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged wind-south" type="button" value="wind-south"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default save imaged" type="button"></button>
+            </div>
+        </div>
+        <div class="row button-line">
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged wind-west" type="button" value="wind-west"></button>
+            </div>
+            <div class="col-xs-3 key"></div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default add imaged wind-north" type="button" value="wind-north"></button>
+            </div>
+            <div class="col-xs-3 key">
+                <button class="btn btn-default imaged move-right to-bamboo" type="button"></button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    const generateRandomString = (length) => {
+      let result = '';
+      const characters =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    };
+
+    var keyboards = [$("#bamboo-keyboard"), $("#dot-keyboard"), $("#symbol-keyboard"), $("#wd-keyboard")];
+    var currBoard = 0;
+
+    var showBoard = function() {
+        for(b in keyboards) { if (currBoard == b) {keyboards[b].show();} else {keyboards[b].hide();}}
+    }
+
+    var getLeftKeyboard = function() {
+        currBoard = (currBoard + keyboards.length - 1) % keyboards.length
+        showBoard();
+    }
+
+    var getRightKeyboard = function() {
+        currBoard = (currBoard + 1) % keyboards.length
+        showBoard();
+    }
+    var model = {items: [], currentLine: 0};
+
+    var renderModel = function() {
+        $(".screen").empty();
+        lines = {};
+        lines[model.currentLine] = [];
+
+        for(item of model.items) {
+            if(!lines.hasOwnProperty(item.line)) lines[item.line] = [];
+            lines[item.line].push(item);
+        }
+
+        for(i in lines) renderLine(lines[i], i==model.currentLine);
+    }
+
+    renderLine = function(line, isCurrent) {
+        let lineDOM = $('<div class="line"></div>');
+        if(isCurrent) lineDOM.addClass("current");
+        for(el in line) {
+            let itemDOM = $('<img class="imaged"/>');
+            itemDOM.addClass(line[el].value);
+            itemDOM.attr("data-id", line[el].id);
+            itemDOM.on("click", removeTile);
+            lineDOM.append(itemDOM);
+        }
+        $(".screen").append(lineDOM);
+    }
+
+    addTile = function(btn) {
+        let value = btn.target.value;
+        model.items.push({"value": value, "line": model.currentLine, "id":generateRandomString(7)});
+        renderModel();
+    }
+
+    removeTile = function(img) {
+        let itemId = $(img.target).attr("data-id");
+        let removedItem = model.items.filter(el => el.id == itemId)[0];
+        model.currentLine = removedItem.line;
+
+        model.items = model.items.filter(el => el.id != itemId);
+
+        renderModel();
+    }
+
+    saveLine = function() {
+
+        model.currentLine = model.items.length > 0 ? Math.max(...model.items.map(el => el.line)) + 1 : 0;
+        renderModel();
+    }
+
+    restart = function() {
+        model = {items: [], currentLine: 0};
+        renderModel();
+    }
+
+    $(".add").on("click", addTile);
+    $(".save").on("click", saveLine);
+    $(".move-left").on("click", getLeftKeyboard);
+    $(".move-right").on("click", getRightKeyboard);
+
+    $(document).ready(restart);
+    $(".control-panel button.restart").on("click", restart);
+
+</script>
+</html>

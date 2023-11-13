@@ -1,0 +1,188 @@
+div.screen {
+    height:40vh;
+    border: 1px solid black;
+    padding: 5px;
+    text-align:left;
+}
+
+div.control-panel {
+    height:10vh;
+    background-color:yellow;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+div.keyboard {
+    height:39vh;
+}
+
+div.button-line {
+    height: 13vh;
+}
+
+div.key {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    height: 11vh;
+}
+
+.imaged {
+    aspect-ratio: 3 / 4;
+    height: 100%;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center;
+}
+
+.btn:hover, .btn:active, .btn-focus {
+    -webkit-box-shadow:0px 0px 20px #FFF;
+    -moz-box-shadow:0px 0px 20px #FFF;
+    -o-box-shadow:0px 0px 20px #FFF;
+    box-shadow:0px 0px 20px #FFF;
+}
+
+
+.bamboo-1 {
+    background-image: url('../jpg/bamboo-1.jpg');
+}
+.bamboo-2 {
+    background-image: url('../jpg/bamboo-2.jpg');
+}
+.bamboo-3 {
+    background-image: url('../jpg/bamboo-3.jpg');
+}
+.bamboo-4 {
+    background-image: url('../jpg/bamboo-4.jpg');
+}
+.bamboo-5 {
+    background-image: url('../jpg/bamboo-5.jpg');
+}
+.bamboo-6 {
+    background-image: url('../jpg/bamboo-6.jpg');
+}
+.bamboo-7 {
+    background-image: url('../jpg/bamboo-7.jpg');
+}
+.bamboo-8 {
+    background-image: url('../jpg/bamboo-8.jpg');
+}
+.bamboo-9 {
+    background-image: url('../jpg/bamboo-9.jpg');
+}
+.dot-1 {
+    background-image: url('../jpg/dot-1.jpg');
+}
+.dot-2 {
+    background-image: url('../jpg/dot-2.jpg');
+}
+.dot-3 {
+    background-image: url('../jpg/dot-3.jpg');
+}
+.dot-4 {
+    background-image: url('../jpg/dot-4.jpg');
+}
+.dot-5 {
+    background-image: url('../jpg/dot-5.jpg');
+}
+.dot-6 {
+    background-image: url('../jpg/dot-6.jpg');
+}
+.dot-7 {
+    background-image: url('../jpg/dot-7.jpg');
+}
+.dot-8 {
+    background-image: url('../jpg/dot-8.jpg');
+}
+.dot-9 {
+    background-image: url('../jpg/dot-9.jpg');
+}
+.symbol-1 {
+    background-image: url('../jpg/symbol-1.jpg');
+}
+.symbol-2 {
+    background-image: url('../jpg/symbol-2.jpg');
+}
+.symbol-3 {
+    background-image: url('../jpg/symbol-3.jpg');
+}
+.symbol-4 {
+    background-image: url('../jpg/symbol-4.jpg');
+}
+.symbol-5 {
+    background-image: url('../jpg/symbol-5.jpg');
+}
+.symbol-6 {
+    background-image: url('../jpg/symbol-6.jpg');
+}
+.symbol-7 {
+    background-image: url('../jpg/symbol-7.jpg');
+}
+.symbol-8 {
+    background-image: url('../jpg/symbol-8.jpg');
+}
+.symbol-9 {
+    background-image: url('../jpg/symbol-9.jpg');
+}
+.dragon-red {
+    background-image: url('../jpg/dragon-red.jpg');
+}
+.dragon-green {
+    background-image: url('../jpg/dragon-green.jpg');
+}
+.dragon-white {
+    background-image: url('../jpg/dragon-white.jpg');
+}
+.wind-ost {
+    background-image: url('../jpg/wind-ost.jpg');
+}
+.wind-south {
+    background-image: url('../jpg/wind-south.jpg');
+}
+.wind-west {
+    background-image: url('../jpg/wind-west.jpg');
+}
+.wind-north {
+    background-image: url('../jpg/wind-north.jpg');
+}
+button.save {
+    background-image: url('../jpg/save.jpg');
+}
+.move-right.to-dot{
+    background-image: url('../jpg/right-to-dot.jpg');
+}
+.move-right.to-symbols{
+    background-image: url('../jpg/right-to-symbols.jpg');
+}
+.move-right.to-bamboo{
+    background-image: url('../jpg/right-to-bamboo.jpg');
+}
+.move-left.to-dot{
+    background-image: url('../jpg/left-to-dot.jpg');
+}
+.move-left.to-symbols{
+    background-image: url('../jpg/left-to-symbols.jpg');
+}
+.move-left.to-bamboo{
+    background-image: url('../jpg/left-to-bamboo.jpg');
+}
+
+.line {
+    height: 20%;
+}
+.line.current {
+    background-color: lavender;
+}
+.line .imaged {
+    margin: 0 5px;
+}
+.control-panel div {
+    height: 100%;
+}
+
+.control-panel .btn {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+
