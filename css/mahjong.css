@@ -203,12 +203,11 @@ button.save {
 
 .option-score {
     height: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     cursor: pointer;
 }
-.option-score+.option-score {
-    margin-top: -5px;
+.calculation-screen div.checkbox {
+    margin: 0;
 }
 
 

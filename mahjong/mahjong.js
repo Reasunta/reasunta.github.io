@@ -83,7 +83,7 @@ renderLineForCalculation = function(line, isClosed) {
 }
 
 checkModel = function() {
-    $("button.calculate").prop("disabled", model.items.length != 13 && model.items.length != 14 )
+    $("button.calculate").prop("disabled", model.items.length < 13 )
 }
 
 addTile = function(btn) {
@@ -250,7 +250,7 @@ renderOptions = function(options, total) {
             ?  /x\d+/.test(optionScores[key]) ? `x${+options[key] * +optionScores[key].replace("x", "")}` : optionScores[key]
             : "";
 
-        $(`.calculation-screen .option-scores label[for="${key}"]`).empty().append(score);
+        $(`.calculation-screen label[for="${key}"]`).empty().append(score);
 
         if(/x\d+/.test(score)) total = total * +score.replace("x", "");
         else if (/\d+/.test(score)) total = total + score;
