@@ -1,3 +1,6 @@
+div.calculation-screen {
+    height: 79vh;
+}
 div.screen {
     height:40vh;
     border: 1px solid black;
@@ -176,13 +179,37 @@ button.save {
 .line .imaged {
     margin: 0 5px;
 }
+.line .closing {
+    float: right;
+}
 .control-panel div {
     height: 100%;
 }
 
 .control-panel .btn {
-    height: 100%;
-    aspect-ratio: 1 / 1;
+    height: 70%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
 }
+
+.calculated-line, .line-result, .line-score {
+    height:6vh;
+    margin: 5px 0;
+}
+.line-result, .line-score {
+    display: grid;
+    align-content: center;
+}
+
+.option-score {
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.option-score+.option-score {
+    margin-top: -5px;
+}
+
 
 

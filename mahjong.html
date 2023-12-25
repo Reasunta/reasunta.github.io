@@ -9,18 +9,32 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./css/mahjong.css">
 </head>
-<body class="text-center" ontouchstart="" onmouseover="">
+<body class="" ontouchstart="" onmouseover="">
+<div class="container control-panel text-center">
+    <div class="row">
+        <div class="col-xs-3">
+            <span class="label label-default">Очистить</span>
+            <button class="btn btn-default restart" type="button"><span
+                    class="glyphicon glyphicon-refresh"></span></button>
+        </div>
+        <div class="col-xs-3">
+            <span class="onw-wind-label label label-default">Ваш ветер</span>
+            <button class="own-wind btn btn-default imaged wind-north" type="button" value="wind-north"></button>
+        </div>
+        <div class="col-xs-3">
+            <span class="supreme-wind-label label label-default">Преим. ветер</span>
+            <button class="supreme-wind btn btn-default imaged wind-ost" type="button" value="wind-ost"></button>
+        </div>
+        <div class="col-xs-3">
+            <span class="label label-default">Посчитать</span>
+            <button class="btn btn-default calculate" type="button">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+        </div>
+    </div>
+</div>
 <div class="container adding-screen">
     <div class="container screen">
-    </div>
-    <div class="container control-panel">
-        <div class="row">
-            <div class="col-xs-3"><button class="btn btn-default restart" type="button"><span
-                    class="glyphicon glyphicon-refresh"></span></button></div>
-            <div class="col-xs-3"></div>
-            <div class="col-xs-3"></div>
-            <div class="col-xs-3"></div>
-        </div>
     </div>
     <div id="bamboo-keyboard" class="container keyboard">
         <div class="row button-line">
@@ -197,97 +211,82 @@
         </div>
     </div>
 </div>
+<div class="container calculation-screen">
+    <div class="row">
+        <div class="col-xs-10"><h4>Итоговый счет и комбинации</h4></div>
+        <div class="col-xs-2"><h4 id="totalScore">0</h4></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5 lines"></div>
+        <div class="col-xs-5 results"></div>
+        <div class="col-xs-2 line-scores">
+            <div class="line-score"><label>20</label></div>
+        </div>
+    </div>
+    <h4>Условия</h4>
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasDragonFigure">Панг или Конг
+                Драконов</label></div>
+            <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasWindFigure">Панг или Конг
+                собственных / Преим. Ветров</label></div>
+            <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasClearTypeDW">Чистая масть (с
+                Драконами и Ветрами)</label></div>
+            <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasClearType">Чистая масть (без
+                Драконов и Ветров)</label></div>
+            <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasNoCommons">Только 1-ы, 9-ки,
+                Драконы и Ветры</label></div>
+            <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasNoSuites">Только Драконы и
+                Ветры</label></div>
+            <hr/>
+            <div class="mahjong-only">
+                <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasMahjong">Собран
+                    Маджонг</label></div>
+                <div class="checkbox"><label><input type="checkbox" id="lastTileIsWall">Последняя кость взята со
+                    стены</label></div>
+                <div class="checkbox"><label><input type="checkbox" id="lastTileIsOnly">Последняя кость единственно
+                    возможная</label></div>
+                <div class="checkbox disabled"><label><input type="checkbox" disabled id="hasNoChou">Нет ни одной
+                    последовательности</label></div>
+                <div class="checkbox"><label><input type="checkbox" id="hasNoScores">Нет очков (мизер)</label></div>
+                <div class="checkbox"><label><input type="checkbox" id="finishWithFreeTile">Маджонг Свободной
+                    костью</label></div>
+                <div class="checkbox"><label><input type="checkbox" id="finishWithLastTile">Маджонг Последней допустимой
+                    костью</label></div>
+                <div class="checkbox"><label><input type="checkbox" id="stealOpenGang">Совершено ограбление открытого
+                    Конга</label></div>
+                <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasThreeWinds">В комбинации 3
+                    группы и пара Ветров</label></div>
+                <div class="checkbox disabled"><label><input disabled type="checkbox" id="hasTwoDragons">В комбинации 2
+                    группы и пара Драконов</label></div>
+                <div class="checkbox"><label><input type="checkbox" id="oneStepToWin">Просящая рука с начала
+                    игры</label></div>
+            </div>
+        </div>
+        <div class="col-xs-2 option-scores">
+            <div class="option-score"><label for="hasDragonFigure"></label></div>
+            <div class="option-score"><label for="hasWindFigure"></label></div>
+            <div class="option-score"><label for="hasClearTypeDW"></label></div>
+            <div class="option-score"><label for="hasClearType"></label></div>
+            <div class="option-score"><label for="hasNoCommons"></label></div>
+            <div class="option-score"><label for="hasNoSuites"></label></div>
+            <hr/>
+            <div class="mahjong-only">
+                <div class="option-score"><label for="hasMahjong"></label></div>
+                <div class="option-score"><label for="lastTileIsWall"></label></div>
+                <div class="option-score"><label for="lastTileIsOnly"></label></div>
+                <div class="option-score"><label for="hasNoChou"></label></div>
+                <div class="option-score"><label for="hasNoScores"></label></div>
+                <div class="option-score"><label for="finishWithFreeTile"></label></div>
+                <div class="option-score"><label for="finishWithLastTile"></label></div>
+                <div class="option-score"><label for="stealOpenGang"></label></div>
+                <div class="option-score"><label for="hasThreeWinds"></label></div>
+                <div class="option-score"><label for="hasTwoDragons"></label></div>
+                <div class="option-score"><label for="oneStepToWin"></label></div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-<script>
-    const generateRandomString = (length) => {
-      let result = '';
-      const characters =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      const charactersLength = characters.length;
-      for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-      return result;
-    };
-
-    var keyboards = [$("#bamboo-keyboard"), $("#dot-keyboard"), $("#symbol-keyboard"), $("#wd-keyboard")];
-    var currBoard = 0;
-
-    var showBoard = function() {
-        for(b in keyboards) { if (currBoard == b) {keyboards[b].show();} else {keyboards[b].hide();}}
-    }
-
-    var getLeftKeyboard = function() {
-        currBoard = (currBoard + keyboards.length - 1) % keyboards.length
-        showBoard();
-    }
-
-    var getRightKeyboard = function() {
-        currBoard = (currBoard + 1) % keyboards.length
-        showBoard();
-    }
-    var model = {items: [], currentLine: 0};
-
-    var renderModel = function() {
-        $(".screen").empty();
-        lines = {};
-        lines[model.currentLine] = [];
-
-        for(item of model.items) {
-            if(!lines.hasOwnProperty(item.line)) lines[item.line] = [];
-            lines[item.line].push(item);
-        }
-
-        for(i in lines) renderLine(lines[i], i==model.currentLine);
-    }
-
-    renderLine = function(line, isCurrent) {
-        let lineDOM = $('<div class="line"></div>');
-        if(isCurrent) lineDOM.addClass("current");
-        for(el in line) {
-            let itemDOM = $('<img class="imaged"/>');
-            itemDOM.addClass(line[el].value);
-            itemDOM.attr("data-id", line[el].id);
-            itemDOM.on("click", removeTile);
-            lineDOM.append(itemDOM);
-        }
-        $(".screen").append(lineDOM);
-    }
-
-    addTile = function(btn) {
-        let value = btn.target.value;
-        model.items.push({"value": value, "line": model.currentLine, "id":generateRandomString(7)});
-        renderModel();
-    }
-
-    removeTile = function(img) {
-        let itemId = $(img.target).attr("data-id");
-        let removedItem = model.items.filter(el => el.id == itemId)[0];
-        model.currentLine = removedItem.line;
-
-        model.items = model.items.filter(el => el.id != itemId);
-
-        renderModel();
-    }
-
-    saveLine = function() {
-
-        model.currentLine = model.items.length > 0 ? Math.max(...model.items.map(el => el.line)) + 1 : 0;
-        renderModel();
-    }
-
-    restart = function() {
-        model = {items: [], currentLine: 0};
-        renderModel();
-    }
-
-    $(".add").on("click", addTile);
-    $(".save").on("click", saveLine);
-    $(".move-left").on("click", getLeftKeyboard);
-    $(".move-right").on("click", getRightKeyboard);
-
-    $(document).ready(restart);
-    $(".control-panel button.restart").on("click", restart);
-
-</script>
+<script src="mahjong/mahjong.js"></script>
 </html>
