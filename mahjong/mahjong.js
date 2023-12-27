@@ -138,6 +138,8 @@ changeWind = function(el) {
 
     $(el.target).removeClass(currValue);
     $(el.target).addClass(newValue);
+
+    calculateResults();
 }
 
 renderLineResults = function(result) {
