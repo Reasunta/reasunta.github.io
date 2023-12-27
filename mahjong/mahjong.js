@@ -47,7 +47,7 @@ var renderModel = function() {
 }
 
 renderLine = function(line, isCurrent, isClosed, lineNumber) {
-    let lineDOM = $('<div class="line"></div>');
+    let lineDOM = $('<div class="line"></div>').attr("line-number", lineNumber);
     if(isCurrent) lineDOM.addClass("current");
     for(el in line) {
         let itemDOM = $('<img class="imaged"/>');
@@ -66,7 +66,12 @@ renderLine = function(line, isCurrent, isClosed, lineNumber) {
     }
     else closeBtn.append($('<span class="glyphicon glyphicon-eye-open"></span>'));
     closeBtn.on("click", switchLineClosing);
+
     lineDOM.append(closeBtn);
+    lineDOM.on("click", (el) => {
+        model.currentLine = $(el.target).attr("line-number");
+        renderModel();
+    });
 
     $(".screen").append(lineDOM);
 }
@@ -83,7 +88,7 @@ renderLineForCalculation = function(line, isClosed) {
 }
 
 checkModel = function() {
-    $("button.calculate").prop("disabled", model.items.length < 13 )
+    $("button.calculate").prop("disabled", model.items.length < 13 || model.items.length > 18);
 }
 
 addTile = function(btn) {
@@ -110,6 +115,9 @@ switchLineClosing = function(el) {
 }
 
 saveLine = function() {
+    let newLine = Math.max(...model.items.map(el => el.line)) + 1;
+    if(newLine > 4) return;
+
     model.currentLine = model.items.length > 0 ? Math.max(...model.items.map(el => el.line)) + 1 : 0;
     model.isClosed[model.currentLine] = false;
     renderModel();
