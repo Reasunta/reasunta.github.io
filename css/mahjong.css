@@ -193,7 +193,7 @@ button.save {
 }
 
 .calculated-line, .line-result, .line-score {
-    height:6vh;
+    height:5vh;
     margin: 5px 0;
 }
 .line-result, .line-score {

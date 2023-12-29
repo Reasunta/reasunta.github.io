@@ -30,13 +30,7 @@ var getRightKeyboard = function() {
 var renderModel = function() {
     $(".screen").empty();
     $(".calculation-screen .lines").empty();
-    lines = {};
-    lines[model.currentLine] = [];
-
-    for(item of model.items) {
-        if(!lines.hasOwnProperty(item.line)) lines[item.line] = [];
-        lines[item.line].push(item);
-    }
+    lines = mapItemsToLines();
 
     for(i in lines) {
         renderLine(lines[i], i==model.currentLine, model.isClosed[i], i);
@@ -44,6 +38,18 @@ var renderModel = function() {
     };
 
     checkModel();
+}
+
+mapItemsToLines = function() {
+    let result  = {};
+    result[model.currentLine] = [];
+
+    for(item of model.items) {
+        if(!result.hasOwnProperty(item.line)) result[item.line] = [];
+        result[item.line].push(item);
+    }
+
+    return result;
 }
 
 renderLine = function(line, isCurrent, isClosed, lineNumber) {
@@ -88,10 +94,14 @@ renderLineForCalculation = function(line, isClosed) {
 }
 
 checkModel = function() {
-    $("button.calculate").prop("disabled", model.items.length < 13 || model.items.length > 18);
+    let isItemCountCorrect = model.items.length > 12 && model.items.length < 19;
+    let result = isItemCountCorrect;
+    $("button.calculate").prop("disabled", !result);
 }
 
 addTile = function(btn) {
+    if (model.items.filter(i => i.line == model.currentLine).length >= 4) return;
+
     let value = btn.target.value;
     model.items.push({"value": value, "line": model.currentLine, "id":generateRandomString(7)});
     renderModel();
