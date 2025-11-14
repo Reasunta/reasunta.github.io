@@ -61,8 +61,11 @@
         }
 
         .label {
-            font-size: 12px;
-            color: var(--muted)
+            font-size: 14px;
+            font-weight: bolder;
+        }
+        .profile-row strong {
+            color: var(--muted);
         }
 
         /* main area */
@@ -101,8 +104,13 @@
 
         .profiles {
             display: grid;
-            grid-template-columns:1fr 1fr;
+            grid-template-columns:1fr;
             gap: 12px
+        }
+
+        #main_profile, #secondary_profile {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
         }
 
         .profile-card {
@@ -113,9 +121,10 @@
         }
 
         .profile-row {
+            text-align: center;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             padding: 6px 0;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.02)
         }
@@ -333,7 +342,7 @@
     <div class="search-box">
         <input id="search" placeholder="Поиск по карьерам..."/>
     </div>
-    <div class="results" id="results">
+    <div class="results hidden" id="results">
     </div>
 </div>
 <div class="careers hidden" id="careers-block">
@@ -352,7 +361,7 @@
                 <div class="quote" id="quote">"..."</div>
             </div>
             <div class="description" id="description">Описание...</div>
-
+            <div class="description" id="requirements">Особые условия...</div>
             <div class="profiles">
                 <div class="profile-card">
                     <div class="section-title">Основные характеристики</div>
@@ -406,6 +415,8 @@
         el('name').textContent = item.name;
         el('quote').textContent = item.quote;
         el('description').textContent = item.description;
+        el('requirements').textContent = item.requirements;
+        if (!item.requirements) el('requirements').classList.add("hidden")
 
         // trappings
         const trap = el('trappings');
@@ -424,18 +435,7 @@
             row.className = 'profile-row';
             const name = document.createElement('div');
             name.innerHTML = `<strong>${k.toUpperCase()}</strong> <div class="label">${v.label}</div>`;
-            const barWrap = document.createElement('div');
-            barWrap.style.width = '40%';
-            const bar = document.createElement('div');
-            bar.className = 'stat-bar';
-            const inner = document.createElement('i');
-            // interpret value: clamp 0..40
-            const pct = Math.max(0, Math.min(100, parseFloat(v.value) * 2.5));
-            inner.style.width = pct + '%';
-            bar.appendChild(inner);
-            barWrap.appendChild(bar);
             row.appendChild(name);
-            row.appendChild(barWrap);
             mp.appendChild(row);
         });
 
@@ -445,7 +445,7 @@
         Object.entries(item.secondary_profile || {}).forEach(([k, v]) => {
             const row = document.createElement('div');
             row.className = 'profile-row';
-            row.innerHTML = `<div><strong>${k.toUpperCase()}</strong> <div class="label">${v.label}</div></div><div class="v">${v.value || '—'}</div>`;
+            row.innerHTML = `<div><strong>${k.toUpperCase()}</strong> <div class="label">${v.label}</div></div>`;
             sp.appendChild(row);
         });
 
@@ -498,6 +498,11 @@
     function renderSearchResults(list) {
         let res = el("results")
         res.innerHTML = '';
+        if (list.length === 0) {
+            res.classList.add("hidden")
+            return
+        }
+        res.classList.remove("hidden")
         list.forEach(i => {
             const div = document.createElement('div');
             div.className = 'item';
