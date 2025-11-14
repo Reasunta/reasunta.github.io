@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Карьеры wfrp 2nd</title>
+    <style>
+        :root {
+            --bg: #0f1724;
+            --card: #0b1220;
+            --muted: #98a0b3;
+            --accent: #8b5cf6;
+            --glass: rgba(255, 255, 255, 0.03);
+            --card-radius: 14px;
+            --gap: 14px;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        body {
+            background: linear-gradient(180deg, var(--bg) 0%, #071025 100%);
+            color: #e6eef8;
+        }
+
+        .careers {
+            margin: 0;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 1000px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: var(--card-radius);
+            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.7);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--gap);
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(6px);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .section-title {
+            font-size: 13px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em
+        }
+
+        .ul-title {
+            padding-left: 40px;
+        }
+
+        .label {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        /* main area */
+        .right {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .description {
+            background: rgba(255, 255, 255, 0.01);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            color: #dbe9fb
+        }
+
+        .profiles {
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 12px
+        }
+
+        .profile-card {
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
+            border: 1px solid rgba(255, 255, 255, 0.02)
+        }
+
+        .profile-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.02)
+        }
+
+        .profile-row:last-child {
+            border-bottom: 0
+        }
+
+        .stat-bar {
+            height: 10px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            margin-left: 12px
+        }
+
+        .stat-bar > i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #60a5fa);
+            border-radius: 99px
+        }
+
+        ul.pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            margin: 0;
+            list-style: none
+        }
+
+        ul.pills li {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px 10px;
+            border-radius: 999px;
+            font-size: 13px
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap: 12px
+        }
+
+        #skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /* responsive */
+        @media (max-width: 880px) {
+            .card {
+                grid-template-columns:1fr;
+            }
+
+            .profiles {
+                grid-template-columns:1fr
+            }
+
+            .grid-4 {
+                grid-template-columns:repeat(2, 1fr)
+            }
+        }
+
+        /* tooltip */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .tooltip-box {
+            display: none;
+            position: absolute;
+            left: 110%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            padding: 8px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 13px;
+        }
+
+        .tooltip:hover .tooltip-box {
+            display: block;
+        }
+
+        .back-btn {
+            margin-left: 16px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e6eef8;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateY(-1px);
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .search {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg) 0%, #071025 100%);
+            color: #e6eef8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 16px;
+        }
+
+        .results {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 8px;
+            backdrop-filter: blur(6px);
+            z-index: 20;
+            margin-top: 56px;
+
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 600px;
+            background: var(--card);
+            border-radius: 999px;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: 0.2s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+        }
+
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .results {
+
+        }
+
+        /* Карточка результата */
+        .item {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            padding-left: 20px;
+            border-radius: var(--card-radius);
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 16px;
+        }
+
+        .item:hover {
+            border: 1px solid var(--accent);
+        }
+
+        .item-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        a:-webkit-any-link {
+            color: inherit;
+            text-decoration: inherit;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="search hidden" id="search-block">
+    <div class="search-box">
+        <input id="search" placeholder="Поиск по карьерам..."/>
+    </div>
+    <div class="results" id="results">
+    </div>
+</div>
+<div class="careers hidden" id="careers-block">
+    <div class="card" id="card-root">
+        <main class="right">
+            <div class="header">
+                <div>
+                    <div class="title" id="name">Name</div>
+                    <div class="subtitle" id="roles">—</div>
+                </div>
+                <a href="#" id="backBtn">
+                    <div class="back-btn">Назад к поиску</div>
+                </a>
+            </div>
+            <div>
+                <div class="quote" id="quote">"..."</div>
+            </div>
+            <div class="description" id="description">Описание...</div>
+
+            <div class="profiles">
+                <div class="profile-card">
+                    <div class="section-title">Основные характеристики</div>
+                    <div id="main_profile"></div>
+                </div>
+
+                <div class="profile-card">
+                    <div class="section-title">Вторичные характеристики</div>
+                    <div id="secondary_profile"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title ul-title">Навыки</div>
+                <ul id="skills"></ul>
+            </div>
+
+            <div class="grid-4">
+                <div>
+                    <div class="section-title ul-title">Таланты</div>
+                    <ul id="talents"></ul>
+                </div>
+                <div>
+                    <div class="section-title ul-title">Входы</div>
+                    <ul id="career_entries"></ul>
+                </div>
+                <div>
+                    <div class="section-title ul-title">Выходы</div>
+                    <ul id="career_exits"></ul>
+                </div>
+                <div>
+                    <div class="section-title ul-title">Снаряжение</div>
+                    <ul id="trappings"></ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+<script src="wfrp2-careers/data.js"></script>
+<script>
+    // --- helper ---
+    const el = id => document.getElementById(id);
+    const getBaseURL = () => {
+        const url = new URL(window.location.href);
+        url.search = "";
+        return url.toString()
+    }
+
+    function openCareer(item) {
+        el('name').textContent = item.name;
+        el('quote').textContent = item.quote;
+        el('description').textContent = item.description;
+
+        // trappings
+        const trap = el('trappings');
+        trap.innerHTML = '';
+        (item.trappings || []).forEach(t => {
+            const li = document.createElement('li');
+            li.textContent = t;
+            trap.appendChild(li)
+        });
+
+        // main_profile render with progress bars
+        const mp = el('main_profile');
+        mp.innerHTML = '';
+        Object.entries(item.main_profile || {}).forEach(([k, v]) => {
+            const row = document.createElement('div');
+            row.className = 'profile-row';
+            const name = document.createElement('div');
+            name.innerHTML = `<strong>${k.toUpperCase()}</strong> <div class="label">${v.label}</div>`;
+            const barWrap = document.createElement('div');
+            barWrap.style.width = '40%';
+            const bar = document.createElement('div');
+            bar.className = 'stat-bar';
+            const inner = document.createElement('i');
+            // interpret value: clamp 0..40
+            const pct = Math.max(0, Math.min(100, parseFloat(v.value) * 2.5));
+            inner.style.width = pct + '%';
+            bar.appendChild(inner);
+            barWrap.appendChild(bar);
+            row.appendChild(name);
+            row.appendChild(barWrap);
+            mp.appendChild(row);
+        });
+
+        // secondary
+        const sp = el('secondary_profile');
+        sp.innerHTML = '';
+        Object.entries(item.secondary_profile || {}).forEach(([k, v]) => {
+            const row = document.createElement('div');
+            row.className = 'profile-row';
+            row.innerHTML = `<div><strong>${k.toUpperCase()}</strong> <div class="label">${v.label}</div></div><div class="v">${v.value || '—'}</div>`;
+            sp.appendChild(row);
+        });
+
+        // lists
+        function renderList(id, arr) {
+            const node = el(id);
+            node.innerHTML = '';
+            (arr || []).forEach(x => {
+                const li = document.createElement('li');
+                li.textContent = x;
+                node.appendChild(li)
+            })
+        }
+
+        function renderCareerList(id, arr) {
+            const node = el(id);
+            node.innerHTML = '';
+            (arr || []).forEach(x => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = getBaseURL() + `?name=${x}`
+                a.textContent = x;
+                li.appendChild(a)
+                node.appendChild(li)
+            })
+        }
+
+        renderList('skills', item.skills);
+
+        // render talents with tooltip
+        const talentsNode = el('talents');
+        talentsNode.innerHTML = '';
+        (item.talents || []).forEach(t => {
+            const li = document.createElement('li');
+            li.className = 'talent-item tooltip';
+            li.innerHTML = `${t}<span class="tooltip-box"><strong>${t}</strong><br>Описание таланта...</span>`;
+            talentsNode.appendChild(li);
+        });
+        renderCareerList('career_entries', item.career_entries);
+        renderCareerList('career_exits', item.career_exits);
+
+        // roles/roles summary
+        const roles = [];
+        if (item.basic) roles.push('Basic');
+        if (item.special) roles.push('Special');
+        if (item.advanced) roles.push('Advanced');
+        el('roles').textContent = roles.length ? roles.join(' • ') : '—';
+    }
+
+    function renderSearchResults(list) {
+        let res = el("results")
+        res.innerHTML = '';
+        list.forEach(i => {
+            const div = document.createElement('div');
+            div.className = 'item';
+            div.innerHTML = `<a href="?name=${i.name}"><div class='item-title'>${i.name}</div></a>`;
+            res.appendChild(div);
+        });
+    }
+
+    // initialize
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("name")) {
+        el("backBtn").href = getBaseURL();
+        el("search-block").classList.add("hidden")
+        el("careers-block").classList.remove("hidden")
+
+        const cName = params.get("name") || "Abbot"
+        const career = data.filter(c => c.name === cName)[0] || {}
+        openCareer(career);
+    } else {
+        el("search-block").classList.remove("hidden")
+        el("careers-block").classList.add("hidden")
+    }
+
+    el("search").addEventListener('input', (e) => {
+        const v = e.target.value.toLowerCase();
+        renderSearchResults(v ? data.filter(i => i.name.toLowerCase().includes(v)) : []);
+    });
+</script>
+</body>
+</html>
