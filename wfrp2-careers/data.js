@@ -25878,3 +25878,338 @@ const data = [
         ]
     }
 ];
+
+const talents = [
+    {
+        "name": "Acute Hearing",
+        "description": "Your hearing is exceptionally good. You gain a +20% bonus on Perception Skill Tests that involve listening."
+    },
+    {
+        "name": "Aethyric Attunement",
+        "description": "You are well attuned to the Aethyr and can more easily manipulate the Winds of Magic. You gain +10% bonus on Channelling and Magical Sense Skill Tests."
+    },
+    {
+        "name": "Alley Cat",
+        "description": "You are at home on the streets. You gain a +10% bonus on Concealment and Silent Move Skill Tests when in urban locations."
+    },
+    {
+        "name": "Ambidextrous",
+        "description": "You can use either hand equally well. You do not suffer the normal −20% WS or BS penalty when using a weapon in your secondary hand."
+    },
+    {
+        "name": "Arcane Lore",
+        "description": "You have studied one of the Empire's traditions of magic. Arcane Lore is unusual in that it is not one talent, but many. Each Arcane Lore talent is a separate magical proficiency, with the specialty noted in parenthesis. For example, Arcane Lore (Beasts) is a different talent than Arcane Lore (Fire). The most common Arcane Lores are Beasts, Death, Fire, the Heavens, Life, Light, Metal, and Shadow. If you know an Arcane Lore, you can attempt to cast any spell from that lore."
+    },
+    {
+        "name": "Armoured Casting",
+        "description": "Your prayers help you cast spells while wearing armour. Your Casting Roll penalty while wearing armour is reduced by 3 when you cast divine spells. Normally, you'd suffer a −3 penalty for wearing a mail shirt, for example, but with Armoured Casting this penalty would be reduced to 0."
+    },
+    {
+        "name": "Artistic",
+        "description": "You have true creative talent. You gain a +20% bonus on Trade (Artist) Tests and +10% on tests to Evaluate objects d’art."
+    },
+    {
+        "name": "Contortionist",
+        "description": "You can bend and manipulate your body in a myriad of unnatural ways. You gain a +10% bonus on relevant Performer Skill Tests and a +20% bonus on Agility Tests to escape from bonds, squeeze through narrow openings, and so on."
+    },
+    {
+        "name": "Coolheaded",
+        "description": "You gain a permanent +5% bonus to your Will Power Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Dark Lore",
+        "description": "You have embraced one of the forbidden arts of sorcery. Dark Lore is unusual in that it is not one talent, but many. Each Dark Lore talent is a separate magical proficiency, with the specialty noted in parenthesis. For example, Dark Lore (Chaos) is a different talent than Dark Lore (Necromancy). The most common Dark Lores are Chaos and Necromancy. If you know a Dark Lore, you can attempt to cast any spell from that lore."
+    },
+    {
+        "name": "Dark Magic",
+        "description": "You know how to manipulate Dhar (black magic) to fuel your spells. Using Dark Magic gives you more power, but is much more dangerous. When you cast a spell, you can opt to use the energy of Dhar to fuel it. When making a Casting Roll for a Dark Magic spell, you roll an extra d10 and drop the die with the lowest result. All dice count for the purposes of Tzeentch’s Curse. You must use Dark Magic when casting a Dark Lore spell."
+    },
+    {
+        "name": "Dealmaker",
+        "description": "You are a slick-talking businessman who knows how to close a deal. You gain a +10% bonus on Evaluate and Haggle Skill Tests."
+    },
+    {
+        "name": "Disarm",
+        "description": "If you hit with a melee attack, you may attempt to disarm your opponent instead of inflicting damage. Make an Opposed Agility Test. If you win, your opponent is disarmed and the weapon drops to the ground. It can be picked up with the ready action. If your opponent wins, he retains his weapon. Natural weapons (teeth, claws, etc.) cannot be disarmed."
+    },
+    {
+        "name": "Divine Lore",
+        "description": "Your dedication to your deity is such that your prayers can produce magical effects. Divine Lore is unusual in that it is not one talent, but many different ones. Each Divine Lore talent is a separate magical proficiency, with the specialty noted in parenthesis. For example, Divine Lore (Sigmar) is a different talent than Divine Lore (Ulric). If you know a Divine Lore, you can attempt to cast any spell from that lore."
+    },
+    {
+        "name": "Dwarfcraft",
+        "description": "Members of your race are natural craftsmen. You gain a +10% bonus on tests with the following Trade skills: Armourer, Brewer, Gem Cutter, Gunsmith, Miner, Smith, Stoneworker, and Weaponsmith."
+    },
+    {
+        "name": "Etiquette",
+        "description": "You are well versed in the social graces of the upper classes. You gain a +10% bonus on Charm and Gossip Skill Tests when dealing with the nobility. The bonus also applies in other situations in which knowing the proper etiquette is important (impersonating a noble with the Disguise skill, for instance)."
+    },
+    {
+        "name": "Excellent Vision",
+        "description": "Your eyes are keen. You gain a +10% bonus on Perception Skill Tests that involve sight, and on Lip Reading Skill Tests."
+    },
+    {
+        "name": "Fast Hands",
+        "description": "You are adept at touching melee opponents during spellcasting. You gain a +20% Weapon Skill bonus when casting touch spells."
+    },
+    {
+        "name": "Fearless",
+        "description": "You are either brave enough or crazy enough that you know no fear. You are immune to fear and treat terror as fear. You are also immune to the effects of the Intimidate skill and the Unsettling talent."
+    },
+    {
+        "name": "Flee!",
+        "description": "When your life is on the line, you are capable of impressive bursts of speed. When running away from combat or another dire threat, you gain a +1 bonus to your Movement Characteristic for 1d10 rounds."
+    },
+    {
+        "name": "Fleet Footed",
+        "description": "You gain a permanent +1 bonus to your Movement Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Flier",
+        "description": "You can fly. For more information on flying, see Chapter 6: Combat, Damage, and Movement."
+    },
+    {
+        "name": "Frenzy",
+        "description": "You can incite yourself into a frothing rage. You must spend 1 round psyching yourself up. The next round you lose control and go berserk, gaining a +10% bonus to Strength and Will Power but a −10% penalty to Weapon Skill and Intelligence. You must attack the nearest enemy in melee combat and may not flee or retreat."
+    },
+    {
+        "name": "Frightening",
+        "description": "You have a frightening appearance. You cause Fear."
+    },
+    {
+        "name": "Grudge-Born Fury",
+        "description": "Your people have a long list of grudges against the various Goblinoid races. You gain a +5% bonus to WS when attacking Orcs, Goblins, and Hobgoblins."
+    },
+    {
+        "name": "Hardy",
+        "description": "You gain a permanent +1 bonus to your Wounds Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Hedge Magic",
+        "description": "You are a self-taught spellcaster who has figured out how to work magic by trial and error. You can cast Petty Magic (Hedge) spells only without having the Speak Arcane Language skill; the Petty Magic (Hedge) talent is still required. You must roll an extra d10 when casting a spell. This counts for Tzeentch’s Curse."
+    },
+    {
+        "name": "Hoverer",
+        "description": "You can fly low to the ground. For more information on flying, see Chapter 6: Combat, Damage, and Movement."
+    },
+    {
+        "name": "Keen Senses",
+        "description": "You have naturally acute senses. You gain a +20% bonus on Perception Tests."
+    },
+    {
+        "name": "Lesser Magic",
+        "description": "You know a spell common to all types of magic. Lesser Magic is unusual in that it is not one talent, but many, and each must be acquired individually. Each Lesser Magic talent is a separate spell, with the spell name noted in parenthesis."
+    },
+    {
+        "name": "Lightning Parry",
+        "description": "When you make a swift attack, you can forego one of your attacks to gain a free parry. The limit of one parry per round remains in effect."
+    },
+    {
+        "name": "Lightning Reflexes",
+        "description": "You gain a permanent +5% bonus to your Agility Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Linguistics",
+        "description": "You have a natural affinity for languages. You gain a +10% bonus on all Read/Write and Speak Language Skill Tests."
+    },
+    {
+        "name": "Luck",
+        "description": "You were born lucky. At the most improbable times, things go your way. You gain an extra Fortune Point each day."
+    },
+    {
+        "name": "Marksman",
+        "description": "You gain a permanent +5% bonus to your Ballistic Skill Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Master Gunner",
+        "description": "You reduce the reload time of all black powder weapons by a half action. If you also have Rapid Reload, you gain the benefits of both talents."
+    },
+    {
+        "name": "Master Orator",
+        "description": "You are such an accomplished orator that you can fire up huge crowds. You can affect 100 times the normal number of people when using the Charm skill. You must have Public Speaking before you can gain this talent."
+    },
+    {
+        "name": "Meditation",
+        "description": "You can focus your mind and ignore the world around you. When performing ritual magic, you gain a bonus to your Casting Roll equal to your Magic Characteristic."
+    },
+    {
+        "name": "Menacing",
+        "description": "You have an imposing presence, due to size, demeanour, or appearance. You gain a +10% bonus on Intimidate and Torture Skill Tests."
+    },
+    {
+        "name": "Mighty Missile",
+        "description": "You know how to target magic missiles to inflict maximum damage. You gain a +1 bonus on damage rolls with magic missile spells."
+    },
+    {
+        "name": "Mighty Shot",
+        "description": "You know how to target missile attacks so they do extra damage. You gain a +1 bonus on damage rolls with missile weapons."
+    },
+    {
+        "name": "Mimic",
+        "description": "You have an ear for voices and accents and can reproduce them accurately. You gain a +10% bonus on Performer Skill Tests with verbal components, Disguise, and Speak Language when passing as a native."
+    },
+    {
+        "name": "Natural Weapons",
+        "description": "You have claws or vicious teeth that can rend apart your foes in combat. When attacking without a weapon, you count as being armed with a hand weapon. You cannot parry with natural weapons and cannot be disarmed."
+    },
+    {
+        "name": "Night Vision",
+        "description": "You can see extremely well in natural darkness up to 30 yards. This talent requires illumination equivalent to starlight."
+    },
+    {
+        "name": "Orientation",
+        "description": "You have an instinctive feel for direction. You rarely get lost and always know the direction of north. You gain a +10% bonus on Navigation Skill Tests."
+    },
+    {
+        "name": "Petty Magic",
+        "description": "You know the most basic of magical techniques. Each Petty Magic talent is a separate magical proficiency. The most common talents are Arcane, Divine, and Hedge."
+    },
+    {
+        "name": "Public Speaking",
+        "description": "You know how to work a crowd. You can affect 10 times the normal number of people when using the Charm skill."
+    },
+    {
+        "name": "Quick Draw",
+        "description": "Your speedy reflexes allow you to quickly draw weapons and other items. Once per round, you can use the ready action as a free action."
+    },
+    {
+        "name": "Rapid Reload",
+        "description": "You can reload ranged weapons with practiced ease. You reduce reload times by a half action. If the weapon already had a half-action reload, it becomes a free action."
+    },
+    {
+        "name": "Resistance To Chaos",
+        "description": "You are naturally resistant to the power of Chaos. You gain a +10% bonus on Will Power Tests to resist magic and other Chaos effects, and are immune to Chaos mutation. You cannot be a spellcaster."
+    },
+    {
+        "name": "Resistance To Disease",
+        "description": "Your constitution allows you to shrug off many diseases. You gain a +10% bonus on Toughness Tests to resist disease."
+    },
+    {
+        "name": "Resistance To Magic",
+        "description": "You are naturally resistant to the effects of magic. You gain a +10% bonus on Will Power Tests to resist magic."
+    },
+    {
+        "name": "Resistance To Poison",
+        "description": "Your hardiness allows you to ignore the effects of many poisons. You gain a +10% bonus on Toughness Tests to resist poison."
+    },
+    {
+        "name": "Rover",
+        "description": "You are at home in the wild. You gain a +10% bonus on Concealment and Silent Move Skill Tests when in rural locations."
+    },
+    {
+        "name": "Savvy",
+        "description": "You gain a permanent +5% bonus to your Intelligence Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Schemer",
+        "description": "You are a master of personal politics. You gain a +10% bonus on intrigue-related Charm Tests and on WP Tests to resist the Charm of others."
+    },
+    {
+        "name": "Seasoned Traveller",
+        "description": "You have extensive travel experience. You gain a +10% bonus on Common Knowledge and Speak Language Skill Tests."
+    },
+    {
+        "name": "Sharpshooter",
+        "description": "You can make aimed shots with exceptional accuracy. Using the aim action, your next ranged attack gains a +20% Ballistic Skill bonus."
+    },
+    {
+        "name": "Sixth Sense",
+        "description": "You get a strange feeling when in grave danger, sometimes alerting you before trouble occurs. The GM may secretly roll a Will Power Test to notify you."
+    },
+    {
+        "name": "Specialist Weapon Group",
+        "description": "You know how to use a group of weapons that require special training. Each Specialist Weapon Group talent is a separate proficiency, with the specialty noted in parenthesis. The most common talents are Cavalry, Crossbow, Engineer, Entangling, Fencing, Flail, Gunpowder, Longbow, Parrying, Sling, Throwing, and Two-handed."
+    },
+    {
+        "name": "Stout-Hearted",
+        "description": "You are exceptionally brave. You gain a +10% bonus on Fear and Terror Tests, and on Will Power Tests to resist Intimidate attempts."
+    },
+    {
+        "name": "Street Fighting",
+        "description": "You learned how to brawl in the gutters. You can make unarmed attacks with a +10% bonus to Weapon Skill. You also gain a +1 bonus on damage rolls with unarmed attacks."
+    },
+    {
+        "name": "Street Wise",
+        "description": "You know how to get by on the street. You gain a +10% bonus on Charm and Gossip Skill Tests when dealing with the criminal underworld."
+    },
+    {
+        "name": "Strike Mighty Blow",
+        "description": "You know how to target melee attacks so they do extra damage. You gain a +1 bonus on damage rolls with melee weapons."
+    },
+    {
+        "name": "Strike To Injure",
+        "description": "You're an expert at targeting your enemies’ most vulnerable areas. The Critical Value of any Critical Hits you inflict is increased by 1."
+    },
+    {
+        "name": "Strike To Stun",
+        "description": "If you hit with a melee attack, you may attempt to stun your opponent instead of inflicting damage. Make a Strength Test, and the opponent makes a Toughness Test with +10% bonus per AP on head. If they fail, they are stunned for 1d10 rounds."
+    },
+    {
+        "name": "Strong-Minded",
+        "description": "Your resilient mind is less susceptible to sanity-blasting events. You don’t have to check for insanity until you have 8 Insanity Points and don’t automatically get one until you have 14 IPs."
+    },
+    {
+        "name": "Sturdy",
+        "description": "You have a brawny physique. You do not suffer any Movement penalties while wearing heavy/plate armour."
+    },
+    {
+        "name": "Suave",
+        "description": "You gain a permanent +5% bonus to your Fellowship Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Sure Shot",
+        "description": "You know how to find the weak spots in your enemies’ armour. When you hit with a ranged attack, you can ignore 1 Armour Point. If your target has no armour, this talent has no effect."
+    },
+    {
+        "name": "Surgery",
+        "description": "You know the most advanced scientific healing techniques. You gain a +10% on Heal Skill Tests. Treating a heavily wounded patient heals 2 Wounds instead of 1. Provides +20% Toughness bonus on tests to resist limb loss."
+    },
+    {
+        "name": "Super Numerate",
+        "description": "You have a gift for calculation and can solve nearly any mathematical problem given time. You gain a +10% bonus on Gamble and Navigation Skill Tests, and a +20% bonus on Perception Skill Tests that involve estimation."
+    },
+    {
+        "name": "Swashbuckler",
+        "description": "You are an agile combatant. You can use the Jump/Leap action as a half action and increase the distance of all leaps by 1 yard."
+    },
+    {
+        "name": "Terrifying",
+        "description": "One look at your monstrous countenance sends enemies running. You cause terror."
+    },
+    {
+        "name": "Trapfinder",
+        "description": "You are an expert at dealing with traps. You gain a +10% bonus to Perception and Pick Lock Tests that deal with locating and disarming traps."
+    },
+    {
+        "name": "Trick Riding",
+        "description": "You are capable of amazing feats on horseback. You can do handstands on a galloping mount, leap from horse to horse, and the like. You only take Ride Skill Tests under extreme circumstances, and even then gain a +10% bonus."
+    },
+    {
+        "name": "Tunnel Rat",
+        "description": "You are at home beneath the earth. You gain a +10% bonus on Concealment and Silent Move Skill Tests when in underground locations."
+    },
+    {
+        "name": "Undead",
+        "description": "You are a creature of undeath, hideously reanimated by necromantic magic. You are immune to Fear, Terror, stunning, poison, disease, and all spells, skills, and effects involving the manipulation of emotions and the mind."
+    },
+    {
+        "name": "Unsettling",
+        "description": "Your daunting presence disturbs your opponents. Enemies must make a successful Will Power Test on seeing you or suffer a −10% penalty to their Weapon Skill and Ballistic Skill. They may test each round until they succeed or are out of sight."
+    },
+    {
+        "name": "Very Resilient",
+        "description": "You gain a permanent +5% bonus to your Toughness Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Very Strong",
+        "description": "You gain a permanent +5% bonus to your Strength Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Warrior Born",
+        "description": "You gain a permanent +5% bonus to your Weapon Skill Characteristic. Modify your starting profile to reflect this bonus."
+    },
+    {
+        "name": "Wrestling",
+        "description": "You are an expert grappler. You can make unarmed attacks with a +10% bonus to Weapon Skill when attempting to grapple. You gain a +10% bonus on grappling Strength Tests."
+    }
+];

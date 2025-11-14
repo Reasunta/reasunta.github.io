@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Карьеры wfrp 2nd</title>
     <style>
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('wfrp2-careers/fonts/JetBrainsMono-ExtraLight.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('wfrp2-careers/fonts/JetBrainsMono-ExtraLightItalic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('wfrp2-careers/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url('wfrp2-careers/fonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
+            font-weight: bold;
+            font-style: italic;
+            font-display: swap;
+        }
+
         :root {
             --bg: #0f1724;
             --card: #0b1220;
@@ -13,7 +45,7 @@
             --glass: rgba(255, 255, 255, 0.03);
             --card-radius: 14px;
             --gap: 14px;
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         body {
@@ -64,6 +96,7 @@
             font-size: 14px;
             font-weight: bolder;
         }
+
         .profile-row strong {
             color: var(--muted);
         }
@@ -200,6 +233,8 @@
 
         .tooltip-box {
             display: none;
+            width: 500px;
+            overflow-wrap: break-word;
             position: absolute;
             left: 110%;
             top: 50%;
@@ -213,8 +248,12 @@
             font-size: 13px;
         }
 
-        .tooltip:hover .tooltip-box {
+        .tooltip.active .tooltip-box {
             display: block;
+        }
+
+        .tooltip-box span {
+            text-wrap: initial;
         }
 
         .back-btn {
@@ -427,7 +466,7 @@
             trap.appendChild(li)
         });
 
-        // main_profile render with progress bars
+        // main_profile
         const mp = el('main_profile');
         mp.innerHTML = '';
         Object.entries(item.main_profile || {}).forEach(([k, v]) => {
@@ -479,9 +518,13 @@
         const talentsNode = el('talents');
         talentsNode.innerHTML = '';
         (item.talents || []).forEach(t => {
+            let talent = t;
+            if (talent.includes("(")) talent = talent.split("(")[0].trim()
+
             const li = document.createElement('li');
             li.className = 'talent-item tooltip';
-            li.innerHTML = `${t}<span class="tooltip-box"><strong>${t}</strong><br>Описание таланта...</span>`;
+            const tData = talents.filter(i => i.name.toLowerCase() === talent.toLowerCase())[0] || {}
+            li.innerHTML = `${t}<span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span>`;
             talentsNode.appendChild(li);
         });
         renderCareerList('career_entries', item.career_entries);
@@ -511,6 +554,25 @@
         });
     }
 
+    function enableTalentTooltips() {
+        document.querySelectorAll('.talent-item').forEach(talent => {
+            talent.addEventListener('click', (e) => {
+                e.stopPropagation(); // чтобы клик не закрыл сразу
+                // закрыть другие активные тултипы
+                document.querySelectorAll('.talent-item.active').forEach(el => {
+                    if (el !== talent) el.classList.remove('active');
+                });
+                // переключить текущий
+                talent.classList.add('active');
+            });
+        });
+
+        // закрыть тултипы при клике вне
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.talent-item.active').forEach(el => el.classList.remove('active'));
+        });
+    }
+
     // initialize
     const params = new URLSearchParams(window.location.search);
     if (params.get("name")) {
@@ -526,6 +588,7 @@
         el("careers-block").classList.add("hidden")
     }
 
+    enableTalentTooltips(); // <-- активируем клики
     el("search").addEventListener('input', (e) => {
         const v = e.target.value.toLowerCase();
         renderSearchResults(v ? data.filter(i => i.name.toLowerCase().includes(v)) : []);
