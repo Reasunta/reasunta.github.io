@@ -28,42 +28,50 @@ function renderCareerList(id, arr) {
     })
 }
 
-function renderTalentList(id, arr) {
+function parseTalentOrSkill(input) {
+    const differOR = input.replace(/\(([^)]+)\)/g, (match, inner) => {
+        return match.replace(/\bor\b/g, 'OR');
+    })
+    return differOR.split(" or ")
+}
+
+function renderTooltipList(id, arr, tooltipFunc) {
     const talentsNode = el(id);
     talentsNode.innerHTML = '';
     (arr || []).forEach(t => {
         const li = document.createElement('li');
-        li.className = 'talent-item';
+        li.className = 'tooltip-item';
 
-        if (t.includes("(")) {
-            const talent = t.split("(")[0].trim()
-            const spec = "(" + t.split("(")[1]
-            const span = `<span>${spec}</span>`
-            li.appendChild(renderTalent(talent))
-            li.innerHTML += span
-        } else {
-            const talents = t.split(" or ").map(tt => renderTalent(tt))
-            li.appendChild(talents[0])
+        const talents = parseTalentOrSkill(t).map(tt => renderTooltip(tt, tooltipFunc))
+        li.appendChild(talents[0])
 
-            for (let i = 1; i < talents.length; i++) {
-                li.innerHTML += `<span> or </span>`
-                li.appendChild(talents[i])
-            }
+        for (let i = 1; i < talents.length; i++) {
+            li.innerHTML += `<span> or </span>`
+            li.appendChild(talents[i])
         }
 
         talentsNode.appendChild(li);
     });
-
 }
 
-function renderTalent(talent) {
+function renderTooltip(row, tooltipFunc) {
     const div = document.createElement('span');
     div.className = 'tooltip';
-
-    const tData = talents.filter(i => i.name.toLowerCase() === talent.toLowerCase())[0] || {}
-    div.innerHTML = `<i>${talent}</i> <span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span>`;
+    div.innerHTML = tooltipFunc(row);
 
     return div;
+}
+
+const talentTooltip = (talent) => {
+    const talentWithoutBrackets = talent.split("(")[0].trim()
+    const tData = talents.filter(i => i.name.toLowerCase() === talentWithoutBrackets.toLowerCase())[0] || {}
+    return `<i>${talent.replace("OR", "or")}</i><span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span>`
+}
+
+const skillTooltip = (skill) => {
+    const skillWithoutBrackets = skill.split("(")[0].trim()
+    const sData = skills.filter(i => i.name.toLowerCase() === skillWithoutBrackets.toLowerCase())[0] || {}
+    return `<i>${skill.replace("OR", "or")}</i> <span class="tooltip-box"><strong>${sData.name}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${sData.description}</span></span>`
 }
 
 function openCareer(item) {
@@ -88,9 +96,11 @@ function openCareer(item) {
     Object.entries(item.main_profile || {}).forEach(([k, v]) => {
         const row = document.createElement('div');
         row.className = 'profile-row';
-        const name = document.createElement('div');
-        name.innerHTML = `<strong>${k.toUpperCase()}</strong> <div class="label">${v.label}</div>`;
-        row.appendChild(name);
+        const inner = document.createElement('div');
+        inner.className = "tooltip"
+        const char = chars.filter(ch => ch.short === k.toUpperCase())[0] || {}
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${v.label}</div>`;
+        row.appendChild(inner);
         mp.appendChild(row);
     });
 
@@ -100,24 +110,24 @@ function openCareer(item) {
     Object.entries(item.secondary_profile || {}).forEach(([k, v]) => {
         const row = document.createElement('div');
         row.className = 'profile-row';
-        row.innerHTML = `<div><strong>${k.toUpperCase()}</strong> <div class="label">${v.label}</div></div>`;
+        const inner = document.createElement('div');
+        inner.className = "tooltip"
+        const char = chars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${v.label}</div>`;
+        row.appendChild(inner);
         sp.appendChild(row);
     });
 
     // lists
-    renderList('skills', item.skills);
+    renderTooltipList('skills', item.skills, skillTooltip);
 
     // render talents with tooltip
-    renderTalentList('talents', item.talents);
+    renderTooltipList('talents', item.talents, talentTooltip);
     renderCareerList('career_entries', item.career_entries);
     renderCareerList('career_exits', item.career_exits);
 
     // roles/roles summary
-    const roles = [];
-    if (item.basic) roles.push('Basic');
-    if (item.special) roles.push('Special');
-    if (item.advanced) roles.push('Advanced');
-    el('roles').textContent = roles.length ? roles.join(' • ') : '—';
+    el('roles').textContent = getCareerType(item);
 }
 
 function renderSearchResults(list) {
@@ -131,26 +141,15 @@ function renderSearchResults(list) {
     list.forEach(i => {
         const div = document.createElement('div');
         div.className = 'item';
-        div.innerHTML = `<a href="?type=career&name=${i.name}"><div class='item-title'>${i.name}</div></a>`;
+        div.innerHTML = `<a href="?type=career&name=${i.name}"><div class='item-title'>${i.name}</div><div class='item-type'>${getCareerType(i)}</div></a>`;
         res.appendChild(div);
     });
 }
 
-function enableTalentTooltips() {
-    document.querySelectorAll('.tooltip').forEach(tooltip => {
-        tooltip.addEventListener('click', (e) => {
-            e.stopPropagation(); // чтобы клик не закрыл сразу
-            // закрыть другие активные тултипы
-            document.querySelectorAll('.tooltip.active').forEach(el => {
-                if (el !== tooltip) el.classList.remove('active');
-            });
-            // переключить текущий
-            tooltip.classList.add('active');
-        });
-    });
-
-    // закрыть тултипы при клике вне
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.tooltip.active').forEach(el => el.classList.remove('active'));
-    });
+function getCareerType(career) {
+    const roles = [];
+    if (career.basic) roles.push('Basic');
+    if (career.special) roles.push('Special');
+    if (career.advanced) roles.push('Advanced');
+    return roles.length ? roles.join(' • ') : '—';
 }
