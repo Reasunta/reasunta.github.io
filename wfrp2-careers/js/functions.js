@@ -21,8 +21,12 @@ function renderCareerList(id, arr) {
     (arr || []).forEach(x => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.href = getBaseURL() + `?type=career&name=${x}`
-        a.innerHTML = `<i>${x}</i>`;
+        if (careers.filter(c => c.name === x).length) {
+            a.href = getBaseURL() + `?type=career&name=${x}`
+            a.innerHTML = `<i>${x}</i>`;
+        } else {
+            a.innerHTML = `${x}`;
+        }
         li.appendChild(a)
         node.appendChild(li)
     })
@@ -98,7 +102,7 @@ function openCareer(item) {
         row.className = 'profile-row';
         const inner = document.createElement('div');
         inner.className = "tooltip"
-        const char = chars.filter(ch => ch.short === k.toUpperCase())[0] || {}
+        const char = chars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
         inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${v.label}</div>`;
         row.appendChild(inner);
         mp.appendChild(row);

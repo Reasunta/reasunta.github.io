@@ -224,6 +224,11 @@ ul.pills li {
     .grid-3, .grid-4 {
         grid-template-columns:repeat(1, 1fr)
     }
+
+    .right, .description, .profile-card {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 /* tooltip */

@@ -1,4 +1,4 @@
-const data = [
+const careers = [
     {
         "name": "Abbot",
         "special": false,
@@ -2883,7 +2883,7 @@ const data = [
             "Jailer",
             "Mercenary",
             "Protagonist",
-            ""
+            "Racketeer"
         ]
     },
     {
@@ -6068,6 +6068,7 @@ const data = [
         "advanced": false,
         "quote": "This reminds me of something interesting that von Halmith wrote, and... Oh! Is that Griffon’s Bane?",
         "description": "(New) Dilettantes like to think of themselves as scholars, and, indeed, they may pass as scholars among most folk; they read and write, for a start. However, they often lack the discipline or passion that leads true scholars to focus on one task and become truly skilled at that, rather spreading their efforts across many. Most dilettantes are from wealthy backgrounds; the poor find that imminent starvation focuses the mind wonderfully. A dilettante prides himself on knowing a little bit about almost everything, starting a variety of projects, pursuing a dozen interests at the same time. A dilettante is a professional amateur – interested in the arts, the burgeoning field of science, literature, religion, and virtually any other topic. At least, until another subject matter comes along and grabs their attention.",
+        "requirements": " A Dilettante may not, in this career, buy a skill he already possesses, and thus may not gain any Skill Mastery bonuses. He does not lose any he already has.",
         "main_profile": {
             "ws": {
                 "value": 5,
@@ -6174,7 +6175,8 @@ const data = [
             "Raconteur",
             "Student",
             "Tomb Robber",
-            ""
+            "Tradesman",
+            "Verenean Investigator"
         ]
     },
     {
@@ -10421,7 +10423,12 @@ const data = [
             "Apprentice Wizard",
             "Barber-Surgeon",
             "Charlatan",
-            ""
+            "Hedge Wizard",
+            "Hedge Master",
+            "Initiate (Ranald, Taal & Rhya)",
+            "Outlaw",
+            "Scribe",
+            "Zealot"
         ]
     },
     {
@@ -11694,7 +11701,10 @@ const data = [
             "Charcoal Burner",
             "Fieldwarden",
             "Kithband Warrior",
-            ""
+            "Miner",
+            "Scout",
+            "Soldier",
+            "Targeteer"
         ]
     },
     {
@@ -17422,7 +17432,9 @@ const data = [
             "Militiaman",
             "Outlaw",
             "Politician",
-            ""
+            "Servant",
+            "Tradesman",
+            "Zealot"
         ]
     },
     {
@@ -17620,8 +17632,7 @@ const data = [
         "talents": [
             "Resistance to Disease",
             "Strike to Stun",
-            "Surgery",
-            ""
+            "Surgery"
         ],
         "trappings": [
             "4 Healing Draughts",
@@ -21392,7 +21403,7 @@ const data = [
             "Ferryman",
             "Seaman",
             "Shieldbreaker",
-            ""
+            "Thief"
         ]
     },
     {
@@ -22396,7 +22407,8 @@ const data = [
             "Engineer",
             "Envoy",
             "Initiate",
-            ""
+            "Physician",
+            "Scholar"
         ]
     },
     {
@@ -23395,7 +23407,7 @@ const data = [
             "Farmer",
             "Merchant",
             "Militiaman",
-            ""
+            "Zealot"
         ]
     },
     {

@@ -5,7 +5,7 @@ if (params.get("type") === "career") {
     el("careers-block").classList.remove("hidden")
 
     const cName = params.get("name") || "Abbot"
-    const career = data.filter(c => c.name === cName)[0] || {}
+    const career = careers.filter(c => c.name === cName)[0] || {}
     openCareer(career);
 } else {
     //el("search-block").classList.remove("hidden")
@@ -14,5 +14,5 @@ if (params.get("type") === "career") {
 
 el("search").addEventListener('input', (e) => {
     const v = e.target.value.toLowerCase();
-    renderSearchResults(v ? data.filter(i => i.name.toLowerCase().includes(v)) : []);
+    renderSearchResults(v ? careers.filter(i => i.name.toLowerCase().includes(v)) : []);
 });
