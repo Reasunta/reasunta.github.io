@@ -441,10 +441,16 @@ const careers = [
         "career_entries": [
             "Burgher",
             "Captain",
+            "Exciseman",
             "Herald",
             "Highwayman",
+            "Lamplighter",
+            "Litigant",
+            "Newssheet Vendor",
             "Scribe",
+            "Seer",
             "Servant",
+            "Skald",
             "Student",
             "Zealot"
         ],
@@ -452,8 +458,11 @@ const careers = [
             "Charlatan",
             "Demagogue",
             "Ex-Convict",
+            "Herrimault",
             "Outlaw",
+            "Pamphleteer",
             "Politician",
+            "Raconteur",
             "Rogue",
             "Zealot"
         ]
@@ -567,6 +576,7 @@ const careers = [
             "000 gc."
         ],
         "career_entries": [
+            "Admiral",
             "Captain",
             "High Priest",
             "Ice Witch",
@@ -898,13 +908,19 @@ const careers = [
             "Noble’s Garb"
         ],
         "career_entries": [
+            "Exorcist",
             "Priest"
         ],
         "career_exits": [
+            "Abbot",
+            "Cantor",
+            "Catechist",
+            "Cult Attendant",
             "Demagogue",
             "Flagellant",
             "High Priest",
             "Scholar",
+            "Warrior Priest",
             "Witch Hunter"
         ]
     },
@@ -1007,14 +1023,17 @@ const careers = [
             "Apprentice Wizard",
             "Barber-Surgeon",
             "Hedge Wizard",
+            "Hedgecraft Apprentice",
             "Student"
         ],
         "career_exits": [
             "Apprentice Wizard",
             "Artisan",
+            "Astrologer",
             "Barber-Surgeon",
             "Embalmer",
             "Grave Robber",
+            "Hedgecraft Apprentice",
             "Merchant",
             "Physician",
             "Scholar"
@@ -1331,13 +1350,21 @@ const careers = [
             "Printed Book"
         ],
         "career_entries": [
+            "Apothecary",
+            "Astrologer",
             "Dilettante",
+            "Embalmer",
             "Hedge Wizard",
+            "Hedgecraft Apprentice",
             "Scholar",
             "Scribe",
-            "Student"
+            "Student",
+            "Warlock",
+            "Witch"
         ],
         "career_exits": [
+            "Apothecary",
+            "Astrologer",
             "Journeyman Wizard",
             "Scholar",
             "Scribe"
@@ -1547,18 +1574,26 @@ const careers = [
             "15 gc"
         ],
         "career_entries": [
+            "Apothecary",
+            "Artillerist",
             "Cartographer",
             "Engineer",
+            "Forger",
+            "Freeholder",
+            "Hedge Master",
             "Militiaman",
             "Navigator",
             "Tradesman"
         ],
         "career_exits": [
+            "Apprentice Runesmith",
             "Demagogue",
             "Engineer",
+            "Forger",
             "Guild Master",
             "Merchant",
-            "Militiaman"
+            "Militiaman",
+            "Pamphleteer"
         ]
     },
     {
@@ -1666,7 +1701,9 @@ const careers = [
             "1 dose of Poison (any)"
         ],
         "career_entries": [
+            "Border Courtier",
             "Champion",
+            "Cloaked Brother",
             "Duellist",
             "Judicial Champion",
             "Outlaw Chief",
@@ -1675,6 +1712,7 @@ const careers = [
         ],
         "career_exits": [
             "Champion",
+            "Cloaked Brother",
             "Outlaw Chief",
             "Rogue",
             "Sergeant",
@@ -1792,6 +1830,7 @@ const careers = [
             "Noble",
             "Physician",
             "Scholar",
+            "Strigany Mystic",
             "Student"
         ],
         "career_exits": [
@@ -1901,6 +1940,7 @@ const careers = [
             "Captain",
             "Horse Master",
             "Noble",
+            "Steppes Nomad",
             "Veteran"
         ],
         "career_exits": [
@@ -2324,13 +2364,18 @@ const careers = [
             "Trade Tools (Barber-Surgeon)"
         ],
         "career_entries": [
+            "Apothecary",
             "Dilettante",
+            "Hedgecraft Apprentice",
             "Initiate",
             "Student"
         ],
         "career_exits": [
-            "Interrogator",
+            "Agent of the Shroud",
+            "Apothecary",
+            "Embalmer",
             "Grave Robber",
+            "Interrogator",
             "Physician",
             "Tradesman",
             "Vagabond"
@@ -2541,6 +2586,7 @@ const careers = [
             "which he can train over the course of his career."
         ],
         "career_entries": [
+            "Animal Trainer",
             "Entertainer",
             "Initiate of Ursun",
             "Priest of Ursun"
@@ -2663,9 +2709,10 @@ const careers = [
         "career_exits": [
             "Captain",
             "Champion",
-            "Priest (Morr only)",
+            "Killer of the Dead",
             "Knight of the Inner Circle",
             "Knight of the Raven",
+            "Priest (Morr only)",
             "Vampire Hunter"
         ]
     },
@@ -2765,14 +2812,22 @@ const careers = [
         ],
         "career_entries": [
             "Ferryman",
-            "Smuggler"
+            "Frogwife",
+            "River Warden",
+            "Smuggler",
+            "Stevedore",
+            "Wrecker"
         ],
         "career_exits": [
             "Fisherman",
             "Marine",
             "Navigator",
+            "River Warden",
             "Seaman",
-            "Smuggler"
+            "Smuggler",
+            "Stevedore",
+            "Swampaire",
+            "Wrecker"
         ]
     },
     {
@@ -2871,6 +2926,7 @@ const careers = [
             "Light Armour (Leather Jack)"
         ],
         "career_entries": [
+            "Bondsman",
             "Estalian Diestro",
             "Jailer",
             "Mercenary",
@@ -3324,14 +3380,17 @@ const careers = [
             "Hunter",
             "Kislevite Kossar",
             "Mercenary",
-            "Pit Fighter"
+            "Pit Fighter",
+            "Streltsi"
         ],
         "career_exits": [
+            "Enforcer",
             "Mercenary",
             "Protagonist",
             "Scout",
             "Targeteer",
-            "Vampire Hunter"
+            "Vampire Hunter",
+            "Verenean Investigator"
         ]
     },
     {
@@ -3430,15 +3489,26 @@ const careers = [
             "One Set of Good Clothing"
         ],
         "career_entries": [
+            "Embalmer",
+            "Horse Coper",
             "Innkeeper",
-            "Servant"
+            "Lamplighter",
+            "Muleskinner",
+            "Servant",
+            "Skald"
         ],
         "career_exits": [
             "Agitator",
             "Fence",
+            "Freeholder",
+            "Horse Coper",
             "Innkeeper",
+            "Litigant",
             "Merchant",
             "Militiaman",
+            "Muleskinner",
+            "Newssheet Vendor",
+            "Pamphleteer",
             "Tradesman",
             "Valet"
         ]
@@ -3658,11 +3728,16 @@ const careers = [
         ],
         "career_entries": [
             "Bone Picker",
+            "Bonepicker",
+            "Frogwife",
             "Servant"
         ],
         "career_exits": [
             "Charcoal Burner",
             "Charlatan",
+            "Dung Collector",
+            "Frogwife",
+            "Raconteur",
             "Servant",
             "Smuggler",
             "Spy",
@@ -3883,17 +3958,39 @@ const careers = [
             "Unit of Troops"
         ],
         "career_entries": [
+            "Ambassador",
+            "Artillerist",
+            "Badlands Ranger",
+            "Black Guard",
+            "Border Courtier",
+            "Crusader",
             "Explorer",
             "Ghost Strider",
+            "Grail Knight",
+            "Grandmaster",
+            "Horse Archer",
+            "Ice Witch",
             "Knight",
+            "Knight Panther",
+            "Knight of the Blazing Sun",
             "Knight of the Inner Circle",
+            "Knight of the Raven",
+            "Knight of the Realm",
             "Noble Lord",
             "Outlaw Chief",
+            "Questing Knight",
+            "Runelord",
             "Sergeant",
+            "Slaver",
+            "Warleader",
+            "Winged Lancer",
             "Witch Hunter"
         ],
         "career_exits": [
             "Agitator",
+            "Ambassador",
+            "Ataman",
+            "Border Courtier",
             "Explorer",
             "Merchant",
             "Outlaw Chief",
@@ -4001,19 +4098,22 @@ const careers = [
         "career_entries": [
             "Grail Pilgrim",
             "Hunter",
+            "Man-at-Arms",
             "Outlaw",
             "Outrider",
             "Peasant",
-            "Woodsman",
-            "Vagabond"
+            "Vagabond",
+            "Woodsman"
         ],
         "career_exits": [
             "Grail Pilgrim",
             "Herrimault",
+            "Man-at-Arms",
             "Outlaw",
             "Scout",
             "Vagabond",
-            "Veteran"
+            "Veteran",
+            "Yeoman"
         ]
     },
     {
@@ -4229,7 +4329,9 @@ const careers = [
             "10 Yards of Rope"
         ],
         "career_entries": [
+            "Badlander",
             "Bone Picker",
+            "Bonepicker",
             "Charlatan",
             "Chimneysweep",
             "Ex-Convict",
@@ -4242,7 +4344,8 @@ const careers = [
             "Fence",
             "Master Thief",
             "Racketeer",
-            "Vagabond"
+            "Vagabond",
+            "Verenean Investigator"
         ]
     },
     {
@@ -4337,6 +4440,7 @@ const careers = [
         ],
         "career_entries": [
             "Anointed Priest",
+            "Cantor",
             "Dilettante",
             "Friar",
             "Priest",
@@ -4446,7 +4550,7 @@ const careers = [
             "Filthy Loincloth and Tunic"
         ],
         "career_entries": [
-            "None"
+            "Penitent"
         ],
         "career_exits": [
             "Mystic",
@@ -4552,11 +4656,18 @@ const careers = [
         ],
         "career_entries": [
             "Assassin",
+            "Black Guard",
             "Duellist",
+            "Grandmaster",
             "Judicial Champion",
+            "Knight Panther",
+            "Knight of the Blazing Sun",
             "Knight of the Inner Circle",
+            "Knight of the Raven",
+            "Scourge of God",
             "Targeteer",
             "Veteran",
+            "Warleader",
             "Witch Hunter"
         ],
         "career_exits": [
@@ -4667,7 +4778,9 @@ const careers = [
             "Peasant"
         ],
         "career_exits": [
+            "Chimneysweep",
             "Hunter",
+            "Lamplighter",
             "Miner",
             "Scout",
             "Vagabond",
@@ -4780,24 +4893,39 @@ const careers = [
         ],
         "career_entries": [
             "Agitator",
+            "Astrologer",
             "Camp Follower",
+            "Cloaked Brother",
             "Courtier",
             "Dilettante",
             "Entertainer",
             "Envoy",
             "Ex-Convict",
             "Fence",
+            "Forger",
+            "Gambler",
             "Hedge Wizard",
+            "Hedgecraft Apprentice",
+            "Horse Coper",
             "Journeyman Wizard",
             "Minstrel",
+            "Mystic",
+            "Penitent",
+            "Raconteur",
             "Rapscallion",
             "Rogue",
+            "Seer",
             "Smuggler",
-            "Thief"
+            "Strigany Mystic",
+            "Thief",
+            "Warlock",
+            "Witch"
         ],
         "career_exits": [
+            "Astrologer",
             "Cat Burglar",
             "Demagogue",
+            "Herrimault",
             "Outlaw",
             "Politician",
             "Spy"
@@ -5261,7 +5389,9 @@ const careers = [
         ],
         "career_exits": [
             "Cartographer",
+            "Drover",
             "Ferryman",
+            "Herrimault",
             "Highwayman",
             "Outlaw",
             "Roadwarden",
@@ -5368,19 +5498,28 @@ const careers = [
             "Valet"
         ],
         "career_entries": [
+            "Border Courtier",
             "Dilettante",
-            "Noble",
+            "Grail Knight",
             "Herald",
+            "Ice Maiden",
+            "Knight of the Realm",
+            "Noble",
             "Pistolier",
-            "Politician"
+            "Politician",
+            "Questing Knight",
+            "Raconteur"
         ],
         "career_exits": [
+            "Border Courtier",
             "Charlatan",
+            "Cloaked Brother",
+            "Cult Attendant",
             "Duellist",
             "Noble Lord",
             "Politician",
-            "Steward",
-            "Spy"
+            "Spy",
+            "Steward"
         ]
     },
     {
@@ -5490,7 +5629,9 @@ const careers = [
         ],
         "career_entries": [
             "Cat Burglar",
+            "Cloaked Brother",
             "Demagogue",
+            "Faceless",
             "Fence",
             "Guild Master",
             "Master Thief",
@@ -5499,7 +5640,9 @@ const careers = [
             "Steward"
         ],
         "career_exits": [
+            "Cloaked Brother",
             "Demagogue",
+            "Faceless",
             "Master Thief",
             "Outlaw Chief",
             "Politician"
@@ -6039,25 +6182,45 @@ const careers = [
             "Agitator",
             "Anointed Priest",
             "Artisan",
+            "Catechist",
             "Charlatan",
+            "Cloaked Brother",
             "Crime Lord",
+            "Faceless",
             "Flagellant",
+            "Foreman",
             "Friar",
+            "Gambler",
+            "Hag Witch",
+            "Herrimault",
             "Initiate",
+            "Litigant",
+            "Mediator",
             "Minstrel",
+            "Monk",
+            "Mystic",
+            "Newssheet Vendor",
             "Outlaw",
             "Outlaw Chief",
+            "Pamphleteer",
+            "Pilgrim",
             "Politician",
             "Prelate",
+            "Raconteur",
             "Rogue",
             "Vampire Hunter",
+            "Village Elder",
+            "Wise Woman",
             "Witch Hunter"
         ],
         "career_exits": [
+            "Cloaked Brother",
             "Crime Lord",
+            "Faceless",
             "Friar",
             "Mercenary",
             "Outlaw Chief",
+            "Pamphleteer",
             "Politician"
         ]
     },
@@ -6147,10 +6310,7 @@ const careers = [
             "Read/Write",
             "Secret Language (any one) or Secret Signs (any one)",
             "Speak Language (any 2)",
-            "Trade (Artist or Calligrapher or Cartographer) (See special rule, below) Special: A Dilettante may not",
-            "in this career",
-            "buy a skill he already possesses",
-            "and thus may not gain any Skill Mastery bonuses. He does not lose any he already has."
+            "Trade (Artist or Calligrapher or Cartographer) (See special rule, below)"
         ],
         "talents": [
             "Etiquette"
@@ -6173,6 +6333,7 @@ const careers = [
             "Initiate",
             "Navigator",
             "Raconteur",
+            "Rapscallion",
             "Student",
             "Tomb Robber",
             "Tradesman",
@@ -6278,6 +6439,7 @@ const careers = [
         ],
         "career_entries": [
             "Coachman",
+            "Horse Master",
             "Messenger",
             "Outrider",
             "Steppes Nomad"
@@ -6842,14 +7004,17 @@ const careers = [
         ],
         "career_entries": [
             "Artisan",
+            "Deepwatcher",
             "Miner",
             "Student",
             "Tradesman"
         ],
         "career_exits": [
+            "Artillerist",
             "Artisan",
             "Explorer",
             "Guild Master",
+            "Pamphleteer",
             "Pistolier",
             "Smuggler"
         ]
@@ -6968,16 +7133,29 @@ const careers = [
         ],
         "career_entries": [
             "Animal Trainer",
+            "Bear Tamer",
+            "Cantor",
+            "Gambler",
             "Herald",
+            "Lamplighter",
+            "Newssheet Vendor",
+            "Raconteur",
             "Rogue",
+            "Strigany Mystic",
             "Thief",
             "Vagabond"
         ],
         "career_exits": [
             "Animal Trainer",
+            "Bear Tamer",
+            "Cantor",
             "Charlatan",
+            "Gambler",
             "Minstrel",
+            "Pamphleteer",
+            "Raconteur",
             "Rogue",
+            "Skald",
             "Thief",
             "Vagabond"
         ]
@@ -7084,6 +7262,7 @@ const careers = [
         ],
         "career_exits": [
             "Charlatan",
+            "Litigant",
             "Merchant",
             "Rogue",
             "Seaman",
@@ -7190,6 +7369,7 @@ const careers = [
         ],
         "career_exits": [
             "Bodyguard",
+            "Cadet",
             "Duellist",
             "Highwayman",
             "Protagonist",
@@ -7308,6 +7488,7 @@ const careers = [
             "Outlaw",
             "Protagonist",
             "Racketeer",
+            "Thief",
             "Thug",
             "Vagabond"
         ]
@@ -7525,7 +7706,10 @@ const careers = [
             "Prayer Book",
             "Religious Symbol"
         ],
-        "career_entries": null,
+        "career_entries": [
+            "Anointed Priest",
+            "Priest"
+        ],
         "career_exits": [
             "Anointed Priest",
             "Lay Priest",
@@ -7642,14 +7826,24 @@ const careers = [
             "Riding Horse with saddle and harness"
         ],
         "career_entries": [
+            "Admiral",
+            "Astrologer",
+            "Badlands Ranger",
             "Captain",
             "Cartographer",
+            "Crusader",
+            "Deepwatcher",
             "Engineer",
+            "Faceless",
+            "Grail Knight",
             "Herald",
+            "Knight of the Blazing Sun",
+            "Knight of the Realm",
             "Master Thief",
             "Master Wizard",
             "Mate",
             "Navigator",
+            "Questing Knight",
             "Scholar",
             "Scout",
             "Sea Captain",
@@ -7657,6 +7851,7 @@ const careers = [
             "Wizard Lord"
         ],
         "career_exits": [
+            "Badlands Ranger",
             "Captain",
             "Merchant",
             "Sea Captain",
@@ -7770,20 +7965,24 @@ const careers = [
             "Battle Pilgrim",
             "Crime Lord",
             "Demagogue",
+            "Grail Knight",
             "Knight of the Realm",
             "Noble Lord",
             "Outlaw Chief",
             "Politician",
             "Questing Knight",
             "Steward",
-            "Veteran"
+            "Veteran",
+            "Village Elder",
+            "Yeoman"
         ],
         "career_exits": [
             "Crime Lord",
             "Demagogue",
             "Explorer",
             "Highwayman",
-            "Outlaw Chief"
+            "Outlaw Chief",
+            "Village Elder"
         ]
     },
     {
@@ -7890,6 +8089,7 @@ const careers = [
             "Veteran"
         ],
         "career_exits": [
+            "Animal Trainer",
             "Innkeeper",
             "Merchant",
             "Militiaman",
@@ -7992,9 +8192,12 @@ const careers = [
         ],
         "career_entries": [
             "Bone Picker",
+            "Bonepicker",
             "Burgher",
             "Cat Burglar",
             "Ex-Convict",
+            "Foreman",
+            "Forger",
             "Grave Robber",
             "Innkeeper",
             "Racketeer",
@@ -8112,9 +8315,12 @@ const careers = [
         "career_exits": [
             "Boatman",
             "Highwayman",
+            "River Warden",
             "Roadwarden",
             "Seaman",
-            "Smuggler"
+            "Smuggler",
+            "Swampaire",
+            "Wrecker"
         ]
     },
     {
@@ -8220,6 +8426,7 @@ const careers = [
             "Toll Keeper"
         ],
         "career_exits": [
+            "Agent of the Shroud",
             "Bounty Hunter",
             "Mercenary",
             "Scout",
@@ -8326,11 +8533,13 @@ const careers = [
             "Peasant"
         ],
         "career_exits": [
+            "Freeholder",
             "Marine",
             "Merchant",
             "Militiaman",
             "Navigator",
-            "Seaman"
+            "Seaman",
+            "Whaler"
         ]
     },
     {
@@ -8430,13 +8639,17 @@ const careers = [
         "career_entries": [
             "Anointed Priest",
             "Friar",
+            "Penitent",
             "Priest",
             "Zealot"
         ],
         "career_exits": [
             "Demagogue",
             "Interrogator",
+            "Killer of the Dead",
+            "Penitent",
             "Priest",
+            "Scourge of God",
             "Soldier",
             "Veteran"
         ]
@@ -8874,19 +9087,25 @@ const careers = [
             "Robes"
         ],
         "career_entries": [
+            "Catechist",
             "Demagogue",
             "Initiate",
             "Lay Priest",
+            "Monk",
             "Physician",
+            "Pilgrim",
             "Prelate",
             "Scholar",
             "Vagabond",
             "Zealot"
         ],
         "career_exits": [
+            "Catechist",
+            "Cloaked Brother",
             "Demagogue",
             "Flagellant",
             "Lay Priest",
+            "Monk",
             "Prelate",
             "Priest",
             "Scholar"
@@ -9547,10 +9766,12 @@ const careers = [
         ],
         "career_entries": [
             "Carcassonne Shepherd",
-            "Hunter",
+            "Frogwife",
             "Herrimault",
+            "Hunter",
             "Outlaw",
             "Peasant",
+            "Swampaire",
             "Tradesman",
             "Vagabond"
         ],
@@ -9773,9 +9994,14 @@ const careers = [
             "Spade"
         ],
         "career_entries": [
+            "Apothecary",
             "Barber-Surgeon",
             "Bone Picker",
+            "Bonepicker",
+            "Dung Collector",
+            "Embalmer",
             "Ex-Convict",
+            "Grave Warden",
             "Rat Catcher"
         ],
         "career_exits": [
@@ -9995,10 +10221,15 @@ const careers = [
             "Guild"
         ],
         "career_entries": [
+            "Admiral",
+            "Artillerist",
             "Artisan",
             "Engineer",
+            "Foreman",
+            "Litigant",
             "Merchant",
             "Physician",
+            "Runelord",
             "Wizard Lord"
         ],
         "career_exits": [
@@ -10306,14 +10537,20 @@ const careers = [
             "Hood"
         ],
         "career_entries": [
-            "None"
+            "Hedgecraft Apprentice",
+            "Mystic",
+            "None",
+            "Strigany Mystic"
         ],
         "career_exits": [
+            "Apothecary",
             "Apprentice Wizard",
             "Charlatan",
             "Initiate",
             "Outlaw",
-            "Vagabond"
+            "Seer",
+            "Vagabond",
+            "Witch"
         ]
     },
     {
@@ -10770,7 +11007,9 @@ const careers = [
             "Uniform"
         ],
         "career_entries": [
+            "Cadet",
             "Messenger",
+            "Raconteur",
             "Valet"
         ],
         "career_exits": [
@@ -10883,19 +11122,23 @@ const careers = [
             "Carcassonne Shepherd",
             "Charlatan",
             "Coachman",
+            "Frogwife",
             "Grail Pilgrim",
             "Hunter",
             "Innkeeper",
             "Knight Errant",
             "Man-at-Arms",
+            "Mediator",
             "Noble",
             "Peasant",
             "Rogue",
+            "Swampaire",
             "Woodsman"
         ],
         "career_exits": [
             "Demagogue",
             "Grail Pilgrim",
+            "Mediator",
             "Scout",
             "Thief",
             "Vagabond",
@@ -11002,9 +11245,14 @@ const careers = [
             "Religious Relic"
         ],
         "career_entries": [
-            "Anointed Priest"
+            "Abbot",
+            "Anointed Priest",
+            "Warrior Priest"
         ],
         "career_exits": [
+            "Abbot",
+            "Ambassador",
+            "Cantor",
             "Politician",
             "Scholar",
             "Witch Hunter"
@@ -11114,11 +11362,15 @@ const careers = [
         ],
         "career_entries": [
             "Coachman",
+            "Drover",
             "Duellist",
-            "Ex-Convict",
             "Estalian Diestro",
+            "Ex-Convict",
+            "Faceless",
             "Ferryman",
+            "Gambler",
             "Minstrel",
+            "Muleskinner",
             "Outlaw",
             "Outrider",
             "Rapscallion",
@@ -11692,18 +11944,28 @@ const careers = [
         "career_entries": [
             "Animal Trainer",
             "Charcoal Burner",
+            "Horned Hunter",
             "Kithband Warrior",
             "Woodsman"
         ],
         "career_exits": [
             "Animal Trainer",
             "Bounty Hunter",
+            "Carcassonne Shepherd",
             "Charcoal Burner",
+            "Enforcer",
             "Fieldwarden",
+            "Grail Pilgrim",
+            "Herrimault",
             "Kithband Warrior",
+            "Knight of the Verdant Field",
+            "Man-at-Arms",
+            "Mediator",
             "Miner",
+            "Muleskinner",
             "Scout",
             "Soldier",
+            "Swampaire",
             "Targeteer"
         ]
     },
@@ -12018,22 +12280,37 @@ const careers = [
             "Robes"
         ],
         "career_entries": [
+            "Cantor",
+            "Catechist",
+            "Crusader",
             "Dilettante",
             "Hedge Wizard",
             "Knight",
+            "Knight of the Blazing Sun",
+            "Lamplighter",
+            "Penitent",
+            "Pilgrim",
+            "Raconteur",
+            "Scourge of God",
             "Scribe",
             "Student",
+            "Temple Guardian",
             "Vampire Hunter",
             "Witch Hunter",
             "Zealot"
         ],
         "career_exits": [
             "Barber-Surgeon",
+            "Cantor",
+            "Cult Attendant",
             "Demagogue",
             "Friar",
             "Lay Priest",
+            "Monk",
+            "Penitent",
             "Priest",
             "Scribe",
+            "Temple Guardian",
             "Zealot"
         ]
     },
@@ -12137,12 +12414,14 @@ const careers = [
         "career_entries": [
             "Burgher",
             "Farmer",
+            "Freeholder",
             "Servant"
         ],
         "career_exits": [
             "Burgher",
             "Farmer",
             "Fence",
+            "Herrimault",
             "Merchant",
             "Outlaw",
             "Smuggler"
@@ -12243,8 +12522,10 @@ const careers = [
         "career_entries": [
             "Barber-Surgeon",
             "Bodyguard",
+            "Chekist",
             "Flagellant",
             "Jailer",
+            "Scourge of God",
             "Thug"
         ],
         "career_exits": [
@@ -12352,6 +12633,7 @@ const careers = [
         ],
         "career_entries": [
             "Bodyguard",
+            "Chekist",
             "Rat Catcher"
         ],
         "career_exits": [
@@ -12359,6 +12641,7 @@ const careers = [
             "Bodyguard",
             "Interrogator",
             "Rat Catcher",
+            "Sewer Jack",
             "Watchman"
         ]
     },
@@ -12464,6 +12747,7 @@ const careers = [
         ],
         "career_exits": [
             "Master Runesmith",
+            "Runelord",
             "Scholar",
             "Shieldbreaker"
         ]
@@ -12571,7 +12855,9 @@ const careers = [
             "Apprentice Wizard"
         ],
         "career_exits": [
+            "Astrologer",
             "Charlatan",
+            "Master Vigilant",
             "Master Wizard",
             "Scholar"
         ]
@@ -12670,6 +12956,7 @@ const careers = [
             "10 Yards of Rope"
         ],
         "career_entries": [
+            "Crusader",
             "Sergeant",
             "Veteran"
         ],
@@ -13118,12 +13405,19 @@ const careers = [
             "Pistolier",
             "Sergeant",
             "Squire",
-            "Vampire Hunter"
+            "Vampire Hunter",
+            "Warrior Priest"
         ],
         "career_exits": [
+            "Black Guard",
             "Captain",
+            "Crusader",
             "Initiate",
+            "Knight Errant",
+            "Knight Panther",
+            "Knight of the Blazing Sun",
             "Knight of the Inner Circle",
+            "Knight of the Raven",
             "Noble Lord",
             "Vampire Hunter"
         ]
@@ -13232,6 +13526,7 @@ const careers = [
             "Squire"
         ],
         "career_exits": [
+            "Herrimault",
             "Knight of the Realm"
         ]
     },
@@ -13466,12 +13761,19 @@ const careers = [
             "50 gc"
         ],
         "career_entries": [
+            "Black Guard",
+            "Crusader",
             "Knight",
+            "Knight Panther",
+            "Knight of the Blazing Sun",
+            "Knight of the Raven",
             "Witch Hunter"
         ],
         "career_exits": [
             "Captain",
             "Champion",
+            "Grandmaster",
+            "Knight of the Raven",
             "Noble Lord",
             "Witch Hunter"
         ]
@@ -14163,6 +14465,7 @@ const careers = [
             "Writing Kit"
         ],
         "career_entries": [
+            "Exorcist",
             "Friar",
             "Initiate",
             "Priest"
@@ -14272,6 +14575,7 @@ const careers = [
             "Burgher",
             "Envoy",
             "Exciseman",
+            "Scholar",
             "Scribe",
             "Student",
             "Watchman"
@@ -14383,15 +14687,18 @@ const careers = [
             "Carcassonne Shepherd",
             "Hunter",
             "Peasant",
+            "Swampaire",
             "Vagabond",
             "Woodsman"
         ],
         "career_exits": [
             "Carcassonne Shepherd",
             "Herrimault",
+            "Mediator",
             "Outlaw",
             "Outrider",
             "Veteran",
+            "Wall Warden",
             "Yeoman"
         ]
     },
@@ -14500,7 +14807,8 @@ const careers = [
             "Freeholder",
             "Reaver",
             "Skald",
-            "Special*"
+            "Special*",
+            "Whaler"
         ],
         "career_exits": [
             "Chaos Warrior (ToC)",
@@ -14609,14 +14917,20 @@ const careers = [
         "career_entries": [
             "Boatman",
             "Fisherman",
-            "Seaman"
+            "Reaver",
+            "River Warden",
+            "Seaman",
+            "Stevedore",
+            "Wrecker"
         ],
         "career_exits": [
             "Mate",
             "Outlaw",
+            "River Warden",
             "Sergeant",
             "Smuggler",
-            "Thug"
+            "Thug",
+            "Wrecker"
         ]
     },
     {
@@ -14839,6 +15153,7 @@ const careers = [
         ],
         "career_entries": [
             "Cat Burglar",
+            "Cloaked Brother",
             "Crime Lord",
             "Fence",
             "Highwayman",
@@ -14846,6 +15161,7 @@ const careers = [
             "Spy"
         ],
         "career_exits": [
+            "Cloaked Brother",
             "Crime Lord",
             "Explorer",
             "Outlaw Chief",
@@ -15068,10 +15384,13 @@ const careers = [
             "Two magic items"
         ],
         "career_entries": [
-            "Journeyman Wizard"
+            "Journeyman Wizard",
+            "Master Vigilant"
         ],
         "career_exits": [
+            "Astrologer",
             "Explorer",
+            "Master Vigilant",
             "Scholar",
             "Wizard Lord"
         ]
@@ -15175,6 +15494,7 @@ const careers = [
         ],
         "career_entries": [
             "Marine",
+            "Reaver",
             "Seaman"
         ],
         "career_exits": [
@@ -15389,27 +15709,49 @@ const careers = [
             "Healing Draught"
         ],
         "career_entries": [
+            "Artillerist",
             "Bodyguard",
+            "Bondsman",
             "Bounty Hunter",
+            "Cadet",
+            "Chekist",
+            "Chimneysweep",
+            "Deepwatcher",
             "Demagogue",
             "Fieldwarden",
+            "Grail Pilgrim",
+            "Horse Archer",
             "Kislevite Kossar",
+            "Marauder",
             "Militiaman",
             "Miner",
             "Norse Berserker",
             "Outrider",
             "Pit Fighter",
+            "Reaver",
+            "Sewer Jack",
+            "Skald",
             "Soldier",
+            "Streltsi",
+            "Swamp Skimmer",
+            "Temple Guardian",
             "Thug",
-            "Watchman"
+            "Watchman",
+            "Yeoman"
         ],
         "career_exits": [
             "Bodyguard",
+            "Bondsman",
             "Bounty Hunter",
+            "Cadet",
+            "Gambler",
+            "Horse Master",
+            "Knight of the Verdant Field",
             "Outlaw",
             "Sergeant",
             "Shieldbreaker",
-            "Veteran"
+            "Veteran",
+            "Yeoman"
         ]
     },
     {
@@ -15512,16 +15854,26 @@ const careers = [
             "000 gc in coin or trade goods"
         ],
         "career_entries": [
+            "Ambassador",
+            "Apothecary",
             "Artisan",
             "Burgher",
             "Captain",
             "Envoy",
+            "Exciseman",
             "Explorer",
             "Farmer",
             "Fisherman",
+            "Freeholder",
+            "Horse Coper",
+            "Horse Master",
             "Innkeeper",
+            "Litigant",
             "Mate",
+            "Muleskinner",
+            "Pamphleteer",
             "Scholar",
+            "Stevedore",
             "Steward",
             "Tradesman"
         ],
@@ -15531,6 +15883,7 @@ const careers = [
             "Militiaman",
             "Politician",
             "Racketeer",
+            "Slaver",
             "Spy"
         ]
     },
@@ -15631,16 +15984,27 @@ const careers = [
             "Shield"
         ],
         "career_entries": [
+            "Drover",
             "Militiaman",
+            "Muleskinner",
+            "Newssheet Vendor",
             "Roadwarden",
             "Servant"
         ],
         "career_exits": [
             "Cartographer",
             "Coachman",
+            "Cult Attendant",
+            "Drover",
+            "Exciseman",
+            "Forger",
             "Herald",
+            "Horse Coper",
             "Kithband Warrior",
+            "Muleskinner",
+            "Newssheet Vendor",
             "Outrider",
+            "Pamphleteer",
             "Roadwarden",
             "Scout",
             "Soldier"
@@ -15744,8 +16108,12 @@ const careers = [
             "Artisan",
             "Bailiff",
             "Burgher",
+            "Chimneysweep",
+            "Exciseman",
             "Farmer",
             "Fisherman",
+            "Grave Warden",
+            "Horned Hunter",
             "Merchant",
             "Peasant",
             "Tradesman",
@@ -15753,11 +16121,16 @@ const careers = [
         ],
         "career_exits": [
             "Artisan",
+            "Cadet",
             "Fieldwarden",
+            "Knight of the Verdant Field",
             "Mercenary",
             "Messenger",
             "Outlaw",
             "Sergeant",
+            "Sewer Jack",
+            "Swampaire",
+            "Temple Guardian",
             "Thief"
         ]
     },
@@ -15864,6 +16237,7 @@ const careers = [
         ],
         "career_exits": [
             "Charcoal Burner",
+            "Chimneysweep",
             "Engineer",
             "Mercenary",
             "Scout",
@@ -15965,9 +16339,11 @@ const careers = [
             "Musical Instrument (Lute or Mandolin)"
         ],
         "career_entries": [
+            "Cantor",
             "Entertainer"
         ],
         "career_exits": [
+            "Cantor",
             "Charlatan",
             "Demagogue",
             "Highwayman",
@@ -16081,6 +16457,7 @@ const careers = [
         ],
         "career_exits": [
             "Abbot",
+            "Cantor",
             "Demagogue",
             "Friar",
             "Physician",
@@ -16396,16 +16773,21 @@ const careers = [
             "Trade Tools (Navigator’s Instruments)"
         ],
         "career_entries": [
+            "Astrologer",
             "Boatman",
             "Cartogapher",
+            "Cartographer",
             "Dilettante",
             "Fisherman",
             "Mate",
+            "Reaver",
             "Scribe",
-            "Seaman"
+            "Seaman",
+            "Whaler"
         ],
         "career_exits": [
             "Artisan",
+            "Astrologer",
             "Cartographer",
             "Explorer",
             "Scholar",
@@ -16628,13 +17010,23 @@ const careers = [
             "Steward"
         ],
         "career_exits": [
+            "Astrologer",
+            "Ataman",
+            "Border Courtier",
+            "Cadet",
             "Courtier",
             "Dilettante",
+            "Gambler",
+            "Herrimault",
+            "Horse Archer",
+            "Horse Master",
+            "Knight Errant",
             "Pistolier",
             "Politician",
             "Rogue",
             "Squire",
-            "Student"
+            "Student",
+            "Winged Lancer"
         ]
     },
     {
@@ -16739,15 +17131,29 @@ const careers = [
             "Destrier with Saddle and Harness"
         ],
         "career_entries": [
+            "Ambassador",
+            "Ataman",
+            "Border Courtier",
             "Courtier",
+            "Crusader",
+            "Grail Knight",
+            "Grandmaster",
             "Knight",
             "Knight of the Inner Circle",
+            "Knight of the Realm",
             "Politician",
+            "Questing Knight",
             "Sea Captain"
         ],
         "career_exits": [
+            "Admiral",
+            "Ambassador",
             "Captain",
+            "Crusader",
+            "Faceless",
             "Knight",
+            "Knight Panther",
+            "Knight of the Blazing Sun",
             "Scholar",
             "Sea Captain"
         ]
@@ -16954,29 +17360,49 @@ const careers = [
         ],
         "career_entries": [
             "Agitator",
+            "Anchorite",
+            "Carcassonne Shepherd",
+            "Cenobite",
             "Charlatan",
             "Coachman",
+            "Drover",
             "Ex-Convict",
+            "Exciseman",
             "Hedge Wizard",
+            "Hedgecraft Apprentice",
+            "Horned Hunter",
             "Innkeeper",
+            "Man-at-Arms",
             "Marine",
             "Mercenary",
             "Militiaman",
+            "Muleskinner",
             "Peasant",
+            "Pilgrim",
             "Roadwarden",
             "Rogue",
             "Squire",
+            "Steppes Nomad",
+            "Swampaire",
             "Toll Keeper",
+            "Warlock",
+            "Witch",
             "Woodsman",
+            "Wrecker",
             "Zealot"
         ],
         "career_exits": [
+            "Carcassonne Shepherd",
             "Demagogue",
             "Ex-Convict",
+            "Grail Pilgrim",
             "Highwayman",
+            "Horse Master",
+            "Penitent",
             "Thief",
             "Vagabond",
-            "Veteran"
+            "Veteran",
+            "Wrecker"
         ]
     },
     {
@@ -17082,20 +17508,30 @@ const careers = [
             "Band of Outlaws"
         ],
         "career_entries": [
+            "Assassin",
+            "Badlands Ranger",
+            "Captain",
             "Crime Lord",
             "Demagogue",
+            "Faceless",
             "Ghost Strider",
             "Highwayman",
             "Master Thief",
             "Racketeer",
             "Scout",
-            "Veteran"
+            "Slaver",
+            "Veteran",
+            "Village Elder",
+            "Yeoman"
         ],
         "career_exits": [
             "Assassin",
+            "Badlands Ranger",
+            "Border Courtier",
             "Captain",
             "Crime Lord",
-            "Demagogue"
+            "Demagogue",
+            "Faceless"
         ]
     },
     {
@@ -17198,17 +17634,24 @@ const careers = [
             "Riding Horse with Saddle and Harness"
         ],
         "career_entries": [
+            "Drover",
             "Kithband Warrior",
+            "Man-at-Arms",
             "Messenger",
             "Roadwarden",
             "Soldier"
         ],
         "career_exits": [
+            "Carcassonne Shepherd",
             "Coachman",
+            "Drover",
             "Highwayman",
+            "Horse Master",
+            "Knight of the Verdant Field",
             "Mercenary",
             "Roadwarden",
-            "Scout"
+            "Scout",
+            "Winged Lancer"
         ]
     },
     {
@@ -17422,18 +17865,43 @@ const careers = [
             "Leather Flask"
         ],
         "career_entries": [
-            "None"
+            "Swamp Skimmer"
         ],
         "career_exits": [
+            "Animal Trainer",
+            "Badlander",
             "Bone Picker",
+            "Bonepicker",
+            "Carcassonne Shepherd",
             "Charcoal Burner",
+            "Chimneysweep",
+            "Dung Collector",
             "Farmer",
             "Fisherman",
+            "Foreman",
+            "Frogwife",
+            "Grail Pilgrim",
+            "Grave Warden",
+            "Hedgecraft Apprentice",
+            "Herrimault",
+            "Horse Archer",
+            "Lamplighter",
+            "Man-at-Arms",
+            "Mediator",
             "Militiaman",
+            "Muleskinner",
+            "Newssheet Vendor",
             "Outlaw",
             "Politician",
             "Servant",
+            "Sewer Jack",
+            "Stevedore",
+            "Swamp Skimmer",
+            "Swampaire",
             "Tradesman",
+            "Wall Warden",
+            "Winged Lancer",
+            "Wrecker",
             "Zealot"
         ]
     },
@@ -17639,14 +18107,20 @@ const careers = [
             "Trade Tools (Medical Instruments)"
         ],
         "career_entries": [
+            "Apothecary",
             "Barber-Surgeon",
+            "Embalmer",
+            "Hedgewise",
             "Interrogator",
+            "Monk",
             "Scholar",
             "Student"
         ],
         "career_exits": [
+            "Astrologer",
             "Friar",
             "Guild Master",
+            "Monk",
             "Scholar",
             "Spy"
         ]
@@ -17855,12 +18329,14 @@ const careers = [
             "Light Warhorse"
         ],
         "career_entries": [
+            "Cadet",
             "Engineer",
             "Noble"
         ],
         "career_exits": [
             "Courtier",
             "Duellist",
+            "Horse Master",
             "Knight",
             "Sergeant",
             "Veteran"
@@ -17961,12 +18437,14 @@ const careers = [
             "Medium Armour (Mail Shirt and Leather Jack)"
         ],
         "career_entries": [
+            "Bear Tamer",
             "Norse Berserker",
             "Protagonist",
             "Shieldbreaker",
             "Thug"
         ],
         "career_exits": [
+            "Bondsman",
             "Bounty Hunter",
             "Mercenary",
             "Protagonist",
@@ -18077,27 +18555,43 @@ const careers = [
         ],
         "career_entries": [
             "Agitator",
+            "Ambassador",
+            "Ataman",
             "Bailiff",
             "Captain",
             "Charlatan",
+            "Cloaked Brother",
             "Courtier",
             "Crime Lord",
+            "Cult Attendant",
             "Demagogue",
             "Farmer",
+            "Foreman",
+            "Grail Knight",
             "Guild Master",
+            "Hag Witch",
             "Herald",
             "High Priest",
+            "Knight of the Realm",
+            "Litigant",
             "Merchant",
             "Noble",
+            "Pamphleteer",
             "Peasant",
             "Prelate",
+            "Questing Knight",
             "Racketeer",
-            "Toll Keeper"
+            "Toll Keeper",
+            "Village Elder",
+            "Wise Woman"
         ],
         "career_exits": [
+            "Border Courtier",
+            "Cloaked Brother",
             "Courtier",
             "Crime Lord",
             "Demagogue",
+            "Faceless",
             "Noble Lord",
             "Racketeer",
             "Steward"
@@ -18211,13 +18705,15 @@ const careers = [
         "career_entries": [
             "Friar",
             "Lay Priest",
-            "Priest"
+            "Priest",
+            "Warrior Priest"
         ],
         "career_exits": [
             "Demagogue",
             "Friar",
             "Politician",
-            "Priest"
+            "Priest",
+            "Warrior Priest"
         ]
     },
     {
@@ -18320,19 +18816,28 @@ const careers = [
             "Writing Kit"
         ],
         "career_entries": [
+            "Ataman",
+            "Cantor",
+            "Cult Attendant",
             "Flagellant",
             "Friar",
             "Initiate",
+            "Knight of the Verdant Field",
             "Lay Priest",
+            "Monk",
             "Prelate"
         ],
         "career_exits": [
             "Anointed Priest",
+            "Cantor",
+            "Catechist",
+            "Cult Attendant",
             "Flagellant",
             "Lay Priest",
             "Prelate",
             "Scholar",
-            "Steward"
+            "Steward",
+            "Warrior Priest"
         ]
     },
     {
@@ -18433,11 +18938,13 @@ const careers = [
             "Bailiff",
             "Bodyguard",
             "Bounty Hunter",
+            "Chimneysweep",
             "Estalian Diestro",
             "Ex-Convict",
             "Pit Fighter"
         ],
         "career_exits": [
+            "Chekist",
             "Duellist",
             "Ex-Convict",
             "Pit Fighter",
@@ -18668,15 +19175,18 @@ const careers = [
             "Bailiff",
             "Bodyguard",
             "Cat Burglar",
+            "Chekist",
             "Ex-Convict",
             "Fence",
+            "Foreman",
             "Guild Master",
             "Interrogator",
             "Merchant",
             "Politician",
             "Protagonist",
             "Spy",
-            "Thug"
+            "Thug",
+            "Watchman"
         ],
         "career_exits": [
             "Fence",
@@ -18782,6 +19292,7 @@ const careers = [
         "career_entries": [
             "Agitator",
             "Camp Follower",
+            "Dilettante",
             "Entertainer",
             "Rogue",
             "Seaman",
@@ -19013,17 +19524,26 @@ const careers = [
             "Small but Vicious Dog"
         ],
         "career_entries": [
+            "Chimneysweep",
+            "Dung Collector",
             "Grave Robber",
             "Jailer",
             "Runebearer",
+            "Sewer Jack",
             "Tomb Robber"
         ],
         "career_exits": [
             "Animal Trainer",
             "Bone Picker",
+            "Bonepicker",
             "Cat Burglar",
+            "Deepwatcher",
+            "Dung Collector",
             "Grave Robber",
+            "Grave Warden",
             "Jailer",
+            "Lamplighter",
+            "Sewer Jack",
             "Shieldbreaker",
             "Thief"
         ]
@@ -19134,6 +19654,7 @@ const careers = [
             "Whaler"
         ],
         "career_exits": [
+            "Marauder",
             "Marine",
             "Mate",
             "Mercenary",
@@ -19141,7 +19662,8 @@ const careers = [
             "Slaver",
             "Ulfwerenar (see ToC page 146)",
             "Veteran",
-            "Warleader"
+            "Warleader",
+            "Whaler"
         ]
     },
     {
@@ -19358,19 +19880,26 @@ const careers = [
         ],
         "career_entries": [
             "Coachman",
+            "Drover",
+            "Exciseman",
             "Ferryman",
             "Messenger",
             "Outrider",
+            "River Warden",
             "Watchman"
         ],
         "career_exits": [
+            "Cadet",
             "Highwayman",
+            "Horse Master",
             "Messenger",
             "Outlaw",
             "Outrider",
+            "River Warden",
             "Scout",
             "Sergeant",
-            "Toll Keeper"
+            "Toll Keeper",
+            "Verenean Investigator"
         ]
     },
     {
@@ -19475,17 +20004,30 @@ const careers = [
             "Entertainer",
             "Envoy",
             "Estalian Diestro",
+            "Gambler",
+            "Horse Coper",
+            "Mediator",
+            "Mystic",
+            "Newssheet Vendor",
             "Noble",
+            "Raconteur",
             "Seaman",
+            "Skald",
+            "Strigany Mystic",
             "Thief",
             "Valet"
         ],
         "career_exits": [
             "Charlatan",
+            "Chimneysweep",
             "Demagogue",
             "Entertainer",
             "Ex-Convict",
+            "Gambler",
+            "Herrimault",
+            "Mediator",
             "Outlaw",
+            "Raconteur",
             "Servant",
             "Thief"
         ]
@@ -19588,9 +20130,11 @@ const careers = [
             "Lucky Charm"
         ],
         "career_entries": [
+            "Apprentice Runesmith",
             "Shieldbreaker"
         ],
         "career_exits": [
+            "Apprentice Runesmith",
             "Rat Catcher",
             "Scout",
             "Shieldbreaker",
@@ -19700,7 +20244,8 @@ const careers = [
             "Three runic items"
         ],
         "career_entries": [
-            "Journeyman Runesmith"
+            "Journeyman Runesmith",
+            "Master Runesmith"
         ],
         "career_exits": [
             "Captain",
@@ -19798,29 +20343,52 @@ const careers = [
             "Writing Kit"
         ],
         "career_entries": [
+            "Abbot",
+            "Agent of the Shroud",
             "Anointed Priest",
+            "Apothecary",
+            "Apprentice Runesmith",
             "Apprentice Wizard",
+            "Astrologer",
             "Cartographer",
+            "Catechist",
+            "Embalmer",
+            "Exorcist",
+            "Forger",
             "Friar",
+            "Hedge Master",
             "High Priest",
+            "Journeyman Runesmith",
             "Journeyman Wizard",
+            "Litigant",
+            "Master Runesmith",
             "Master Wizard",
+            "Monk",
             "Navigator",
             "Noble Lord",
+            "Pamphleteer",
             "Physician",
             "Priest",
             "Scribe",
             "Sea Captain",
-            "Student"
+            "Student",
+            "Verenean Investigator"
         ],
         "career_exits": [
+            "Abbot",
+            "Agent of the Shroud",
             "Apprentice Wizard",
+            "Astrologer",
+            "Catechist",
             "Explorer",
             "Friar",
             "Litigant",
             "Merchant",
+            "Monk",
+            "Pamphleteer",
             "Physician",
-            "Steward"
+            "Steward",
+            "Verenean Investigator"
         ]
     },
     {
@@ -20033,27 +20601,43 @@ const careers = [
         ],
         "career_entries": [
             "Bounty Hunter",
+            "Carcassonne Shepherd",
             "Champion",
             "Charcoal Burner",
+            "Cloaked Brother",
             "Coachman",
+            "Drover",
             "Fieldwarden",
+            "Hedgewise",
+            "Herrimault",
+            "Horned Hunter",
+            "Horse Archer",
             "Hunter",
+            "Ice Maiden",
             "Kithband Warrior",
+            "Knight of the Verdant Field",
             "Messenger",
             "Miner",
+            "Muleskinner",
             "Outrider",
             "Roadwarden",
             "Runebearer",
+            "Steppes Nomad",
             "Vagabond",
-            "Woodsman"
+            "Winged Lancer",
+            "Woodsman",
+            "Yeoman"
         ],
         "career_exits": [
+            "Badlands Ranger",
             "Cartographer",
+            "Cloaked Brother",
             "Explorer",
+            "Ghost Strider",
+            "Horse Master",
             "Outlaw Chief",
             "Sergeant",
-            "Vampire Hunter",
-            "Ghost Strider"
+            "Vampire Hunter"
         ]
     },
     {
@@ -20154,16 +20738,28 @@ const careers = [
             "Writing Kit"
         ],
         "career_entries": [
+            "Apprentice Runesmith",
             "Apprentice Wizard",
             "Cartographer",
-            "Initiate"
+            "Forger",
+            "Hedgecraft Apprentice",
+            "Initiate",
+            "Newssheet Vendor",
+            "Warlock"
         ],
         "career_exits": [
             "Agitator",
+            "Apprentice Runesmith",
             "Apprentice Wizard",
             "Cartographer",
+            "Catechist",
+            "Exciseman",
+            "Horned Hunter",
             "Initiate",
+            "Litigant",
+            "Monk",
             "Navigator",
+            "Pamphleteer",
             "Scholar"
         ]
     },
@@ -20274,6 +20870,7 @@ const careers = [
             "Noble Lord"
         ],
         "career_exits": [
+            "Admiral",
             "Explorer",
             "Noble Lord",
             "Scholar",
@@ -20380,14 +20977,20 @@ const careers = [
             "Ferryman",
             "Fisherman",
             "Norse Berserker",
+            "River Warden",
+            "Slaver",
             "Smuggler"
         ],
         "career_exits": [
             "Marine",
             "Mate",
             "Navigator",
+            "Raconteur",
+            "Reaver",
             "Rogue",
-            "Smuggler"
+            "Smuggler",
+            "Whaler",
+            "Wrecker"
         ]
     },
     {
@@ -20481,7 +21084,8 @@ const careers = [
         ],
         "career_entries": [
             "Hedge Wizard",
-            "Skald"
+            "Skald",
+            "Strigany Mystic"
         ],
         "career_exits": [
             "Agitator",
@@ -20591,9 +21195,15 @@ const careers = [
         ],
         "career_entries": [
             "Assassin",
+            "Battle Pilgrim",
+            "Cadet",
             "Champion",
+            "Chekist",
+            "Deepwatcher",
             "Duellist",
             "Highwayman",
+            "Horse Master",
+            "Ice Maiden",
             "Judicial Champion",
             "Kislevite Kossar",
             "Marine",
@@ -20601,20 +21211,30 @@ const careers = [
             "Militiaman",
             "Norse Berserker",
             "Pistolier",
+            "River Warden",
             "Roadwarden",
             "Scout",
+            "Sewer Jack",
             "Shieldbreaker",
             "Soldier",
             "Squire",
+            "Streltsi",
             "Targeteer",
             "Veteran",
-            "Watchman"
+            "Watchman",
+            "Yeoman"
         ],
         "career_exits": [
+            "Artillerist",
+            "Black Guard",
+            "Border Courtier",
             "Captain",
+            "Crusader",
             "Duellist",
             "Judicial Champion",
-            "Knight"
+            "Knight",
+            "Knight Panther",
+            "Knight of the Blazing Sun"
         ]
     },
     {
@@ -20716,6 +21336,9 @@ const careers = [
         ],
         "career_entries": [
             "Camp Follower",
+            "Cenobite",
+            "Frogwife",
+            "Lamplighter",
             "Peasant",
             "Rogue"
         ],
@@ -20724,7 +21347,9 @@ const careers = [
             "Burgher",
             "Camp Follower",
             "Innkeeper",
+            "Lamplighter",
             "Messenger",
+            "Newssheet Vendor",
             "Spy",
             "Thief",
             "Valet"
@@ -20824,6 +21449,7 @@ const careers = [
             "Light Armour (Leather Jack)"
         ],
         "career_entries": [
+            "Dung Collector",
             "Jailer",
             "Militiaman",
             "Peasant",
@@ -20940,18 +21566,23 @@ const careers = [
             "Water Skin"
         ],
         "career_entries": [
+            "Apprentice Runesmith",
+            "Journeyman Runesmith",
             "Kislevite Kossar",
             "Mercenary",
             "Miner",
             "Rat Catcher",
             "Runebearer",
+            "Sewer Jack",
             "Smuggler",
             "Tomb Robber"
         ],
         "career_exits": [
+            "Deepwatcher",
             "Pit Fighter",
             "Runebearer",
             "Sergeant",
+            "Sewer Jack",
             "Smuggler",
             "Tomb Robber",
             "Veteran"
@@ -21275,6 +21906,7 @@ const careers = [
             "1d10 Thralls"
         ],
         "career_entries": [
+            "Freeholder",
             "Marauder",
             "Merchant",
             "Reaver"
@@ -21385,15 +22017,21 @@ const careers = [
             "Bailiff",
             "Boatman",
             "Bone Picker",
+            "Bonepicker",
             "Camp Follower",
             "Coachman",
+            "Deepwatcher",
             "Engineer",
             "Ferryman",
             "Innkeeper",
+            "Lamplighter",
             "Marine",
             "Miner",
+            "River Warden",
             "Seaman",
-            "Shieldbreaker"
+            "Sewer Jack",
+            "Shieldbreaker",
+            "Stevedore"
         ],
         "career_exits": [
             "Boatman",
@@ -21401,9 +22039,11 @@ const careers = [
             "Ex-Convict",
             "Fence",
             "Ferryman",
+            "Forger",
             "Seaman",
             "Shieldbreaker",
-            "Thief"
+            "Thief",
+            "Wrecker"
         ]
     },
     {
@@ -21503,15 +22143,23 @@ const careers = [
             "Uniform"
         ],
         "career_entries": [
+            "Bear Tamer",
+            "Chekist",
             "Flagellant",
             "Hunter",
             "Messenger",
+            "Temple Guardian",
             "Toll Keeper",
             "Watchman"
         ],
         "career_exits": [
+            "Cadet",
+            "Deepwatcher",
+            "Horse Master",
+            "Knight of the Verdant Field",
             "Mercenary",
             "Outrider",
+            "Raconteur",
             "Sergeant",
             "Vagabond",
             "Veteran",
@@ -21619,22 +22267,33 @@ const careers = [
             "4 Homing Pigeons"
         ],
         "career_entries": [
+            "Agent of the Shroud",
+            "Border Courtier",
             "Camp Follower",
             "Charlatan",
+            "Chekist",
+            "Cloaked Brother",
             "Courtier",
+            "Enforcer",
             "Explorer",
+            "Hedge Master",
+            "Master Vigilant",
             "Merchant",
             "Minstrel",
             "Physician",
             "Rapscallion",
             "Sea Captain",
-            "Servant"
+            "Servant",
+            "Verenean Investigator",
+            "Wall Warden"
         ],
         "career_exits": [
             "Assassin",
+            "Cloaked Brother",
             "Explorer",
             "Master Thief",
-            "Racketeer"
+            "Racketeer",
+            "Verenean Investigator"
         ]
     },
     {
@@ -21733,12 +22392,21 @@ const careers = [
             "Horse with Saddle and Harness"
         ],
         "career_entries": [
+            "Cadet",
+            "Cult Attendant",
             "Herald",
             "Noble",
+            "Temple Guardian",
             "Valet"
         ],
         "career_exits": [
+            "Black Guard",
+            "Cadet",
+            "Horse Master",
             "Knight",
+            "Knight Errant",
+            "Knight Panther",
+            "Knight of the Blazing Sun",
             "Noble",
             "Outlaw",
             "Sergeant",
@@ -21849,7 +22517,9 @@ const careers = [
         ],
         "career_exits": [
             "Ataman",
+            "Drover",
             "Horse Archer",
+            "Horse Coper",
             "Horse Master",
             "Kossar",
             "Outlaw",
@@ -22067,14 +22737,19 @@ const careers = [
         ],
         "career_entries": [
             "Courtier",
+            "Cult Attendant",
             "Farmer",
+            "Monk",
             "Politician",
             "Priest",
             "Scholar",
-            "Valet"
+            "Valet",
+            "Village Elder",
+            "Wall Warden"
         ],
         "career_exits": [
             "Crime Lord",
+            "Faceless",
             "Fence",
             "Merchant",
             "Noble"
@@ -22392,22 +23067,39 @@ const careers = [
             "Writing Kit"
         ],
         "career_entries": [
+            "Cadet",
             "Dilettante",
             "Envoy",
+            "Forger",
             "Grave Robber",
             "Minstrel",
             "Noble",
             "Valet"
         ],
         "career_exits": [
+            "Agent of the Shroud",
             "Agitator",
+            "Apothecary",
+            "Apprentice Runesmith",
             "Apprentice Wizard",
+            "Astrologer",
             "Barber-Surgeon",
+            "Cadet",
             "Cartographer",
+            "Catechist",
+            "Embalmer",
             "Engineer",
             "Envoy",
+            "Forger",
+            "Gambler",
             "Initiate",
+            "Litigant",
+            "Monk",
+            "Newssheet Vendor",
+            "Pamphleteer",
+            "Penitent",
             "Physician",
+            "Raconteur",
             "Scholar"
         ]
     },
@@ -22729,8 +23421,9 @@ const careers = [
         ],
         "career_entries": [
             "Bounty Hunter",
-            "Hunter",
             "Ghost Strider",
+            "Horse Archer",
+            "Hunter",
             "Master Thief",
             "Vampire Hunter",
             "Veteran"
@@ -22948,7 +23641,9 @@ const careers = [
         "career_entries": [
             "Entertainer",
             "Ex-Convict",
+            "Exciseman",
             "Grave Robber",
+            "Herrimault",
             "Interrogator",
             "Militiaman",
             "Outlaw",
@@ -22957,17 +23652,24 @@ const careers = [
             "Rogue",
             "Servant",
             "Smuggler",
+            "Stevedore",
+            "Strigany Mystic",
             "Toll Keeper",
             "Tomb Robber",
-            "Vagabond"
+            "Vagabond",
+            "Wrecker"
         ],
         "career_exits": [
             "Cat Burglar",
             "Charlatan",
+            "Chimneysweep",
             "Entertainer",
+            "Ex-Convict",
             "Fence",
+            "Gambler",
             "Rogue",
-            "Tomb Robber"
+            "Tomb Robber",
+            "Verenean Investigator"
         ]
     },
     {
@@ -23064,12 +23766,16 @@ const careers = [
             "Medium Armour (Mail Shirt and Leather Jerkin)"
         ],
         "career_entries": [
+            "Dung Collector",
             "Ex-Convict",
             "Marine",
-            "Protagonist"
+            "Protagonist",
+            "Stevedore",
+            "Swampaire"
         ],
         "career_exits": [
             "Bodyguard",
+            "Chekist",
             "Ex-Convict",
             "Interrogator",
             "Mercenary",
@@ -23174,6 +23880,8 @@ const careers = [
         "career_entries": [
             "Bailiff",
             "Coachman",
+            "Lamplighter",
+            "River Warden",
             "Roadwarden"
         ],
         "career_exits": [
@@ -23291,6 +23999,7 @@ const careers = [
             "Thief"
         ],
         "career_exits": [
+            "Agent of the Shroud",
             "Ex-Convict",
             "Fence",
             "Rat Catcher",
@@ -23396,17 +24105,26 @@ const careers = [
             "Burgher",
             "Camp Follower",
             "Dilettante",
+            "Forger",
+            "Frogwife",
             "Peasant",
+            "Stevedore",
             "Watchman"
         ],
         "career_exits": [
             "Artisan",
             "Cartographer",
+            "Embalmer",
             "Engineer",
             "Envoy",
             "Farmer",
+            "Foreman",
+            "Forger",
+            "Freeholder",
+            "Grail Pilgrim",
             "Merchant",
             "Militiaman",
+            "Wall Warden",
             "Zealot"
         ]
     },
@@ -23608,27 +24326,53 @@ const careers = [
             "Water Skin"
         ],
         "career_entries": [
+            "Anchorite",
+            "Badlander",
             "Barber-Surgeon",
+            "Battle Pilgrim",
             "Camp Follower",
+            "Carcassonne Shepherd",
             "Cartographer",
             "Cat Burglar",
+            "Cenobite",
             "Charcoal Burner",
             "Entertainer",
             "Envoy",
             "Ex-Convict",
             "Fieldwarden",
+            "Frogwife",
+            "Grail Pilgrim",
             "Hedge Wizard",
+            "Herrimault",
+            "Horned Hunter",
             "Kithband Warrior",
             "Outlaw",
+            "Penitent",
+            "Pilgrim",
+            "Seer",
             "Soldier",
+            "Steppes Nomad",
+            "Swamp Skimmer",
+            "Swampaire",
+            "Warlock",
+            "Witch",
             "Woodsman"
         ],
         "career_exits": [
+            "Badlander",
             "Bone Picker",
+            "Bonepicker",
+            "Carcassonne Shepherd",
+            "Dung Collector",
             "Entertainer",
             "Friar",
+            "Gambler",
+            "Grail Pilgrim",
+            "Man-at-Arms",
+            "Raconteur",
             "Rapscallion",
             "Scout",
+            "Swamp Skimmer",
             "Thief",
             "Woodsman"
         ]
@@ -23734,6 +24478,7 @@ const careers = [
             "Servant"
         ],
         "career_exits": [
+            "Cult Attendant",
             "Herald",
             "Rogue",
             "Squire",
@@ -23844,16 +24589,24 @@ const careers = [
             "4 Stakes"
         ],
         "career_entries": [
+            "Agent of the Shroud",
+            "Black Guard",
             "Bounty Hunter",
             "Field Warden",
+            "Fieldwarden",
             "Ghost Strider",
+            "Grave Warden",
             "Knight",
+            "Master Vigilant",
             "Scout",
             "Tomb Robber"
         ],
         "career_exits": [
+            "Agent of the Shroud",
+            "Black Guard",
             "Demagogue",
             "Initiate",
+            "Killer of the Dead",
             "Knight",
             "Targeteer",
             "Witch Hunter"
@@ -23974,11 +24727,12 @@ const careers = [
             "Dilettante",
             "Initiate (Verena)",
             "Priest (Verena)",
+            "River Warden",
             "Roadwarden",
-            "Thief",
-            "Watchman",
             "Scholar",
             "Spy",
+            "Thief",
+            "Watchman",
             "Witch Hunter"
         ],
         "career_exits": [
@@ -24085,21 +24839,47 @@ const careers = [
             "Bottle of Good Craftsmenship Spirits"
         ],
         "career_entries": [
+            "Artillerist",
+            "Battle Pilgrim",
+            "Bondsman",
+            "Carcassonne Shepherd",
+            "Chekist",
+            "Cloaked Brother",
+            "Crusader",
+            "Deepwatcher",
             "Flagellant",
+            "Herrimault",
+            "Horse Archer",
+            "Ice Maiden",
             "Kislevite Kossar",
             "Kithband Warrior",
+            "Knight Panther",
+            "Knight of the Verdant Field",
+            "Man-at-Arms",
+            "Master Runesmith",
             "Mercenary",
             "Norse Berserker",
             "Outlaw",
             "Pistolier",
             "Pit Fighter",
+            "Reaver",
             "Runebearer",
+            "Sewer Jack",
             "Shieldbreaker",
             "Soldier",
-            "Squire"
+            "Squire",
+            "Streltsi",
+            "Warleader",
+            "Whaler",
+            "Winged Lancer",
+            "Wrecker"
         ],
         "career_exits": [
+            "Ataman",
             "Champion",
+            "Cloaked Brother",
+            "Crusader",
+            "Faceless",
             "Farmer",
             "Judicial Champion",
             "Outlaw Chief",
@@ -24203,7 +24983,9 @@ const careers = [
         ],
         "career_entries": [
             "Faceless",
+            "Frogwife",
             "Mediator",
+            "Swampaire",
             "Yeoman"
         ],
         "career_exits": [
@@ -24421,8 +25203,9 @@ const careers = [
         ],
         "career_exits": [
             "Captain",
-            "Chaos Warrior†",
             "Champion",
+            "Chaos Warrior†",
+            "Reaver",
             "Veteran"
         ]
     },
@@ -24528,6 +25311,7 @@ const careers = [
             "Lucky Charm"
         ],
         "career_entries": [
+            "Hedgewise",
             "Witch"
         ],
         "career_exits": [
@@ -24747,16 +25531,30 @@ const careers = [
             "Uniform"
         ],
         "career_entries": [
+            "Chekist",
+            "Grave Warden",
             "Jailer",
-            "Soldier"
+            "Lamplighter",
+            "Sewer Jack",
+            "Soldier",
+            "Streltsi",
+            "Temple Guardian"
         ],
         "career_exits": [
+            "Chekist",
+            "Deepwatcher",
+            "Enforcer",
+            "Litigant",
             "Mercenary",
             "Racketeer",
             "Roadwarden",
             "Sergeant",
+            "Sewer Jack",
             "Soldier",
-            "Tradesman"
+            "Streltsi",
+            "Temple Guardian",
+            "Tradesman",
+            "Verenean Investigator"
         ]
     },
     {
@@ -25206,7 +26004,12 @@ const careers = [
             "Trade Tools (Apothecary or Herbalist)"
         ],
         "career_entries": [
-            "Hedge Wizard"
+            "Apprentice Witch",
+            "Hag Witch",
+            "Hedge Master",
+            "Hedge Wizard",
+            "Ice Maiden",
+            "Seer"
         ],
         "career_exits": [
             "Apprentice Wizard",
@@ -25326,20 +26129,36 @@ const careers = [
             "10 Yards of Rope"
         ],
         "career_entries": [
+            "Agent of the Shroud",
             "Anointed Priest",
             "Assassin",
             "Champion",
+            "Cloaked Brother",
+            "Enforcer",
+            "Exorcist",
+            "Grandmaster",
             "High Priest",
             "Judicial Champion",
+            "Knight Panther",
             "Knight of the Inner Circle",
-            "Vampire Hunter"
+            "Knight of the Raven",
+            "Master Vigilant",
+            "Scourge of God",
+            "Vampire Hunter",
+            "Verenean Investigator",
+            "Warrior Priest"
         ],
         "career_exits": [
+            "Black Guard",
             "Captain",
             "Champion",
+            "Cloaked Brother",
             "Demagogue",
             "Initiate",
-            "Knight of the Inner Circle"
+            "Killer of the Dead",
+            "Knight Panther",
+            "Knight of the Inner Circle",
+            "Verenean Investigator"
         ]
     },
     {
@@ -25440,9 +26259,11 @@ const careers = [
             "12 Grimoires"
         ],
         "career_entries": [
+            "Master Vigilant",
             "Master Wizard"
         ],
         "career_exits": [
+            "Ambassador",
             "Explorer",
             "Guild Master"
         ]
@@ -25546,7 +26367,11 @@ const careers = [
             "Vagabond"
         ],
         "career_exits": [
+            "Carcassonne Shepherd",
+            "Herrimault",
             "Hunter",
+            "Knight of the Verdant Field",
+            "Man-at-Arms",
             "Militiaman",
             "Outlaw",
             "Scout",
@@ -25653,6 +26478,7 @@ const careers = [
             "Marine",
             "Outlaw",
             "Peasant",
+            "River Warden",
             "Riverwarden",
             "Seaman",
             "Smuggler"
@@ -25771,14 +26597,17 @@ const careers = [
         "career_entries": [
             "Carcassonne Shepherd",
             "Man-at-Arms",
-            "Mercenary"
+            "Mercenary",
+            "Swampaire",
+            "Wall Warden"
         ],
         "career_exits": [
             "Faceless",
             "Mercenary",
             "Outlaw Chief",
             "Scout",
-            "Sergeant"
+            "Sergeant",
+            "Village Elder"
         ]
     },
     {
@@ -25876,17 +26705,26 @@ const careers = [
         ],
         "career_entries": [
             "Agitator",
+            "Cantor",
+            "Catechist",
+            "Hedgecraft Apprentice",
             "Initiate",
             "Judicial Champion",
+            "Monk",
+            "Newssheet Vendor",
             "Peasant",
+            "Pilgrim",
             "Tradesman"
         ],
         "career_exits": [
             "Agitator",
-            "Initiate",
+            "Catechist",
             "Flagellant",
             "Friar",
-            "Outlaw"
+            "Initiate",
+            "Outlaw",
+            "Penitent",
+            "Temple Guardian"
         ]
     }
 ];

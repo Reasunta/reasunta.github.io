@@ -131,7 +131,18 @@ function openCareer(item) {
     renderCareerList('career_exits', item.career_exits);
 
     // roles/roles summary
-    el('roles').textContent = getCareerType(item);
+    el('roles').textContent = getCareerAvailability(item);
+}
+
+function openSkill(item) {
+    el('skillName').textContent = item.name;
+    el('skillDescription').textContent = item.description;
+    el('skillRoles').textContent = getSkillAvailability(item);
+}
+
+function openTalent(item) {
+    el('talentName').textContent = item.name;
+    el('talentDescription').textContent = item.description;
 }
 
 function renderSearchResults(list) {
@@ -145,15 +156,23 @@ function renderSearchResults(list) {
     list.forEach(i => {
         const div = document.createElement('div');
         div.className = 'item';
-        div.innerHTML = `<a href="?type=career&name=${i.name}"><div class='item-title'>${i.name}</div><div class='item-type'>${getCareerType(i)}</div></a>`;
+        div.innerHTML = `<a href="?type=career&name=${i.name}"><div class='item-title'>${i.name}</div><div class='item-type'>${getCareerAvailability(i)}</div></a>`;
         res.appendChild(div);
     });
 }
 
-function getCareerType(career) {
+function getCareerAvailability(career) {
     const roles = [];
     if (career.basic) roles.push('Basic');
     if (career.special) roles.push('Special');
     if (career.advanced) roles.push('Advanced');
+    return roles.length ? roles.join(' • ') : '—';
+}
+
+function getSkillAvailability(skill) {
+    const roles = [];
+    if (skill.isBasic) roles.push('Basic');
+    if (skill.isAdvanced) roles.push('Advanced');
+    roles.push(skill.characteristic)
     return roles.length ? roles.join(' • ') : '—';
 }
