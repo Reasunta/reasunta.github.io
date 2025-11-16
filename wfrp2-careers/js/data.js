@@ -1,3 +1,33 @@
+/*
+ Not found careers:
+ - Hedge Witch
+ - Thrall Wizard
+
+ Not handled careers:
+
+ - Anointed Priest (Myrmidia)
+ - Clanrat
+ - Clawleader
+ - Initiate (Morr only)
+ - Initiate (Morr)
+ - Initiate (Ranald, Taal & Rhya)
+ - Initiate (Verena)
+ - Initiate (of Myrmidia)
+ - Initiate (of Taal)
+ - Initiate of Ulric
+ - Initiate of Ursun
+ - Maledictor (ToC)
+ - Priest (Morr only)
+ - Priest (Myrmidia)
+ - Priest (Verena)
+ - Priest of Ursun
+ - Scribe (marker)
+ - Special*
+ - Ulfwerenar (see ToC page 146)
+ - Vitki (ToC)
+
+ */
+
 const careers = [
     {
         "name": "Abbot",
@@ -1597,6 +1627,114 @@ const careers = [
         ]
     },
     {
+        "name": "Aspiring Champion",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Aspiring Champions are often the best any Chaos Warrior can hope to achieve, since most rarely progress further than this high position. The reason is simple. Chaos Champions eliminate anyone they see as a rival, butchering their underlings to ensure their continued place at the head of their armies. As a result, many Aspiring Champions leave the service of a Chaos Champion to create their own warband. Unfortunately? Aspiring Champions can only recall the most pertinent details of their past, and many assume new identities to replace those lost to them.",
+        "requirements": "To become an Aspiring Champion, a Character must have gained at least two Rewards of Chaos.",
+        "main_profile": {
+            "ws": {
+                "value": 25,
+                "label": "+25%"
+            },
+            "bs": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "s": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "t": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "ag": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "int": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "wp": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "fel": {
+                "value": 10,
+                "label": "+10%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 2,
+                "label": "+2"
+            },
+            "w": {
+                "value": 8,
+                "label": "+8"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 0,
+                "label": "–"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Command",
+            "Common Knowledge (any two)",
+            "Dodge Blow",
+            "Intimidate",
+            "Outdoor Survival",
+            "Perception",
+            "Ride or Sail",
+            "Speak Arcane Language (Daemonic)",
+            "Speak Language (any three)"
+        ],
+        "talents": [
+            "Coolheaded",
+            "Seasoned Traveller",
+            "Specialist Weapon Group (any one)",
+            "Warrior Born"
+        ],
+        "trappings": [
+            "Heavy Armour (Full Plate)",
+            "Flail",
+            "Great Weapon or Lance",
+            "Hand Weapon and Shield",
+            "Magic Item",
+            "2d10 Followers"
+        ],
+        "career_entries": [
+            "Chaos Knight"
+        ],
+        "career_exits": [
+            "Champion of Chaos"
+        ]
+    },
+    {
         "name": "Assassin",
         "special": false,
         "basic": false,
@@ -3037,12 +3175,12 @@ const careers = [
             "three Gifts (each worth 1d10/2 gc)"
         ],
         "career_entries": [
-            "Berserker",
+            "Norse Berserker",
             "Mercenary",
             "Pit Fighter"
         ],
         "career_exits": [
-            "Berserker",
+            "Norse Berserker",
             "Bodyguard",
             "Freeholder",
             "Marauder",
@@ -3727,7 +3865,6 @@ const careers = [
             "Tent"
         ],
         "career_entries": [
-            "Bone Picker",
             "Bonepicker",
             "Frogwife",
             "Servant"
@@ -3854,6 +3991,225 @@ const careers = [
             "Priest",
             "Minstrel",
             "Zealot"
+        ]
+    },
+    {
+        "name": "Chaos Knight",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Chaos Knights are those Chaos Warriors who have served their master exceptionally well and gained a Reward for their efforts. Most Chaos Knights are wanderers still, following a more powerful Chaos Champion. They bide their time until such point that they can prove their worth and replace him. In exchange for their improved position, Chaos Knights begin to forget small details of their past. They may recall important events but rarely particular details about people or places unless somehow significant to the memory.",
+        "requirements": "To become a Chaos Knight, a Character must have gained at least one Reward of Chaos.",
+        "main_profile": {
+            "ws": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "bs": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "s": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "t": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "ag": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "int": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "wp": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "fel": {
+                "value": 5,
+                "label": "+5%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 1,
+                "label": "+1"
+            },
+            "w": {
+                "value": 6,
+                "label": "+6"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 0,
+                "label": "–"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Command",
+            "Common Knowledge (Chaos Wastes)",
+            "Common Knowledge (Norsca)",
+            "Dodge Blow",
+            "Intimidate",
+            "Outdoor Survival",
+            "Perception",
+            "Ride or Sail",
+            "Speak Arcane Language (Daemonic)",
+            "Speak Language (Dark Tongue, Norse, Kurgan or Hung)"
+        ],
+        "talents": [
+            "Chosen of Chaos",
+            "Hardy",
+            "Menacing",
+            "Specialist Weapon Group (any one)"
+        ],
+        "trappings": [
+            "Heavy Armour (Full Plate)",
+            "Flail",
+            "Great Weapon or Lance",
+            "Hand Weapon and Shield"
+        ],
+        "career_entries": [
+            "Chaos Warrior"
+        ],
+        "career_exits": [
+            "Aspiring Champion"
+        ]
+    },
+    {
+        "name": "Chaos Warrior",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "Warriors of Chaos are those men and women who leave their homelands to throw in their lot with the hordes that muster in the Chaos Wastes. They have a deep connection with the Ruinous Powers as is evident by the corruption of their bodies. Though they have committed themselves to the service of the Dark Gods, they retain something of their memories and their identities.",
+        "requirements": "To become a Chaos Warrior, the Character must have at least one mutation.",
+        "main_profile": {
+            "ws": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "bs": {
+                "value": 0,
+                "label": "–"
+            },
+            "s": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "t": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "ag": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "int": {
+                "value": 0,
+                "label": "–"
+            },
+            "wp": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "fel": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 1,
+                "label": "+1"
+            },
+            "w": {
+                "value": 4,
+                "label": "+4"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 0,
+                "label": "–"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Animal Care",
+            "Command",
+            "Common Knowledge (Chaos Wastes)",
+            "Follow Trail",
+            "Intimidate",
+            "Navigation",
+            "Outdoor Survival",
+            "Perception",
+            "Ride",
+            "Search",
+            "Speak Language (Norscan, Kurgan or Hung)"
+        ],
+        "talents": [
+            "Orientation",
+            "Specialist Weapon Group (any one)",
+            "Strike Mighty Blow",
+            "Strike to Injure"
+        ],
+        "trappings": [
+            "Heavy Armour (Full Plate)",
+            "Flail",
+            "Great Weapon or Lance",
+            "Hand Weapon and Shield"
+        ],
+        "career_entries": [
+            "Marauder",
+            "Cult Magus of Khorne",
+            "Cult Magus of Nurgle",
+            "Cult Magus of Tzeentch",
+            "Cult Magus of Slaanesh",
+        ],
+        "career_exits": [
+            "Chaos Knight"
         ]
     },
     {
@@ -4330,7 +4686,6 @@ const careers = [
         ],
         "career_entries": [
             "Badlander",
-            "Bone Picker",
             "Bonepicker",
             "Charlatan",
             "Chimneysweep",
@@ -4675,6 +5030,110 @@ const careers = [
             "Scout",
             "Sergeant",
             "Witch Hunter"
+        ]
+    },
+    {
+        "name": "Champion of Chaos",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) The Champions of Chaos are some of the most feared warriors of the Chaos Wastes. Armed with potent weaponry and protected with blasphemous Chaos Armour, they can withstand the worst attacks and defeat nearly any foe. Chaos Champions lead warbands and may ally themselves with more potent Warlords should the situation demand it. Very few Chaos Champions exist considering the violence of their adopted homeland, but those who do are mighty indeed. These characters have no recollection of their pasts and almost always assume a new name and identity to replace that which they lost.",
+        "requirements": "To become Champion of Chaos, a Character must have gained at least three Rewards of Chaos.",
+        "main_profile": {
+            "ws": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "bs": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "s": {
+                "value": 25,
+                "label": "+25%"
+            },
+            "t": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "ag": {
+                "value": 25,
+                "label": "+25%"
+            },
+            "int": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "wp": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "fel": {
+                "value": 15,
+                "label": "+15%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 2,
+                "label": "+2"
+            },
+            "w": {
+                "value": 9,
+                "label": "+9"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 0,
+                "label": "–"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Common Knowledge (any three)",
+            "Ride",
+            "Speak Arcane Language (Daemonic)",
+            "Speak Language (any two)"
+        ],
+        "talents": [
+            "Fearless",
+            "Inured to Chaos",
+            "Public Speaking",
+            "Suave",
+            "Unsettling",
+            "Very Resilient",
+            "Very Strong"
+        ],
+        "trappings": [
+            "Chaos Armour",
+            "Magic Item",
+            "Magic Weapon",
+            "Warband"
+        ],
+        "career_entries": [
+            "Aspiring Champion"
+        ],
+        "career_exits": [
+            "Exalted Champion of Chaos"
         ]
     },
     {
@@ -5028,7 +5487,7 @@ const careers = [
             "and saddlebags."
         ],
         "career_entries": [
-            "Kossar",
+            "Kislevite Kossar",
             "Protagonist",
             "Streltsi",
             "Thug",
@@ -5764,6 +6223,478 @@ const careers = [
         ]
     },
     {
+        "name": "Cult Acolyte of Khorne",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Cult Acolytes of Khorne work to spread death and hate. Violent, vicious and thoroughly wicked, they are the most martially inclined of all cultists. The only thing keeping these individuals from destroying everything around them is their commitment to th goals of their group.",
+        "restrictions": "Only established cultists of Khorne and those with at least one mutation can enter this Career.",
+        "main_profile": {
+            "ws": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "bs": {
+                "value": 0,
+                "label": "–"
+            },
+            "s": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "t": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "ag": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "int": {
+                "value": 0,
+                "label": "–"
+            },
+            "wp": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "fel": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 1,
+                "label": "+1"
+            },
+            "w": {
+                "value": 4,
+                "label": "+4"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 0,
+                "label": "–"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Common Knowledge (any one)",
+            "Dodge Blow",
+            "Intimidate",
+            "Secret Language (Battle Tongue)"
+        ],
+        "talents": [
+            "Hardy",
+            "Inured to Chaos",
+            "Lightning Reflexes or Very Resilient",
+            "Specialist Weapon Group (Flail or Two-handed)",
+            "Strike Mighty Blow",
+            "Strike to Injure"
+        ],
+        "trappings": [
+            "Medium Armour (Mail Shirt)",
+            "Flail or Great Weapon",
+            "Cult Vestments",
+            "Religious Symbol of Khorne",
+            "Skin of Blood"
+        ],
+        "career_entries": [
+            "Any"
+        ],
+        "career_exits": [
+            "Agitator",
+            "Maraudeur",
+            "Cult Magus of Khorne",
+            "Outlaw",
+            "Veteran",
+            "Zealot"
+        ]
+    },
+    {
+        "name": "Cult Acolyte of Nurgle",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) By preying on the afficted, the frightened, and the despairing, Acolytes of Nurgle gather flocks of the doomed and dying to lend their strength and belief to the cause of the cult. Thoroughly despicable, these individuals harvest the damned from the most tragic wretches in the Old World.",
+        "restrictions": "Only established cultists of Nurgle with at least one mutation can enter this Career.",
+        "main_profile": {
+            "ws": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "bs": {
+                "value": 0,
+                "label": "–"
+            },
+            "s": {
+                "value": 0,
+                "label": "–"
+            },
+            "t": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "ag": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "int": {
+                "value": 0,
+                "label": "–"
+            },
+            "wp": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "fel": {
+                "value": 15,
+                "label": "+15%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 0,
+                "label": "–"
+            },
+            "w": {
+                "value": 3,
+                "label": "+3"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 1,
+                "label": "+1"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Academic Knowledge (Daemonology)",
+            "Channeling",
+            "Common Knowledge (any one)",
+            "Disguise",
+            "Heal",
+            "Intimidate",
+            "Magic Sense",
+            "Outdoor Survival",
+            "Read/Write",
+            "Speak Arcane Language (Daemonic)",
+            "Torture"
+        ],
+        "talents": [
+            "Aethyric Attunement or Very Resilient",
+            "Dark Magic",
+            "Fearless",
+            "Inured to Chaos",
+            "Petty Magic (Chaos)",
+            "Public Speaking",
+            "Resistance to Disease",
+            "Unsettling"
+        ],
+        "trappings": [
+            "Light Armour (Leather Jack)",
+            "Hand Weapon",
+            "Disease",
+            "Cult Vestments"
+        ],
+        "career_entries": [
+            "Any"
+        ],
+        "career_exits": [
+            "Agitator",
+            "Barber-Surgeon",
+            "Maraudeur",
+            "Charlatan",
+            "Cult Magus of Nurgle",
+            "Outlaw",
+            "Grave Robber"
+        ]
+    },
+    {
+        "name": "Cult Acolyte of Slaanesh",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Slaanesh's Cult Acolytes are obsessed with self-indulgence and gratifying their every desire. Although moraly bankrupt and concerned only wth satiating their impulses, they have infectious personalities, rivalled only by those of Nurgle, and are generally attractive and appealing. They are the perfect lures to draw new cultists into the fold.",
+        "restrictions": "Only established cultists of Slaahesh and those with at least one mutation can enter this Career.",
+        "main_profile": {
+            "ws": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "bs": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "s": {
+                "value": 0,
+                "label": "–"
+            },
+            "t": {
+                "value": 0,
+                "label": "–"
+            },
+            "ag": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "int": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "wp": {
+                "value": 0,
+                "label": "–"
+            },
+            "fel": {
+                "value": 25,
+                "label": "+25%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 0,
+                "label": "–"
+            },
+            "w": {
+                "value": 3,
+                "label": "+3"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 1,
+                "label": "+1"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Academic Knowledge (Daemonology)",
+            "Channeling",
+            "Charm",
+            "Consume Alcohol or Performer (any one)",
+            "Disguise or Evaluate",
+            "Gamble",
+            "Gossip or Intimidate",
+            "Magic Sense",
+            "Read/Write",
+            "Speak Arcane Language (Daemonic)"
+        ],
+        "talents": [
+            "Aethyric Attunement or Dealmaker",
+            "Dark Magic",
+            "Etiquette",
+            "Inured to Chaos",
+            "Keen Senses",
+            "Petty Magic (Chaos)",
+            "Streetwise",
+            "Suave"
+        ],
+        "trappings": [
+            "Dagger",
+            "Religious Symbol of Slaanesh",
+            "Cult Vestments",
+            "15gc"
+        ],
+        "career_entries": [
+            "Any"
+        ],
+        "career_exits": [
+            "Agitator",
+            "Chaos Warrior",
+            "Cult Magus of Slaanesh",
+            "Entertainer",
+            "Noble",
+            "Rogue"
+        ]
+    },
+    {
+        "name": "Cult Acolyte of Tzeentch",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) There is no defining of Tzeentch's Acolytes. They may be anyone, anywhere, from the Priest who tends a Shrine of Sigmar to the Magister who has the ear of the Count. These are insidious figures, carefully and covertly orchestrating their plots to bring about the end of the Empire.",
+        "restrictions": "Only established cultists of Tzeentch and those with at least one mutation can enter this Career.",
+        "main_profile": {
+            "ws": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "bs": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "s": {
+                "value": 0,
+                "label": "–"
+            },
+            "t": {
+                "value": 0,
+                "label": "–"
+            },
+            "ag": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "int": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "wp": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "fel": {
+                "value": 20,
+                "label": "+20%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 0,
+                "label": "–"
+            },
+            "w": {
+                "value": 3,
+                "label": "+3"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 1,
+                "label": "+1"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Academic Knowledge (Daemonology)",
+            "Academic Knowledge (any one)",
+            "Channeling",
+            "Charm or Command",
+            "Common Knowledge (any one) or Prepare Poison",
+            "Disguise",
+            "Evaluate",
+            "Gossip or Intimidate",
+            "Magic Sense",
+            "Perception",
+            "Read/Write",
+            "Speak Arcane Language (Daemonic)",
+            "Speak Language (any one) or Trade (any one)"
+        ],
+        "talents": [
+            "Aethyric Attunement or Dealmaker",
+            "Controlled Corruption",
+            "Coolheaded",
+            "Dark Magic",
+            "Etiquette",
+            "Inured to Chaos",
+            "Linguistics",
+            "Petty Magic (Chaos)",
+            "Public Speaking",
+            "Resistance to Magic",
+            "Savvy or Seasoned Traveller",
+            "Schemer",
+            "Suave"
+        ],
+        "trappings": [
+            "Best Quality Clothing",
+            "Dagger",
+            "Religious Symbol of Tzeentch",
+            "Cult Vestments"
+        ],
+        "career_entries": [
+            "Any"
+        ],
+        "career_exits": [
+            "Agitator",
+            "Burgher",
+            "Chaos Warrior",
+            "Cult Magus of Tzeentch",
+            "Noble",
+            "Rogue",
+            "Scribe",
+            "Smuggler",
+            "Student",
+            "Thrall Wizard",
+            "Tradesman",
+        ]
+    },
+    {
         "name": "Cult Attendant",
         "special": false,
         "basic": false,
@@ -5868,6 +6799,463 @@ const careers = [
             "Priest",
             "Squire",
             "Steward"
+        ]
+    },
+    {
+        "name": "Cult Magus of Khorne",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Cult Magi of Khorne are vicious, bloodthirsty villains, who exist only to spread violence and slaughter and to curry the favour of their lord, one day ascending to the ranks of the Daemon Princes. These Cult Magi have tenuous restraint and often explode into violent outbursts, killing everyone they can ntil they can reassert control over themselves. Khorne's Magi find it difficult to remain hidden in the Empire, so most leave to find their fates in the Chaos Wastes.",
+        "restrictions": "",
+        "main_profile": {
+            "ws": {
+                "value": 40,
+                "label": "+40%"
+            },
+            "bs": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "s": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "t": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "ag": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "int": {
+                "value": 0,
+                "label": "–"
+            },
+            "wp": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "fel": {
+                "value": 5,
+                "label": "+5%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 2,
+                "label": "+2"
+            },
+            "w": {
+                "value": 7,
+                "label": "+7"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 0,
+                "label": "–"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Command",
+            "Dodge Blow",
+            "Intimidate"
+        ],
+        "talents": [
+            "Frenzy",
+            "Quick Draw",
+            "Resistance to Magic",
+            "Specialist Weapon Group (Flail or Two-handed)",
+            "Unsettling",
+            "Very Resilient",
+            "Very Strong",
+            "Warrior Born"
+        ],
+        "trappings": [
+            "Heavy Armour (Full Plate)",
+            "Good Craftsmanship Flail or Great Weapon",
+            "Cult Vestments",
+            "Religious Symbol of Khorne",
+            "Bag of Blood",
+            "Cult of Khorne"
+        ],
+        "career_entries": [
+            "Cult Acolyte of Khorne"
+        ],
+        "career_exits": [
+            "Chaos Warrior"
+        ]
+    },
+    {
+        "name": "Cult Magus of Nurgle",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Disgusting, disease-ridden beings, there is little to distinguish the Magi of Nurgle from the Dark God's Daemons. Covered in oozing sores, lesions, and rotting flesh, the Magi are so foul, to be near them is to invite disaster. They spread their sickness in waves through their chosen territory, until they eventually infect all.",
+        "restrictions": "",
+        "main_profile": {
+            "ws": {
+                "value": 15,
+                "label": "+15%"
+            },
+            "bs": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "s": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "t": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "ag": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "int": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "wp": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "fel": {
+                "value": 15,
+                "label": "+15%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 1,
+                "label": "+1"
+            },
+            "w": {
+                "value": 5,
+                "label": "+5"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 2,
+                "label": "+2"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Academic Knowledge (Daemonology)",
+            "Academic Knowledge (any one)",
+            "Channeling",
+            "Command",
+            "Common Knowledge (any two)",
+            "Intimidate",
+            "Magical Sense",
+            "Perception",
+            "Prepare Poison",
+            "Read/Write",
+            "Speak Arcane Language (any two)",
+        ],
+        "talents": [
+            "Aethyric Attunement",
+            "Coolheaded",
+            "Dark Lore (Nurgle)",
+            "Frightening",
+            "Lesser Magic (any two)",
+            "Meditation",
+            "Mighty Missile",
+            "Strike to Injure"
+        ],
+        "trappings": [
+            "Light Armour (Full Leather Armour)",
+            "three Diseases",
+            "Cult Vestments",
+            "Cult of Nurgle"
+        ],
+        "career_entries": [
+            "Cult Acolyte of Nurgle"
+        ],
+        "career_exits": [
+            "Chaos Warrior",
+            "Maledictor"
+        ]
+    },
+    {
+        "name": "Cult Magus of Slaanesh",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Life for the Cult Magi of Slaanesh is one of visceral moments, of a constant driving need to live new and awful experiences. The pleasures of the past do nothing for him now, and his appetite for pleasures grows in audaciousness and corruption. He uses his minions to fulfil his weird fantasies and expands their numbers to ensure the flow of sensation never ends.",
+        "restrictions": "",
+        "main_profile": {
+            "ws": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "bs": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "s": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "t": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "ag": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "int": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "wp": {
+                "value": 0,
+                "label": "–"
+            },
+            "fel": {
+                "value": 40,
+                "label": "+40%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 1,
+                "label": "+1"
+            },
+            "w": {
+                "value": 5,
+                "label": "+5"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 2,
+                "label": "+2"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Academic Knowledge (Daemonology)",
+            "Academic Knowledge (any two)",
+            "Channeling",
+            "Charm",
+            "Consume Alcohol",
+            "Disguise",
+            "Evaluate",
+            "Gossip",
+            "Intimidate",
+            "Magical Sense",
+            "Performer (any two)",
+            "Read/Write",
+            "Speak Arcane Language (any two)",
+            "Speak Language (any three)"
+        ],
+        "talents": [
+            "Aethyric Attunement or Dealmaker",
+            "Dark Lore (Slaanesh)",
+            "Fearless",
+            "Lesser Magic (any two)",
+            "Lightning Reflexes",
+            "Menacing",
+            "Petty Magic (Chaos)",
+            "Resistance to Poison",
+            "Savvy",
+            "Schemer or Strike to Stun",
+        ],
+        "trappings": [
+            "Best Quality Dagger",
+            "Religious Symbol of Slaanesh",
+            "Cult Vestments",
+            "Cult of Slaanesh",
+            "30 gc"
+        ],
+        "career_entries": [
+            "Cult Acolyte of Slaanesh"
+        ],
+        "career_exits": [
+            "Chaos Warrior",
+            "Maledictor"
+        ]
+    },
+    {
+        "name": "Cult Magus of Tzeentch",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Tzeentch's Cult Magi are some of the most fearsome of all cultists. Clear of mind and purpose, they set in motion terrible multi-layered plots to corrode the integrity of the Empire. Most of these corrupted individuals are found in positions of great power and influence.",
+        "restrictions": "",
+        "main_profile": {
+            "ws": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "bs": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "s": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "t": {
+                "value": 5,
+                "label": "+5%"
+            },
+            "ag": {
+                "value": 10,
+                "label": "+10%"
+            },
+            "int": {
+                "value": 40,
+                "label": "+40%"
+            },
+            "wp": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "fel": {
+                "value": 30,
+                "label": "+30%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 1,
+                "label": "+1"
+            },
+            "w": {
+                "value": 5,
+                "label": "+5"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 2,
+                "label": "+2"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Academic Knowledge (any three)",
+            "Blather",
+            "Channeling",
+            "Charm",
+            "Command",
+            "Common Knowledge (any four)",
+            "Disguise",
+            "Evaluate",
+            "Gossip",
+            "Intimidate",
+            "Magical Sense",
+            "Perception",
+            "Read/Write",
+            "Speak Arcane Language (any two)",
+            "Speak Language (any three)"
+        ],
+        "talents": [
+            "Aethyric Attunement or Dealmaker",
+            "Dark Lore (Tzeentch)",
+            "Lesser Magic (any two)",
+            "Master Orator",
+            "Meditation",
+            "Menacing",
+            "Mighty Missile",
+            "Stout-hearted"
+        ],
+        "trappings": [
+            "Best Quality Clothing",
+            "Dagger",
+            "Religious Symbol of Tzeentch",
+            "Cult Vestments",
+            "Cult (any)",
+            "30 gc"
+        ],
+        "career_entries": [
+            "Cult Acolyte of Tzeentch"
+        ],
+        "career_exits": [
+            "Chaos Warrior",
+            "Maledictor"
         ]
     },
     {
@@ -6067,7 +7455,7 @@ const careers = [
             "Rat Catcher",
             "Shieldbreaker",
             "Soldier",
-            "Tomb Raider",
+            "Tomb Robber",
             "Watchman"
         ],
         "career_exits": [
@@ -6671,14 +8059,14 @@ const careers = [
             "Dung"
         ],
         "career_entries": [
-            "Bone Picker",
+            "Bonepicker",
             "Camp Follower",
             "Peasant",
             "Rat Catcher",
             "Vagabond"
         ],
         "career_exits": [
-            "Bone Picker",
+            "Bonepicker",
             "Grave Robber",
             "Rat Catcher",
             "Sewer Jack",
@@ -6900,7 +8288,7 @@ const careers = [
         "career_entries": [
             "Bounty Hunter",
             "Hunter",
-            "Road Warden",
+            "Roadwarden",
             "Watchman"
         ],
         "career_exits": [
@@ -7491,6 +8879,111 @@ const careers = [
             "Thief",
             "Thug",
             "Vagabond"
+        ]
+    },
+    {
+        "name": "Exalted Champion of Chaos",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) The Exalted Champions are counted amongst the most powerful warriors of the Chaos Wastes. These foul, corrupt individuals are thoroughly the pawns of the Dark Gods and have little will of their own. The live to fight and hate the Empire. They lead their armies across the war-torn lands, throwing themselves into the teeth of their enemies, fighting until nothing and no one remain. These characters are as likely to slay their allies as their enemies as they respond to the capricious whims of their foul masters. It is from these few Chaos Champions that the Ruinous Powers select the next Lord of Chaos who leads the armies of Chaos Undivided into battle against their enemies.",
+        "requirements": "To become Exalted Champion of Chaos, a Character must have gained at least four Rewards of Chaos, one of which must be a Mark of Chaos.",
+        "main_profile": {
+            "ws": {
+                "value": 40,
+                "label": "+40%"
+            },
+            "bs": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "s": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "t": {
+                "value": 40,
+                "label": "+40%"
+            },
+            "ag": {
+                "value": 30,
+                "label": "+30%"
+            },
+            "int": {
+                "value": 20,
+                "label": "+20%"
+            },
+            "wp": {
+                "value": 40,
+                "label": "+40%"
+            },
+            "fel": {
+                "value": 20,
+                "label": "+20%"
+            }
+        },
+        "secondary_profile": {
+            "a": {
+                "value": 3,
+                "label": "+3"
+            },
+            "w": {
+                "value": 10,
+                "label": "+10"
+            },
+            "sb": {
+                "value": 0,
+                "label": "–"
+            },
+            "tb": {
+                "value": 0,
+                "label": "–"
+            },
+            "m": {
+                "value": 0,
+                "label": "–"
+            },
+            "mag": {
+                "value": 0,
+                "label": "–"
+            },
+            "ip": {
+                "value": 0,
+                "label": "–"
+            },
+            "fp": {
+                "value": 0,
+                "label": "–"
+            }
+        },
+        "skills": [
+            "Academic Knowledge (Strategy/Tactic)",
+            "Dodge Blow",
+            "Magical Sense",
+            "Ride",
+            "Speak Language (any two)",
+            "Torture"
+        ],
+        "talents": [
+            "Coolheaded",
+            "Frightening",
+            "Keen Senses",
+            "Master Orator",
+            "Quick Draw",
+            "Specialist Weapon Group (any two)"
+        ],
+        "trappings": [
+            "Chaos Armour",
+            "Chaos Army",
+            "two Magic Items",
+            "Magic Weapon"
+        ],
+        "career_entries": [
+            "Champion of Chaos"
+        ],
+        "career_exits": [
+            "None"
         ]
     },
     {
@@ -8191,7 +9684,6 @@ const careers = [
             "Writing Kit"
         ],
         "career_entries": [
-            "Bone Picker",
             "Bonepicker",
             "Burgher",
             "Cat Burglar",
@@ -9208,13 +10700,13 @@ const careers = [
             "sharp knife"
         ],
         "career_entries": [
-            "Bone Picker",
+            "Bonepicker",
             "Camp Follower",
             "Peasant"
         ],
         "career_exits": [
             "Boatman",
-            "Bone Picker",
+            "Bonepicker",
             "Camp Follower",
             "Swampaire",
             "Grail Pilgrim",
@@ -9996,7 +11488,6 @@ const careers = [
         "career_entries": [
             "Apothecary",
             "Barber-Surgeon",
-            "Bone Picker",
             "Bonepicker",
             "Dung Collector",
             "Embalmer",
@@ -10108,7 +11599,7 @@ const careers = [
             "Wheelbarrow"
         ],
         "career_entries": [
-            "Bone Picker",
+            "Bonepicker",
             "Rat Catcher",
             "Peasant"
         ],
@@ -10539,7 +12030,6 @@ const careers = [
         "career_entries": [
             "Hedgecraft Apprentice",
             "Mystic",
-            "None",
             "Strigany Mystic"
         ],
         "career_exits": [
@@ -13085,9 +14575,7 @@ const careers = [
             "Witch Hunter"
         ],
         "career_exits": [
-            "An unpleasant",
-            "and likely messy",
-            "end"
+            "An unpleasant and likely messy end"
         ]
     },
     {
@@ -14565,7 +16053,7 @@ const careers = [
         "talents": [
             "Dealmaker or Etiquette",
             "Public Speaking",
-            "Savvy or Suave Armour: None Weapons: Hand Weapon"
+            "Savvy or Suave"
         ],
         "trappings": [
             "Book of Empire Laws",
@@ -14801,7 +16289,7 @@ const careers = [
             "Tattoos"
         ],
         "career_entries": [
-            "Berserker",
+            "Norse Berserker",
             "Bondsman",
             "Cult Acolyte",
             "Freeholder",
@@ -14811,7 +16299,7 @@ const careers = [
             "Whaler"
         ],
         "career_exits": [
-            "Chaos Warrior (ToC)",
+            "Chaos Warrior",
             "Mercenary",
             "Reaver",
             "Slaver",
@@ -16775,7 +18263,6 @@ const careers = [
         "career_entries": [
             "Astrologer",
             "Boatman",
-            "Cartogapher",
             "Cartographer",
             "Dilettante",
             "Fisherman",
@@ -17870,7 +19357,6 @@ const careers = [
         "career_exits": [
             "Animal Trainer",
             "Badlander",
-            "Bone Picker",
             "Bonepicker",
             "Carcassonne Shepherd",
             "Charcoal Burner",
@@ -19534,7 +21020,6 @@ const careers = [
         ],
         "career_exits": [
             "Animal Trainer",
-            "Bone Picker",
             "Bonepicker",
             "Cat Burglar",
             "Deepwatcher",
@@ -19645,7 +21130,7 @@ const careers = [
             "Tattoos"
         ],
         "career_entries": [
-            "Berserker",
+            "Norse Berserker",
             "Bondsman",
             "Marauder",
             "Seaman",
@@ -21694,7 +23179,7 @@ const careers = [
         ],
         "career_exits": [
             "Agitator",
-            "Berserker",
+            "Norse Berserker",
             "Burgher",
             "Freeholder",
             "Marauder",
@@ -21711,6 +23196,7 @@ const careers = [
         "advanced": false,
         "quote": "Oh, woe is me! What did I do to deserve this?",
         "description": "(CotHR) Without Slaves, Skaven society would collapse. These miserable wretches are bought and sold for Warpstone Tokens on the slave blocks in the major communities of the Under-Empire. When they arrive at their new homes they find endless toil and pain: clearing new tunnels, feeding the Rat Ogres, becoming food for their masters, and serving as test subjects for some new Clan Skryre or Clan Moulder enterprise are only a few of the many possible fates that await Skaven Slaves.",
+        "requirements": " Special Rules: Unlike all the other new careers described in this chapter, any race can automatically enter this career. It costs no experience points to enter, merely the circumstances of enslavement. Any character enslaved by the Skaven must succeed on a Will Power Test each week of enslavement, or immediately exit their current career and assume this one. Non-Skaven Slaves must stay in this career until they somehow find a way to escape captivity. Assuming they do, they can attempt a Will Power Test each week thereafter. A successful Test allows them to resume their previous careers.",
         "main_profile": {
             "ws": {
                 "value": 5,
@@ -21801,7 +23287,7 @@ const careers = [
         "career_exits": [
             "Clanrat",
             "Clawleader",
-            "or Any (see special rules)."
+            "Any (see special rules)."
         ]
     },
     {
@@ -21913,7 +23399,7 @@ const careers = [
         ],
         "career_exits": [
             "Captain",
-            "Chaos Warrior (ToC)",
+            "Chaos Warrior",
             "Outlaw Chief",
             "Seaman"
         ]
@@ -22016,7 +23502,6 @@ const careers = [
         "career_entries": [
             "Bailiff",
             "Boatman",
-            "Bone Picker",
             "Bonepicker",
             "Camp Follower",
             "Coachman",
@@ -22521,7 +24006,7 @@ const careers = [
             "Horse Archer",
             "Horse Coper",
             "Horse Master",
-            "Kossar",
+            "Kislevite Kossar",
             "Outlaw",
             "Scout",
             "Vagabond"
@@ -22849,7 +24334,7 @@ const careers = [
             "and helmet. They carry berdysh – special pole-arms designed to improve accuracy with the firearms they also carry. Streltsi keep enough powder and shot to shoot their firearm up to 10 times."
         ],
         "career_entries": [
-            "Kossar",
+            "Kislevite Kossar",
             "Watchman"
         ],
         "career_exits": [
@@ -22963,7 +24448,7 @@ const careers = [
         ],
         "career_exits": [
             "Astrologer",
-            "Bone Picker",
+            "Bonepicker",
             "Charlatan",
             "Entertainer",
             "Hedge Wizard",
@@ -23306,7 +24791,7 @@ const careers = [
         ],
         "career_entries": [
             "Boatman",
-            "Bone Picker",
+            "Bonepicker",
             "Ferryman",
             "Frogwife",
             "Hunter",
@@ -24360,7 +25845,6 @@ const careers = [
         ],
         "career_exits": [
             "Badlander",
-            "Bone Picker",
             "Bonepicker",
             "Carcassonne Shepherd",
             "Dung Collector",
@@ -24592,7 +26076,6 @@ const careers = [
             "Agent of the Shroud",
             "Black Guard",
             "Bounty Hunter",
-            "Field Warden",
             "Fieldwarden",
             "Ghost Strider",
             "Grave Warden",
@@ -25204,7 +26687,7 @@ const careers = [
         "career_exits": [
             "Captain",
             "Champion",
-            "Chaos Warrior†",
+            "Chaos Warrior",
             "Reaver",
             "Veteran"
         ]
@@ -25775,7 +27258,7 @@ const careers = [
         ],
         "career_entries": [
             "Horse Master",
-            "Kossar",
+            "Kislevite Kossar",
             "Noble",
             "Outrider",
             "Peasant",
@@ -26479,7 +27962,6 @@ const careers = [
             "Outlaw",
             "Peasant",
             "River Warden",
-            "Riverwarden",
             "Seaman",
             "Smuggler"
         ],
@@ -26767,6 +28249,14 @@ const talents = [
         "description": "You gain a permanent +5% bonus to your Will Power Characteristic. Modify your starting profile to reflect this bonus."
     },
     {
+        "name": "Controlled Corruption",
+        "description": "When determining the nature and kind of mutation you gain, roll twice. You may choose to gain either mutation. However you take -10% penalty to all tests made to resist gaining a new mutation."
+    },
+    {
+        "name": "Chosen of Chaos",
+        "description": "You are a favoured servant of the Ruinous Powers. Whenever you gain a mutation, you may roll twice and select the more favourable result."
+    },
+    {
         "name": "Dark Lore",
         "description": "You have embraced one of the forbidden arts of sorcery. Dark Lore is unusual in that it is not one talent, but many. Each Dark Lore talent is a separate magical proficiency, with the specialty noted in parenthesis. For example, Dark Lore (Chaos) is a different talent than Dark Lore (Necromancy). The most common Dark Lores are Chaos and Necromancy. If you know a Dark Lore, you can attempt to cast any spell from that lore."
     },
@@ -26841,6 +28331,10 @@ const talents = [
     {
         "name": "Hoverer",
         "description": "You can fly low to the ground. For more information on flying, see Chapter 6: Combat, Damage, and Movement."
+    },
+    {
+        "name": "Inured to Chaos",
+        "description": "If you have a mutation, you gain +10% bonus to tests made to resist gaining additional mutations."
     },
     {
         "name": "Keen Senses",
