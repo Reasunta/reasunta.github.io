@@ -1,30 +1,12 @@
 /*
  Not found careers:
- - Hedge Witch
  - Thrall Wizard
 
  Not handled careers:
 
- - Anointed Priest (Myrmidia)
- - Clanrat
- - Clawleader
- - Initiate (Morr only)
- - Initiate (Morr)
- - Initiate (Ranald, Taal & Rhya)
- - Initiate (Verena)
- - Initiate (of Myrmidia)
- - Initiate (of Taal)
- - Initiate of Ulric
- - Initiate of Ursun
- - Maledictor (ToC)
- - Priest (Morr only)
- - Priest (Myrmidia)
- - Priest (Verena)
- - Priest of Ursun
- - Scribe (marker)
- - Special*
+ - Clanrat (Add later)
+ - Clawleader (Add later)
  - Ulfwerenar (see ToC page 146)
- - Vitki (ToC)
 
  */
 
@@ -222,7 +204,7 @@ const careers = [
         ],
         "career_exits": [
             "Killer of the Dead",
-            "Priest (Morr only)",
+            "Priest (Morr)",
             "Scholar",
             "Spy",
             "Vampire Hunter",
@@ -752,7 +734,7 @@ const careers = [
         ],
         "career_exits": [
             "Ice Maiden",
-            "Initiate of Ulric",
+            "Initiate (Ulric)",
             "Witch"
         ]
     },
@@ -1506,7 +1488,7 @@ const careers = [
             "Public Speaking",
             "Stout-hearted",
             "Strike to Stun",
-            "Strong-minded",
+            "Strong-Minded",
             "Very Resilient",
             "Very Strong"
         ],
@@ -1574,13 +1556,13 @@ const careers = [
         "career_entries": [
             "Animal Trainer",
             "Entertainer",
-            "Initiate of Ursun",
-            "Priest of Ursun"
+            "Initiate (Ursun)",
+            "Priest (Ursun)"
         ],
         "career_exits": [
             "Animal Trainer",
             "Entertainer",
-            "Initiate of Ursun",
+            "Initiate (Ursun)",
             "Pit Fighter",
             "Soldier"
         ]
@@ -1638,7 +1620,7 @@ const careers = [
         ],
         "career_entries": [
             "Knight",
-            "Priest (Morr only)",
+            "Priest (Morr)",
             "Sergeant",
             "Squire",
             "Vampire Hunter",
@@ -1650,7 +1632,7 @@ const careers = [
             "Killer of the Dead",
             "Knight of the Inner Circle",
             "Knight of the Raven",
-            "Priest (Morr only)",
+            "Priest (Morr)",
             "Vampire Hunter"
         ]
     },
@@ -2736,6 +2718,57 @@ const careers = [
         ]
     },
     {
+        "name": "Cataclyst",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) The Cataclysts rival the Exalted Champions of Chaos in sheer magnitude. They can conjure up the most profane Daemons and level legions with their corrupt energy, becoming living vessels of the raw energy of Chaos. Their minds are blasted by the experiences they have endured, and they are mere shadows of their former selves. Cataclysts always employ Daemons to do their bidding and are valued members of any Chaos Horde.",
+        "requirements": "To become a Cataclyst, you must have at least three Reward of Chaos.",
+        "main_profile": {
+            "ws": {"value": 15},
+            "bs": {"value": 15},
+            "s": {"value": 5},
+            "t": {"value": 15},
+            "ag": {"value": 20},
+            "int": {"value": 35},
+            "wp": {"value": 40},
+            "fel": {"value": 20}
+        },
+        "secondary_profile": {
+            "a": {"value": 0},
+            "w": {"value": 5},
+            "sb": {"value": 0},
+            "tb": {"value": 0},
+            "m": {"value": 0},
+            "mag": {"value": 4},
+            "ip": {"value": 0},
+            "fp": {"value": 0}
+        },
+        "skills": [
+            "Academic Knowledge (any four)",
+            "Intimidate",
+            "Speak Arcane Language (any three)"
+        ],
+        "talents": [
+            "Frightening",
+            "Inured of Chaos",
+            "Lesser Magic (any three)"
+        ],
+        "trappings": [
+            "1d10 Grimoires",
+            "Three Magic Items",
+            "(1d10 / 2 Summoned Daemons",
+            "Daemonic Familiar"
+        ],
+        "career_entries": [
+            "Soulflayer"
+        ],
+        "career_exits": [
+            "None"
+        ]
+    },
+    {
         "name": "Catechist",
         "special": false,
         "basic": false,
@@ -2835,7 +2868,7 @@ const careers = [
             "Hardy",
             "Resistance to Poison",
             "Stout-hearted",
-            "Strong-minded"
+            "Strong-Minded"
         ],
         "trappings": [
             "Filthy Loincloth and Tunic"
@@ -4516,6 +4549,66 @@ const careers = [
         ]
     },
     {
+        "name": "Doomweaver",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Doomweavers are distinct from lesser Chaos Sorcerers because of their deeper understanding of the working of magic. These spellcasters select one Chaos patron to serve, and draw upon magic as granted by this profane God. Doomweavers advise Chaos Champions, or at least, bind themselves to a powerful warlord.",
+        "requirements": "To become a Doomweaver, you must have at least one Reward of Chaos.",
+        "main_profile": {
+            "ws": {"value": 5},
+            "bs": {"value": 5},
+            "s": {"value": 0},
+            "t": {"value": 5},
+            "ag": {"value": 10},
+            "int": {"value": 20},
+            "wp": {"value": 25},
+            "fel": {"value": 10}
+        },
+        "secondary_profile": {
+            "a": {"value": 0},
+            "w": {"value": 3},
+            "sb": {"value": 0},
+            "tb": {"value": 0},
+            "m": {"value": 0},
+            "mag": {"value": 2},
+            "ip": {"value": 0},
+            "fp": {"value": 0}
+        },
+        "skills": [
+            "Academic Knowledge (Daemonology)",
+            "Academic Knowledge (any one)",
+            "Channeling",
+            "Common Knowledge (any one)",
+            "Intimidate",
+            "Magical Sense",
+            "Perception",
+            "Ride or Swim",
+            "Search",
+            "Speak Arcane Language (Magic)",
+            "Speak Language (any two)"
+        ],
+        "talents": [
+            "Aethyric Attunement",
+            "Dark Lore (any one)",
+            "Dark Magic",
+            "Fast Hands or Very Resilient",
+            "Lesser Magic (any three)",
+            "Meditation or Mighty Missile",
+            "Stout-hearted",
+        ],
+        "trappings": [
+            "Grimoire"
+        ],
+        "career_entries": [
+            "Maledictor"
+        ],
+        "career_exits": [
+            "Soulflayer"
+        ]
+    },
+    {
         "name": "Drover",
         "special": false,
         "basic": true,
@@ -5354,7 +5447,7 @@ const careers = [
             "Lesser Magic (Exorcism)",
             "Lesser Magic (any one)",
             "Menacing or Sixth Sense",
-            "Strong-minded or Stout-hearted"
+            "Strong-Minded or Stout-hearted"
         ],
         "trappings": [
             "Cult Robes",
@@ -5972,7 +6065,7 @@ const careers = [
         ],
         "career_entries": [
             "Peasant",
-            "Scribe (marker)",
+            "Scribe",
             "Stevedore",
             "Tradesman"
         ],
@@ -6548,7 +6641,7 @@ const careers = [
             "Etiquette",
             "Hardy or Very Resilient",
             "Specialist Weapon Group (Two-handed)",
-            "Stout-hearted or Strong-minded"
+            "Stout-hearted or Strong-Minded"
         ],
         "trappings": [
             "Halberd",
@@ -6679,7 +6772,7 @@ const careers = [
         "talents": [
             "Flee!",
             "Resistance to Disease",
-            "Streetwise or Strong-minded"
+            "Streetwise or Strong-Minded"
         ],
         "trappings": [
             "Lantern",
@@ -6760,7 +6853,7 @@ const careers = [
         ],
         "career_exits": [
             "Grave Robber",
-            "Initiate (Morr only)",
+            "Initiate (Morr)",
             "Militiaman",
             "Temple Guardian",
             "Vampire Hunter",
@@ -6942,7 +7035,7 @@ const careers = [
         ],
         "talents": [
             "Fast Hands",
-            "Hardy or Strong-minded",
+            "Hardy or Strong-Minded",
             "Lesser Magic (any three)",
             "Meditation",
             "Petty Magic (Hag)"
@@ -7082,7 +7175,7 @@ const careers = [
         "career_entries": [
             "Apothecary",
             "Peasant",
-            "Hedge Witch"
+            "Hedge Wizard"
         ],
         "career_exits": [
             "Apothecary",
@@ -7091,7 +7184,7 @@ const careers = [
             "Charlatan",
             "Hedge Wizard",
             "Hedge Master",
-            "Initiate (Ranald, Taal & Rhya)",
+            "Initiate (Ranald, Taal or Rhya)",
             "Outlaw",
             "Scribe",
             "Zealot"
@@ -7144,7 +7237,7 @@ const careers = [
             "Lesser Magic (any one) or Orientation",
             "Lesser Magic (any one) or Fleet Footed",
             "Luck or Witch Lore (Hedge)",
-            "Meditation or Strong-minded"
+            "Meditation or Strong-Minded"
         ],
         "trappings": [
             "Antitoxin Kit",
@@ -7427,7 +7520,7 @@ const careers = [
             "Aethyric Attunement or Meditation",
             "Armoured Casting or Mighty Missile",
             "Etiquette",
-            "Fast Hands or Strong-minded",
+            "Fast Hands or Strong-Minded",
             "Lesser Magic (any two)"
         ],
         "trappings": [
@@ -7573,7 +7666,7 @@ const careers = [
             "Light Armour (leather jack)"
         ],
         "career_entries": [
-            "Initiate (of Taal)",
+            "Initiate (Taal)",
             "Scribe"
         ],
         "career_exits": [
@@ -7914,7 +8007,7 @@ const careers = [
             "Coolheaded",
             "Lesser Magic (any three)",
             "Meditation or Mighty Missile",
-            "Stout-hearted or Strong-minded",
+            "Stout-hearted or Strong-Minded",
             "Witch Lore (Ice)"
         ],
         "trappings": [
@@ -8960,7 +9053,7 @@ const careers = [
             "Specialist Weapon Group (Crossbow or Longbow, Parrying or Two-handed)",
             "Stout-hearted",
             "Strike to Injure",
-            "Strong-minded"
+            "Strong-Minded"
         ],
         "trappings": [
             "Full Plate Armour (Heavy)",
@@ -9102,7 +9195,7 @@ const careers = [
         ],
         "career_entries": [
             "Hunter",
-            "Initiate (of Myrmidia)",
+            "Initiate (Myrmidia)",
             "Mercenary",
             "Militiaman",
             "Outrider",
@@ -9450,8 +9543,69 @@ const careers = [
         ]
     },
     {
+        "name": "Maledictor",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Maledictors are Shamans and Witch Doctors, minor spellcasters at best. They dabble in the dark arts, but have little understanding of what it is that they do. A few join a warband in the hopes of gaining a better understanding if the nature of Chaos.",
+        "requirements": "To become a Maledictor, you must have at least one mutation.",
+        "main_profile": {
+            "ws": {"value": 0},
+            "bs": {"value": 0},
+            "s": {"value": 0},
+            "t": {"value": 0},
+            "ag": {"value": 5},
+            "int": {"value": 10},
+            "wp": {"value": 15},
+            "fel": {"value": 5}
+        },
+        "secondary_profile": {
+            "a": {"value": 0},
+            "w": {"value": 2},
+            "sb": {"value": 0},
+            "tb": {"value": 0},
+            "m": {"value": 0},
+            "mag": {"value": 1},
+            "ip": {"value": 0},
+            "fp": {"value": 0}
+        },
+        "skills": [
+            "Academic Knowledge (Daemonology)",
+            "Academic Knowledge (Magic)",
+            "Channeling",
+            "Magical Sense",
+            "Perception",
+            "Read/Write",
+            "Search",
+            "Speak Arcane Language (Daemonic)",
+            "Speak Language (any one)"
+        ],
+        "talents": [
+            "Aethyric Attunement or Fast Hands",
+            "Petty Magic (Chaos)",
+            "Savvy or Very Resilient"
+        ],
+        "trappings": [
+            "Backpack",
+            "Grimoire",
+            "Quarter Staff"
+        ],
+        "career_entries": [
+            "Cult Magus of Nurgle",
+            "Cult Magus of Slaanesh",
+            "Cult Magus of Tzeentch",
+            "Seer",
+            "Vitki",
+            "At the GM's option, any Character with a Magic Characteristic of 1 of higher, and having at least one mutation, may enter this career."
+        ],
+        "career_exits": [
+            "Doomweaver"
+        ]
+    },
+    {
         "name": "Marauder",
-        "special": false,
+        "special": true,
         "basic": true,
         "advanced": false,
         "quote": "Blood! Death! Blood! Death!",
@@ -9506,8 +9660,8 @@ const careers = [
             "Freeholder",
             "Reaver",
             "Skald",
-            "Special*",
-            "Whaler"
+            "Whaler",
+            "Any Character with at least one mutation and the GM's permission may become a Marauder"
         ],
         "career_exits": [
             "Chaos Warrior",
@@ -9773,7 +9927,7 @@ const careers = [
             "Mighty Missile",
             "Schemer",
             "Stout-Hearted",
-            "Strong-minded"
+            "Strong-Minded"
         ],
         "trappings": [
             "Trade Tools (Apothecary)",
@@ -9834,7 +9988,7 @@ const careers = [
         ],
         "talents": [
             "Aethyric Attunement or Meditation",
-            "Dark Magic or Strong-minded",
+            "Dark Magic or Strong-Minded",
             "Fast Hands or Mighty Missile",
             "Lesser Magic (any two)"
         ],
@@ -11637,7 +11791,7 @@ const careers = [
             "Specialist Weapon Group (Parrying)",
             "Specialist Weapon Group (Two-handed)",
             "Strike Mighty Blow",
-            "Very Strong or Strong-minded"
+            "Very Strong or Strong-Minded"
         ],
         "trappings": [
             "Flail or Great Weapon",
@@ -13242,9 +13396,9 @@ const careers = [
         "career_exits": [
             "Agitator",
             "Charlatan",
-            "Maledictor (ToC)",
+            "Maledictor",
             "Vagabond",
-            "Vitki (ToC)",
+            "Vitki",
             "Witch"
         ]
     },
@@ -13884,6 +14038,63 @@ const careers = [
             "Vagabond",
             "Veteran",
             "Watchman"
+        ]
+    },
+    {
+        "name": "Soulflayer",
+        "special": true,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) The horrid Soulflayers barely resebmle their former selves, as they are riddled with mutations. These individuals are warped by the magic they wield, becoming both more and less that what they were. Mighty spellcasters, Soulflayers are among the most potent servants of Chaos, eclipsed only by the Cataclysts. Most Soulflayers may command a coven of Maledictors, instructing them in the arts of Dark Magic.",
+        "requirements": "To become a Soulflayer, you must have at least two Reward of Chaos.",
+        "main_profile": {
+            "ws": {"value": 10},
+            "bs": {"value": 10},
+            "s": {"value": 0},
+            "t": {"value": 10},
+            "ag": {"value": 15},
+            "int": {"value": 30},
+            "wp": {"value": 35},
+            "fel": {"value": 15}
+        },
+        "secondary_profile": {
+            "a": {"value": 0},
+            "w": {"value": 4},
+            "sb": {"value": 0},
+            "tb": {"value": 0},
+            "m": {"value": 0},
+            "mag": {"value": 3},
+            "ip": {"value": 0},
+            "fp": {"value": 0}
+        },
+        "skills": [
+            "Academic Knowledge (any three)",
+            "Channeling",
+            "Common Knowledge (any two)",
+            "Intimidate",
+            "Magical Sense",
+            "Read/Write",
+            "Speak Arcane Language (any two)",
+            "Speak Language (any three)"
+        ],
+        "talents": [
+            "Chosen of Chaos",
+            "Lesser Magic (any three)",
+            "Menacing",
+            "Strong-Minded"
+        ],
+        "trappings": [
+            "Grimoire",
+            "Two Magic Items",
+            "(1d10+2)/3 Chaos Sorcerers",
+            "1 Daemonic Familiar"
+        ],
+        "career_entries": [
+            "Doomweaver"
+        ],
+        "career_exits": [
+            "Cataclyst"
         ]
     },
     {
@@ -15374,7 +15585,7 @@ const careers = [
         "talents": [
             "Alley Cat or Coolheaded",
             "Keen Senses or Savvy",
-            "Street Fighting or Strong-minded",
+            "Street Fighting or Strong-Minded",
             "Streetwise"
         ],
         "trappings": [
@@ -15560,6 +15771,68 @@ const careers = [
             "Outlaw Chief",
             "Politician",
             "Steward"
+        ]
+    },
+    {
+        "name": "Vitki",
+        "special": false,
+        "basic": false,
+        "advanced": true,
+        "quote": "",
+        "description": "(ToC) Admittedly, most Norseman spellcasters are Sorcerers, Witches, and Warlocks. All of these mystics draw their power from the Dark Gods, chanelling Dhar to suit their needs. Still, n some parts of Norsca, an older tradition remains: one placing emphasis on divination, healing, and prophecy. Whilst most include them in the pantheon of coruupt Daemonologists, Vitki are not blatant servants of the Ruinous Powers, and instead work their magic to aid their people.",
+        "main_profile": {
+            "ws": {"value": 15},
+            "bs": {"value": 10},
+            "s": {"value": 10},
+            "t": {"value": 10},
+            "ag": {"value": 10},
+            "int": {"value": 15},
+            "wp": {"value": 25},
+            "fel": {"value": 20}
+        },
+        "secondary_profile": {
+            "a": {"value": 1},
+            "w": {"value": 5},
+            "sb": {"value": 0},
+            "tb": {"value": 0},
+            "m": {"value": 0},
+            "mag": {"value": 2},
+            "ip": {"value": 0},
+            "fp": {"value": 0}
+        },
+        "skills": [
+            "Animal Training",
+            "Channeling",
+            "Hypnotism",
+            "Intimidate",
+            "Magical Sense",
+            "Outdoor Survival",
+            "Perception",
+            "Performer (Storyteller)"
+        ],
+        "talents": [
+            "Dark Magic",
+            "Lesser Magic (any two)",
+            "Master Orator",
+            "Meditation",
+            "Menacing",
+            "Speak Arcane Language (Daemonic)",
+            "Speak Language (Dark Tongue)",
+            "Witchcraft"
+        ],
+        "trappings": [
+            "Dagger",
+            "Filthy Hides",
+            "a Bag of Entrails",
+        ],
+        "career_entries": [
+            "Hedge Wizard",
+            "Seer",
+            "Witch"
+        ],
+        "career_exits": [
+            "Maledictor",
+            "Warlock"
         ]
     },
     {
@@ -16081,7 +16354,7 @@ const careers = [
         "career_exits": [
             "Demagogue",
             "Hag Witch",
-            "Hedge Witch",
+            "Hedge Wizard",
             "Politician",
             "Steppes Nomad"
         ]
