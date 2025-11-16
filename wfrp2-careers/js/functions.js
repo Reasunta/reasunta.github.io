@@ -103,7 +103,8 @@ function openCareer(item) {
         const inner = document.createElement('div');
         inner.className = "tooltip"
         const char = chars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
-        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${v.label}</div>`;
+        const label = v.value ? `+${v.value}%` : "–"
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${label}</div>`;
         row.appendChild(inner);
         mp.appendChild(row);
     });
@@ -117,7 +118,8 @@ function openCareer(item) {
         const inner = document.createElement('div');
         inner.className = "tooltip"
         const char = chars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
-        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${v.label}</div>`;
+        const label = v.value ? `+${v.value}` : "–"
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${label}</div>`;
         row.appendChild(inner);
         sp.appendChild(row);
     });
