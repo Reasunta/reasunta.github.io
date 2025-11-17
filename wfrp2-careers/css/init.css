@@ -335,6 +335,7 @@ ul.pills li {
     cursor: pointer;
     transition: 0.2s;
     margin-bottom: 16px;
+    border: 1px solid var(--bg);
 }
 
 .item:hover {

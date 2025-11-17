@@ -44,4 +44,5 @@ Promise.all([
         const v = e.target.value.toLowerCase();
         renderSearchResults(v ? careers.filter(i => i.name.toLowerCase().includes(v)) : []);
     });
+    document.addEventListener("click", (e) => renderSearchResults([]));
 })
