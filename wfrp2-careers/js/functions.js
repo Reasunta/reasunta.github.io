@@ -17,11 +17,16 @@ function renderList(id, arr) {
 
 function renderSpecList(id, arr) {
     const node = el(id);
+    if (arr && arr.length === 0) {
+        node.classList.add("hidden")
+        return
+    }
     const ul = node.querySelector("ul")
     ul.innerHTML = '';
     (arr || []).forEach(x => {
         const li = document.createElement('li');
-        li.textContent = x.name;
+        const local = x.localizedName ? ` - ${x.localizedName}` : ""
+        li.textContent = `${x.name}${local}`;
         ul.appendChild(li)
     })
 }
@@ -72,23 +77,31 @@ function renderTooltip(row, tooltipFunc) {
 
 const talentTooltip = (talent) => {
     const tData = talents.filter(i => i.name.toLowerCase() === talent.name.toLowerCase())[0] || {}
+    const localTData = localTalents.filter(i => i.name.toLowerCase() === talent.name.toLowerCase())[0] || {}
     let label = talent.name
+    const tooltipTName = localTData.localizedName || tData.name
+    const tooltipTDesc = localTData.description || tData.description
+
     if (talent.specs) label += ` (${talent.specs})`
-    return `<a href="?type=talent&name=${talent.name}"><i>${label}</i><span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span></a>`
+    return `<a href="?type=talent&name=${talent.name}"><i>${label}</i><span class="tooltip-box"><strong>${tooltipTName}</strong><br><span>${tooltipTDesc}</span></span></a>`
 }
 
 const skillTooltip = (skill) => {
     const sData = skills.filter(i => i.name.toLowerCase() === skill.name.toLowerCase())[0] || {}
+    const localSData = localSkills.filter(i => i.name.toLowerCase() === skill.name.toLowerCase())[0] || {}
     let label = skill.name
+    const tooltipSName = localSData.localizedName || sData.name
+    const tooltipSDesc = localSData.description || sData.description
     if (skill.specs) label += ` (${skill.specs})`
-    return `<a href="?type=skill&name=${skill.name}"><i>${label}</i> <span class="tooltip-box"><strong>${sData.name}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${sData.description}</span></span></a>`
+    return `<a href="?type=skill&name=${skill.name}"><i>${label}</i> <span class="tooltip-box"><strong>${tooltipSName}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${tooltipSDesc}</span></span></a>`
 }
 
-function openCareer(item) {
+function openCareer(item, local) {
     el('name').textContent = item.name;
-    el('quote').textContent = item.quote;
-    el('description').textContent = item.description;
-    el('requirements').textContent = item.requirements;
+    el('localized-name').textContent = local.localizedName ? ` - ${local.localizedName}` : "";
+    el('quote').textContent = local.quote || item.quote;
+    el('description').textContent = local.description || item.description;
+    el('requirements').textContent = local.requirements || item.requirements;
     if (!item.requirements) el('requirements').classList.add("hidden")
 
     // trappings
@@ -109,8 +122,10 @@ function openCareer(item) {
         const inner = document.createElement('div');
         inner.className = "tooltip"
         const char = chars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
-        const label = v.value ? `+${v.value}%` : "–"
-        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${label}</div>`;
+        const localChar = localChars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
+
+        const label = v.value > 0 ? `+${v.value}%` : v.value < 0 ? `${v.value}%` : "–"
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${localChar.localizedName || char.name}</strong><br><span>${localChar.description || char.description}</span></span><div class="label">${label}</div>`;
         row.appendChild(inner);
         mp.appendChild(row);
     });
@@ -124,8 +139,9 @@ function openCareer(item) {
         const inner = document.createElement('div');
         inner.className = "tooltip"
         const char = chars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
-        const label = v.value ? `+${v.value}` : "–"
-        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${char.name}</strong><br><span>${char.description}</span></span><div class="label">${label}</div>`;
+        const localChar = localChars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
+        const label = v.value > 0 ? `+${v.value}` : v.value < 0 ? v.value : "–"
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${localChar.localizedName || char.name}</strong><br><span>${localChar.description || char.description}</span></span><div class="label">${label}</div>`;
         row.appendChild(inner);
         sp.appendChild(row);
     });
@@ -142,17 +158,19 @@ function openCareer(item) {
     el('roles').textContent = getCareerAvailability(item);
 }
 
-function openSkill(item) {
-    el('skillName').textContent = item.name;
-    el('skillDescription').textContent = item.description;
+function openSkill(item, local) {
+    el('skill-name').textContent = item.name;
+    el('skill-localized-name').textContent = local.localizedName ? ` - ${local.localizedName}` : "";
+    el('skillDescription').textContent = local.description || item.description;
     el('skillRoles').textContent = getSkillAvailability(item);
-    renderSpecList('skillSpecs', item.specs || [])
+    renderSpecList('skillSpecs', local.specs || item.specs || [])
 }
 
-function openTalent(item) {
-    el('talentName').textContent = item.name;
-    el('talentDescription').textContent = item.description;
-    renderSpecList('talentSpecs', item.specs || [])
+function openTalent(item, local) {
+    el('talent-name').textContent = item.name;
+    el('talent-localized-name').textContent = local.localizedName ? ` - ${local.localizedName}` : "";
+    el('talentDescription').textContent = local.description || item.description;
+    renderSpecList('talentSpecs', local.specs || item.specs || [])
 }
 
 function renderSearchResults(list) {
