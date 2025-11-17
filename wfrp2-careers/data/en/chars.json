@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Varies",
+    "short": "Var",
+    "description": "Placeholder for charateristic for Trade Skill"
+  },
+  {
+    "name": "Weapon Skill",
+    "short": "WS",
+    "description": "Represents your character's skill in hand-to-hand combat, both with weapons and without."
+  },
+  {
+    "name": "Ballistic Skill",
+    "short": "BS",
+    "description": "Represents your character's skill with missile weapons, such as bows, crossbows, and pistols."
+  },
+  {
+    "name": "Strength",
+    "short": "S",
+    "description": "Represents your character's muscle and brawn."
+  },
+  {
+    "name": "Toughness",
+    "short": "T",
+    "description": "Represents your character's ability to withstand injury, disease, and poison."
+  },
+  {
+    "name": "Agility",
+    "short": "Ag",
+    "description": "Represents physical quickness, manual dexterity, and reaction speed."
+  },
+  {
+    "name": "Intelligence",
+    "short": "Int",
+    "description": "Represents your character's intellect, insight, and ability to reason."
+  },
+  {
+    "name": "Will Power",
+    "short": "WP",
+    "description": "Represents your character's mental toughness and resolve."
+  },
+  {
+    "name": "Fellowship",
+    "short": "Fel",
+    "description": "Represents your character's personal charisma and social skills."
+  },
+  {
+    "name": "Attacks",
+    "short": "A",
+    "description": "Represents the quickness of your character's attacks and indicates the maximum number of attacks you can make in 10 seconds."
+  },
+  {
+    "name": "Wounds",
+    "short": "W",
+    "description": "Represents your character's general vitality and how much damage they can suffer before becoming critically injured."
+  },
+  {
+    "name": "Strength Bonus",
+    "short": "SB",
+    "description": "Derived from Strength. Used when inflicting damage in melee combat."
+  },
+  {
+    "name": "Toughness Bonus",
+    "short": "TB",
+    "description": "Derived from Toughness. Used to resist damage."
+  },
+  {
+    "name": "Movement",
+    "short": "M",
+    "description": "Represents your character's base land speed."
+  },
+  {
+    "name": "Magic",
+    "short": "Mag",
+    "description": "Represents your character's magical power."
+  },
+  {
+    "name": "Insanity Points",
+    "short": "IP",
+    "description": "Represents the state of your character's sanity. PCs begin with 0 but can gain them due to horrific experiences or grievous wounds."
+  },
+  {
+    "name": "Fate Points",
+    "short": "FP",
+    "description": "Represents luck and, to an extent, your character's destiny. Can be used to avoid certain death."
+  }
+]
