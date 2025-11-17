@@ -125,7 +125,7 @@ function openCareer(item, local) {
         const localChar = localChars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
 
         const label = v.value > 0 ? `+${v.value}%` : v.value < 0 ? `${v.value}%` : "–"
-        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${localChar.localizedName || char.name}</strong><br><span>${localChar.description || char.description}</span></span><div class="label">${label}</div>`;
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box tooltip-right"><strong>${localChar.localizedName || char.name}</strong><br><span>${localChar.description || char.description}</span></span><div class="label">${label}</div>`;
         row.appendChild(inner);
         mp.appendChild(row);
     });
@@ -141,7 +141,7 @@ function openCareer(item, local) {
         const char = chars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
         const localChar = localChars.filter(ch => ch.short.toUpperCase() === k.toUpperCase())[0] || {}
         const label = v.value > 0 ? `+${v.value}` : v.value < 0 ? v.value : "–"
-        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box"><strong>${localChar.localizedName || char.name}</strong><br><span>${localChar.description || char.description}</span></span><div class="label">${label}</div>`;
+        inner.innerHTML = `<strong>${k.toUpperCase()}</strong><span class="tooltip-box tooltip-left"><strong>${localChar.localizedName || char.name}</strong><br><span>${localChar.description || char.description}</span></span><div class="label">${label}</div>`;
         row.appendChild(inner);
         sp.appendChild(row);
     });
