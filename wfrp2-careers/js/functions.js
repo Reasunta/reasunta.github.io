@@ -32,21 +32,14 @@ function renderCareerList(id, arr) {
     })
 }
 
-function parseTalentOrSkill(input) {
-    const differOR = input.replace(/\(([^)]+)\)/g, (match, inner) => {
-        return match.replace(/\bor\b/g, 'OR');
-    })
-    return differOR.split(" or ")
-}
-
 function renderTooltipList(id, arr, tooltipFunc) {
     const talentsNode = el(id);
     talentsNode.innerHTML = '';
-    (arr || []).forEach(t => {
+    (arr || []).forEach(itemOptions => {
         const li = document.createElement('li');
         li.className = 'tooltip-item';
 
-        const talents = parseTalentOrSkill(t).map(tt => renderTooltip(tt, tooltipFunc))
+        const talents = itemOptions.map(option => renderTooltip(option, tooltipFunc))
         li.appendChild(talents[0])
 
         for (let i = 1; i < talents.length; i++) {
@@ -67,15 +60,17 @@ function renderTooltip(row, tooltipFunc) {
 }
 
 const talentTooltip = (talent) => {
-    const talentWithoutBrackets = talent.split("(")[0].trim()
-    const tData = talents.filter(i => i.name.toLowerCase() === talentWithoutBrackets.toLowerCase())[0] || {}
-    return `<i>${talent.replace("OR", "or")}</i><span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span>`
+    const tData = talents.filter(i => i.name.toLowerCase() === talent.name.toLowerCase())[0] || {}
+    let label = talent.name
+    if (talent.specs) label += ` (${talent.specs})`
+    return `<i>${label}</i><span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span>`
 }
 
 const skillTooltip = (skill) => {
-    const skillWithoutBrackets = skill.split("(")[0].trim()
-    const sData = skills.filter(i => i.name.toLowerCase() === skillWithoutBrackets.toLowerCase())[0] || {}
-    return `<i>${skill.replace("OR", "or")}</i> <span class="tooltip-box"><strong>${sData.name}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${sData.description}</span></span>`
+    const sData = skills.filter(i => i.name.toLowerCase() === skill.name.toLowerCase())[0] || {}
+    let label = skill.name
+    if (skill.specs) label += ` (${skill.specs})`
+    return `<i>${label}</i> <span class="tooltip-box"><strong>${sData.name}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${sData.description}</span></span>`
 }
 
 function openCareer(item) {
