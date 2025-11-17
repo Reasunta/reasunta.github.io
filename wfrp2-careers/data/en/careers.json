@@ -808,10 +808,6 @@
         {
           "name": "Academic Knowledge",
           "specs": "Genealogy/Heraldry or History"
-        },
-        {
-          "name": "Test",
-          "specs": "test"
         }
       ],
       [
@@ -1226,7 +1222,7 @@
       [
         {
           "name": "Trade",
-          "specs": "any two: Aviarist"
+          "specs": "any two from: Aviarist, Horse Trader, Kennel Master or Stableman"
         }
       ]
     ],
@@ -1243,7 +1239,7 @@
       ],
       [
         {
-          "name": "Specialist Weapon",
+          "name": "Specialist Weapon Group",
           "specs": "Entangling"
         }
       ],
@@ -5660,8 +5656,8 @@
       ],
       [
         {
-          "name": "Any one of: Trade",
-          "specs": "Armourer, Bowyer, Cartographer, Cook, Gunsmith, Herbalist, Merchant, Smith, Tailor, or Weaponsmith"
+          "name": "Trade",
+          "specs": "any one of: Armourer, Bowyer, Cartographer, Cook, Gunsmith, Herbalist, Merchant, Smith, Tailor, or Weaponsmith"
         }
       ],
       [
@@ -5886,7 +5882,7 @@
       [
         {
           "name": "Incantation",
-          "specs": "see sidebar"
+          "specs": null
         }
       ]
     ],
@@ -14677,8 +14673,8 @@
       ],
       [
         {
-          "name": "Specialist Weapon",
-          "specs": "Scythe or Flail."
+          "name": "Specialist Weapon Group",
+          "specs": "Scythe or Flail"
         }
       ]
     ],
@@ -23012,8 +23008,8 @@
       ],
       [
         {
-          "name": "Virtue of Chivalry",
-          "specs": null
+          "name": "Virtue of Knighthood",
+          "specs": "Chivalry"
         }
       ]
     ],
@@ -27621,7 +27617,7 @@
       ],
       [
         {
-          "name": "Arcane Language",
+          "name": "Speak Arcane Language",
           "specs": "Magick"
         }
       ],
@@ -27657,7 +27653,7 @@
       ],
       [
         {
-          "name": "and Speak Language",
+          "name": "Speak Language",
           "specs": "Classical."
         }
       ]
@@ -28422,7 +28418,7 @@
           "specs": null
         },
         {
-          "name": "Specialist Weapon",
+          "name": "Specialist Weapon Group",
           "specs": "Fencing"
         }
       ],
@@ -28432,7 +28428,7 @@
           "specs": null
         },
         {
-          "name": "Specialist Weapon",
+          "name": "Specialist Weapon Group",
           "specs": "Parrying"
         }
       ]
@@ -31497,8 +31493,8 @@
       ],
       [
         {
-          "name": "Virtue of the Quest",
-          "specs": null
+          "name": "Virtue of Knighthood",
+          "specs": "Quest"
         }
       ],
       [
@@ -32518,7 +32514,7 @@
       ],
       [
         {
-          "name": "Specialist Weapon",
+          "name": "Specialist Weapon Group",
           "specs": "Gunpowder"
         }
       ]
@@ -32686,7 +32682,7 @@
       ],
       [
         {
-          "name": "Specialist Weapons Group",
+          "name": "Specialist Weapon Group",
           "specs": "Gunpowder"
         }
       ]
@@ -33741,7 +33737,7 @@
       ],
       [
         {
-          "name": "Specialist Weapon",
+          "name": "Specialist Weapon Group",
           "specs": "Crossbow or Longbow"
         }
       ]
@@ -40992,7 +40988,7 @@
     "advanced": true,
     "quote": "Faith shall be my shield, and Sigmar my righteous hammer.",
     "description": "(ToS) Whilst all priests are expected to bear arms in the defence of their temple and faith, and most are at least proficient in combat, only a few march to battle alongside their templars and the Imperial army. These warrior priests have a threefold responsibility: ministering to the faithful amongst the army, offering spiritual and tactical advice to the army’s leadership, and smiting the unfaithful in battle. When war comes to the temple, a cult’s warrior priests take charge of its defence, marshalling the rest of the cult to repel attackers. Warrior priests are usually members of holy orders, such as the Sigmarites of the Order of the Silver Hammer. Most warrior priests come from the cults of Sigmar, Ulric, and Myrmidia, although other cults are not without a few token militant brethren.",
-    "requirements": null,
+    "requirements": "Warrior Priests tend to wield weapons sacred to their faith, typically a greathammer, greatsword or polearm. Warrior Priests of Taal and Rhya may substitute a longbow. Note: Followers of Shallya may not become Warrior Priests",
     "main_profile": {
       "ws": {
         "value": 20
@@ -41128,27 +41124,25 @@
       ],
       [
         {
-          "name": "Hands Specialist Weapon Group",
-          "specs": "Two-handed*"
-        },
-        {
-          "name": "Strike Mighty Blow",
-          "specs": null
-        }
-      ],
-      [
-        {
           "name": "Lesser Magic",
           "specs": "any two"
         }
       ],
       [
         {
-          "name": "Meditation",
-          "specs": null
+          "name": "Meditation"
         },
         {
-          "name": "Fast",
+          "name": "Fast Hands"
+        }
+      ],
+      [
+        {
+          "name": "Specialist Weapon Group",
+          "specs": "Two-handed or Longbow"
+        },
+        {
+          "name": "Strike Mighty Blow",
           "specs": null
         }
       ]

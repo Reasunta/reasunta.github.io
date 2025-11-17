@@ -15,6 +15,17 @@ function renderList(id, arr) {
     })
 }
 
+function renderSpecList(id, arr) {
+    const node = el(id);
+    const ul = node.querySelector("ul")
+    ul.innerHTML = '';
+    (arr || []).forEach(x => {
+        const li = document.createElement('li');
+        li.textContent = x.name;
+        ul.appendChild(li)
+    })
+}
+
 function renderCareerList(id, arr) {
     const node = el(id);
     node.innerHTML = '';
@@ -63,14 +74,14 @@ const talentTooltip = (talent) => {
     const tData = talents.filter(i => i.name.toLowerCase() === talent.name.toLowerCase())[0] || {}
     let label = talent.name
     if (talent.specs) label += ` (${talent.specs})`
-    return `<i>${label}</i><span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span>`
+    return `<a href="?type=talent&name=${talent.name}"><i>${label}</i><span class="tooltip-box"><strong>${tData.name}</strong><br><span>${tData.description}</span></span></a>`
 }
 
 const skillTooltip = (skill) => {
     const sData = skills.filter(i => i.name.toLowerCase() === skill.name.toLowerCase())[0] || {}
     let label = skill.name
     if (skill.specs) label += ` (${skill.specs})`
-    return `<i>${label}</i> <span class="tooltip-box"><strong>${sData.name}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${sData.description}</span></span>`
+    return `<a href="?type=skill&name=${skill.name}"><i>${label}</i> <span class="tooltip-box"><strong>${sData.name}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${sData.description}</span></span></a>`
 }
 
 function openCareer(item) {
@@ -135,11 +146,13 @@ function openSkill(item) {
     el('skillName').textContent = item.name;
     el('skillDescription').textContent = item.description;
     el('skillRoles').textContent = getSkillAvailability(item);
+    renderSpecList('skillSpecs', item.specs || [])
 }
 
 function openTalent(item) {
     el('talentName').textContent = item.name;
     el('talentDescription').textContent = item.description;
+    renderSpecList('talentSpecs', item.specs || [])
 }
 
 function renderSearchResults(list) {
