@@ -261,7 +261,7 @@ function initCareerTable() {
         ],
         //columnSorting: true,
         colHeaders: true,
-        rowHeaders: false,
+        rowHeaders: true,
         stretchH: 'all',
         readOnly: true,
         pagination: true,
