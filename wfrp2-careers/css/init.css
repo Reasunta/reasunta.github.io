@@ -556,3 +556,16 @@ a, a:visited, a:hover, a:active {
 td[aria-label="Read only"] {
     display: none;
 }
+
+.table-filter {
+    padding: 16px;
+}
+
+.table-filter .search-box {
+    padding: 4px 10px;
+}
+
+.table-filter .search-box input[type="text"] {
+    font-size: 14px;
+    font-style: italic;
+}

@@ -217,15 +217,6 @@ function initCareerTable() {
     const nameRenderer = (_instance, td, _row, _col, _prop, value) => {
         td.innerHTML = `<a href="${getLinkQuery("career", value.name)}"><i>${value.localizedName}</i></a>`;
     };
-    const primaryCharRenderer = (_instance, td, _row, _col, _prop, value) => {
-        td.classList.add('htCenter')
-        td.innerHTML = value > 0 ? `+${value}%` : value < 0 ? `${value}%` : '-';
-    };
-    const secondaryCharRenderer = (_instance, td, _row, _col, _prop, value) => {
-        td.classList.add('htCenter')
-        td.innerHTML = value > 0 ? `+${value}` : value < 0 ? value : '-';
-    };
-
     const container = document.querySelector('#career-table');
     const data = careers.map(c => {
         const local = localCareers.filter(lc => lc.name === c.name)[0]
@@ -233,7 +224,7 @@ function initCareerTable() {
         return c
     })
 
-    new Handsontable(container, {
+    const hot = new Handsontable(container, {
         themeName: 'ht-theme-main',
         data: data,
         width: '100%',
@@ -241,32 +232,20 @@ function initCareerTable() {
         columns: [
             {title: 'Name', type: 'text', data: (rd) => rd, renderer: nameRenderer},
             {title: 'Basic', type: 'checkbox', data: 'basic', className: 'htCenter'},
-            {title: 'Special', type: 'checkbox', data: 'special', className: 'htCenter'},
-            ...chars.filter(ch => ch.profile === 'main').map(ch => {
-                return {
-                    title: ch.short,
-                    type: 'numeric',
-                    data: `main_profile.${ch.short.toLowerCase()}.value`,
-                    renderer: primaryCharRenderer,
-                }
-            }),
-            ...chars.filter(ch => ch.profile === 'secondary').map(ch => {
-                return {
-                    title: ch.short,
-                    type: 'numeric',
-                    data: `secondary_profile.${ch.short.toLowerCase()}.value`,
-                    renderer: secondaryCharRenderer
-                }
-            }),
+            {title: 'Special', type: 'checkbox', data: 'special', className: 'htCenter'}
         ],
-        //columnSorting: true,
         colHeaders: true,
         rowHeaders: true,
         stretchH: 'all',
         readOnly: true,
         pagination: true,
-        filters: true,
-        //dropdownMenu: true,
         licenseKey: 'non-commercial-and-evaluation',
+    });
+
+    el("name-table-filter").addEventListener('keyup', (event) => {
+        const filtered = data.filter(d =>
+            d.localizedName.toLowerCase().includes(event.target.value.toLowerCase()) ||
+            d.name.toLowerCase().includes(event.target.value.toLowerCase()))
+        hot.loadData(filtered);
     });
 }
