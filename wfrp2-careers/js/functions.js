@@ -37,11 +37,13 @@ function renderCareerList(id, arr) {
     (arr || []).forEach(x => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        if (careers.filter(c => c.name === x).length) {
-            a.href = getBaseURL() + `?type=career&name=${x}`
-            a.innerHTML = `<i>${x}</i>`;
+        const label = (x.specs && x.specs.length) ? `${x.name} (${x.specs})` : x.name
+
+        if (careers.filter(c => c.name === x.name).length) {
+            a.href = getBaseURL() + `?type=career&name=${x.name}`
+            a.innerHTML = `<i>${label}</i>`;
         } else {
-            a.innerHTML = `${x}`;
+            a.innerHTML = `${label}`;
         }
         li.appendChild(a)
         node.appendChild(li)

@@ -477,7 +477,7 @@ ul.pills li {
     border-radius: 14px;
     padding: 8px;
     backdrop-filter: blur(6px);
-    z-index: 20;
+    z-index: 200;
     margin-top: 56px;
 
     width: 100%;
