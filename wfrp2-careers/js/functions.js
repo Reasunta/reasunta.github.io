@@ -43,7 +43,7 @@ function renderCareerList(id, arr) {
     (arr || []).forEach(x => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        const label = (x.specs && x.specs.length) ? `${x.name} (${x.specs})` : x.name
+        const label = (x.specs && x.specs.length) ? `${x.name} (${x.specs.join(", ")})` : x.name
 
         if (careers.filter(c => c.name === x.name).length) {
             a.href = getBaseURL() + getLinkQuery("career", x.name)
