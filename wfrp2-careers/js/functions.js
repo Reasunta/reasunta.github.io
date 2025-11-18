@@ -4,6 +4,12 @@ const getBaseURL = () => {
     url.search = "";
     return url.toString()
 }
+const getLinkQuery = (type, name) => {
+    const lang = params.get("lang")
+    const langQuery = lang ? `&lang=${lang}` : ``
+    const nameQuery = name ? `&name=${name}` : ``
+    return `?type=${type}${nameQuery}${langQuery}`
+}
 
 function renderList(id, arr) {
     const node = el(id);
@@ -40,7 +46,7 @@ function renderCareerList(id, arr) {
         const label = (x.specs && x.specs.length) ? `${x.name} (${x.specs})` : x.name
 
         if (careers.filter(c => c.name === x.name).length) {
-            a.href = getBaseURL() + `?type=career&name=${x.name}`
+            a.href = getBaseURL() + getLinkQuery("career", x.name)
             a.innerHTML = `<i>${label}</i>`;
         } else {
             a.innerHTML = `${label}`;
@@ -85,7 +91,7 @@ const talentTooltip = (talent) => {
     const tooltipTDesc = localTData.description || tData.description
 
     if (talent.specs) label += ` (${talent.specs})`
-    return `<a href="?type=talent&name=${talent.name}"><i>${label}</i><span class="tooltip-box"><strong>${tooltipTName}</strong><br><span>${tooltipTDesc}</span></span></a>`
+    return `<a href="${getLinkQuery("talent", talent.name)}"><i>${label}</i><span class="tooltip-box"><strong>${tooltipTName}</strong><br><span>${tooltipTDesc}</span></span></a>`
 }
 
 const skillTooltip = (skill) => {
@@ -95,7 +101,7 @@ const skillTooltip = (skill) => {
     const tooltipSName = localSData.localizedName || sData.name
     const tooltipSDesc = localSData.description || sData.description
     if (skill.specs) label += ` (${skill.specs})`
-    return `<a href="?type=skill&name=${skill.name}"><i>${label}</i> <span class="tooltip-box"><strong>${tooltipSName}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${tooltipSDesc}</span></span></a>`
+    return `<a href="${getLinkQuery("skill", skill.name)}"><i>${label}</i> <span class="tooltip-box"><strong>${tooltipSName}</strong><br><i><span>${sData.characteristic}</span></i><br><br><span>${tooltipSDesc}</span></span></a>`
 }
 
 function openCareer(item, local) {
@@ -209,7 +215,7 @@ function getSkillAvailability(skill) {
 
 function initCareerTable() {
     const nameRenderer = (_instance, td, _row, _col, _prop, value) => {
-        td.innerHTML = `<a href="?type=career&name=${value.name}"><i>${value.localizedName}</i></a>`;
+        td.innerHTML = `<a href="${getLinkQuery("career", value.name)}"><i>${value.localizedName}</i></a>`;
     };
     const primaryCharRenderer = (_instance, td, _row, _col, _prop, value) => {
         td.classList.add('htCenter')
