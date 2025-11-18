@@ -7,104 +7,110 @@
     <style>
 
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/handsontable.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/ht-theme-main.min.css"/>
     <link rel="stylesheet" href="wfrp2-careers/css/init.css">
 </head>
 <body>
-<div class="search" id="search-block">
-    <div class="search-box">
-        <input id="search" placeholder="Поиск по карьерам..."/>
-    </div>
-    <div class="results hidden" id="results">
-    </div>
-</div>
-<div class="careers hidden" id="careers-block">
-    <div class="card" id="card-root">
-        <main class="right">
-            <div class="header">
-                <div>
-                    <span class="title" id="name"></span>
-                    <span class="title" id="localized-name"></span>
-                    <div class="subtitle" id="roles">—</div>
-                </div>
-            </div>
-            <div>
-                <div class="quote" id="quote">"..."</div>
-            </div>
-            <div class="description" id="description">Описание...</div>
-            <div class="description" id="requirements">Особые условия...</div>
-            <div class="profiles">
-                <div class="profile-card">
-                    <div id="main_profile"></div>
-                </div>
-                <div class="profile-card">
-                    <div id="secondary_profile"></div>
-                </div>
-            </div>
-
-            <div class="grid-3">
-                <div>
-                    <div class="section-title ul-title">Навыки</div>
-                    <ul id="skills"></ul>
-                </div>
-                <div>
-                    <div class="section-title ul-title">Таланты</div>
-                    <ul id="talents"></ul>
-                </div>
-                <div>
-                    <div class="section-title ul-title">Снаряжение</div>
-                    <ul id="trappings"></ul>
-                </div>
-            </div>
-
-            <div class="grid-2">
-                <div>
-                    <div class="section-title ul-title">Предыдущие карьеры</div>
-                    <ul id="career_entries"></ul>
-                </div>
-                <div>
-                    <div class="section-title ul-title">Следующие карьеры</div>
-                    <ul id="career_exits"></ul>
-                </div>
-            </div>
-
-        </main>
-    </div>
-</div>
-<div class="skill-block hidden" id="skill-block">
+<div class="root">
     <div class="card">
         <main class="right">
-            <div class="header">
-                <div>
-                    <span class="title" id="skill-name"></span>
-                    <span class="title" id="skill-localized-name"></span>
-                    <div class="subtitle" id="skillRoles">—</div>
+            <div class="search" id="search-block">
+                <div class="search-box">
+                    <input id="search" placeholder="Поиск по карьерам..."/>
+                </div>
+                <div class="results hidden" id="results">
                 </div>
             </div>
-            <div class="description" id="skillDescription">Описание...</div>
-            <div id="skillSpecs">
-                <div class="section-title">Специализации</div>
-                <ul></ul>
+            <div class="career-table-block hidden" id="careers-table-block">
+                <div class="header">
+                    <div class="title">Список карьер</div>
+                </div>
+                <div>
+                    <div class="career-table" id="career-table"></div>
+                </div>
+
+            </div>
+            <div class="career-block hidden" id="careers-block">
+                <div class="header">
+                    <div>
+                        <span class="title" id="name"></span>
+                        <span class="title" id="localized-name"></span>
+                        <div class="subtitle" id="roles">—</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="quote" id="quote">"..."</div>
+                </div>
+                <div class="description" id="description">Описание...</div>
+                <div class="description" id="requirements">Особые условия...</div>
+                <div class="profiles">
+                    <div class="profile-card">
+                        <div id="main_profile"></div>
+                    </div>
+                    <div class="profile-card">
+                        <div id="secondary_profile"></div>
+                    </div>
+                </div>
+
+                <div class="grid-3">
+                    <div>
+                        <div class="section-title ul-title">Навыки</div>
+                        <ul id="skills"></ul>
+                    </div>
+                    <div>
+                        <div class="section-title ul-title">Таланты</div>
+                        <ul id="talents"></ul>
+                    </div>
+                    <div>
+                        <div class="section-title ul-title">Снаряжение</div>
+                        <ul id="trappings"></ul>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <div class="section-title ul-title">Предыдущие карьеры</div>
+                        <ul id="career_entries"></ul>
+                    </div>
+                    <div>
+                        <div class="section-title ul-title">Следующие карьеры</div>
+                        <ul id="career_exits"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-block hidden" id="skill-block">
+                <div class="header">
+                    <div>
+                        <span class="title" id="skill-name"></span>
+                        <span class="title" id="skill-localized-name"></span>
+                        <div class="subtitle" id="skillRoles">—</div>
+                    </div>
+                </div>
+                <div class="description" id="skillDescription">Описание...</div>
+                <div id="skillSpecs">
+                    <div class="section-title">Специализации</div>
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="talent-block hidden" id="talent-block">
+                <div class="header">
+                    <div>
+                        <span class="title" id="talent-name"></span>
+                        <span class="title" id="talent-localized-name"></span>
+                    </div>
+                </div>
+                <div class="description" id="talentDescription">Описание...</div>
+                <div id="talentSpecs">
+                    <div class="section-title">Специализации</div>
+                    <ul></ul>
+                </div>
             </div>
         </main>
     </div>
 </div>
-<div class="talent-block hidden" id="talent-block">
-    <div class="card">
-        <main class="right">
-            <div class="header">
-                <div>
-                    <span class="title" id="talent-name"></span>
-                    <span class="title" id="talent-localized-name"></span>
-                </div>
-            </div>
-            <div class="description" id="talentDescription">Описание...</div>
-            <div id="talentSpecs">
-                <div class="section-title">Специализации</div>
-                <ul></ul>
-            </div>
-        </main>
-    </div>
-</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
 <script src="wfrp2-careers/js/functions.js"></script>
 <script src="wfrp2-careers/js/init.js"></script>
 </body>

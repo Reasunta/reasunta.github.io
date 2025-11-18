@@ -24,12 +24,17 @@ Promise.all([
 
     switch (params.get("type")) {
         case "career":
-            el("careers-block").classList.remove("hidden")
-
-            const cName = params.get("name") || careers[0].name
-            const career = careers.filter(c => c.name === cName)[0] || {}
-            const localCareer = localCareers.filter(c => c.name === cName)[0] || {}
-            openCareer(career, localCareer);
+            const cName = params.get("name")
+            if (!cName) {
+                el("careers-table-block").classList.remove("hidden")
+                initCareerTable()
+            }
+            else {
+                el("careers-block").classList.remove("hidden")
+                const career = careers.filter(c => c.name === cName)[0] || {}
+                const localCareer = localCareers.filter(c => c.name === cName)[0] || {}
+                openCareer(career, localCareer);
+            }
             break;
         case "skill":
             el("skill-block").classList.remove("hidden")

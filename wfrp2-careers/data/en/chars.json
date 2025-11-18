@@ -7,52 +7,62 @@
   {
     "name": "Weapon Skill",
     "short": "WS",
-    "description": "Represents your character's skill in hand-to-hand combat, both with weapons and without."
+    "description": "Represents your character's skill in hand-to-hand combat, both with weapons and without.",
+    "profile": "main"
   },
   {
     "name": "Ballistic Skill",
     "short": "BS",
-    "description": "Represents your character's skill with missile weapons, such as bows, crossbows, and pistols."
+    "description": "Represents your character's skill with missile weapons, such as bows, crossbows, and pistols.",
+    "profile": "main"
   },
   {
     "name": "Strength",
     "short": "S",
-    "description": "Represents your character's muscle and brawn."
+    "description": "Represents your character's muscle and brawn.",
+    "profile": "main"
   },
   {
     "name": "Toughness",
     "short": "T",
-    "description": "Represents your character's ability to withstand injury, disease, and poison."
+    "description": "Represents your character's ability to withstand injury, disease, and poison.",
+    "profile": "main"
   },
   {
     "name": "Agility",
     "short": "Ag",
-    "description": "Represents physical quickness, manual dexterity, and reaction speed."
+    "description": "Represents physical quickness, manual dexterity, and reaction speed.",
+    "profile": "main"
   },
   {
     "name": "Intelligence",
     "short": "Int",
-    "description": "Represents your character's intellect, insight, and ability to reason."
+    "description": "Represents your character's intellect, insight, and ability to reason.",
+    "profile": "main"
   },
   {
     "name": "Will Power",
     "short": "WP",
-    "description": "Represents your character's mental toughness and resolve."
+    "description": "Represents your character's mental toughness and resolve.",
+    "profile": "main"
   },
   {
     "name": "Fellowship",
     "short": "Fel",
-    "description": "Represents your character's personal charisma and social skills."
+    "description": "Represents your character's personal charisma and social skills.",
+    "profile": "main"
   },
   {
     "name": "Attacks",
     "short": "A",
-    "description": "Represents the quickness of your character's attacks and indicates the maximum number of attacks you can make in 10 seconds."
+    "description": "Represents the quickness of your character's attacks and indicates the maximum number of attacks you can make in 10 seconds.",
+    "profile": "secondary"
   },
   {
     "name": "Wounds",
     "short": "W",
-    "description": "Represents your character's general vitality and how much damage they can suffer before becoming critically injured."
+    "description": "Represents your character's general vitality and how much damage they can suffer before becoming critically injured.",
+    "profile": "secondary"
   },
   {
     "name": "Strength Bonus",
@@ -72,7 +82,8 @@
   {
     "name": "Magic",
     "short": "Mag",
-    "description": "Represents your character's magical power."
+    "description": "Represents your character's magical power.",
+    "profile": "secondary"
   },
   {
     "name": "Insanity Points",
