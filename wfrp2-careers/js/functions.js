@@ -192,7 +192,7 @@ function renderSearchResults(list) {
     list.forEach(i => {
         const div = document.createElement('div');
         div.className = 'item';
-        div.innerHTML = `<a href="?type=career&name=${i.name}"><div class='item-title'>${i.name}</div><div class='item-type'>${getCareerAvailability(i)}</div></a>`;
+        div.innerHTML = `<a href="?type=${i.type}&name=${i.name}"><div class='item-title'>${i.label}</div><div class='item-type'>${i.type}</div></a>`;
         res.appendChild(div);
     });
 }
@@ -226,14 +226,17 @@ function initCareerTable() {
 
     const hot = new Handsontable(container, {
         themeName: 'ht-theme-main',
+        language: UI.handsontableLocale.text,
         data: data,
         width: '100%',
         height: 'auto',
         columns: [
-            {title: 'Name', type: 'text', data: (rd) => rd, renderer: nameRenderer},
-            {title: 'Basic', type: 'checkbox', data: 'basic', className: 'htCenter'},
-            {title: 'Special', type: 'checkbox', data: 'special', className: 'htCenter'}
+            {title: UI.careerTableHeadersName.text, type: 'text', data: (rd) => rd, renderer: nameRenderer},
+            {title: UI.careerTableHeadersBasic.text, type: 'checkbox', data: 'basic', className: 'htCenter'},
+            {title: UI.careerTableHeadersAdvanced.text, type: 'checkbox', data: 'advanced', className: 'htCenter'},
+            {title: UI.careerTableHeadersSpecial.text, type: 'checkbox', data: 'special', className: 'htCenter'}
         ],
+        colWidths: [40, 20, 20, 20],
         colHeaders: true,
         rowHeaders: true,
         stretchH: 'all',
@@ -242,10 +245,30 @@ function initCareerTable() {
         licenseKey: 'non-commercial-and-evaluation',
     });
 
-    el("name-table-filter").addEventListener('keyup', (event) => {
-        const filtered = data.filter(d =>
-            d.localizedName.toLowerCase().includes(event.target.value.toLowerCase()) ||
-            d.name.toLowerCase().includes(event.target.value.toLowerCase()))
+    const filterTable = () => {
+        const name = el("name-table-filter").value
+        const onlyBasic = el("basic-table-filter").checked
+        const onlyAdvanced = el("advanced-table-filter").checked
+        const onlySpecial = el("special-table-filter").checked
+
+        const filtered = data
+            .filter(d => d.localizedName.toLowerCase().includes(name.toLowerCase()) || d.name.toLowerCase().includes(name.toLowerCase()))
+            .filter(d => onlyBasic ? d.basic : true)
+            .filter(d => onlyAdvanced ? d.advanced : true)
+            .filter(d => onlySpecial ? d.special : true)
         hot.loadData(filtered);
-    });
+    }
+    el("name-table-filter").addEventListener('keyup', filterTable);
+    el("basic-table-filter").addEventListener('change', filterTable);
+    el("advanced-table-filter").addEventListener('change', filterTable);
+    el("special-table-filter").addEventListener('change', filterTable);
+}
+
+function setLocalization() {
+    el("search").placeholder = UI.globalSearchPlaceholder.text
+
+    Object.entries(UI).filter(e => e[1].i18n).forEach(e => {
+        if (el(`i18n-${e[0]}`)) el(`i18n-${e[0]}`).innerHTML = e[1].text || `<span style="color: yellow">${e[0]}</span>`
+    })
+
 }

@@ -1,0 +1,54 @@
+{
+  "handsontableLocale": {
+    "text": "en-US",
+    "i18n": false
+  },
+  "globalSearchPlaceholder": {
+    "text": "Global search...",
+    "i18n": false
+  },
+  "navigationCareers": {
+    "text": "Careers",
+    "i18n": true
+  },
+  "careerTableBlockHeader": {
+    "text": "Career list",
+    "i18n": true
+  },
+  "careerTableHeadersName": {
+    "text": "Name",
+    "i18n": false
+  },
+  "careerTableHeadersBasic": {
+    "text": "Basic",
+    "i18n": false
+  },
+  "careerTableHeadersAdvanced": {
+    "text": "Advanced",
+    "i18n": false
+  },
+  "careerTableHeadersSpecial": {
+    "text": "Special",
+    "i18n": false
+  },
+  "careerSheetSkills": {
+    "text": "Skills",
+    "i18n": true
+  },
+  "careerSheetTalents": {
+    "text": "Talents",
+    "i18n": true
+  },
+  "careerSheetTrappings": {
+    "text": "Trappings",
+    "i18n": true
+  },
+  "careerSheetEntries": {
+    "text": "Career Entries",
+    "i18n": true
+  },
+  "careerSheetExits": {
+    "text": "Career Exits",
+    "i18n": true
+  }
+}

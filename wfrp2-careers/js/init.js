@@ -1,9 +1,12 @@
 const params = new URLSearchParams(window.location.search);
 let careers, talents, skills, chars, localCareers, localTalents, localSkills, localChars
-
+let UI
 const localization = params.get("lang") || "ru"
 
+el("nav-career-table").href = getLinkQuery("career")
+
 Promise.all([
+    fetch(`wfrp2-careers/data/${localization}/ui.json`).then(res => res.json()),
     fetch('wfrp2-careers/data/en/careers.json').then(res => res.json()),
     fetch('wfrp2-careers/data/en/talents.json').then(res => res.json()),
     fetch('wfrp2-careers/data/en/skills.json').then(res => res.json()),
@@ -12,7 +15,8 @@ Promise.all([
     fetch(`wfrp2-careers/data/${localization}/talents.json`).then(res => res.json()),
     fetch(`wfrp2-careers/data/${localization}/skills.json`).then(res => res.json()),
     fetch(`wfrp2-careers/data/${localization}/chars.json`).then(res => res.json())
-]).then(([_careers, _talents, _skills, _chars, _carLocal, _talLocal, _skLocal, _chLocal]) => {
+]).then(([ui, _careers, _talents, _skills, _chars, _carLocal, _talLocal, _skLocal, _chLocal]) => {
+    UI = ui
     careers = _careers;
     talents = _talents
     skills = _skills
@@ -21,6 +25,8 @@ Promise.all([
     localTalents = _talLocal
     localSkills = _skLocal
     localChars = _chLocal
+
+    setLocalization()
 
     switch (params.get("type")) {
         case "career":
@@ -58,9 +64,18 @@ Promise.all([
             el("talent-block").classList.add("hidden")
     }
 
+
     el("search").addEventListener('input', (e) => {
         const v = e.target.value.toLowerCase();
-        renderSearchResults(v ? careers.filter(i => i.name.toLowerCase().includes(v)) : []);
+        const results = []
+        results.push(...careers.filter(i => i.name.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.name, "type": "career"}}))
+        results.push(...localCareers.filter(i => i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "career"}}))
+        results.push(...talents.filter(i => i.name.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.name, "type": "talent"}}))
+        results.push(...localTalents.filter(i => i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "talent"}}))
+        results.push(...skills.filter(i => i.name.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.name, "type": "skill"}}))
+        results.push(...localSkills.filter(i => i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "skill"}}))
+
+        renderSearchResults(v ? results : []);
     });
     document.addEventListener("click", (e) => renderSearchResults([]));
 })

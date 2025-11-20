@@ -17,18 +17,33 @@
         <main class="right">
             <div class="search" id="search-block">
                 <div class="search-box">
-                    <input id="search" placeholder="Поиск по карьерам..."/>
+                    <input id="search" placeholder=""/>
                 </div>
                 <div class="results hidden" id="results">
                 </div>
             </div>
+            <div class="navigation" id="navigation-block">
+                <div class="grid-5">
+                    <a id="nav-career-table"><button class="search-box"><span id="i18n-navigationCareers"></span></button></a>
+                </div>
+            </div>
+
             <div class="career-table-block hidden" id="careers-table-block">
                 <div class="header">
-                    <div class="title">Список карьер</div>
+                    <div class="title"><span id="i18n-careerTableBlockHeader"></span></div>
                 </div>
-                <div class="grid-3 table-filter">
-                    <div class="search-box">
+                <div class="grid-5 table-filter">
+                    <div class="search-box grid-col-span-2">
                         <input type="text" class="input-text" id="name-table-filter"/>
+                    </div>
+                    <div class="search-checkbox">
+                        <input type="checkbox" id="basic-table-filter"/>
+                    </div>
+                    <div class="search-checkbox">
+                        <input type="checkbox" id="advanced-table-filter"/>
+                    </div>
+                    <div class="search-checkbox">
+                        <input type="checkbox" id="special-table-filter"/>
                     </div>
                 </div>
                 <div>
@@ -45,10 +60,10 @@
                     </div>
                 </div>
                 <div>
-                    <div class="quote" id="quote">"..."</div>
+                    <div class="quote" id="quote"></div>
                 </div>
-                <div class="description" id="description">Описание...</div>
-                <div class="description" id="requirements">Особые условия...</div>
+                <div class="description" id="description"></div>
+                <div class="description" id="requirements"></div>
                 <div class="profiles">
                     <div class="profile-card">
                         <div id="main_profile"></div>
@@ -58,28 +73,28 @@
                     </div>
                 </div>
 
-                <div class="grid-3">
+                <div class="grid-3 details">
                     <div>
-                        <div class="section-title ul-title">Навыки</div>
+                        <div class="section-title ul-title"><span id="i18n-careerSheetSkills"></span></div>
                         <ul id="skills"></ul>
                     </div>
                     <div>
-                        <div class="section-title ul-title">Таланты</div>
+                        <div class="section-title ul-title"><span id="i18n-careerSheetTalents"></span></div>
                         <ul id="talents"></ul>
                     </div>
                     <div>
-                        <div class="section-title ul-title">Снаряжение</div>
+                        <div class="section-title ul-title"><span id="i18n-careerSheetTrappings"></span></div>
                         <ul id="trappings"></ul>
                     </div>
                 </div>
 
                 <div class="grid-2">
                     <div>
-                        <div class="section-title ul-title">Предыдущие карьеры</div>
+                        <div class="section-title ul-title"><span id="i18n-careerSheetEntries"></span></div>
                         <ul id="career_entries"></ul>
                     </div>
                     <div>
-                        <div class="section-title ul-title">Следующие карьеры</div>
+                        <div class="section-title ul-title"><span id="i18n-careerSheetExits"></span></div>
                         <ul id="career_exits"></ul>
                     </div>
                 </div>
@@ -116,6 +131,7 @@
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/languages/ru-RU.js"></script>
 <script src="wfrp2-careers/js/functions.js"></script>
 <script src="wfrp2-careers/js/init.js"></script>
 </body>

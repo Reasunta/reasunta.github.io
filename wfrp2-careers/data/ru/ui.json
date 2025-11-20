@@ -1,0 +1,54 @@
+{
+  "handsontableLocale": {
+    "text": "ru-RU",
+    "i18n": false
+  },
+  "globalSearchPlaceholder": {
+    "text": "Глобальный поиск...",
+    "i18n": false
+  },
+  "navigationCareers": {
+    "text": "Карьеры",
+    "i18n": true
+  },
+  "careerTableBlockHeader": {
+    "text": "Список карьер",
+    "i18n": true
+  },
+  "careerTableHeadersName": {
+    "text": "Название",
+    "i18n": false
+  },
+  "careerTableHeadersBasic": {
+    "text": "Базовая",
+    "i18n": false
+  },
+  "careerTableHeadersAdvanced": {
+    "text": "Продвинутая",
+    "i18n": false
+  },
+  "careerTableHeadersSpecial": {
+    "text": "Специальная",
+    "i18n": false
+  },
+  "careerSheetSkills": {
+    "text": "Навыки",
+    "i18n": true
+  },
+  "careerSheetTalents": {
+    "text": "Таланты",
+    "i18n": true
+  },
+  "careerSheetTrappings": {
+    "text": "Снаряжение",
+    "i18n": true
+  },
+  "careerSheetEntries": {
+    "text": "Предыдущие карьеры",
+    "i18n": true
+  },
+  "careerSheetExits": {
+    "text": "Следующие карьеры",
+    "i18n": true
+  }
+}
