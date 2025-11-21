@@ -32,21 +32,6 @@ function renderSpecList(id, arr) {
     })
 }
 
-function openSkill(item, local) {
-    el('skill-name').textContent = item.name;
-    el('skill-localized-name').textContent = local.localizedName ? ` - ${local.localizedName}` : "";
-    el('skillDescription').textContent = local.description || item.description;
-    el('skillRoles').textContent = getSkillAvailability(item);
-    renderSpecList('skillSpecs', local.specs || item.specs || [])
-}
-
-function openTalent(item, local) {
-    el('talent-name').textContent = item.name;
-    el('talent-localized-name').textContent = local.localizedName ? ` - ${local.localizedName}` : "";
-    el('talentDescription').textContent = local.description || item.description;
-    renderSpecList('talentSpecs', local.specs || item.specs || [])
-}
-
 function renderSearchResults(list) {
     let res = el("results")
     res.innerHTML = '';

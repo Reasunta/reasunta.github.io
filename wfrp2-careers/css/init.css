@@ -237,7 +237,7 @@ body {
     color: var(--text);
 }
 
-.career-block, .career-table-block, .skill-block, .talent-block {
+.block {
     margin: 0;
     display: grid;
     align-items: center;
@@ -245,7 +245,7 @@ body {
     padding: 32px;
 }
 
-.career-table {
+.career-table, .skill-table {
     width: 90vw;
 }
 

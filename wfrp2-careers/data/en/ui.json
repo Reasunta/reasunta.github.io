@@ -58,5 +58,29 @@
   "careerSheetExits": {
     "text": "Career Exits",
     "i18n": true
+  },
+  "skillTableBlockHeader": {
+    "text": "Skill list",
+    "i18n": true
+  },
+  "skillTableHeadersName": {
+    "text": "Name",
+    "i18n": false
+  },
+  "skillTableHeadersDesc": {
+    "text": "Description",
+    "i18n": false
+  },
+  "talentTableBlockHeader": {
+    "text": "Talent list",
+    "i18n": true
+  },
+  "talentTableHeadersName": {
+    "text": "Name",
+    "i18n": false
+  },
+  "talentTableHeadersDesc": {
+    "text": "Description",
+    "i18n": false
   }
 }

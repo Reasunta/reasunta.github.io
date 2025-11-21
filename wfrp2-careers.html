@@ -19,25 +19,32 @@
             <div class="search" id="search-block">
                 <div class="search-header">
                     <div class="search-box">
-                    <input id="search" placeholder=""/>
-                </div>
+                        <input id="search" placeholder=""/>
+                    </div>
                     <div class="lang-switcher" id="lang-switcher">
                         <div class="current-lang"></div>
                         <ul class="lang-dropdown"></ul>
-                    </div></div>
+                    </div>
+                </div>
 
                 <div class="results hidden" id="results">
                 </div>
             </div>
             <div class="navigation" id="navigation-block">
                 <div class="grid-5">
-                    <a id="nav-career-table"><button class="search-box"><span id="i18n-navigationCareers"></span></button></a>
-                    <a id="nav-skills-table"><button class="search-box"><span id="i18n-navigationSkills"></span></button></a>
-                    <a id="nav-talents-table"><button class="search-box"><span id="i18n-navigationTalents"></span></button></a>
+                    <a id="nav-career-table">
+                        <button class="search-box"><span id="i18n-navigationCareers"></span></button>
+                    </a>
+                    <a id="nav-skill-table">
+                        <button class="search-box"><span id="i18n-navigationSkills"></span></button>
+                    </a>
+                    <a id="nav-talent-table">
+                        <button class="search-box"><span id="i18n-navigationTalents"></span></button>
+                    </a>
                 </div>
             </div>
 
-            <div class="career-table-block hidden" id="careers-table-block">
+            <div class="block hidden" id="careers-table-block">
                 <div class="header">
                     <div class="title"><span id="i18n-careerTableBlockHeader"></span></div>
                 </div>
@@ -58,9 +65,34 @@
                 <div>
                     <div class="career-table" id="career-table"></div>
                 </div>
-
             </div>
-            <div class="career-block hidden" id="careers-block">
+            <div class="block hidden" id="skill-table-block">
+                <div class="header">
+                    <div class="title"><span id="i18n-skillTableBlockHeader"></span></div>
+                </div>
+                <div class="grid-5 table-filter">
+                    <div class="search-box">
+                        <input type="text" class="input-text" id="name-skill-table-filter"/>
+                    </div>
+                </div>
+                <div>
+                    <div class="skill-table" id="skill-table"></div>
+                </div>
+            </div>
+            <div class="block hidden" id="talent-table-block">
+                <div class="header">
+                    <div class="title"><span id="i18n-talentTableBlockHeader"></span></div>
+                </div>
+                <div class="grid-5 table-filter">
+                    <div class="search-box">
+                        <input type="text" class="input-text" id="name-talent-table-filter"/>
+                    </div>
+                </div>
+                <div>
+                    <div class="skill-table" id="talent-table"></div>
+                </div>
+            </div>
+            <div class="block hidden" id="careers-block">
                 <div class="header">
                     <div>
                         <span class="title" id="name"></span>
@@ -108,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <div class="skill-block hidden" id="skill-block">
+            <div class="block hidden" id="skill-block">
                 <div class="header">
                     <div>
                         <span class="title" id="skill-name"></span>
@@ -122,7 +154,7 @@
                     <ul></ul>
                 </div>
             </div>
-            <div class="talent-block hidden" id="talent-block">
+            <div class="block hidden" id="talent-block">
                 <div class="header">
                     <div>
                         <span class="title" id="talent-name"></span>
@@ -143,6 +175,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/languages/ru-RU.js"></script>
 <script src="wfrp2-careers/js/functions.js"></script>
 <script src="wfrp2-careers/js/careers.js"></script>
+<script src="wfrp2-careers/js/skills.js"></script>
+<script src="wfrp2-careers/js/talents.js"></script>
 <script src="wfrp2-careers/js/lang.js"></script>
 <script src="wfrp2-careers/js/init.js"></script>
 </body>

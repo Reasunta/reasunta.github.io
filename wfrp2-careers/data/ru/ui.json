@@ -58,5 +58,29 @@
   "careerSheetExits": {
     "text": "Следующие карьеры",
     "i18n": true
+  },
+  "skillTableBlockHeader": {
+    "text": "Список навыков",
+    "i18n": true
+  },
+  "skillTableHeadersName": {
+    "text": "Название",
+    "i18n": false
+  },
+  "skillTableHeadersDesc": {
+    "text": "Описание",
+    "i18n": false
+  },
+  "talentTableBlockHeader": {
+    "text": "Список талантов",
+    "i18n": true
+  },
+  "talentTableHeadersName": {
+    "text": "Название",
+    "i18n": false
+  },
+  "talentTableHeadersDesc": {
+    "text": "Описание",
+    "i18n": false
   }
 }
