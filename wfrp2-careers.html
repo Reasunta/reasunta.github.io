@@ -10,21 +10,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/handsontable.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/styles/ht-theme-main.min.css"/>
     <link rel="stylesheet" href="wfrp2-careers/css/init.css">
+    <link rel="stylesheet" href="wfrp2-careers/css/lang.css">
 </head>
 <body>
 <div class="root">
     <div class="card">
         <main class="right">
             <div class="search" id="search-block">
-                <div class="search-box">
+                <div class="search-header">
+                    <div class="search-box">
                     <input id="search" placeholder=""/>
                 </div>
+                    <div class="lang-switcher" id="lang-switcher">
+                        <div class="current-lang"></div>
+                        <ul class="lang-dropdown"></ul>
+                    </div></div>
+
                 <div class="results hidden" id="results">
                 </div>
             </div>
             <div class="navigation" id="navigation-block">
                 <div class="grid-5">
                     <a id="nav-career-table"><button class="search-box"><span id="i18n-navigationCareers"></span></button></a>
+                    <a id="nav-skills-table"><button class="search-box"><span id="i18n-navigationSkills"></span></button></a>
+                    <a id="nav-talents-table"><button class="search-box"><span id="i18n-navigationTalents"></span></button></a>
                 </div>
             </div>
 
@@ -133,6 +142,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/languages/ru-RU.js"></script>
 <script src="wfrp2-careers/js/functions.js"></script>
+<script src="wfrp2-careers/js/careers.js"></script>
+<script src="wfrp2-careers/js/lang.js"></script>
 <script src="wfrp2-careers/js/init.js"></script>
 </body>
 </html>

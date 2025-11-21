@@ -1,0 +1,66 @@
+.lang-switcher {
+    position: relative;
+    width: 64px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang-switcher:hover {
+    border-color: var(--accent);
+}
+
+.current-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Дропдаун */
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+    display: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.lang-dropdown.show {
+    display: block;
+    z-index: 200;
+}
+
+.lang-dropdown li {
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+
+    transition: background 0.15s ease;
+}
+
+.lang-dropdown li:hover {
+    background: var(--glass);
+}
+
+/* Флаги */
+.lang-dropdown li::before {
+    content: attr(data-flag);
+    font-size: 16px;
+}

@@ -36,6 +36,7 @@
     --muted: #98a0b3;
     --accent: #8b5cf6;
     --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.12);
     --card-radius: 14px;
     --gap: 14px;
     --text: #e6eef8;
@@ -262,7 +263,7 @@ body {
     font-style: italic;
     color: var(--muted);
     font-size: 14px;
-    padding: 14px;
+    padding: 14px 14px 0 14px;
 }
 
 .section-title {
@@ -313,6 +314,7 @@ body {
 .description {
     background: var(--glass);
     padding: 14px;
+    margin-top: 14px;
     margin-bottom: 14px;
     border-radius: 10px;
     border: 1px solid var(--glass);
@@ -518,7 +520,7 @@ ul.pills li {
     display: flex;
     align-items: center;
     gap: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--border);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     transition: 0.2s;
 }
@@ -632,10 +634,6 @@ button.search-box {
     display: none;
 }
 
-td[aria-label="Read only"] {
-    display: none;
-}
-
 .table-filter {
     padding: 16px 7px 16px 53px;
     justify-items: center;
@@ -648,4 +646,11 @@ td[aria-label="Read only"] {
 .table-filter .search-box input[type="text"] {
     font-size: 14px;
     font-style: italic;
+}
+
+.search-header {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    justify-items: center;
 }

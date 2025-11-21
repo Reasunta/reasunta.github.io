@@ -11,6 +11,14 @@
     "text": "Careers",
     "i18n": true
   },
+  "navigationSkills": {
+    "text": "Skills",
+    "i18n": true
+  },
+  "navigationTalents": {
+    "text": "Talents",
+    "i18n": true
+  },
   "careerTableBlockHeader": {
     "text": "Career list",
     "i18n": true

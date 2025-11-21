@@ -26,7 +26,7 @@ Promise.all([
     localSkills = _skLocal
     localChars = _chLocal
 
-    setLocalization()
+    setLocalization(localization)
 
     switch (params.get("type")) {
         case "career":
@@ -69,11 +69,11 @@ Promise.all([
         const v = e.target.value.toLowerCase();
         const results = []
         results.push(...careers.filter(i => i.name.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.name, "type": "career"}}))
-        results.push(...localCareers.filter(i => i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "career"}}))
+        results.push(...localCareers.filter(i => i.localizedName && i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "career"}}))
         results.push(...talents.filter(i => i.name.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.name, "type": "talent"}}))
-        results.push(...localTalents.filter(i => i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "talent"}}))
+        results.push(...localTalents.filter(i => i.localizedName && i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "talent"}}))
         results.push(...skills.filter(i => i.name.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.name, "type": "skill"}}))
-        results.push(...localSkills.filter(i => i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "skill"}}))
+        results.push(...localSkills.filter(i => i.localizedName && i.localizedName.toLowerCase().includes(v)).map(r => {return {"name": r.name, "label": r.localizedName, "type": "skill"}}))
 
         renderSearchResults(v ? results : []);
     });

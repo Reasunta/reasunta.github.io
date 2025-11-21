@@ -12722,6 +12722,12 @@
       ],
       [
         {
+          "name": "Evaluate",
+          "specs": null
+        }
+      ],
+      [
+        {
           "name": "Navigate",
           "specs": null
         }
@@ -12752,12 +12758,6 @@
       ]
     ],
     "talents": [
-      [
-        {
-          "name": "Evaluate",
-          "specs": null
-        }
-      ],
       [
         {
           "name": "Orientation",
