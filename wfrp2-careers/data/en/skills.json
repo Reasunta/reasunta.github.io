@@ -368,7 +368,7 @@
     ]
   },
   {
-    "name": "Pick Locks",
+    "name": "Pick Lock",
     "isBasic": false,
     "isAdvanced": true,
     "characteristic": "Agility",
