@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WFRP 2e Character Sheet</title>
+    <script type="module" crossorigin src="./wfrp-2-charlist/wfrp-2-charlist-FcqbQXXQ.js"></script>
+    <link rel="stylesheet" crossorigin href="./wfrp-2-charlist/wfrp-2-charlist-C6bqmz03.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="sheet-title">
+        <h1>Warhammer Fantasy Roleplay — Character Sheet</h1>
+      </header>
+
+      <section class="sheet-page">
+        <div class="page-columns">
+          <div class="col">
+            <section class="card" id="character-card">
+              <h2>Character</h2>
+              <div id="character-section"></div>
+            </section>
+
+            <section class="card">
+              <h2>Character Profile</h2>
+              <div id="character-profile"></div>
+            </section>
+
+            <section class="card">
+              <h2>Career</h2>
+              <div id="career-section"></div>
+            </section>
+
+            <section class="card">
+              <h2>Weapons</h2>
+              <table class="sheet-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Enc</th>
+                    <th>Group</th>
+                    <th>Damage</th>
+                    <th>Range</th>
+                    <th>Reload</th>
+                    <th>Qualities</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section class="card">
+              <h2>Armour</h2>
+              <div class="field-grid">
+                <label>Armour Type <input type="text" name="basicArmourType" /></label>
+                <label>Armour Points <input type="text" name="basicArmourPoints" /></label>
+              </div>
+              <table class="sheet-table">
+                <thead>
+                  <tr>
+                    <th>Armour Type</th>
+                    <th>Enc</th>
+                    <th>Locations Covered</th>
+                    <th>AP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+
+          <div class="col">
+            <section class="card">
+              <h2>Skills</h2>
+              <div id="skills-section"></div>
+            </section>
+
+            <section class="card">
+              <h2>Talents</h2>
+              <div id="talents-section"></div>
+            </section>
+
+            <section class="card">
+              <h2>Experience Points</h2>
+              <div class="field-grid">
+                <label>Current <input type="text" name="xpCurrent" /></label>
+                <label>Total <input type="text" name="xpTotal" /></label>
+              </div>
+            </section>
+
+            <section class="card">
+              <h2>Combat Movement</h2>
+              <div class="field-grid">
+                <label>Move/Disengage <input type="text" name="moveDisengage" /></label>
+                <label>Charge Attack <input type="text" name="chargeAttack" /></label>
+                <label>Run <input type="text" name="run" /></label>
+              </div>
+            </section>
+
+            <section class="card">
+              <h2>Armour Points</h2>
+              <div class="armour-locations">
+                <label>Head (01-15) <input type="text" /></label>
+                <label>Body (56-80) <input type="text" /></label>
+                <label>Right Arm (16-35) <input type="text" /></label>
+                <label>Left Arm (36-55) <input type="text" /></label>
+                <label>Right Leg (81-90) <input type="text" /></label>
+                <label>Left Leg (91-00) <input type="text" /></label>
+              </div>
+            </section>
+
+            <section class="card">
+              <h2>Action Summary</h2>
+              <div class="action-summary">
+                <table class="sheet-table">
+                  <thead>
+                    <tr>
+                      <th>Basic Action</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Aim</td><td>Half</td></tr>
+                    <tr><td>Cast</td><td>Varies</td></tr>
+                    <tr><td>Charge</td><td>Full</td></tr>
+                    <tr><td>Disengage</td><td>Full</td></tr>
+                    <tr><td>Move</td><td>Half</td></tr>
+                    <tr><td>Ready</td><td>Half</td></tr>
+                    <tr><td>Reload</td><td>Varies</td></tr>
+                    <tr><td>Stand/Mount</td><td>Half</td></tr>
+                    <tr><td>Standard Attack</td><td>Half</td></tr>
+                    <tr><td>Swift Attack</td><td>Full</td></tr>
+                    <tr><td>Use a Skill</td><td>Varies</td></tr>
+                  </tbody>
+                </table>
+                <table class="sheet-table">
+                  <thead>
+                    <tr>
+                      <th>Advanced Action</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>All Out Attack</td><td>Full</td></tr>
+                    <tr><td>Defensive Stance</td><td>Full</td></tr>
+                    <tr><td>Delay</td><td>Half</td></tr>
+                    <tr><td>Feint</td><td>Half</td></tr>
+                    <tr><td>Guarded Attack</td><td>Full</td></tr>
+                    <tr><td>Jump/Leap</td><td>Full</td></tr>
+                    <tr><td>Manoeuvre</td><td>Half</td></tr>
+                    <tr><td>Parrying Stance</td><td>Half</td></tr>
+                    <tr><td>Run</td><td>Full</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet-page">
+        <section class="card">
+          <h2>Trappings</h2>
+          <table class="sheet-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Enc</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+              <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+              <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card">
+          <h2>Money</h2>
+          <div class="field-grid">
+            <label>Gold Crowns (gc) <input type="text" name="goldCrowns" /></label>
+            <label>Silver Schillings (s) <input type="text" name="silverSchillings" /></label>
+            <label>Brass Pennies (p) <input type="text" name="brassPennies" /></label>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
+</html>
