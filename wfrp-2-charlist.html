@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WFRP 2e Character Sheet</title>
-    <script type="module" crossorigin src="./wfrp-2-charlist/wfrp-2-charlist-DbRnvoha.js"></script>
-    <link rel="stylesheet" crossorigin href="./wfrp-2-charlist/wfrp-2-charlist-B_WNQKeG.css">
+    <script type="module" crossorigin src="./wfrp-2-charlist/wfrp-2-charlist-CMReCFQf.js"></script>
+    <link rel="stylesheet" crossorigin href="./wfrp-2-charlist/wfrp-2-charlist-zvLus_rT.css">
   </head>
   <body>
     <div id="app">
@@ -38,46 +38,13 @@
 
             <section class="card">
               <h2>Weapons</h2>
-              <table class="sheet-table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Enc</th>
-                    <th>Group</th>
-                    <th>Damage</th>
-                    <th>Range</th>
-                    <th>Reload</th>
-                    <th>Qualities</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-                </tbody>
-              </table>
+              <div id="weapon-slots-section"></div>
+              <div id="weapons-section"></div>
             </section>
 
             <section class="card">
               <h2>Armour</h2>
-              <div class="field-grid">
-                <label>Armour Type <input type="text" name="basicArmourType" /></label>
-                <label>Armour Points <input type="text" name="basicArmourPoints" /></label>
-              </div>
-              <table class="sheet-table">
-                <thead>
-                  <tr>
-                    <th>Armour Type</th>
-                    <th>Enc</th>
-                    <th>Locations Covered</th>
-                    <th>AP</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-                  <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-                </tbody>
-              </table>
+              <div id="armour-section"></div>
             </section>
           </div>
 
@@ -103,14 +70,7 @@
 
             <section class="card">
               <h2>Armour Points</h2>
-              <div class="armour-locations">
-                <label>Head (01-15) <input type="text" /></label>
-                <label>Body (56-80) <input type="text" /></label>
-                <label>Right Arm (16-35) <input type="text" /></label>
-                <label>Left Arm (36-55) <input type="text" /></label>
-                <label>Right Leg (81-90) <input type="text" /></label>
-                <label>Left Leg (91-00) <input type="text" /></label>
-              </div>
+              <div id="armour-points-section"></div>
             </section>
 
             <section class="card">
