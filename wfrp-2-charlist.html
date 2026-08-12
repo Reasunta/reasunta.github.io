@@ -4,151 +4,99 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WFRP 2e Character Sheet</title>
-    <script type="module" crossorigin src="./wfrp-2-charlist/wfrp-2-charlist-CMReCFQf.js"></script>
-    <link rel="stylesheet" crossorigin href="./wfrp-2-charlist/wfrp-2-charlist-zvLus_rT.css">
+    <script type="module" crossorigin src="./wfrp-2-charlist/wfrp-2-charlist-DYIct-yj.js"></script>
+    <link rel="stylesheet" crossorigin href="./wfrp-2-charlist/wfrp-2-charlist-DjyPkN19.css">
   </head>
   <body>
     <div id="app">
       <header class="sheet-title">
         <h1>Warhammer Fantasy Roleplay — Character Sheet</h1>
+        <div id="language-switcher-section"></div>
       </header>
 
       <section class="sheet-page">
         <div class="page-columns">
           <div class="col">
             <section class="card" id="character-card">
-              <h2>Character</h2>
+              <h2>
+                <span class="card-heading-text" data-i18n-key="header.character">Character</span>
+                <div id="character-actions-section" class="card-heading-actions"></div>
+              </h2>
               <div id="character-section"></div>
             </section>
 
             <section class="card">
-              <h2>Experience Points</h2>
+              <h2 data-i18n-key="header.experiencePoints">Experience Points</h2>
               <div id="experience-section"></div>
-            </section>
-
-            <section class="card">
-              <h2>Character Profile</h2>
-              <div id="character-profile"></div>
-            </section>
-
-            <section class="card">
-              <h2>Career</h2>
-              <div id="career-section"></div>
-            </section>
-
-            <section class="card">
-              <h2>Weapons</h2>
-              <div id="weapon-slots-section"></div>
-              <div id="weapons-section"></div>
-            </section>
-
-            <section class="card">
-              <h2>Armour</h2>
-              <div id="armour-section"></div>
             </section>
           </div>
 
           <div class="col">
             <section class="card">
-              <h2>Skills</h2>
+              <h2 data-i18n-key="header.characterProfile">Character Profile</h2>
+              <div id="character-profile"></div>
+            </section>
+          </div>
+        </div>
+
+        <section class="card" data-collapse-group="career">
+          <h2><span class="card-heading-text" data-i18n-key="header.career">Career</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="career">▲</button></h2>
+          <div id="career-section"></div>
+        </section>
+
+        <div class="page-columns">
+          <div class="col">
+            <section class="card" data-collapse-group="skills-talents">
+              <h2><span class="card-heading-text" data-i18n-key="header.skills">Skills</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="skills-talents">▲</button></h2>
               <div id="skills-section"></div>
             </section>
+          </div>
 
-            <section class="card">
-              <h2>Talents</h2>
+          <div class="col">
+            <section class="card" data-collapse-group="skills-talents">
+              <h2 data-i18n-key="header.talents">Talents</h2>
               <div id="talents-section"></div>
             </section>
+          </div>
+        </div>
 
-            <section class="card">
-              <h2>Combat Movement</h2>
-              <div class="field-grid">
-                <label>Move/Disengage <input type="text" name="moveDisengage" /></label>
-                <label>Charge Attack <input type="text" name="chargeAttack" /></label>
-                <label>Run <input type="text" name="run" /></label>
-              </div>
-            </section>
+        <section class="card" data-collapse-group="weapons">
+          <h2><span class="card-heading-text" data-i18n-key="header.weapons">Weapons</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="weapons">▲</button></h2>
+          <div id="weapons-section"></div>
+          <div id="weapons-table-section"></div>
+        </section>
 
-            <section class="card">
-              <h2>Armour Points</h2>
+        <section class="card" data-collapse-group="armour">
+          <h2><span class="card-heading-text" data-i18n-key="header.armour">Armour</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="armour">▲</button></h2>
+          <div class="armour-columns">
+            <div id="armour-section"></div>
+            <div>
               <div id="armour-points-section"></div>
-            </section>
+            </div>
+          </div>
+        </section>
+      </section>
 
+      <section class="sheet-page">
+        <div class="page-columns">
+          <div class="col">
             <section class="card">
-              <h2>Action Summary</h2>
+              <h2 data-i18n-key="header.trappings">Trappings</h2>
+              <div id="trappings-section"></div>
+            </section>
+          </div>
+
+          <div class="col">
+            <section class="card">
+              <h2 data-i18n-key="header.actionSummary">Action Summary</h2>
+              <div id="action-summary-stats-section"></div>
               <div class="action-summary">
-                <table class="sheet-table">
-                  <thead>
-                    <tr>
-                      <th>Basic Action</th>
-                      <th>Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Aim</td><td>Half</td></tr>
-                    <tr><td>Cast</td><td>Varies</td></tr>
-                    <tr><td>Charge</td><td>Full</td></tr>
-                    <tr><td>Disengage</td><td>Full</td></tr>
-                    <tr><td>Move</td><td>Half</td></tr>
-                    <tr><td>Ready</td><td>Half</td></tr>
-                    <tr><td>Reload</td><td>Varies</td></tr>
-                    <tr><td>Stand/Mount</td><td>Half</td></tr>
-                    <tr><td>Standard Attack</td><td>Half</td></tr>
-                    <tr><td>Swift Attack</td><td>Full</td></tr>
-                    <tr><td>Use a Skill</td><td>Varies</td></tr>
-                  </tbody>
-                </table>
-                <table class="sheet-table">
-                  <thead>
-                    <tr>
-                      <th>Advanced Action</th>
-                      <th>Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>All Out Attack</td><td>Full</td></tr>
-                    <tr><td>Defensive Stance</td><td>Full</td></tr>
-                    <tr><td>Delay</td><td>Half</td></tr>
-                    <tr><td>Feint</td><td>Half</td></tr>
-                    <tr><td>Guarded Attack</td><td>Full</td></tr>
-                    <tr><td>Jump/Leap</td><td>Full</td></tr>
-                    <tr><td>Manoeuvre</td><td>Half</td></tr>
-                    <tr><td>Parrying Stance</td><td>Half</td></tr>
-                    <tr><td>Run</td><td>Full</td></tr>
-                  </tbody>
-                </table>
+                <div id="action-summary-basic-actions-section"></div>
+                <div id="action-summary-advanced-actions-section"></div>
               </div>
             </section>
           </div>
         </div>
-      </section>
-
-      <section class="sheet-page">
-        <section class="card">
-          <h2>Trappings</h2>
-          <table class="sheet-table">
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Enc</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-              <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-              <tr><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section class="card">
-          <h2>Money</h2>
-          <div class="field-grid">
-            <label>Gold Crowns (gc) <input type="text" name="goldCrowns" /></label>
-            <label>Silver Schillings (s) <input type="text" name="silverSchillings" /></label>
-            <label>Brass Pennies (p) <input type="text" name="brassPennies" /></label>
-          </div>
-        </section>
       </section>
     </div>
   </body>
