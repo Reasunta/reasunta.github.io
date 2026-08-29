@@ -2,3 +2,7 @@ node_modules/
 package.json
 package-lock.json
 .DS*
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/reasunta.github.io.iml
+/.idea/vcs.xml

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WFRP 2e Character Sheet</title>
+    <script type="module" crossorigin src="./pc-charlist/pc-charlist-BhLdosv3.js"></script>
+    <link rel="stylesheet" crossorigin href="./pc-charlist/pc-charlist-Bx4oqflD.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="sheet-title">
+        <h1>Warhammer Fantasy Roleplay — Character Sheet</h1>
+        <div class="header-controls">
+          <div id="help-section"></div>
+          <div id="language-switcher-section"></div>
+        </div>
+      </header>
+
+      <section class="sheet-page">
+        <div class="page-columns">
+          <div class="col">
+            <section class="card" id="character-card">
+              <h2>
+                <span class="card-heading-text" data-i18n-key="header.character">Character</span>
+                <div id="character-actions-section" class="card-heading-actions"></div>
+              </h2>
+              <div id="character-section"></div>
+            </section>
+
+            <section class="card">
+              <h2 data-i18n-key="header.experiencePoints">Experience Points</h2>
+              <div id="experience-section"></div>
+            </section>
+          </div>
+
+          <div class="col">
+            <section class="card">
+              <h2 data-i18n-key="header.characterProfile">Character Profile</h2>
+              <div id="character-profile"></div>
+            </section>
+          </div>
+        </div>
+
+        <section class="card" data-collapse-group="career">
+          <h2><span class="card-heading-text" data-i18n-key="header.career">Career</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="career">▲</button></h2>
+          <div id="career-section"></div>
+        </section>
+
+        <div class="page-columns">
+          <div class="col">
+            <section class="card" data-collapse-group="skills-talents">
+              <h2><span class="card-heading-text" data-i18n-key="header.skills">Skills</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="skills-talents">▲</button></h2>
+              <div id="skills-section"></div>
+            </section>
+          </div>
+
+          <div class="col">
+            <section class="card" data-collapse-group="skills-talents">
+              <h2 data-i18n-key="header.talents">Talents</h2>
+              <div id="talents-section"></div>
+            </section>
+          </div>
+        </div>
+
+        <section class="card" data-collapse-group="weapons">
+          <h2><span class="card-heading-text" data-i18n-key="header.weapons">Weapons</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="weapons">▲</button></h2>
+          <div id="weapons-section"></div>
+          <div id="weapons-table-section"></div>
+        </section>
+
+        <section class="card" data-collapse-group="armour">
+          <h2><span class="card-heading-text" data-i18n-key="header.armour">Armour</span><button type="button" class="card-collapse-toggle" data-collapse-toggle="armour">▲</button></h2>
+          <div class="armour-columns">
+            <div id="armour-section"></div>
+            <div>
+              <div id="armour-points-section"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="sheet-page">
+        <div class="page-columns">
+          <div class="col">
+            <section class="card">
+              <h2 data-i18n-key="header.trappings">Trappings</h2>
+              <div id="trappings-section"></div>
+            </section>
+          </div>
+
+          <div class="col">
+            <section class="card">
+              <h2 data-i18n-key="header.actionSummary">Action Summary</h2>
+              <div id="action-summary-stats-section"></div>
+              <div class="action-summary">
+                <div id="action-summary-basic-actions-section"></div>
+                <div id="action-summary-advanced-actions-section"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
